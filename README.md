@@ -35,3 +35,10 @@ I'm impressed how we got the unique shape of the simon gizmo using full corner r
 I don't like how the sample code uses absolute positioning. It seems like it's pretty much always better to use flex and margins to position elements so they're fully reactive. After I centered the player element, I had to change the sizing of the gizmo so it wasn't overlapping. If I have more time I'd like to come back and try to fix it, my first try messing around with it I wasn't able to fix it and I feel like I might be slighty constrained by the fact that the outer container is a bootstrap element.
 
 I also want to restyle the Simon logo in the top left but it's a bootstrap class. I like the flexibility of tailwind more.
+
+## Simon JS
+The sample code used an interesting syntax that we didn't see in any js Wassignments. Prefixig `#` to methods/members in a class makes them private.
+
+Javascript that touches the DOM is VERY brittle once you start moving around/renaming elements. It is making my spidey senses go off, don't couple UI to business logic!
+
+We're also using a global/singleton `Game` object, though I'm not sure how to do this without global scope. What do you do when you want mock something?
