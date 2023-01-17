@@ -42,3 +42,8 @@ The sample code used an interesting syntax that we didn't see in any js Wassignm
 Javascript that touches the DOM is VERY brittle once you start moving around/renaming elements. It is making my spidey senses go off, don't couple UI to business logic!
 
 We're also using a global/singleton `Game` object, though I'm not sure how to do this without global scope. What do you do when you want mock something?
+
+## Simon Service
+If I were making this my own way I would have the server template the scoreboard html before it serves it rather than fetching it. Templating seems easier to work with than js fiddling with the DOM. I wonder why we aren't learning something like handlebars in this class.
+
+Services are a good step in the direction of decoupling logic from UI.
