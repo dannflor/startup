@@ -5,6 +5,9 @@ kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
+[deploy]
+  release_command = "migrate -y"
+
 [env]
 
 [experimental]
