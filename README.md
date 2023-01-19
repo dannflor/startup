@@ -47,3 +47,8 @@ We're also using a global/singleton `Game` object, though I'm not sure how to do
 If I were making this my own way I would have the server template the scoreboard html before it serves it rather than fetching it. Templating seems easier to work with than js fiddling with the DOM. I wonder why we aren't learning something like handlebars in this class.
 
 Services are a good step in the direction of decoupling logic from UI.
+
+## Simon DB
+I'm not exactly sure what `pm2` is, but I had to add `--update-env` to the bash script to get it to read my new environment vars. It's amazingly robust, it even persisted between reboots.
+
+You introduce a tiny bit of latency by querying from the AtlasDB rather than your local application storage.
