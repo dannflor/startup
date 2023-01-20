@@ -52,3 +52,6 @@ Services are a good step in the direction of decoupling logic from UI.
 I'm not exactly sure what `pm2` is, but I had to add `--update-env` to the bash script to get it to read my new environment vars. It's amazingly robust, it even persisted between reboots.
 
 You introduce a tiny bit of latency by querying from the AtlasDB rather than your local application storage.
+
+## Simon Auth
+Very interesting issue with `pm2`. It runs as root. Root doesn't have nvm, so it uses the node at `/usr/bin/node`. That is node 12. The sample code has an unassuming line `const token = req?.cookies.token;`. This uses optional chaining, which is part of the `ES2020` standard which wasn't fully supported until node 14. That means the app crashes when you try to launch it through `pm2` but behaves fine if you use plain ol' `node index.js` as the `ubuntu` user. Had to remove the optional chaining. Somebody should probably do something to fix this issue though, I'm sure much of the class will be absolutely flummoxed if they run into this.
