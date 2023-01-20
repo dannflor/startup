@@ -55,3 +55,5 @@ You introduce a tiny bit of latency by querying from the AtlasDB rather than you
 
 ## Simon Auth
 Very interesting issue with `pm2`. It runs as root. Root doesn't have nvm, so it uses the node at `/usr/bin/node`. That is node 12. The sample code has an unassuming line `const token = req?.cookies.token;`. This uses optional chaining, which is part of the `ES2020` standard which wasn't fully supported until node 14. That means the app crashes when you try to launch it through `pm2` but behaves fine if you use plain ol' `node index.js` as the `ubuntu` user. Had to remove the optional chaining. Somebody should probably do something to fix this issue though, I'm sure much of the class will be absolutely flummoxed if they run into this.
+
+The easiest fix I could find is running: `sudo env PATH=$PATH:/home/ubuntu/.nvm/versions/node/v18.13.0/bin` and then `pm2 restart --update-env` to make it point at Node 18
