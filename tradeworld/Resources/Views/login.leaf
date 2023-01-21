@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta viewpoint name="viewport" content="width=device-width, initial-scale=1"></viewpoint>
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="/css/app.css">
+</head>
+
+<body class="flex-col bg-gray-300 flex min-h-screen">
+    <h1 class="flex mx-auto">Login</h1>
+  </div>
+  
+</body>
+</html>
