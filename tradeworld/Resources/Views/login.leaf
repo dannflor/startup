@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dracula">
 <head>
   <meta charset="utf-8">
   <meta viewpoint name="viewport" content="width=device-width, initial-scale=1"></viewpoint>
@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 
-<body class="flex-col bg-gray-300 flex min-h-screen">
+<body class="flex-col bg-base-300 flex min-h-screen">
     <h1 class="flex mx-auto">Login</h1>
   </div>
   
