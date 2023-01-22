@@ -8,7 +8,23 @@
 </head>
 
 <body class="flex-col bg-base-300 flex min-h-screen">
-    <h1 class="flex mx-auto">Login</h1>
+  <div class="mx-auto my-auto card lg:card-side bg-base-100 shadow-xl">
+    <figure><img src="https://placeimg.com/400/400/arch" alt="Tradeworld Logo"/></figure>
+    <div class="card-body">
+      <h2 class="card-title font-extrabold text-primary">Welcome to Tradeworld</h2>
+      <h2 class="card-title font-medium text-sm text-secondary">Please Login</h2>
+      <p></p>
+      <div class="card-actions justify-end">
+        <form class="flex-col">
+          <input type="text" placeholder="Username" class="input flex input-bordered input-primary w-full max-w-xs my-4" />
+          <input type="password" placeholder="Password" class="input flex input-bordered input-primary w-full max-w-xs my-4" />
+          <div class="flex flex-row w-full">
+            <a href="/register" class="btn btn-ghost">Register</a>
+            <a href="/game" class="btn btn-primary ml-auto">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
   
 </body>
