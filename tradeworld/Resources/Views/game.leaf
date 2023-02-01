@@ -51,22 +51,14 @@
       <a class="btn">Get started</a>
     </div>
   </div>
-  <!-- <div class="flex flex-grow">
-    <div class="max-h-screen mx-auto aspect-square basis-5/6">
-      <div class="grid grid-rows-5 grid-cols-5 max-h-full basis-full flex-grow aspect-square mx-auto">
-        #for(cell in grid):
-          <div class="border-2 border-secondary-focus border-opacity-30 bg-neutral text-neutral-content hover:bg-neutral-focus p-2">
-              
-          </div>
-        #endfor
-      </div>
-    </div> -->
     <div class="mt-4 flex-grow max-h-screen">
-      <div class="lg:w-4/6 lg:h-full w-5/6 h-1/2 flex my-auto mx-auto pb-12 rounded-2xl">
-        <div class="grid grid-rows-10 grid-cols-10 flex-grow overflow-hidden">
+      <div class="lg:w-4/6 lg:h-full w-5/6 h-1/2 flex my-auto mx-auto pb-12">
+        <div class="grid grid-rows-10 grid-cols-10 flex-grow">
           #for(cell in grid):
-            <div class="border-2 border-secondary-focus border-opacity-30 bg-neutral text-neutral-content hover:bg-neutral-focus p-2">
-                
+            <div class="border-2 border-secondary-focus border-opacity-30 bg-neutral text-neutral-content flex hover:bg-neutral-focus p-2">
+              <div class="mx-auto my-auto"> 
+                #(cell)
+              </div>
             </div>
           #endfor
         </div>
