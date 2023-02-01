@@ -16,8 +16,19 @@ func routes(_ app: Application) throws {
     }
     
     app.get("tech") { req async throws -> View in
-        let grid = Array(1...10)
-        return try await req.view.render("tech", GridContext(grid: grid))
+        var techs: [Tech] = []
+        let arr = Array(1...10)
+        for element in arr {
+            let tech =
+                Tech(
+                    id: element,
+                    title: "Tech Number \(element)",
+                    description: "Description for tech number \(element)",
+                    price: element*10
+                )
+            techs.append(tech)
+        }
+        return try await req.view.render("tech", TechContext(techs: techs))
     }
     
     app.get("trade") { req async throws -> View in

@@ -31,6 +31,9 @@
       <a href="/logout" class="link link-secondary mr-4">Logout</a>
     </div>
   </div>
+  <main class="mt-4 flex-grow max-h-screen">
+
+  </main>
 </body>
 
 </html>
