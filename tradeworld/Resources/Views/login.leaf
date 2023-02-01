@@ -9,7 +9,7 @@
 
 <body class="flex-col bg-base-300 flex min-h-screen">
   <div class="mx-auto my-auto card lg:card-side bg-base-100 shadow-xl">
-    <figure><img src="https://placeimg.com/400/400/arch" alt="Tradeworld Logo"/></figure>
+    <figure><img src="https://placekitten.com/400/400/arch" alt="Tradeworld Logo"/></figure>
     <div class="card-body">
       <h2 class="card-title font-extrabold text-primary">Welcome to Tradeworld</h2>
       <h2 class="card-title font-medium text-sm text-secondary">Please Login</h2>

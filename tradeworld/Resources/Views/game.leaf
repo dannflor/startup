@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 
-<body class="flex-col bg-base-300 flex min-h-screen">
+<body class="flex-col bg-base-300 flex h-screen">
   <div class="navbar bg-base-100">
     <div class="navbar-start">
       <div class="dropdown">
@@ -51,20 +51,28 @@
       <a class="btn">Get started</a>
     </div>
   </div>
-  <div class="flex flex-grow">
-    <div class="card mx-auto bg-base-100 text-base-content max-w-3xl max-h-fit flex-grow">
-      <div class="card-body">
-        <div class="grid grid-rows-10 grid-cols-10 gap-1">
+  <!-- <div class="flex flex-grow">
+    <div class="max-h-screen mx-auto aspect-square basis-5/6">
+      <div class="grid grid-rows-5 grid-cols-5 max-h-full basis-full flex-grow aspect-square mx-auto">
+        #for(cell in grid):
+          <div class="border-2 border-secondary-focus border-opacity-30 bg-neutral text-neutral-content hover:bg-neutral-focus p-2">
+              
+          </div>
+        #endfor
+      </div>
+    </div> -->
+    <div class="mt-4 flex-grow max-h-screen">
+      <div class="lg:w-4/6 lg:h-full w-5/6 h-1/2 flex my-auto mx-auto pb-12 rounded-2xl">
+        <div class="grid grid-rows-10 grid-cols-10 flex-grow overflow-hidden">
           #for(cell in grid):
-            <div class="min-h-full border-2 border-secondary-focus rounded-lg bg-neutral text-neutral-content hover:bg-neutral-focus flex aspect-square p-2">
-              <img class="mx-auto my-auto" src="https://placeimg.com/200/200">
-                <!-- #(cell) -->
-              </img>
+            <div class="border-2 border-secondary-focus border-opacity-30 bg-neutral text-neutral-content hover:bg-neutral-focus p-2">
+                
             </div>
           #endfor
         </div>
       </div>
     </div>
+    
   </div>
 </body>
 
