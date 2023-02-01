@@ -14,6 +14,16 @@ func routes(_ app: Application) throws {
         let grid = Array(1...100)
         return try await req.view.render("game", GridContext(grid: grid))
     }
+    
+    app.get("tech") { req async throws -> View in
+        let grid = Array(1...10)
+        return try await req.view.render("tech", GridContext(grid: grid))
+    }
+    
+    app.get("trade") { req async throws -> View in
+        let grid = Array(1...10)
+        return try await req.view.render("trade", GridContext(grid: grid))
+    }
 
     app.get("hello") { req async -> String in
         "Hello, world!"
