@@ -62,3 +62,10 @@ The easiest fix I could find is running: `sudo env PATH=$PATH:/home/ubuntu/.nvm/
 I ran into an error just because I put the wrong case on the one of the files, but it did work on my dev env. I wonder what the difference between them is.
 
 Websocket stuff is pretty hard to test by yourself! You need to use incognito windows but then that messes with your cookie assignment.
+
+## Simon React
+Wow this was a big assignment. Reorganizing everything took forever and I felt like the code became a lot less readable. On the plus side, we got to reuse the header and footer components, but I would much rather inject these serverside using a templating language.
+
+I'm a little unclear when a 404 response is handled by the react router vs the node server.
+
+React is pretty hard to debug. You'd need a compelling reason to choose to use it imo.
