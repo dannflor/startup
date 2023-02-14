@@ -69,3 +69,10 @@ Wow this was a big assignment. Reorganizing everything took forever and I felt l
 I'm a little unclear when a 404 response is handled by the react router vs the node server.
 
 React is pretty hard to debug. You'd need a compelling reason to choose to use it imo.
+
+## Simon PWA
+I've read about PWA before but I never understood it until I implemented it myself. The service worker caches the data clientside and it works offline inasmuch and you've made provisions for offline service calls! Magical.
+
+The page was the wrong size for some reason so I had to shrink the min-width in the css to make it fit on mobile screens.
+
+I saw that a request for the `apple-touch-icon` was failing when I turned off the network so I tried caching that as well but it didn't work, probably because the resource is invoked differently in a <link> vs a js call.
