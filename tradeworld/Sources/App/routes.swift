@@ -11,7 +11,7 @@ func routes(_ app: Application) throws {
     }
     
     app.get("game") { req async throws -> View in
-        let grid = Array(1...100)
+        let grid = Array(1...49)
         return try await req.view.render("game", GridContext(grid: grid))
     }
     

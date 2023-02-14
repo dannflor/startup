@@ -33,7 +33,7 @@
   </div>
   <div class="mt-4 flex-grow max-h-screen">
     <div class="lg:w-4/6 lg:h-full w-5/6 h-1/2 flex my-auto mx-auto pb-12">
-      <div class="grid grid-rows-10 grid-cols-10 flex-grow">
+      <div class="grid grid-rows-7 grid-cols-7 flex-grow">
         #for(cell in grid):
           <div class="border-2 border-secondary-focus border-opacity-30 bg-neutral text-neutral-content flex hover:bg-neutral-focus p-2">
             <div class="mx-auto my-auto"> 
