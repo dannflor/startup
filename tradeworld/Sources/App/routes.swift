@@ -32,13 +32,21 @@ func routes(_ app: Application) throws {
     }
     
     app.get("trade") { req async throws -> View in
-        let grid = Array(1...10)
-        return try await req.view.render("trade", GridContext(grid: grid))
+        var trades: [Trade] = []
+        let arr = Array(1...10)
+        for element in arr {
+            let trade =
+                Trade(
+                    id: element,
+                    seller: "Seller ID \(element)",
+                    message: "Message from seller \(element)",
+                    offer: Resource(id: 10, name: "Wood", count: 10),
+                    ask: Resource(id: 11, name: "Gold", count: 1)
+                )
+            trades.append(trade)
+        }
+        return try await req.view.render("trade", TradeContext(trades: trades))
     }
-
-    app.get("hello") { req async -> String in
-        "Hello, world!"
-    }
-
+    
     try app.register(collection: TodoController())
 }

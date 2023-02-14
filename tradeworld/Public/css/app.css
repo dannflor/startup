@@ -1554,6 +1554,10 @@ html {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -1623,24 +1627,14 @@ html {
 .w-2\/3 {
   width: 66.666667%;
 }
+.w-1\/2 {
+  width: 50%;
+}
 .max-w-xs {
   max-width: 20rem;
 }
 .flex-grow {
   flex-grow: 1;
-}
-@keyframes fadeAway {
-  0% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-1000px);
-    opacity: 0;
-  }
-}
-.animate-fadeAway {
-  animation: fadeAway 0.5s ease-in both;
 }
 .grid-cols-10 {
   grid-template-columns: repeat(10, minmax(0, 1fr));
@@ -1692,6 +1686,9 @@ html {
 }
 .pb-12 {
   padding-bottom: 3rem;
+}
+.text-center {
+  text-align: center;
 }
 .font-serif {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;

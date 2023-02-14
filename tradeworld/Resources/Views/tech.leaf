@@ -51,26 +51,13 @@
             <div class="mx-auto">
               #(tech.price)
             </div>
-
           </div>
-          
-          
         </li>
       #endfor
     </ul>
   </main>
 </body>
 
-<script>
-  function fadeAway(id) {
-    var element = document.getElementById(id);
-    element.classList.add("animate-fadeAway");
-    element.addEventListener("animationend", function() {
-      setTimeout(function() {
-        element.classList.add("hidden");
-      }, 200);
-    });
-  }
-</script>
+<script src="/js/fadeAway.js"></script>
 
 </html>
