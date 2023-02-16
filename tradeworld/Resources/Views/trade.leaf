@@ -34,10 +34,10 @@
     </div>
   </div>
   <main class="mt-8 flex">
-    <ul class="xl:mx-16 mx-1 flex-col flex w-1/3">
+    <ul class="sm:mx-16 mx-2 flex-col flex w-1/3">
       #for(trade in trades):
-        <li id="cell#(trade.id)" class="mb-4 max-h-36 min-h-[5rem] sm:w-[32rem] w-[22rem] border-2 border-primary hover:border-primary-focus rounded-xl flex p-2 flex-row">
-          <input type="checkbox" class="checkbox md:checkbox-md checkbox-sm flex my-auto sm:ml-4 ml-2" onclick="fadeAway('cell#(trade.id)')"/> 
+        <li id="cell#(trade.id)" class="mb-4 max-h-36 min-h-[5rem] sm:w-[32rem] w-[21.5rem] border-2 border-primary hover:border-primary-focus rounded-xl flex p-2 flex-row">
+          <input type="checkbox" class="checkbox sm:checkbox-md checkbox-sm flex my-auto sm:ml-4 ml-2" onclick="fadeAway('cell#(trade.id)')"/> 
           <div class="my-auto flex-col ml-4">
             <div class="flex-row flex">
               <div class="text-secondary font-serif font-bold sm:text-xl text-md">
@@ -56,19 +56,11 @@
                 #(trade.ask.count) #(trade.ask.name)
               </div>
             </div>
-            <div class="divider !my-0 mr-4 !h-2"></div> 
+            <div class="divider !my-0 mr-4 !h-2 sm:w-[27rem] w-[17rem]"></div> 
             <div class="sm:text-base text-xs">
               #(trade.message)
             </div>
           </div>
-          <!-- <div class="flex flex-row">
-            <div class="flex flex-col my-auto mx-4">
-              
-            </div>
-            <div class="flex flex-col my-auto mx-4">
-              
-            </div>
-          </div> -->
         </li>
       #endfor
     </ul>
