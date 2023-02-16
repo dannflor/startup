@@ -39,7 +39,7 @@ func routes(_ app: Application) throws {
                 Trade(
                     id: element,
                     seller: "Seller ID \(element)",
-                    message: "Message from seller \(element)",
+                    message: "Message from seller Message from seller Message from seller Message from sellerMessage from seller Message from seller Message from seller \(element)",
                     offer: Resource(id: 10, name: "Wood", count: 10),
                     ask: Resource(id: 11, name: "Gold", count: 1)
                 )

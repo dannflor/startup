@@ -772,6 +772,23 @@ html {
   --tw-border-opacity: 0.2;
   border-radius: var(--rounded-btn, 0.5rem);
 }
+.divider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: stretch;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 1rem;
+  white-space: nowrap;
+}
+.divider:before,
+  .divider:after {
+  content: "";
+  flex-grow: 1;
+  height: 0.125rem;
+  width: 100%;
+}
 .dropdown {
   position: relative;
   display: inline-block;
@@ -1410,6 +1427,17 @@ html {
     [dir="rtl"] .checkbox[aria-checked="true"] {
   background-image: linear-gradient(45deg, transparent 65%, hsl(var(--chkbg)) 65.99%), linear-gradient(-45deg, transparent 75%, hsl(var(--chkbg)) 75.99%), linear-gradient(45deg, hsl(var(--chkbg)) 40%, transparent 40.99%), linear-gradient(-45deg, hsl(var(--chkbg)) 30%, hsl(var(--chkfg)) 30.99%, hsl(var(--chkfg)) 40%, transparent 40.99%), linear-gradient(45deg, hsl(var(--chkfg)) 50%, hsl(var(--chkbg)) 50.99%);
 }
+.divider:before {
+  background-color: hsl(var(--bc) / var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.1;
+}
+.divider:after {
+  background-color: hsl(var(--bc) / var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.1;
+}
+.divider:not(:empty) {
+  gap: 1rem;
+}
 .drawer-toggle:focus-visible ~ .drawer-content .drawer-button.btn-primary {
   outline: 2px solid hsl(var(--p));
 }
@@ -1782,6 +1810,10 @@ html {
 .rounded-box {
   border-radius: var(--rounded-box, 1rem);
 }
+.checkbox-sm {
+  height: 1.25rem;
+  width: 1.25rem;
+}
 .checkbox-md {
   height: 1.5rem;
   width: 1.5rem;
@@ -1901,6 +1933,14 @@ html {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+.\!my-0 {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -1941,6 +1981,15 @@ html {
 .ml-4 {
   margin-left: 1rem;
 }
+.ml-2 {
+  margin-left: 0.5rem;
+}
+.mr-0\.5 {
+  margin-right: 0.125rem;
+}
+.mr-0 {
+  margin-right: 0px;
+}
 .flex {
   display: flex;
 }
@@ -1962,11 +2011,20 @@ html {
 .h-24 {
   height: 6rem;
 }
+.\!h-2 {
+  height: 0.5rem !important;
+}
 .max-h-screen {
   max-height: 100vh;
 }
+.max-h-36 {
+  max-height: 9rem;
+}
 .min-h-screen {
   min-height: 100vh;
+}
+.min-h-\[5rem\] {
+  min-height: 5rem;
 }
 .w-5 {
   width: 1.25rem;
@@ -1980,14 +2038,14 @@ html {
 .w-full {
   width: 100%;
 }
+.w-1\/2 {
+  width: 50%;
+}
 .w-1\/3 {
   width: 33.333333%;
 }
-.w-2\/3 {
-  width: 66.666667%;
-}
-.w-1\/2 {
-  width: 50%;
+.w-\[22rem\] {
+  width: 22rem;
 }
 .w-11\/12 {
   width: 91.666667%;
@@ -2077,9 +2135,6 @@ html {
 .pb-1 {
   padding-bottom: 0.25rem;
 }
-.text-center {
-  text-align: center;
-}
 .font-serif {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
@@ -2090,6 +2145,10 @@ html {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 .text-lg {
   font-size: 1.125rem;
@@ -2171,6 +2230,34 @@ html {
 .hover\:bg-opacity-40:hover {
   --tw-bg-opacity: 0.4;
 }
+@media (min-width: 640px) {
+  .sm\:ml-4 {
+    margin-left: 1rem;
+  }
+  .sm\:ml-5 {
+    margin-left: 1.25rem;
+  }
+  .sm\:mr-2 {
+    margin-right: 0.5rem;
+  }
+  .sm\:w-\[32rem\] {
+    width: 32rem;
+  }
+  .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  .sm\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .md\:checkbox-md {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+}
 @media (min-width: 1024px) {
   .lg\:flex {
     display: flex;
@@ -2210,5 +2297,14 @@ html {
     height: 100%;
     -o-object-fit: cover;
        object-fit: cover;
+  }
+}
+@media (min-width: 1280px) {
+  .xl\:mx-16 {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+  .xl\:w-1\/3 {
+    width: 33.333333%;
   }
 }
