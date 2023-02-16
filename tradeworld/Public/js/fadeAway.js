@@ -1,5 +1,6 @@
 function fadeAway(id) {
-  var element = document.getElementById(id);
+  console.log("Function started");
+  let element = document.getElementById(id);
   element.classList.add("animate-fadeAway");
   element.addEventListener("animationend", function() {
     setTimeout(function() {

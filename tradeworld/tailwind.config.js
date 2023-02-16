@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./Resources/**/*.{html,js,leaf}"],
+  content: ["./Resources/**/*.{html,js,leaf}", "./Public/js/*.js"],
   theme: {
     extend: {
       animation: {
@@ -17,6 +17,9 @@ module.exports = {
             opacity: 0 
           },
         },
+      },
+      backgroundImage: {
+        'backdrop': "url('/img/bg.jpg')"
       },
     },
   },

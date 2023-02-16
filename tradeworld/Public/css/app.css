@@ -2011,6 +2011,19 @@ html {
 .flex-grow {
   flex-grow: 1;
 }
+@keyframes fadeAway {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+}
+.animate-fadeAway {
+  animation: fadeAway 0.5s ease-in both;
+}
 .grid-cols-7 {
   grid-template-columns: repeat(7, minmax(0, 1fr));
 }
@@ -2048,9 +2061,11 @@ html {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--b1) / var(--tw-bg-opacity));
 }
-.bg-neutral {
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--n) / var(--tw-bg-opacity));
+.bg-backdrop {
+  background-image: url('/img/bg.jpg');
+}
+.bg-cover {
+  background-size: cover;
 }
 .p-2 {
   padding: 0.5rem;
@@ -2059,8 +2074,8 @@ html {
   padding-left: 3rem;
   padding-right: 3rem;
 }
-.pb-12 {
-  padding-bottom: 3rem;
+.pb-1 {
+  padding-bottom: 0.25rem;
 }
 .text-center {
   text-align: center;
@@ -2152,6 +2167,9 @@ html {
 .hover\:bg-neutral-focus:hover {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--nf, var(--n)) / var(--tw-bg-opacity));
+}
+.hover\:bg-opacity-40:hover {
+  --tw-bg-opacity: 0.4;
 }
 @media (min-width: 1024px) {
   .lg\:flex {
