@@ -12,7 +12,7 @@ public func configure(_ app: Application) throws {
     app.databases.use(try! .postgres(url: Environment.get("DATABASE_URL")!), as: .psql)
     
 
-    app.migrations.add(CreateTodo())
+    app.migrations.add(CreateUser(), CreateResource())
 
     app.views.use(.leaf)
 

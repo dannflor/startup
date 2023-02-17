@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" data-theme="dracula">
+<head>
+  <meta charset="utf-8">
+  <meta viewpoint name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tradeworld</title>
+  <link rel="stylesheet" type="text/css" href="/css/app.css">
+</head>
+
+<body class="flex-col flex bg-base-300 min-h-screen">
+  <h1 class="mx-auto mt-8 text-4xl font-serif font-extrabold">You've been logged out...</h1>
+  <h2 class="mx-auto mt-2 text-lg font-serif">Redirecting in 3 seconds. Otherwise click <a href="/" class="link-primary">here</a>.</h2>
+</body>
+
+<script>
+  setTimeout(() => {
+      window.location = "/";
+    },
+    3000
+  );
+</script>
+
+</html>

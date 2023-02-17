@@ -10,6 +10,10 @@ func routes(_ app: Application) throws {
         try await req.view.render("login")
     }
     
+    app.get("logout") { req async throws in
+        try await req.view.render("logout")
+    }
+    
     app.get("game") { req async throws -> View in
         let grid = Array(1...49)
         return try await req.view.render("game", GridContext(grid: grid))
@@ -40,8 +44,8 @@ func routes(_ app: Application) throws {
                     id: element,
                     seller: "Seller ID \(element)",
                     message: "Message from seller Message from seller Message from seller Message from sellerMessage from seller Message from seller Message from seller \(element)",
-                    offer: Resource(id: 10, name: "Wood", count: 10),
-                    ask: Resource(id: 11, name: "Gold", count: 1)
+                    offer: ResourceQty(name: .wood, count: 10),
+                    ask: ResourceQty(name: .gold, count: 1)
                 )
             trades.append(trade)
         }
