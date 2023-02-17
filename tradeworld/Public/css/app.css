@@ -1135,6 +1135,11 @@ html {
   --tw-text-opacity: 1;
   color: hsl(var(--sc) / var(--tw-text-opacity));
 }
+.btn-outline .badge.outline {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--nf, var(--n)) / var(--tw-border-opacity));
+  background-color: transparent;
+}
 .btn-outline.btn-primary .badge-outline {
   --tw-border-opacity: 1;
   border-color: hsl(var(--p) / var(--tw-border-opacity));
@@ -1148,6 +1153,12 @@ html {
   background-color: transparent;
   --tw-text-opacity: 1;
   color: hsl(var(--s) / var(--tw-text-opacity));
+}
+.btn-outline:hover .badge.outline {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--b2, var(--b1)) / var(--tw-border-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--nc) / var(--tw-text-opacity));
 }
 .btn-outline.btn-primary:hover .badge {
   --tw-border-opacity: 1;
@@ -1180,6 +1191,14 @@ html {
   background-color: hsl(var(--sf, var(--s)) / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: hsl(var(--sc) / var(--tw-text-opacity));
+}
+.btn-outline.btn-accent:hover .badge.outline {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--ac) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--af, var(--a)) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--ac) / var(--tw-text-opacity));
 }
 .btm-nav>*.disabled,
     .btm-nav>*.disabled:hover,
@@ -2003,6 +2022,9 @@ html {
 .ml-16 {
   margin-left: 4rem;
 }
+.mr-2 {
+  margin-right: 0.5rem;
+}
 .flex {
   display: flex;
 }
@@ -2260,6 +2282,15 @@ html {
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
+.outline {
+  outline-style: solid;
+}
+.outline-2 {
+  outline-width: 2px;
+}
+.outline-primary {
+  outline-color: hsl(var(--p));
+}
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.
@@ -2284,6 +2315,30 @@ html {
 }
 .hover\:bg-opacity-40:hover {
   --tw-bg-opacity: 0.4;
+}
+.hover\:outline-primary-focus:hover {
+  outline-color: hsl(var(--pf, var(--p)));
+}
+.hover\:checkbox-accent:hover {
+  --chkbg: var(--a);
+  --chkfg: var(--ac);
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--a) / var(--tw-border-opacity));
+}
+.hover\:checkbox-accent:hover:hover {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--a) / var(--tw-border-opacity));
+}
+.hover\:checkbox-accent:hover:focus-visible {
+  outline: 2px solid hsl(var(--a));
+}
+.hover\:checkbox-accent:hover:checked,.hover\:checkbox-accent:hover[checked="true"],.hover\:checkbox-accent:hover[aria-checked="true"] {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--a) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--a) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--ac) / var(--tw-text-opacity));
 }
 @media (min-width: 640px) {
   .sm\:mx-16 {
@@ -2329,8 +2384,14 @@ html {
   .lg\:hidden {
     display: none;
   }
+  .lg\:w-\[40\%\] {
+    width: 40%;
+  }
   .lg\:justify-end {
     justify-content: flex-end;
+  }
+  .lg\:pb-\[40\%\] {
+    padding-bottom: 40%;
   }
   .lg\:card-side {
     align-items: stretch;
