@@ -15,7 +15,18 @@ func routes(_ app: Application) throws {
     }
     
     app.get("game") { req async throws -> View in
-        let grid = Array(1...49)
+        var grid: [Building] = []
+        for i in 0..<49 {
+            if i % 5 == 0 {
+                grid.append(Building(name: "Big House", cost: [], img: "/img/bigHouse.png"))
+            }
+            else if i % 3 == 0 {
+                grid.append(Building(name: "Small House", cost: [], img: "/img/smallHouse.png"))
+            }
+            else {
+                grid.append(Building(name: "", cost: [], img: "/img/noHouse.png"))
+            }
+        }
         return try await req.view.render("game", GridContext(grid: grid))
     }
     

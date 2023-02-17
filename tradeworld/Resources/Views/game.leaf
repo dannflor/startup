@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 
-<body class="flex-col bg-base-300 flex h-screen">
+<body class="flex-col bg-base-300 flex h-screen overflow-hidden">
   <div class="navbar bg-base-100">
     <div class="navbar-start">
       <div class="dropdown">
@@ -32,12 +32,12 @@
     </div>
   </div>
   <div class="mt-4 flex-grow max-h-screen">
-    <div class="lg:w-4/6 lg:h-full w-5/6 h-1/2 flex my-auto mx-auto pb-1">
-      <div class="grid grid-rows-7 grid-cols-7 flex-grow bg-backdrop bg-cover">
+    <div class="w-[90%] h-full flex my-auto mx-auto pb-[90%] bg-base-300">
+      <div class="grid grid-rows-7 grid-cols-7 mx-auto">
         #for(cell in grid):
-          <label for="grid-cell-modal" class="border-2 border-secondary-focus border-opacity-30 text-neutral-content flex hover:bg-neutral-focus hover:bg-opacity-40 p-2">
-            <div class="mx-auto my-auto">
-              #(cell)
+          <label for="grid-cell-modal" class="border-2 border-green-900 border-opacity-30 text-neutral-content flex bg-green-600">
+            <div class="mx-auto my-auto hover:bg-neutral-focus flex-grow hover:bg-opacity-40 p-2">
+              <img src=#(cell.img) class="max-w-24 max-h-24 mx-auto my-auto"/>
             </div>
           </label>
         #endfor

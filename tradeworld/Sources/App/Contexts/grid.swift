@@ -1,3 +1,3 @@
 struct GridContext: Codable {
-    let grid: [Int]
+    let grid: [Building]
 }
