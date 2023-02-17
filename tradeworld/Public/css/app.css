@@ -2040,9 +2040,6 @@ html {
 .h-5 {
   height: 1.25rem;
 }
-.h-full {
-  height: 100%;
-}
 .h-\[400px\] {
   height: 400px;
 }
@@ -2371,6 +2368,14 @@ html {
   .sm\:checkbox-md {
     height: 1.5rem;
     width: 1.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .md\:w-\[60\%\] {
+    width: 60%;
+  }
+  .md\:pb-\[60\%\] {
+    padding-bottom: 60%;
   }
 }
 @media (min-width: 1024px) {
