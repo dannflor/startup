@@ -1959,6 +1959,18 @@ html {
   margin-left: auto;
   margin-right: auto;
 }
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.\!my-2 {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -1975,10 +1987,6 @@ html {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
-.my-1 {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-}
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -1987,6 +1995,9 @@ html {
 }
 .mt-4 {
   margin-top: 1rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 .mt-2 {
   margin-top: 0.5rem;
@@ -2014,9 +2025,6 @@ html {
 }
 .mr-0 {
   margin-right: 0px;
-}
-.mr-2 {
-  margin-right: 0.5rem;
 }
 .flex {
   display: flex;
@@ -2100,6 +2108,9 @@ html {
   max-width: -moz-fit-content !important;
   max-width: fit-content !important;
 }
+.flex-1 {
+  flex: 1 1 0%;
+}
 .flex-grow {
   flex-grow: 1;
 }
@@ -2131,11 +2142,17 @@ html {
 .justify-end {
   justify-content: flex-end;
 }
+.justify-center {
+  justify-content: center;
+}
 .justify-items-end {
   justify-items: end;
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.rounded-lg {
+  border-radius: 0.5rem;
 }
 .rounded-xl {
   border-radius: 0.75rem;
@@ -2173,8 +2190,22 @@ html {
   padding-left: 3rem;
   padding-right: 3rem;
 }
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
 .pb-\[90\%\] {
   padding-bottom: 90%;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
 }
 .font-serif {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
@@ -2182,6 +2213,10 @@ html {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 .text-7xl {
   font-size: 4.5rem;
@@ -2203,15 +2238,11 @@ html {
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
+.font-bold {
+  font-weight: 700;
 }
 .font-extrabold {
   font-weight: 800;
-}
-.font-bold {
-  font-weight: 700;
 }
 .font-medium {
   font-weight: 500;
@@ -2226,6 +2257,10 @@ html {
   --tw-text-opacity: 1;
   color: hsl(var(--p) / var(--tw-text-opacity));
 }
+.text-info {
+  --tw-text-opacity: 1;
+  color: hsl(var(--in) / var(--tw-text-opacity));
+}
 .text-neutral-content {
   --tw-text-opacity: 1;
   color: hsl(var(--nc) / var(--tw-text-opacity));
@@ -2237,10 +2272,6 @@ html {
 .text-warning {
   --tw-text-opacity: 1;
   color: hsl(var(--wa) / var(--tw-text-opacity));
-}
-.text-info {
-  --tw-text-opacity: 1;
-  color: hsl(var(--in) / var(--tw-text-opacity));
 }
 .text-success {
   --tw-text-opacity: 1;
@@ -2352,11 +2383,35 @@ html {
   }
 }
 @media (min-width: 768px) {
+  .md\:mr-1 {
+    margin-right: 0.25rem;
+  }
+  .md\:flex {
+    display: flex;
+  }
+  .md\:w-1\/2 {
+    width: 50%;
+  }
   .md\:w-\[60\%\] {
     width: 60%;
   }
+  .md\:flex-row {
+    flex-direction: row;
+  }
+  .md\:space-x-2 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
   .md\:pb-\[60\%\] {
     padding-bottom: 60%;
+  }
+  .md\:text-left {
+    text-align: left;
+  }
+  .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 }
 @media (min-width: 1024px) {
@@ -2375,6 +2430,10 @@ html {
   }
   .lg\:justify-end {
     justify-content: flex-end;
+  }
+  .lg\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
   .lg\:pb-\[40\%\] {
     padding-bottom: 40%;

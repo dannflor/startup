@@ -31,8 +31,21 @@
       <a href="/logout" class="link link-secondary mr-4">Logout</a>
     </div>
   </div>
-  <div class="mt-4 flex-grow max-h-screen">
+  <div class="mt-4 flex-grow max-h-screen justify-center">
     <!-- <div class=" flex my-auto mx-auto  bg-base-300"> -->
+      <div class="md:w-1/2 mx-auto lg:px-10 mb-2">
+        <div class="flex-row flex rounded-lg">
+          #for(resource in resources):
+            <div class="flex-1 flex md:space-x-2 bg-base-100 py-3 rounded-lg mx-1 my-1 px-1">
+              <div class="mx-auto md:flex-row md:flex md:text-base text-xs">
+                <div class="text-info font-bold md:mr-1 text-center md:text-left">#(resource.name):</div>
+                <div class="text-neutral-content text-center md:text-left">#(resource.count)</div>
+              </div>
+            </div>
+          #endfor
+        </div>
+      </div>
+      <div class="divider mx-auto md:w-1/2 !my-2"></div>
       <div class="md:w-[60%] md:pb-[60%] lg:w-[40%] lg:pb-[40%] grid grid-rows-7 grid-cols-7 mx-auto w-[90%] pb-[90%]">
         #for(cell in grid):
           <label for="grid-cell-modal" class="border-2 border-green-900 border-opacity-30 text-neutral-content flex bg-green-600">

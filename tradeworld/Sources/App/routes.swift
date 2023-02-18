@@ -16,6 +16,13 @@ func routes(_ app: Application) throws {
     
     app.get("game") { req async throws -> View in
         var grid: [Building] = []
+        let resources: [ResourceQty] = [
+            ResourceQty(name: .Wood, count: 27),
+            ResourceQty(name: .Stone, count: 21),
+            ResourceQty(name: .Gold, count: 7),
+            ResourceQty(name: .Iron, count: 15),
+            ResourceQty(name: .Food, count: 50)
+        ]
         for i in 0..<49 {
             if i % 5 == 0 {
                 grid.append(Building(name: "Big House", cost: [], img: "/img/bigHouse.png"))
@@ -27,7 +34,7 @@ func routes(_ app: Application) throws {
                 grid.append(Building(name: "", cost: [], img: "/img/noHouse.png"))
             }
         }
-        return try await req.view.render("game", GridContext(grid: grid))
+        return try await req.view.render("game", GridContext(grid: grid, resources: resources))
     }
     
     app.get("tech") { req async throws -> View in
@@ -55,8 +62,8 @@ func routes(_ app: Application) throws {
                     id: element,
                     seller: "Seller ID \(element)",
                     message: "Message from seller Message from seller Message from seller Message from sellerMessage from seller Message from seller Message from seller \(element)",
-                    offer: ResourceQty(name: .wood, count: 10),
-                    ask: ResourceQty(name: .gold, count: 1)
+                    offer: ResourceQty(name: .Wood, count: 10),
+                    ask: ResourceQty(name: .Gold, count: 1)
                 )
             trades.append(trade)
         }
