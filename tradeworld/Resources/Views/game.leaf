@@ -44,7 +44,11 @@
       </div>
     <!-- </div> -->
   </div>
-
+  <footer class="footer-center flex bg-base-100 fixed bottom-0 left-0 right-0 h-10">
+    <div class="my-auto mx-auto">
+      <p>Copyright © 2023 - Sam and Ethan</p>
+    </div>
+  </footer>
 <!-- Put this part before </body> tag -->
 <input type="checkbox" id="grid-cell-modal" class="modal-toggle" />
 <label for="grid-cell-modal" class="modal cursor-pointer">
