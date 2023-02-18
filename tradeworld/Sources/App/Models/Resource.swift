@@ -27,12 +27,10 @@ final class Resource: Model {
 }
 
 enum ResourceType: String, Codable {
-    case wood, stone, gold
+    case Wood, Stone, Gold, Iron, Food
 }
 
 struct ResourceQty: Content {
     let name: ResourceType
     let count: Int
-    
-    
 }

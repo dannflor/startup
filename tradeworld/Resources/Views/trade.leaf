@@ -57,7 +57,7 @@
               </div>
             </div>
             <div class="divider !my-0 mr-4 !h-2 sm:w-[27rem] w-[17rem]"></div> 
-            <div class="sm:text-base text-xs mr-2">
+            <div class="sm:text-base text-xs sm:mr-2 mr-0.5">
               #(trade.message)
             </div>
           </div>
