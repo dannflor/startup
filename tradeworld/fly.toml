@@ -5,6 +5,9 @@ kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
+[build]
+  image = "repo/tradeworld:latest"
+
 [deploy]
   release_command = "migrate -y"
 
