@@ -23,14 +23,23 @@ func routes(_ app: Application) throws {
             ResourceQty(name: .Iron, count: 15),
             ResourceQty(name: .Food, count: 50)
         ]
-        for i in 0..<49 {
-            if i % 5 == 0 {
-                grid.append(Building(name: "Big House", cost: [], img: "/img/bigHouse.png"))
-            }
-            else if i % 3 == 0 {
-                grid.append(Building(name: "Small House", cost: [], img: "/img/smallHouse.png"))
-            }
-            else {
+        
+        for _ in 0..<49 {
+            let num = Int.random(in: 0...10)
+            switch num {
+            case 0:
+                grid.append(Building(name: "Small House", cost: [], img: "/img/pixelHouse.png"))
+            case 1:
+                grid.append(Building(name: "Medium House", cost: [], img: "/img/pixelHouse2.png"))
+            case 2:
+                grid.append(Building(name: "Big House", cost: [], img: "/img/pixelHouse3.png"))
+            case 3:
+                grid.append(Building(name: "Pasture", cost: [], img: "/img/pixelPasture.png"))
+            case 4:
+                grid.append(Building(name: "Tower", cost: [], img: "/img/pixelTower.png"))
+            case 5:
+                grid.append(Building(name: "Trees", cost: [], img: "/img/pixelTrees.png"))
+            default:
                 grid.append(Building(name: "", cost: [], img: "/img/noHouse.png"))
             }
         }

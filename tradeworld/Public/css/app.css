@@ -852,6 +852,30 @@ html {
   visibility: visible;
   opacity: 1;
 }
+.footer {
+  display: grid;
+  width: 100%;
+  grid-auto-flow: row;
+  place-items: start;
+  row-gap: 2.5rem;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.footer > * {
+  display: grid;
+  place-items: start;
+  gap: 0.5rem;
+}
+@media (min-width: 48rem) {
+  .footer {
+    grid-auto-flow: column;
+  }
+  .footer-center {
+    grid-auto-flow: row dense;
+  }
+}
 .label {
   display: flex;
   -webkit-user-select: none;
@@ -1543,6 +1567,14 @@ html {
   --tw-text-opacity: 1;
   color: hsl(var(--sf, var(--s)) / var(--tw-text-opacity));
 }
+.link-success {
+  --tw-text-opacity: 1;
+  color: hsl(var(--su) / var(--tw-text-opacity));
+}
+.link-success:hover {
+  --tw-text-opacity: 1;
+  color: hsl(var(--su) / var(--tw-text-opacity));
+}
 .link:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1947,6 +1979,21 @@ html {
  *
  * @import "tailwindcss/utilities";
  */
+.fixed {
+  position: fixed;
+}
+.\!bottom-0 {
+  bottom: 0px !important;
+}
+.left-0 {
+  left: 0px;
+}
+.right-0 {
+  right: 0px;
+}
+.right-4 {
+  right: 1rem;
+}
 .mx-8 {
   margin-left: 2rem;
   margin-right: 2rem;
@@ -1999,6 +2046,9 @@ html {
 .mb-2 {
   margin-bottom: 0.5rem;
 }
+.ml-4 {
+  margin-left: 1rem;
+}
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -2017,14 +2067,14 @@ html {
 .ml-2 {
   margin-left: 0.5rem;
 }
-.ml-4 {
-  margin-left: 1rem;
-}
 .mr-0\.5 {
   margin-right: 0.125rem;
 }
 .mr-0 {
   margin-right: 0px;
+}
+.mb-8 {
+  margin-bottom: 2rem;
 }
 .flex {
   display: flex;
@@ -2041,6 +2091,9 @@ html {
 .h-5 {
   height: 1.25rem;
 }
+.h-10 {
+  height: 2.5rem;
+}
 .h-\[400px\] {
   height: 400px;
 }
@@ -2050,8 +2103,8 @@ html {
 .max-h-screen {
   max-height: 100vh;
 }
-.max-h-24 {
-  max-height: 6rem;
+.max-h-20 {
+  max-height: 5rem;
 }
 .max-h-36 {
   max-height: 9rem;
@@ -2095,6 +2148,9 @@ html {
 .w-10 {
   width: 2.5rem;
 }
+.min-w-full {
+  min-width: 100%;
+}
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -2132,6 +2188,9 @@ html {
 }
 .grid-cols-7 {
   grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .flex-row {
   flex-direction: row;
@@ -2383,6 +2442,10 @@ html {
   }
 }
 @media (min-width: 768px) {
+  .md\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
   .md\:mr-1 {
     margin-right: 0.25rem;
   }

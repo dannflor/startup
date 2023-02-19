@@ -50,46 +50,51 @@
         #for(cell in grid):
           <label for="grid-cell-modal" class="border-2 border-green-900 border-opacity-30 text-neutral-content flex bg-green-600">
             <div class="mx-auto my-auto hover:bg-neutral-focus flex-grow hover:bg-opacity-40 p-2">
-              <img src=#(cell.img) class="max-w-24 max-h-24 mx-auto my-auto"/>
+              <img src=#(cell.img) class="max-w-20 max-h-20 mx-auto my-auto" style="image-rendering: crisp-edges; image-rendering: pixelated;"/>
             </div>
           </label>
         #endfor
       </div>
     <!-- </div> -->
   </div>
-  <footer class="footer-center flex bg-base-100 fixed bottom-0 left-0 right-0 h-10">
-    <div class="my-auto mx-auto">
-      <p>Copyright © 2023 - Sam and Ethan</p>
+  <footer class="footer flex bg-base-100 fixed !bottom-0 left-0 right-0 h-10">
+    <div class="my-auto ml-4 text-xs grid grid-cols-2 min-w-full">
+      <div class="md:mx-0 mx-auto text-center md:text-left">
+        A game by Samuel Bishop and Ethan Michaelis  (<a class="link link-success" href="https://github.com/dannflor/startup/">Source</a>)
+      </div>
+      <div class="fixed right-4">
+        Pixelart by <a class="link link-success" href="https://2058.itch.io/">green guy</a>
+      </div>
     </div>
   </footer>
-<!-- Put this part before </body> tag -->
-<input type="checkbox" id="grid-cell-modal" class="modal-toggle" />
-<label for="grid-cell-modal" class="modal cursor-pointer">
-  <label class="modal-box max-w-2xl flex flex-col" for="">
-    <h3 class="text-7xl font-serif font-extrabold text-primary mx-auto">Build</h3>
-    <div class="divider"></div>
-    <select class="select select-primary w-full max-w-md">
-      <option disabled selected>Select a building</option>
-      <option>Shack</option>
-      <option>Lumber Camp</option>
-      <option>Mine</option>
-      <option>Tower</option>
-    </select>
-    <span class="mt-2 text-3xl font-bold text-secondary">Building Title</span>
-    <span class="text-xl mt-2 font-bold text-warning">Cost: </span>
-    100 wood, 50 stone
-    <span class="mt-2 text-xl font-bold text-info">Produces: </span>
-    10 stone/hour
-    <span class="mt-2 text-xl font-bold text-success">Bonuses: </span>
-    +5 for adjacent quarries
-    <br>
-    +3 for adjacent blacksmiths
-    <div class="justify-end justify-items-end flex">
-      <a class="mr-auto btn btn-primary w-24 mt-4">Build</a>
-    </div>
-    
+  <!-- Put this part before </body> tag -->
+  <input type="checkbox" id="grid-cell-modal" class="modal-toggle" />
+  <label for="grid-cell-modal" class="modal cursor-pointer">
+    <label class="modal-box max-w-2xl flex flex-col" for="">
+      <h3 class="text-7xl font-serif font-extrabold text-primary mx-auto">Build</h3>
+      <div class="divider"></div>
+      <select class="select select-primary w-full max-w-md">
+        <option disabled selected>Select a building</option>
+        <option>Shack</option>
+        <option>Lumber Camp</option>
+        <option>Mine</option>
+        <option>Tower</option>
+      </select>
+      <span class="mt-2 text-3xl font-bold text-secondary">Building Title</span>
+      <span class="text-xl mt-2 font-bold text-warning">Cost: </span>
+      100 wood, 50 stone
+      <span class="mt-2 text-xl font-bold text-info">Produces: </span>
+      10 stone/hour
+      <span class="mt-2 text-xl font-bold text-success">Bonuses: </span>
+      +5 for adjacent quarries
+      <br>
+      +3 for adjacent blacksmiths
+      <div class="justify-end justify-items-end flex">
+        <a class="mr-auto btn btn-primary w-24 mt-4">Build</a>
+      </div>
+      
+    </label>
   </label>
-</label>
 </body>
 
 </html>
