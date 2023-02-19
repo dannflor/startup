@@ -1159,11 +1159,6 @@ html {
   --tw-text-opacity: 1;
   color: hsl(var(--sc) / var(--tw-text-opacity));
 }
-.btn-outline .badge.outline {
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--nf, var(--n)) / var(--tw-border-opacity));
-  background-color: transparent;
-}
 .btn-outline.btn-primary .badge-outline {
   --tw-border-opacity: 1;
   border-color: hsl(var(--p) / var(--tw-border-opacity));
@@ -1177,12 +1172,6 @@ html {
   background-color: transparent;
   --tw-text-opacity: 1;
   color: hsl(var(--s) / var(--tw-text-opacity));
-}
-.btn-outline:hover .badge.outline {
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--b2, var(--b1)) / var(--tw-border-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--nc) / var(--tw-text-opacity));
 }
 .btn-outline.btn-primary:hover .badge {
   --tw-border-opacity: 1;
@@ -1215,14 +1204,6 @@ html {
   background-color: hsl(var(--sf, var(--s)) / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: hsl(var(--sc) / var(--tw-text-opacity));
-}
-.btn-outline.btn-accent:hover .badge.outline {
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--ac) / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--af, var(--a)) / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--ac) / var(--tw-text-opacity));
 }
 .btm-nav>*.disabled,
     .btm-nav>*.disabled:hover,
@@ -2061,6 +2042,9 @@ html {
 .mt-8 {
   margin-top: 2rem;
 }
+.mb-8 {
+  margin-bottom: 2rem;
+}
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -2072,9 +2056,6 @@ html {
 }
 .mr-0 {
   margin-right: 0px;
-}
-.mb-8 {
-  margin-bottom: 2rem;
 }
 .flex {
   display: flex;
@@ -2289,10 +2270,6 @@ html {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -2350,15 +2327,6 @@ html {
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-.outline {
-  outline-style: solid;
-}
-.outline-2 {
-  outline-width: 2px;
-}
-.outline-primary {
-  outline-color: hsl(var(--p));
-}
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.
@@ -2383,9 +2351,6 @@ html {
 }
 .hover\:bg-opacity-40:hover {
   --tw-bg-opacity: 0.4;
-}
-.hover\:outline-primary-focus:hover {
-  outline-color: hsl(var(--pf, var(--p)));
 }
 .hover\:checkbox-accent:hover {
   --chkbg: var(--a);
@@ -2413,6 +2378,10 @@ html {
     margin-left: 4rem;
     margin-right: 4rem;
   }
+  .sm\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
   .sm\:ml-4 {
     margin-left: 1rem;
   }
@@ -2422,11 +2391,20 @@ html {
   .sm\:mr-2 {
     margin-right: 0.5rem;
   }
+  .sm\:ml-0 {
+    margin-left: 0px;
+  }
   .sm\:w-\[32rem\] {
     width: 32rem;
   }
   .sm\:w-\[27rem\] {
     width: 27rem;
+  }
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+  .sm\:flex-col {
+    flex-direction: column;
   }
   .sm\:text-xl {
     font-size: 1.25rem;
@@ -2475,6 +2453,10 @@ html {
   .md\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
 @media (min-width: 1024px) {
