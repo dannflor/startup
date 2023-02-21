@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 
-<body class="flex-col bg-base-300 flex h-screen overflow-hidden">
+<body class="flex-col bg-base-300 flex h-screen xl:mb-12">
   <div class="navbar bg-base-100">
     <div class="navbar-start">
       <div class="dropdown">
@@ -31,32 +31,22 @@
       <a href="/logout" class="link link-secondary mr-4">Logout</a>
     </div>
   </div>
-  <div class="mt-4 flex-grow max-h-screen justify-center">
-    <!-- <div class=" flex my-auto mx-auto  bg-base-300"> -->
-      <div class="md:w-1/2 mx-auto lg:px-10 mb-2">
-        <div class="flex-row flex rounded-lg">
-          #for(resource in resources):
-            <div class="flex-1 flex md:space-x-2 bg-base-100 py-3 rounded-lg mx-1 my-1 px-1">
-              <div class="mx-auto md:flex-row md:flex md:text-base text-xs">
-                <div class="text-info font-bold md:mr-1 text-center md:text-left">#(resource.name):</div>
-                <div class="text-neutral-content text-center md:text-left">#(resource.count)</div>
-              </div>
-            </div>
-          #endfor
+  <div class="md:w-1/2 mx-auto lg:px-10 mb-2">
+    <div class="flex-row flex rounded-lg">
+      #for(resource in resources):
+        <div class="flex-1 flex md:space-x-2 bg-base-100 py-3 rounded-lg mx-1 my-1 px-1">
+          <div class="mx-auto md:flex-row md:flex md:text-base text-xs">
+            <div class="text-info font-bold md:mr-1 text-center md:text-left">#(resource.name):</div>
+            <div class="text-neutral-content text-center md:text-left">#(resource.count)</div>
+          </div>
         </div>
-      </div>
-      <div class="divider mx-auto md:w-1/2 !my-2"></div>
-      <div class="md:w-[60%] md:pb-[60%] lg:w-[40%] lg:pb-[40%] grid grid-rows-7 grid-cols-7 mx-auto w-[90%] pb-[90%]">
-        #for(cell in grid):
-          <label for="grid-cell-modal" class="border-2 border-green-900 border-opacity-30 text-neutral-content flex bg-green-600">
-            <div class="mx-auto my-auto hover:bg-neutral-focus flex-grow hover:bg-opacity-40 p-2">
-              <img src=#(cell.img) class="max-w-20 max-h-20 mx-auto my-auto" style="image-rendering: crisp-edges; image-rendering: pixelated;"/>
-            </div>
-          </label>
-        #endfor
-      </div>
-    <!-- </div> -->
+      #endfor
+    </div>
   </div>
+  <div class="divider mx-auto md:w-1/2 !my-0.5"></div>
+  <grid id="gameGrid" class="xl:[scale:3] lg:[scale:2] md:[scale:1] [scale:0.5] xl:mt-56 lg:mt-40 mt-10 -ml-8 md:mx-auto">
+  </grid>
+
   <footer class="footer flex bg-base-100 fixed !bottom-0 left-0 right-0 h-10">
     <div class="my-auto ml-4 text-xs grid grid-cols-2 min-w-full">
       <div class="md:mx-0 mx-auto text-center md:text-left">
@@ -96,5 +86,36 @@
     </label>
   </label>
 </body>
+
+<script>
+  class Building {
+    constructor(cell) {
+      this.name = cell.name;
+      this.img = cell.img;
+      this.cost = cell.cost;
+    }
+  }
+  const gridElement = document.getElementById('gameGrid');
+  const res = fetch('/grid').then(res => 
+    res.json().then(data => {
+      //Parse json into Building objects
+      const cells = data.map(cell => new Building(cell));
+      for (let i = 0; i < cells.length; i++) {
+        const cell = cells[i];
+
+        let gridCell = document.createElement('label');
+        gridCell.setAttribute('for', 'grid-cell-modal');
+       
+        let img = document.createElement('img');
+        img.setAttribute('src', cell.img);
+        img.setAttribute('class', '');
+        img.setAttribute('style', 'image-rendering: crisp-edges; image-rendering: pixelated;');
+        gridCell.appendChild(img);
+        gridElement.appendChild(gridCell);
+      }
+    })
+  );
+
+</script>
 
 </html>

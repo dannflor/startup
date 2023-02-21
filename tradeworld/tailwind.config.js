@@ -6,6 +6,12 @@ module.exports = {
       animation: {
         fadeAway: "fadeAway 0.5s ease-in both",
       },
+      gridTemplateRows: {
+        '13': 'repeat(13, minmax(0, 1fr))',
+      },
+      gridTemplateColumns: {
+        '13': 'repeat(13, minmax(0, 1fr))',
+      },
       keyframes: {
         fadeAway: {
           "0%": { 

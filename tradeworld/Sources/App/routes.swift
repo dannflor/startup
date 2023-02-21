@@ -15,7 +15,6 @@ func routes(_ app: Application) throws {
     }
     
     app.get("game") { req async throws -> View in
-        var grid: [Building] = []
         let resources: [ResourceQty] = [
             ResourceQty(name: .Wood, count: 27),
             ResourceQty(name: .Stone, count: 21),
@@ -23,6 +22,13 @@ func routes(_ app: Application) throws {
             ResourceQty(name: .Iron, count: 15),
             ResourceQty(name: .Food, count: 50)
         ]
+        let grid: [Building] = []
+        return try await req.view.render("game", GridContext(grid: grid, resources: resources))
+    }
+    
+    app.get("grid") { req async throws -> [Building] in
+        var grid: [Building] = []
+        
         
         for _ in 0..<49 {
             let num = Int.random(in: 0...10)
@@ -43,7 +49,8 @@ func routes(_ app: Application) throws {
                 grid.append(Building(name: "", cost: [], img: "/img/noHouse.png"))
             }
         }
-        return try await req.view.render("game", GridContext(grid: grid, resources: resources))
+        
+        return grid
     }
     
     app.get("tech") { req async throws -> View in

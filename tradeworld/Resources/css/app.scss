@@ -67,4 +67,159 @@
 
  @layer components {
  
+    //grid cell {outline: solid 1px red;} //uncomment to visualize cell boundaries
+
+
+    $tile: 96px;
+    $topMargin: 72px;
+    $sideMargin: 32px;
+    $densityMargin: 16px;
+    
+    grid {
+        display: inline-flex;
+        flex-wrap: wrap;
+        width: calc(96px*5);
+        // When screen width is smaller than 500px, make width auto
+        @media (max-width: 500px) {
+            width: auto;
+        }
+        padding-top: $topMargin;
+        
+        label {
+            
+            width: $tile;
+            height: $tile;
+            display: inline-block;
+            
+            padding: 0;
+            position: relative;
+            margin-top: -$topMargin;
+            margin-left: -16px;
+            margin-right: -16px;
+            //Dense Grid Hack
+            margin-bottom: -8px;
+        
+            //hovers - disabled pointer events for the full box, but enables them on the grid square and the sprite, so they're 
+            pointer-events: none;
+            &:hover {
+                img {filter: brightness(0.6)}
+                &:after {filter: brightness(0.6)}
+            }
+            &:before {pointer-events: all}
+            
+            //the ground tile
+            $w: 46px;
+            &:before {
+                content: '';
+                width: $w;
+                height: $w;
+                display: inline-block;
+                position: absolute;
+                left: 24px;
+                top: 48px;
+                transform: rotateX(60deg) rotateY(0deg) rotateZ(-45deg);
+            }
+            
+            //standin for the image, which could just be a child of cell. though you probably want something like this as a collision box for the sprite, since the sprite will have transparency
+            &:after {
+                content: '';
+                display: inline-block;
+                width: 96px;
+                height: 96px;
+                background-image: url('../img/pixelBg.png');
+                background-size: cover;
+                image-rendering: pixelated;
+                image-rendering: crisp-edges;
+                position: absolute;
+                z-index: -1;
+                -webkit-transform:translate3d(0,0,-100); //possible fix for safari z-indexing
+            }
+            //the sprite
+            img {
+                position: absolute;
+                z-index: 1;
+                image-rendering: crisp-edges;
+                image-rendering: pixelated;
+                background-image: url('../img/noHouse.png');
+                
+                -webkit-transform:translate3d(0,0,100); //fixes z-indexing in safari
+            }
+            
+            //offset the start of the even numbered rows (could be auto calculated)
+            &:nth-child(1) {margin-left: $sideMargin*6}
+            &:nth-child(1) {margin-right: $sideMargin*6}
+            
+            &:nth-child(2) {margin-left: $sideMargin*5}
+            &:nth-child(3) {margin-right: $sideMargin*5}
+            
+            //third row
+            &:nth-child(4) {margin-left: $sideMargin*4}
+            &:nth-child(6) {margin-right: $sideMargin*4}
+            
+            //4th row
+            &:nth-child(7) {margin-left: $sideMargin*3}
+            &:nth-child(10) {margin-right: $sideMargin*3}
+
+            //5th row
+            &:nth-child(11) {margin-left: $sideMargin*2}
+            &:nth-child(15) {margin-right: $sideMargin*2}
+
+            //6th row
+            &:nth-child(16) {margin-left: $sideMargin*1}
+            &:nth-child(21) {margin-right: $sideMargin*1}
+
+            //7th row
+            &:nth-child(22) {margin-left: $sideMargin*0}
+            &:nth-child(28) {margin-right: $sideMargin*0}
+
+            //8th row
+            &:nth-child(29) {margin-left: $sideMargin*1}
+            &:nth-child(34) {margin-right: $sideMargin*1}
+
+            //9th row
+            &:nth-child(35) {margin-left: $sideMargin*2}
+            &:nth-child(39) {margin-right: $sideMargin*2}
+
+            //10th row
+            &:nth-child(40) {margin-left: $sideMargin*3}
+            &:nth-child(43) {margin-right: $sideMargin*3}
+
+            //11th row
+            &:nth-child(44) {margin-left: $sideMargin*4}
+            &:nth-child(46) {margin-right: $sideMargin*4}
+
+            //12th row
+            &:nth-child(47) {margin-left: $sideMargin*5}
+            &:nth-child(48) {margin-right: $sideMargin*5}
+
+            //13th row
+            &:nth-child(49) {margin-left: $sideMargin*6}
+            &:nth-child(49) {margin-right: $sideMargin*6}
+                
+            //z-index of rows
+            z-index: 1;
+            &:nth-child(n+2) {z-index: 2;}
+            &:nth-child(n+4) {z-index: 3;}
+            &:nth-child(n+7) {z-index: 4;}
+            &:nth-child(n+11) {z-index: 5;}
+            &:nth-child(n+16) {z-index: 6;}
+            &:nth-child(n+22) {z-index: 7;}
+            &:nth-child(n+29) {z-index: 8;}
+            &:nth-child(n+35) {z-index: 9;}
+            &:nth-child(n+40) {z-index: 10;}
+            &:nth-child(n+44) {z-index: 11;}
+            &:nth-child(n+47) {z-index: 12;}
+            &:nth-child(n+49) {z-index: 13;}
+
+            
+            -webkit-transform:translate3d(0,0,0); //fixes z-indexing in safari
+
+            
+        }
+    }
+ }
+
+ @layer utilities {
+    
+    
  }
