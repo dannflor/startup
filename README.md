@@ -22,7 +22,9 @@ TradeWorld is an online game where the player can gather resources, trade, and b
 ## Startup HTML and CSS
 We've definitely taken on a very ambitious project. Building out the structure of the page takes about 10% of the work, styling it 30%, and making it responsive under all circumstances is the other 60%. Every element and popup on every page has to be gone over with a fine-tooth comb.
 
-`aspect-ratio` is reeeeallly hard to use with flex and grid. It will totally ignore the container and overflow its bounds. The most frustrating CSS experience I've ever had. Had to use a weird hack with bottom padding and clipping the overflow scrolling to keep the grid square. If whoever is grading this wants to look at the grid on the `game` page and tell me how to keep it square I'm open for feedback.
+~~`aspect-ratio` is reeeeallly hard to use with flex and grid. It will totally ignore the container and overflow its bounds. The most frustrating CSS experience I've ever had. Had to use a weird hack with bottom padding and clipping the overflow scrolling to keep the grid square. If whoever is grading this wants to look at the grid on the `game` page and tell me how to keep it square I'm open for feedback.~~
+
+We ended up making the grid isometric so this isn't relevant any more, but my new insight is ::before and ::after pseudo-elements are really useful for grouping stuff semantically but they make it complicated once you want to parent something (like perhaps an img) to one of them. You just can't do it. You're stuck with the container you defined in the basic non-pseudo element. We had to aboslutely position a lot of things which lead to some responsivity pain.
 
 Serverside templating is nice for repeating elements like the grid cells and trade and tech lists. I'll miss it when we have to switch to React.
 
