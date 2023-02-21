@@ -11,12 +11,9 @@ public func configure(_ app: Application) throws {
     app.middleware.use(file)
     app.databases.use(try! .postgres(url: Environment.get("DATABASE_URL")!), as: .psql)
     
-
-    app.migrations.add(CreateUser(), CreateResource())
+    app.migrations.add(CreateUser(), CreateResource(), AddScoreToUser())
 
     app.views.use(.leaf)
-
-    
 
     // register routes
     try routes(app)

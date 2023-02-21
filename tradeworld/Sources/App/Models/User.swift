@@ -14,6 +14,9 @@ final class User: Model {
     @Field(key: "password")
     var password: String
     
+    @Field(key: "score")
+    var score: Int
+    
     @Children(for: \.$user)
     var resources: [Resource]
     
@@ -22,5 +25,6 @@ final class User: Model {
         self.username = username
         self.password = password
         self.resources = []
+//        self.score = 0
     }
 }

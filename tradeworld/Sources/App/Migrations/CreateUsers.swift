@@ -14,6 +14,18 @@ struct CreateUser: AsyncMigration {
     }
 }
 
+struct AddScoreToUser: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database.schema(User.schema)
+            .field("score", .string, .required)
+            .update()
+    }
+    
+    func revert(on database: Database) async throws {
+        try await database.schema(User.schema).deleteField("score").update()
+    }
+}
+
 struct CreateResource: AsyncMigration {
     func prepare(on database: Database) async throws {
         try await database.schema(Resource.schema)
