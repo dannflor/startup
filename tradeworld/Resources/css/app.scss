@@ -81,7 +81,7 @@
         width: calc(96px*5);
         // When screen width is smaller than 500px, make width auto
         @media (max-width: 500px) {
-            width: auto;
+            margin-left: -48px;
         }
         padding-top: $topMargin;
         
@@ -90,6 +90,7 @@
             width: $tile;
             height: $tile;
             display: inline-block;
+            
             
             padding: 0;
             position: relative;

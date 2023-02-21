@@ -44,7 +44,7 @@
     </div>
   </div>
   <div class="divider mx-auto md:w-1/2 !my-0.5"></div>
-  <grid id="gameGrid" class="xl:[scale:3] lg:[scale:2] md:[scale:1] [scale:0.5] xl:mt-56 lg:mt-40 mt-10 -ml-8 md:mx-auto">
+  <grid id="gameGrid" class="xl:[scale:3] lg:[scale:2] md:[scale:1] [scale:0.75] xl:mt-56 lg:mt-40 mt-10 md:mx-auto">
   </grid>
 
   <footer class="footer flex bg-base-100 fixed !bottom-0 left-0 right-0 h-10">
