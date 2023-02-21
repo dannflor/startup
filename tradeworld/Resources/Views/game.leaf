@@ -80,7 +80,8 @@
       <br>
       +3 for adjacent blacksmiths
       <div class="justify-end justify-items-end flex">
-        <a class="mr-auto btn btn-primary w-24 mt-4">Build</a>
+        <a class="btn btn-primary w-24 mt-4">Build</a>
+        <a class="btn btn-secondary w-24 mt-4 ml-4 mr-auto" href="/game">Cancel</a>
       </div>
       
     </label>

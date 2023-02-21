@@ -2428,10 +2428,6 @@ grid label:nth-child(n+49) {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -2543,6 +2539,10 @@ grid label:nth-child(n+49) {
     margin-left: 4rem;
     margin-right: 4rem;
   }
+  .sm\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
   .sm\:ml-4 {
     margin-left: 1rem;
   }
@@ -2552,11 +2552,20 @@ grid label:nth-child(n+49) {
   .sm\:mr-2 {
     margin-right: 0.5rem;
   }
+  .sm\:ml-0 {
+    margin-left: 0px;
+  }
   .sm\:w-\[32rem\] {
     width: 32rem;
   }
   .sm\:w-\[27rem\] {
     width: 27rem;
+  }
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+  .sm\:flex-col {
+    flex-direction: column;
   }
   .sm\:text-xl {
     font-size: 1.25rem;
@@ -2604,8 +2613,14 @@ grid label:nth-child(n+49) {
     font-size: 1rem;
     line-height: 1.5rem;
   }
+<<<<<<< HEAD
   .md\:\[scale\:1\] {
     scale: 1;
+=======
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+>>>>>>> fae828f8dea08e4417bc86341b289d01f46e5590
   }
 }
 @media (min-width: 1024px) {

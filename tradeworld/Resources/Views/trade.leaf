@@ -80,7 +80,7 @@
   <div class="modal">
     <div class="modal-box w-11/12 max-w-md">
       <h3 class="font-bold text-lg">Start Trade</h3>
-      <form class="flex-row flex mr-4">
+      <form class="sm:flex-row flex-col flex mr-4">
         <div class="flex-col mx-2">
           <div class="flex-row flex my-2">
             <div class="label mx-2 font-bold text-accent w-10">Offer</div>
@@ -107,9 +107,9 @@
             <input type="number" min="1" max="100" value="1" class="input input-bordered input-info mx-2 !max-w-fit" />
           </div>
         </div>
-        <div class="flex-col my-auto">
+        <div class="sm:flex-col flex-row sm:mx-0 mx-auto my-auto">
           <label for="trade-modal" class="btn my-1 btn-primary w-24">Submit</label>
-          <label for="trade-modal" class="btn my-1 btn-secondary w-24">Cancel</label>
+          <label for="trade-modal" class="sm:ml-0 ml-4 btn my-1 btn-secondary w-24">Cancel</label>
         </div>
       </form>
         

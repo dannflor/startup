@@ -17,6 +17,17 @@ TradeWorld is an online game where the player can gather resources, trade, and b
 - Leaderboard (stretch goal)
 - Profile pictures served via Gravatar
 
+# Sam's Startup Notes:
+
+## Startup HTML and CSS
+We've definitely taken on a very ambitious project. Building out the structure of the page takes about 10% of the work, styling it 30%, and making it responsive under all circumstances is the other 60%. Every element and popup on every page has to be gone over with a fine-tooth comb.
+
+`aspect-ratio` is reeeeallly hard to use with flex and grid. It will totally ignore the container and overflow its bounds. The most frustrating CSS experience I've ever had. Had to use a weird hack with bottom padding and clipping the overflow scrolling to keep the grid square. If whoever is grading this wants to look at the grid on the `game` page and tell me how to keep it square I'm open for feedback.
+
+Serverside templating is nice for repeating elements like the grid cells and trade and tech lists. I'll miss it when we have to switch to React.
+
+We've already written dummy data into the server so that we can send it to the views. Doing it like this is actually *less* work than hardcoding all of the dummy data into the view, and as a bonus it means we have a super headstart on the services assignment as well.
+
 # Sam's notes:
 
 ## Merge conflicts
@@ -75,4 +86,4 @@ I've read about PWA before but I never understood it until I implemented it myse
 
 The page was the wrong size for some reason so I had to shrink the min-width in the css to make it fit on mobile screens.
 
-I saw that a request for the `apple-touch-icon` was failing when I turned off the network so I tried caching that as well but it didn't work, probably because the resource is invoked differently in a <link> vs a js call.
+I saw that a request for the `apple-touch-icon` was failing when I turned off the network so I tried caching that as well but it didn't work, probably because the resource is invoked differently in a `<link>` vs a js call.
