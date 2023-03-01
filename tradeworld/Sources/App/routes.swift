@@ -36,17 +36,17 @@ func routes(_ app: Application) throws {
             let num = Int.random(in: 0...10)
             switch num {
             case 0:
-                grid.append(Building(name: "Small House", cost: [], img: "/img/pixelHouse.png"))
+                grid.append(Building(name: "Small House", cost: [], img: "/img/sprite_house01.png"))
             case 1:
-                grid.append(Building(name: "Medium House", cost: [], img: "/img/pixelHouse2.png"))
+                grid.append(Building(name: "Medium House", cost: [], img: "/img/sprite_house02.png"))
             case 2:
-                grid.append(Building(name: "Big House", cost: [], img: "/img/pixelHouse3.png"))
+                grid.append(Building(name: "Big House", cost: [], img: "/img/sprite_house03.png"))
             case 3:
-                grid.append(Building(name: "Pasture", cost: [], img: "/img/pixelPasture.png"))
+                grid.append(Building(name: "Pasture", cost: [], img: "/img/sprite_pasture.png"))
             case 4:
-                grid.append(Building(name: "Tower", cost: [], img: "/img/pixelTower.png"))
+                grid.append(Building(name: "Tower", cost: [], img: "/img/sprite_tower.png"))
             case 5:
-                grid.append(Building(name: "Trees", cost: [], img: "/img/pixelTrees.png"))
+                grid.append(Building(name: "Trees", cost: [], img: "/img/sprite_forest.png"))
             default:
                 grid.append(Building(name: "", cost: [], img: "/img/noHouse.png"))
             }
