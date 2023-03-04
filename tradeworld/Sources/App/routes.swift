@@ -34,10 +34,6 @@ func routes(_ app: Application) throws {
         try await req.view.render("logout")
     }
     
-    app.get("user") { req async throws -> User in
-        return User(username: "Bob", password: "Bob")
-    }
-    
     app.get("game") { req async throws -> View in
         let resources: [ResourceQty] = [
             ResourceQty(name: .Wood, count: 27),
@@ -80,6 +76,8 @@ func routes(_ app: Application) throws {
     }
     
     app.group("building", configure: buildingController)
+    
+    app.group("user", configure: userController)
     
     app.get("tech") { req async throws -> View in
         var techs: [Tech] = []

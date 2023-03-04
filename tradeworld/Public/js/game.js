@@ -1,3 +1,5 @@
+import { getNeighbors } from "./getNeighbors.js";
+
 class Building {
   constructor(cell) {
     this.name = cell.name;
@@ -23,6 +25,8 @@ const res = fetch('/grid').then(res =>
       gridCell.appendChild(img);
       gridElement.appendChild(gridCell);
       cell.index = i;
+      cell.neighbors = getNeighbors(i);
+
       gridCell.onclick = () => { editBuildMenu(cell) };
     }
   })

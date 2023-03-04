@@ -1,3 +1,5 @@
+export { getNeighbors }
+
 function getNeighbors(index) {
   switch (index) {
     case 0:
