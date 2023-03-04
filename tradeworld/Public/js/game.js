@@ -17,12 +17,12 @@ const res = fetch('/grid').then(res =>
       gridCell.setAttribute('for', 'grid-cell-modal');
      
       let img = document.createElement('img');
-      img.setAttribute('src', cell.img);
+      img.setAttribute('src', '/img/' + pictureForBuilding(cell.name));
       img.setAttribute('class', '');
       img.setAttribute('style', 'image-rendering: crisp-edges; image-rendering: pixelated;');
       gridCell.appendChild(img);
       gridElement.appendChild(gridCell);
-
+      cell.index = i;
       gridCell.onclick = () => { editBuildMenu(cell) };
     }
   })
@@ -46,4 +46,9 @@ function editBuildMenu(building) {
     // console.log(building.name);
     buildMenuTitle.innerText = building.name;
   }
+}
+
+function pictureForBuilding(building) {
+  // Remove spaces and append .png
+  return building === '' ? 'NoHouse.png' : building.replace(/\s/g, '') + '.png';
 }

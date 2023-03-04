@@ -96,34 +96,5 @@
 </body>
 
 <script src="/js/game.js"></script>
-<!-- <script src="/js/game.js">
-  class Building {
-    constructor(cell) {
-      this.name = cell.name;
-      this.img = cell.img;
-      this.cost = cell.cost;
-    }
-  }
-  const gridElement = document.getElementById('gameGrid');
-  const res = fetch('/grid').then(res => 
-    res.json().then(data => {
-      //Parse json into Building objects
-      const cells = data.map(cell => new Building(cell));
-      for (let i = 0; i < cells.length; i++) {
-        const cell = cells[i];
-
-        let gridCell = document.createElement('label');
-        gridCell.setAttribute('for', 'grid-cell-modal');
-       
-        let img = document.createElement('img');
-        img.setAttribute('src', cell.img);
-        img.setAttribute('class', '');
-        img.setAttribute('style', 'image-rendering: crisp-edges; image-rendering: pixelated;');
-        gridCell.appendChild(img);
-        gridElement.appendChild(gridCell);
-      }
-    })
-  );
-</script> -->
 
 </html>

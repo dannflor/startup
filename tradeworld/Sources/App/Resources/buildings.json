@@ -1,0 +1,69 @@
+[
+    {
+       "name": "Small House",
+       "resource": false,
+       "cost": [
+            {
+                 "name": "Wood",
+                 "count": 10
+            },
+            {
+                 "name": "Stone",
+                 "count": 5
+            }
+         ]
+    },
+    {
+        "name": "Medium House",
+        "resource": false,
+        "cost": [
+            {
+                 "name": "Wood",
+                 "count": 20
+            },
+            {
+                 "name": "Stone",
+                 "count": 10
+            }
+         ]
+    },
+    {
+        "name": "Large House",
+        "resource": false,
+        "cost": [
+            {
+                 "name": "Wood",
+                 "count": 30
+            },
+            {
+                 "name": "Stone",
+                 "count": 15
+            }
+         ]
+    },
+    {
+        "name": "Pasture",
+        "resource": false,
+        "cost": [
+            {
+                 "name": "Wood",
+                 "count": 20
+            }
+         ]
+    },
+    {
+        "name": "Tower",
+        "resource": false,
+        "cost": [
+            {
+                 "name": "Stone",
+                 "count": 25
+            }
+         ]
+    },
+    {
+        "name": "Forest",
+        "resource": true,
+        "cost": []
+    }
+]

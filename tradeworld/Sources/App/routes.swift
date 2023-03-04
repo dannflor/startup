@@ -14,6 +14,10 @@ func routes(_ app: Application) throws {
         try await req.view.render("logout")
     }
     
+    app.get("user") { req async throws -> User in
+        return User(username: "Bob", password: "Bob")
+    }
+    
     app.get("game") { req async throws -> View in
         let resources: [ResourceQty] = [
             ResourceQty(name: .Wood, count: 27),
@@ -36,24 +40,26 @@ func routes(_ app: Application) throws {
             let num = Int.random(in: 0...10)
             switch num {
             case 0:
-                grid.append(Building(name: "Small House", cost: [], img: "/img/sprite_house01.png"))
+                grid.append(Building(name: "Small House", cost: [ResourceQty(name: .Wood, count: 10), ResourceQty(name: .Stone, count: 5)]))
             case 1:
-                grid.append(Building(name: "Medium House", cost: [], img: "/img/sprite_house02.png"))
+                grid.append(Building(name: "Medium House", cost: [ResourceQty(name: .Wood, count: 15), ResourceQty(name: .Stone, count: 10)]))
             case 2:
-                grid.append(Building(name: "Big House", cost: [], img: "/img/sprite_house03.png"))
+                grid.append(Building(name: "Large House", cost: [ResourceQty(name: .Wood, count: 20), ResourceQty(name: .Stone, count: 15)]))
             case 3:
-                grid.append(Building(name: "Pasture", cost: [], img: "/img/sprite_pasture.png"))
+                grid.append(Building(name: "Pasture", cost: [ResourceQty(name: .Wood, count: 20)]))
             case 4:
-                grid.append(Building(name: "Tower", cost: [], img: "/img/sprite_tower.png"))
+                grid.append(Building(name: "Tower", cost: [ResourceQty(name: .Stone, count: 25)]))
             case 5:
-                grid.append(Building(name: "Trees", cost: [], img: "/img/sprite_forest.png"))
+                grid.append(Building(name: "Forest", resource: true, cost: []))
             default:
-                grid.append(Building(name: "", cost: [], img: "/img/noHouse.png"))
+                grid.append(Building(name: "", resource: true, cost: []))
             }
         }
         
         return grid
     }
+    
+    app.group("building", configure: buildingController)
     
     app.get("tech") { req async throws -> View in
         var techs: [Tech] = []
@@ -87,6 +93,4 @@ func routes(_ app: Application) throws {
         }
         return try await req.view.render("trade", TradeContext(trades: trades))
     }
-    
-    try app.register(collection: TodoController())
 }

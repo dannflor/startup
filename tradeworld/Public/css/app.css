@@ -1984,7 +1984,7 @@ grid label:after {
     display: inline-block;
     width: 96px;
     height: 96px;
-    background-image: url("../img/pixelBg.png");
+    background-image: url("../img/GroundGrass.png");
     background-size: cover;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
@@ -1997,7 +1997,7 @@ grid label img {
     z-index: 1;
     image-rendering: crisp-edges;
     image-rendering: pixelated;
-    background-image: url("../img/noHouse.png");
+    background-image: url("../img/NoHouse.png");
     -webkit-transform: translate3d(0, 0, 100);
   }
 grid label:nth-child(1) {

@@ -1,6 +1,7 @@
 import Fluent
+import Vapor
 
-final class User: Model {
+final class User: Model, Content {
     init() { }
     
     static let schema: String = "user"
