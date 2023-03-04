@@ -10,6 +10,26 @@ func routes(_ app: Application) throws {
         try await req.view.render("login")
     }
     
+    app.post("register") { req async throws in
+        let register = try req.content.decode(AuthRequest.self)
+        let user = try User(register)
+        try await user.create(on: req.db)
+//        req.session.data["username"] = user.username
+        return req.redirect(to: "/game")
+    }
+    
+    app.post("login") { req async throws in
+        let login = try req.content.decode(AuthRequest.self)
+        guard let user = try await User.query(on: req.db).filter(\.$username == login.username).first() else {
+            throw Abort(.notFound)
+        }
+//        req.session.data["username"] = user.username
+        guard try Bcrypt.verify(login.password, created: user.password) else {
+            throw Abort(.badRequest)
+        }
+        return req.redirect(to: "/game")
+    }
+    
     app.get("logout") { req async throws in
         try await req.view.render("logout")
     }
