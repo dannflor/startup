@@ -1,6 +1,4 @@
-export { getNeighbors }
-
-function getNeighbors(index) {
+export default function getNeighbors(index) {
   switch (index) {
     case 0:
       return [1, 2];

@@ -64,37 +64,17 @@
     </div>
   </footer>
   <!-- Put this part before </body> tag -->
-  <input type="checkbox" id="grid-cell-modal" class="modal-toggle" />
+  <input type="checkbox" id="grid-cell-modal" class="modal-toggle"/>
   <label for="grid-cell-modal" class="modal cursor-pointer">
-    <label id="buildMenu" class="modal-box max-w-2xl flex flex-col" for="">
-      <h3 id="buildMenuTitle" class="text-7xl font-serif font-extrabold text-primary mx-auto">Build</h3>
+    <label id="modalMenu" class="modal-box max-w-2xl flex flex-col" for="">
+      <h3 id="modalMenuTitle" class="text-7xl font-serif font-extrabold text-primary mx-auto">Build</h3>
       <div class="divider"></div>
-      <select class="select select-primary w-full max-w-md">
-        <option disabled selected>Select a building</option>
-        <!-- must dynamically serve the list based on available tech and resources -->
-        <option>Shack</option>
-        <option>Lumber Camp</option>
-        <option>Mine</option>
-        <option>Tower</option>
-      </select>
-      <span class="mt-2 text-3xl font-bold text-secondary">Building Title</span>
-      <span class="text-xl mt-2 font-bold text-warning">Cost: </span>
-      100 wood, 50 stone
-      <span class="mt-2 text-xl font-bold text-info">Produces: </span>
-      10 stone/hour
-      <span class="mt-2 text-xl font-bold text-success">Bonuses: </span>
-      +5 for adjacent quarries
-      <br>
-      +3 for adjacent blacksmiths
-      <div class="justify-end justify-items-end flex">
-        <a class="btn btn-primary w-24 mt-4">Build</a>
-        <label for="grid-cell-modal" class="btn btn-secondary w-24 mt-4 ml-4 mr-auto" href="/game">Cancel</a>
-      </div>
+      
       
     </label>
   </label>
 </body>
 
-<script src="/js/game.js"></script>
+<script type="module" src="/js/game.js"></script>
 
 </html>

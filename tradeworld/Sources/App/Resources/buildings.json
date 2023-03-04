@@ -60,10 +60,5 @@
                  "count": 25
             }
          ]
-    },
-    {
-        "name": "Forest",
-        "resource": true,
-        "cost": []
     }
 ]
