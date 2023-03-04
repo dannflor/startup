@@ -17,7 +17,7 @@ struct CreateUser: AsyncMigration {
 struct AddScoreToUser: AsyncMigration {
     func prepare(on database: Database) async throws {
         try await database.schema(User.schema)
-            .field("score", .string, .required)
+            .field("score", .int, .required, .sql(.default(0)))
             .update()
     }
     
