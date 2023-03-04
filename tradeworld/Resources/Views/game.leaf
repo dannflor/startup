@@ -69,7 +69,10 @@
     <label id="modalMenu" class="modal-box max-w-2xl flex flex-col" for="">
       <h3 id="modalMenuTitle" class="text-7xl font-serif font-extrabold text-primary mx-auto">Build</h3>
       <div class="divider"></div>
-      
+      <div class="flex-row flex">
+        <div id="modalMenuBody" class="flex flex-col w-2/3"></div>
+        <div id="modalMenuPicture" class="mx-auto my-auto"></div>
+      </div>
       
     </label>
   </label>
