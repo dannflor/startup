@@ -2174,6 +2174,9 @@ grid label:nth-child(n+49) {
  *
  * @import "tailwindcss/utilities";
  */
+.visible {
+  visibility: visible;
+}
 .fixed {
   position: fixed;
 }
@@ -2292,8 +2295,8 @@ grid label:nth-child(n+49) {
 .h-10 {
   height: 2.5rem;
 }
-.h-\[400px\] {
-  height: 400px;
+.h-\[300px\] {
+  height: 300px;
 }
 .\!h-2 {
   height: 0.5rem !important;
@@ -2316,8 +2319,8 @@ grid label:nth-child(n+49) {
 .w-2\/3 {
   width: 66.666667%;
 }
-.w-\[400px\] {
-  width: 400px;
+.w-\[300px\] {
+  width: 300px;
 }
 .w-full {
   width: 100%;
@@ -2428,6 +2431,9 @@ grid label:nth-child(n+49) {
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+}
+.pt-4 {
+  padding-top: 1rem;
 }
 .text-left {
   text-align: left;

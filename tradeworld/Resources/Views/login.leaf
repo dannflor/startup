@@ -9,8 +9,8 @@
 
 <body class="flex-col bg-base-300 flex min-h-screen">
   <div class="mx-auto my-auto card lg:card-side bg-base-100 shadow-xl">
-    <figure><img src="/img/trees.jpg" alt="Tradeworld Logo" class="w-[400px] h-[400px]"/></figure>
-    <div class="card-body">
+    <figure><img src="/img/trees.jpg" alt="Tradeworld Logo" class="w-[300px] h-[300px]"/></figure>
+    <div class="card-body h-[300px] pt-4">
       <h2 class="card-title font-extrabold text-primary">Welcome to Tradeworld</h2>
       <h2 class="card-title font-medium text-sm text-secondary">Please Login</h2>
       <p></p>
