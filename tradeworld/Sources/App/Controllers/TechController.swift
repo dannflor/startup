@@ -21,4 +21,11 @@ func techController(tech: RoutesBuilder) {
         }
         return techs
     }
+    
+    tech.post("research/:id") { req async throws -> HTTPStatus in
+        guard let _ = req.parameters.get("id") else {
+            throw Abort(.badRequest)
+        }
+        return .ok
+    }
 }
