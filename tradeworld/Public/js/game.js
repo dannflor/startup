@@ -27,16 +27,50 @@ const res = fetch('/grid').then(res =>
       cell.index = i;
       cell.neighbors = getNeighbors(i);
 
-      gridCell.onclick = () => { editBuildMenu(cell) };
+      gridCell.onclick = () => { editBuildMenu(cell, gridCell) };
     }
   })
 );
+await populateResources();
+
+async function populateResources() {
+  /*
+  #for(resource in resources):
+    <div class="flex-1 flex md:space-x-2 bg-base-100 py-3 rounded-lg mx-1 my-1 px-1">
+      <div class="mx-auto md:flex-row md:flex md:text-base text-xs">
+        <div class="text-info font-bold md:mr-1 text-center md:text-left">#(resource.name):</div>
+        <div class="text-neutral-content text-center md:text-left">#(resource.count)</div>
+      </div>
+    </div>
+  #endfor
+  */
+  const resources = await fetch('/resources').then(res => res.json());
+  const resourceDiv = document.getElementById('resources');
+  resources.forEach(resource => {
+    const div = document.createElement('div');
+    div.setAttribute('class', 'flex-1 flex md:space-x-2 bg-base-100 py-3 rounded-lg mx-1 my-1 px-1');
+    const innerDiv = document.createElement('div');
+    innerDiv.setAttribute('class', 'mx-auto md:flex-row md:flex md:text-base text-xs');
+    const name = document.createElement('div');
+    name.setAttribute('class', 'text-info font-bold md:mr-1 text-center md:text-left');
+    name.textContent = resource.name + ':';
+    const count = document.createElement('div');
+    count.setAttribute('class', 'text-neutral-content text-center md:text-left');
+    count.textContent = resource.count;
+    innerDiv.appendChild(name);
+    innerDiv.appendChild(count);
+    div.appendChild(innerDiv);
+    resourceDiv.appendChild(div);
+  });
+
+
+}
 
 /**
  * Building prompt behaves differently depending on
  * whether or not the clicked space has a building.
  */
-async function editBuildMenu(building) {
+async function editBuildMenu(building, element) {
   // clearModal();
   const buildMenu = document.getElementById('modalMenu');
   const buildMenuBody = document.getElementById('modalMenuBody');
@@ -91,7 +125,8 @@ async function editBuildMenu(building) {
     buildButton.setAttribute('class', 'btn btn-primary w-24 mt-4');
     buildButton.innerText = 'Build';
     buildButton.onclick = () => {
-      console.log('building ' + select.value);
+      buildBuilding(select.value, building.index, element);
+      document.getElementById('grid-cell-modal').checked = false;
     }
     let cancelButton = document.createElement('label');
     cancelButton.setAttribute('for', 'grid-cell-modal');
@@ -147,4 +182,35 @@ function showBuildingEffects(building) {
 function pictureForBuilding(building) {
   // Remove spaces and append .png
   return building === '' ? 'NoHouse.png' : building.replace(/\s/g, '') + '.png';
+}
+
+async function buildBuilding(buildingName, index, element) {
+  console.log('building ' + buildingName + ' at ' + index);
+  const buildingData = {
+    buildingName: buildingName,
+    index: index
+  }
+  await fetch('/building/build', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(buildingData)
+  })
+
+  // Get img child of element
+  let img = element.children[0];
+  img.setAttribute('src', '/img/' + pictureForBuilding(buildingName));
+  
+  // .then(res => res.json())
+  // .then(data => {
+  //   console.log(data);
+  //   if (data.error) {
+  //     console.log(data.error);
+  //   }
+  //   else {
+  //     document.getElementById('grid-cell-modal').checked = false;
+  //     updateGrid();
+  //   }
+  // })
 }

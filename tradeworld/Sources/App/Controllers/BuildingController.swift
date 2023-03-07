@@ -8,6 +8,11 @@ func buildingController(building: RoutesBuilder) {
         }
         return buildings
     }
+    building.post("build") { req async throws -> HTTPStatus in
+        // Get post body
+        let request = try req.content.decode(BuildingRequest.self)
+        return .ok
+    }
     building.group(":name") { name in
         name.get("cost") { req async throws -> [ResourceQty] in
             guard let name = req.parameters.get("name") else {
