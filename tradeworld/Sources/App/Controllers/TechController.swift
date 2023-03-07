@@ -6,6 +6,7 @@ func techController(tech: RoutesBuilder) {
     tech.get { req async throws -> View in
         return try await req.view.render("tech")
     }
+    
     tech.get("unresearched") { req async throws -> [Tech] in
         var techs: [Tech] = []
         let arr = Array(1...10)
@@ -22,7 +23,7 @@ func techController(tech: RoutesBuilder) {
         return techs
     }
     
-    tech.post("research/:id") { req async throws -> HTTPStatus in
+    tech.post("research", ":id") { req async throws -> HTTPStatus in
         guard let _ = req.parameters.get("id") else {
             throw Abort(.badRequest)
         }

@@ -81,20 +81,5 @@ func routes(_ app: Application) throws {
     
     app.group("tech", configure: techController)
     
-    app.get("trade") { req async throws -> View in
-        var trades: [Trade] = []
-        let arr = Array(1...10)
-        for element in arr {
-            let trade =
-                Trade(
-                    id: element,
-                    seller: "Seller ID \(element)",
-                    message: "Message from seller Message from seller Message from seller Message from sellerMessage from seller Message from seller Message from seller \(element)",
-                    offer: ResourceQty(name: .Wood, count: 10),
-                    ask: ResourceQty(name: .Gold, count: 1)
-                )
-            trades.append(trade)
-        }
-        return try await req.view.render("trade", TradeContext(trades: trades))
-    }
+    app.group("trade", configure: tradeController)
 }

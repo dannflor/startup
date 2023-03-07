@@ -1,4 +1,6 @@
-struct Trade: Encodable {
+import Vapor
+
+struct Trade: Content {
     let id: Int
     let seller: String
     let message: String
