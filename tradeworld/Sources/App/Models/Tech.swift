@@ -1,4 +1,6 @@
-struct Tech: Encodable {
+import Vapor
+
+struct Tech: Content {
     let id: Int
     let title: String
     let description: String

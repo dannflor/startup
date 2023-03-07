@@ -79,21 +79,7 @@ func routes(_ app: Application) throws {
     
     app.group("user", configure: userController)
     
-    app.get("tech") { req async throws -> View in
-        var techs: [Tech] = []
-        let arr = Array(1...10)
-        for element in arr {
-            let tech =
-                Tech(
-                    id: element,
-                    title: "Tech Number \(element)",
-                    description: "Description for tech number \(element)",
-                    price: element*10
-                )
-            techs.append(tech)
-        }
-        return try await req.view.render("tech", TechContext(techs: techs))
-    }
+    app.group("tech", configure: techController)
     
     app.get("trade") { req async throws -> View in
         var trades: [Trade] = []

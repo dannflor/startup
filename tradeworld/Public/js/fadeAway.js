@@ -1,4 +1,4 @@
-function fadeAway(id) {
+export default function fadeAway(id) {
   console.log("Function started");
   let element = document.getElementById(id);
   element.classList.add("animate-fadeAway");
