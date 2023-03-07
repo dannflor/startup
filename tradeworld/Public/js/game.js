@@ -158,7 +158,8 @@ async function editBuildMenu(building, element) {
     destroyButton.setAttribute('class', 'btn btn-error w-24 mt-4');
     destroyButton.innerText = 'Destroy';
     destroyButton.onclick = () => {
-      console.log('destroying building ' + building.name);
+      destroyBuilding(building.name, building.index, element);
+      document.getElementById('grid-cell-modal').checked = false;
     }
     let cancelButton = document.createElement('label');
     cancelButton.setAttribute('for', 'grid-cell-modal');
@@ -213,4 +214,23 @@ async function buildBuilding(buildingName, index, element) {
   //     updateGrid();
   //   }
   // })
+}
+
+async function destroyBuilding(buildingName, index, element) {
+  console.log('destroying ' + buildingName + ' at ' + index);
+  const buildingData = {
+    buildingName: buildingName,
+    index: index
+  }
+  await fetch('/building/destroy', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(buildingData)
+  })
+
+  // Get img child of element
+  let img = element.children[0];
+  img.setAttribute('src', '/img/' + pictureForBuilding(''));
 }

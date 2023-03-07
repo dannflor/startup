@@ -10,7 +10,11 @@ func buildingController(building: RoutesBuilder) {
     }
     building.post("build") { req async throws -> HTTPStatus in
         // Get post body
-        let request = try req.content.decode(BuildingRequest.self)
+        let _ = try req.content.decode(BuildingRequest.self)
+        return .ok
+    }
+    building.post("destroy") { req async throws -> HTTPStatus in
+        let _ = try req.content.decode(BuildingRequest.self)
         return .ok
     }
     building.group(":name") { name in
