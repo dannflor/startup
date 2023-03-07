@@ -2524,6 +2524,9 @@ grid label:nth-child(n+49) {
 .\[scale\:0\.75\] {
   scale: 0.75;
 }
+.\[scale\:2\] {
+  scale: 2;
+}
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.
@@ -2648,6 +2651,9 @@ grid label:nth-child(n+49) {
   }
   .md\:\[scale\:1\] {
     scale: 1;
+  }
+  .md\:\[scale\:3\] {
+    scale: 3;
   }
 }
 @media (min-width: 1024px) {

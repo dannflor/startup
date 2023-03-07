@@ -69,9 +69,20 @@
     <label id="modalMenu" class="modal-box max-w-2xl flex flex-col" for="">
       <h3 id="modalMenuTitle" class="text-7xl font-serif font-extrabold text-primary mx-auto">Build</h3>
       <div class="divider"></div>
+      <select id="buildingSelector" class="select select-primary w-full max-w-md"></select>
       <div class="flex-row flex">
-        <div id="modalMenuBody" class="flex flex-col w-2/3"></div>
-        <div id="modalMenuPicture" class="mx-auto my-auto"></div>
+        <div id="modalMenuBody" class="flex flex-col w-2/3">
+          <span id="buildingTitle" class="mt-2 text-3xl font-bold text-secondary"></span>
+          <span id="buildingCost" class="text-xl mt-2 font-bold text-warning"></span>
+          <span id="cost"></span>
+          <span class="mt-2 text-xl font-bold text-info">Produces:</span>
+          <span id="produces"></span>
+          <span class="mt-2 text-xl font-bold text-success">Bonuses:</span>
+          <span id="bonuses"></span>
+        </div>
+        <div class="mx-auto my-auto">
+          <img id="modalMenuPicture" class="md:[scale:3] [scale:2]" style="image-rendering: crisp-edges; image-rendering: pixelated;" src="/img/NoHouse.png" alt="Building Image"/>
+        </div>
       </div>
       
     </label>

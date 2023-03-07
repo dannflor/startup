@@ -37,41 +37,24 @@ const res = fetch('/grid').then(res =>
  * whether or not the clicked space has a building.
  */
 async function editBuildMenu(building) {
-  clearModal();
+  // clearModal();
   const buildMenu = document.getElementById('modalMenu');
   const buildMenuBody = document.getElementById('modalMenuBody');
   const buildMenuTitle = document.getElementById('modalMenuTitle');
   const buildMenuImage = document.getElementById('modalMenuPicture');
-
-  /*
-  <select class="select select-primary w-full max-w-md">
-    <option disabled selected>Select a building</option>
-    <!-- must dynamically serve the list based on available tech and resources -->
-    <option>Shack</option>
-    <option>Lumber Camp</option>
-    <option>Mine</option>
-    <option>Tower</option>
-  </select>
-  <span class="mt-2 text-3xl font-bold text-secondary">Building Title</span>
-  <span class="text-xl mt-2 font-bold text-warning">Cost: </span>
-  100 wood, 50 stone
-  <span class="mt-2 text-xl font-bold text-info">Produces: </span>
-  10 stone/hour
-  <span class="mt-2 text-xl font-bold text-success">Bonuses: </span>
-  +5 for adjacent quarries
-  <br>
-  +3 for adjacent blacksmiths
-  <div class="justify-end justify-items-end flex">
-    <a class="btn btn-primary w-24 mt-4">Build</a>
-    <label for="grid-cell-modal" class="btn btn-secondary w-24 mt-4 ml-4 mr-auto" href="/game">Cancel</a>
-  </div>
-  */
+  const select = document.getElementById('buildingSelector');
+  const buildingTitle = document.getElementById('buildingTitle');
+  const cost = document.getElementById('buildingCost');
+  const costValue = document.getElementById('cost');
 
   if (building.name === "") {
     buildMenuImage.style.visibility = 'visible';
     buildMenuTitle.innerText = "Build";
-    let select = document.createElement('select');
-    select.setAttribute('class', 'select select-primary w-full max-w-md');
+    buildingTitle.style.display = 'inline';
+    // Clear options from selector
+    while (select.firstChild) {
+      select.removeChild(select.firstChild);
+    }
     let buildings = await fetch('/building').then(res => res.json());
     buildings = buildings.map(building => new Building(building));
     let optionsTitle = document.createElement('option');
@@ -88,35 +71,19 @@ async function editBuildMenu(building) {
     select.selectedIndex = 1;
     select.onchange = () => {
       let selectedBuilding = buildings[select.selectedIndex - 1];
-      let name = document.getElementById('buildingTitle');
-      name.innerText = selectedBuilding.name;
-      let cost = document.getElementById('cost');
+      buildingTitle.innerText = selectedBuilding.name;
+      
       let costText = '';
       for (let i = 0; i < selectedBuilding.cost.length; i++) {
         costText += selectedBuilding.cost[i].count + ' ' + selectedBuilding.cost[i].name.toLowerCase() + ', ';
       }
-      cost.innerText = costText.slice(0, -2);
-
-      let image = document.createElement('img');
-      image.setAttribute('src', '/img/' + pictureForBuilding(selectedBuilding.name));
-      if (buildMenuImage.children.length > 0) {
-        buildMenuImage.removeChild(buildMenuImage.lastChild);
-      }
-      buildMenuImage.appendChild(image);
+      costValue.innerText = costText.slice(0, -2);
+      buildMenuImage.setAttribute('src', '/img/' + pictureForBuilding(selectedBuilding.name));
+      showBuildingEffects(selectedBuilding);
     }
-    buildMenuBody.appendChild(select);
-    let buildingTitle = document.createElement('span');
-    buildingTitle.setAttribute('class', 'mt-2 text-3xl font-bold text-secondary');
-    buildingTitle.setAttribute('id', 'buildingTitle');
-    buildMenuBody.appendChild(buildingTitle);
-    let cost = document.createElement('span');
-    cost.setAttribute('class', 'text-xl mt-2 font-bold text-warning');
+    select.style.display = 'block';
+  
     cost.innerText = 'Cost: ';
-    let costText = document.createElement('span');
-    costText.setAttribute('id', 'cost');
-    buildMenuBody.appendChild(cost);
-    buildMenuBody.appendChild(costText);
-    showBuildingEffects(building, buildMenuBody);
 
     let buttonDiv = document.createElement('div');
     buttonDiv.setAttribute('class', 'justify-end justify-items-end flex');
@@ -139,21 +106,16 @@ async function editBuildMenu(building) {
     select.onchange();
   }
   else {
-    buildMenuImage.style.visibility = 'hidden';
+    select.style.display = 'none';
     buildMenuTitle.innerText = building.name;
-    let cost = document.createElement('span');
-    cost.setAttribute('class', 'text-xl mt-2 font-bold text-warning');
-    cost.innerText = 'Value: ';
-    let costText = document.createElement('span');
+    buildingTitle.style.display = 'none';
+    cost.textContent = 'Value:';
     let valueText = '';
     for (let i = 0; i < building.cost.length; i++) {
       valueText += building.cost[i].count + ' ' + building.cost[i].name.toLowerCase() + ', ';
     }
-    costText.innerText = valueText.slice(0, -2);
-    costText.setAttribute('id', 'cost');
-    buildMenuBody.appendChild(cost);
-    buildMenuBody.appendChild(costText);
-    showBuildingEffects(building, buildMenuBody);
+    costValue.innerText = valueText.slice(0, -2);
+    showBuildingEffects(building);
 
     let buttonDiv = document.createElement('div');
     buttonDiv.setAttribute('class', 'justify-end justify-items-end flex');
@@ -173,33 +135,13 @@ async function editBuildMenu(building) {
       buildMenu.removeChild(buildMenu.lastChild);
     }
     buildMenu.appendChild(buttonDiv);
+    buildMenuImage.setAttribute('src', '/img/' + pictureForBuilding(building.name));
   }
 }
 
-function showBuildingEffects(building, buildMenu) {
-  let produces = document.createElement('span');
-  produces.setAttribute('class', 'mt-2 text-xl font-bold text-info');
-  produces.innerText = 'Produces: ';
-  buildMenu.appendChild(produces);
-  let producesText = document.createElement('span');
-  producesText.setAttribute('id', 'produces');
-  producesText.innerText = 'Production for ' + building.name;
-  buildMenu.appendChild(producesText);
-  let bonuses = document.createElement('span');
-  bonuses.setAttribute('class', 'mt-2 text-xl font-bold text-success');
-  bonuses.innerText = 'Bonuses: ';
-  buildMenu.appendChild(bonuses);
-  let bonusesText = document.createElement('span');
-  bonusesText.setAttribute('id', 'bonuses');
-  bonusesText.innerText = 'Bonuses for ' + building.name;
-  buildMenu.appendChild(bonusesText);
-}
-
-function clearModal() {
-  const buildMenuBody = document.getElementById('modalMenuBody');
-  while (buildMenuBody.children.length > 0) {
-    buildMenuBody.removeChild(buildMenuBody.lastChild);
-  }
+function showBuildingEffects(building) {
+  document.getElementById('produces').innerText = 'Production for ' + building.name;
+  document.getElementById('bonuses').innerText = 'Bonuses for ' + building.name;
 }
 
 function pictureForBuilding(building) {
