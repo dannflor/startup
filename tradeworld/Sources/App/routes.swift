@@ -35,6 +35,10 @@ func routes(_ app: Application) throws {
     }
     
     app.get("game") { req async throws -> View in
+        return try await req.view.render("game")
+    }
+    
+    app.get("resources") { req async throws -> [ResourceQty] in
         let resources: [ResourceQty] = [
             ResourceQty(name: .Wood, count: 27),
             ResourceQty(name: .Stone, count: 21),
@@ -42,10 +46,8 @@ func routes(_ app: Application) throws {
             ResourceQty(name: .Iron, count: 15),
             ResourceQty(name: .Food, count: 50)
         ]
-        let grid: [Building] = []
-//        let dummyUser: User = User(username: "someUser", password: "doesntmatter")
-//        return try await req.view.render("game", GridContext(grid: grid, resources: resources, user: dummyUser))
-        return try await req.view.render("game", GridContext(grid: grid, resources: resources))
+        return resources
+        
     }
     
     app.get("grid") { req async throws -> [Building] in
