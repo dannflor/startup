@@ -80,7 +80,7 @@
           <span class="mt-2 text-xl font-bold text-success">Bonuses:</span>
           <span id="bonuses"></span>
         </div>
-        <div class="mx-auto my-auto">
+        <div class="mx-0 my-auto">
           <img id="modalMenuPicture" class="md:[scale:3] [scale:2]" style="image-rendering: crisp-edges; image-rendering: pixelated;" src="/img/NoHouse.png" alt="Building Image"/>
         </div>
       </div>
