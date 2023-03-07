@@ -27,7 +27,7 @@ const res = fetch('/grid').then(res =>
       cell.index = i;
       cell.neighbors = getNeighbors(i);
 
-      gridCell.onclick = () => { editBuildMenu(cell) };
+      gridCell.onclick = () => { editBuildMenu(cell, gridCell) };
     }
   })
 );
@@ -70,7 +70,7 @@ async function populateResources() {
  * Building prompt behaves differently depending on
  * whether or not the clicked space has a building.
  */
-async function editBuildMenu(building) {
+async function editBuildMenu(building, element) {
   // clearModal();
   const buildMenu = document.getElementById('modalMenu');
   const buildMenuBody = document.getElementById('modalMenuBody');
@@ -125,7 +125,8 @@ async function editBuildMenu(building) {
     buildButton.setAttribute('class', 'btn btn-primary w-24 mt-4');
     buildButton.innerText = 'Build';
     buildButton.onclick = () => {
-      console.log('building ' + select.value);
+      buildBuilding(select.value, building.index, element);
+      document.getElementById('grid-cell-modal').checked = false;
     }
     let cancelButton = document.createElement('label');
     cancelButton.setAttribute('for', 'grid-cell-modal');
@@ -181,4 +182,35 @@ function showBuildingEffects(building) {
 function pictureForBuilding(building) {
   // Remove spaces and append .png
   return building === '' ? 'NoHouse.png' : building.replace(/\s/g, '') + '.png';
+}
+
+async function buildBuilding(buildingName, index, element) {
+  console.log('building ' + buildingName + ' at ' + index);
+  const buildingData = {
+    buildingName: buildingName,
+    index: index
+  }
+  await fetch('/building/build', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(buildingData)
+  })
+
+  // Get img child of element
+  let img = element.children[0];
+  img.setAttribute('src', '/img/' + pictureForBuilding(buildingName));
+  
+  // .then(res => res.json())
+  // .then(data => {
+  //   console.log(data);
+  //   if (data.error) {
+  //     console.log(data.error);
+  //   }
+  //   else {
+  //     document.getElementById('grid-cell-modal').checked = false;
+  //     updateGrid();
+  //   }
+  // })
 }
