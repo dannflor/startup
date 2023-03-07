@@ -30,6 +30,17 @@ Serverside templating is nice for repeating elements like the grid cells and tra
 
 We've already written dummy data into the server so that we can send it to the views. Doing it like this is actually *less* work than hardcoding all of the dummy data into the view, and as a bonus it means we have a super headstart on the services assignment as well.
 
+## Startup Javascript
+We let our javascript efforts take shape around removing the serverside templating in favor of fetching dummy data from APIs and constructing lists/grids/various elements out of it. It's pretty annoying not being able to visualize the shape of the data beyond modifying its attributes line by line. I'll be looking forward to getting some semblance of reusable HTML again with react components.
+
+You need to set `<script>` tags to be `type=module` to use ES module features like `export`. It will just freak out otherwise.
+
+`textContent` is more performant than `innerText`, who knew??
+
+The way there's a flow of data through parameters as we pass them to stuff like `onclick` functions kind of reminds me of data flow in React. I hope the way we've architected it translates well to React because of that.
+
+Once again we wrote a bunch of backend logic while writing the js to save ourselves work. We're launching right into backend stuff now to get the game RUNNING.
+
 # Sam's notes:
 
 ## Merge conflicts
