@@ -1,17 +1,22 @@
 import getNeighbors from "./getNeighbors.js";
 
 class Building {
-  constructor(cell) {
-    this.name = cell.name;
-    this.cost = cell.cost;
-    this.resource = cell.resource;
+  // constructor(cell) {
+  //   this.name = cell.name;
+  //   this.cost = cell.cost;
+  //   this.resource = cell.resource;
+  // }
+  constructor(name, cost, resource) {
+    this.name = name;
+    this.cost = cost;
+    this.resource = resource;
   }
 }
 const gridElement = document.getElementById('gameGrid');
 const res = fetch('/grid').then(res => 
   res.json().then(data => {
     //Parse json into Building objects
-    const cells = data.map(cell => new Building(cell));
+    const cells = data.map(cell => new Building(cell.name, cell.cost, cell.resource));
     for (let i = 0; i < cells.length; i++) {
       const cell = cells[i];
 
@@ -46,6 +51,8 @@ async function populateResources() {
   */
   const resources = await fetch('/resources').then(res => res.json());
   const resourceDiv = document.getElementById('resources');
+  const scoreDiv = document.getElementById('scoreDiv');
+  document.getElementById('score').textContent = await fetch('/score').then(res => res.text());
   resources.forEach(resource => {
     const div = document.createElement('div');
     div.setAttribute('class', 'flex-1 flex md:space-x-2 bg-base-100 py-3 rounded-lg mx-1 my-1 px-1');
@@ -60,7 +67,7 @@ async function populateResources() {
     innerDiv.appendChild(name);
     innerDiv.appendChild(count);
     div.appendChild(innerDiv);
-    resourceDiv.appendChild(div);
+    resourceDiv.insertBefore(div, scoreDiv);
   });
 
 
@@ -90,10 +97,27 @@ async function editBuildMenu(building, element) {
       select.removeChild(select.firstChild);
     }
     let buildings = await fetch('/building').then(res => res.json());
-    buildings = buildings.map(building => new Building(building));
+    buildings = buildings.map(building => new Building(building.name, building.cost, building.resource));
     let optionsTitle = document.createElement('option');
     optionsTitle.innerText = "Select a building";
     optionsTitle.setAttribute('disabled', '');
+
+    let buttonDiv = document.createElement('div');
+    buttonDiv.setAttribute('class', 'justify-end justify-items-end flex');
+    let buildButton = document.createElement('a');
+    buildButton.setAttribute('class', 'btn btn-primary w-24 mt-4');
+    buildButton.innerText = 'Build';
+    let cancelButton = document.createElement('label');
+    cancelButton.setAttribute('for', 'grid-cell-modal');
+    cancelButton.setAttribute('class', 'btn btn-secondary w-24 mt-4 ml-4 mr-auto');
+    cancelButton.innerText = 'Cancel';
+    buttonDiv.appendChild(buildButton);
+    buttonDiv.appendChild(cancelButton);
+    if (buildMenu.children.length > 2) {
+      buildMenu.removeChild(buildMenu.lastChild);
+    }
+    buildMenu.appendChild(buttonDiv);
+
     select.appendChild(optionsTitle);
     for (let i = 0; i < buildings.length; i++) {
       let option = document.createElement('option');
@@ -101,6 +125,7 @@ async function editBuildMenu(building, element) {
       option.value = buildings[i].name;
       select.appendChild(option);
     }
+
     // Select second option of select
     select.selectedIndex = 1;
     select.onchange = () => {
@@ -114,30 +139,15 @@ async function editBuildMenu(building, element) {
       costValue.innerText = costText.slice(0, -2);
       buildMenuImage.setAttribute('src', '/img/' + pictureForBuilding(selectedBuilding.name));
       showBuildingEffects(selectedBuilding);
+      buildButton.onclick = () => {
+        buildBuilding(selectedBuilding, building.index, element);
+        document.getElementById('grid-cell-modal').checked = false;
+      }
     }
     select.style.display = 'block';
   
     cost.innerText = 'Cost: ';
 
-    let buttonDiv = document.createElement('div');
-    buttonDiv.setAttribute('class', 'justify-end justify-items-end flex');
-    let buildButton = document.createElement('a');
-    buildButton.setAttribute('class', 'btn btn-primary w-24 mt-4');
-    buildButton.innerText = 'Build';
-    buildButton.onclick = () => {
-      buildBuilding(select.value, building.index, element);
-      document.getElementById('grid-cell-modal').checked = false;
-    }
-    let cancelButton = document.createElement('label');
-    cancelButton.setAttribute('for', 'grid-cell-modal');
-    cancelButton.setAttribute('class', 'btn btn-secondary w-24 mt-4 ml-4 mr-auto');
-    cancelButton.innerText = 'Cancel';
-    buttonDiv.appendChild(buildButton);
-    buttonDiv.appendChild(cancelButton);
-    if (buildMenu.children.length > 2) {
-      buildMenu.removeChild(buildMenu.lastChild);
-    }
-    buildMenu.appendChild(buttonDiv);
     select.onchange();
   }
   else {
@@ -158,7 +168,7 @@ async function editBuildMenu(building, element) {
     destroyButton.setAttribute('class', 'btn btn-error w-24 mt-4');
     destroyButton.innerText = 'Destroy';
     destroyButton.onclick = () => {
-      destroyBuilding(building.name, building.index, element);
+      destroyBuilding(building, building.index, element);
       document.getElementById('grid-cell-modal').checked = false;
     }
     let cancelButton = document.createElement('label');
@@ -185,10 +195,10 @@ function pictureForBuilding(building) {
   return building === '' ? 'NoHouse.png' : building.replace(/\s/g, '') + '.png';
 }
 
-async function buildBuilding(buildingName, index, element) {
-  console.log('building ' + buildingName + ' at ' + index);
+async function buildBuilding(building, index, element) {
+  console.log('building ' + building.name + ' at ' + index);
   const buildingData = {
-    buildingName: buildingName,
+    buildingName: building.name,
     index: index
   }
   await fetch('/building/build', {
@@ -201,25 +211,16 @@ async function buildBuilding(buildingName, index, element) {
 
   // Get img child of element
   let img = element.children[0];
-  img.setAttribute('src', '/img/' + pictureForBuilding(buildingName));
+  img.setAttribute('src', '/img/' + pictureForBuilding(building.name));
   
-  // .then(res => res.json())
-  // .then(data => {
-  //   console.log(data);
-  //   if (data.error) {
-  //     console.log(data.error);
-  //   }
-  //   else {
-  //     document.getElementById('grid-cell-modal').checked = false;
-  //     updateGrid();
-  //   }
-  // })
+  building.index = index;
+  element.onclick = () => { editBuildMenu(building, element) };
 }
 
-async function destroyBuilding(buildingName, index, element) {
-  console.log('destroying ' + buildingName + ' at ' + index);
+async function destroyBuilding(building, index, element) {
+  console.log('destroying ' + building.name + ' at ' + index);
   const buildingData = {
-    buildingName: buildingName,
+    buildingName: building.name,
     index: index
   }
   await fetch('/building/destroy', {
@@ -233,4 +234,8 @@ async function destroyBuilding(buildingName, index, element) {
   // Get img child of element
   let img = element.children[0];
   img.setAttribute('src', '/img/' + pictureForBuilding(''));
+
+  let newBuilding = new Building('', 0, false);
+  newBuilding.index = index;
+  element.onclick = () => { editBuildMenu(newBuilding, element) };
 }

@@ -2411,6 +2411,9 @@ grid label:nth-child(n+49) {
 .justify-items-end {
   justify-items: end;
 }
+.overflow-clip {
+  overflow: clip;
+}
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -2502,17 +2505,13 @@ grid label:nth-child(n+49) {
   --tw-text-opacity: 1;
   color: hsl(var(--p) / var(--tw-text-opacity));
 }
-.text-info {
+.text-accent {
   --tw-text-opacity: 1;
-  color: hsl(var(--in) / var(--tw-text-opacity));
+  color: hsl(var(--a) / var(--tw-text-opacity));
 }
 .text-neutral-content {
   --tw-text-opacity: 1;
   color: hsl(var(--nc) / var(--tw-text-opacity));
-}
-.text-accent {
-  --tw-text-opacity: 1;
-  color: hsl(var(--a) / var(--tw-text-opacity));
 }
 .text-secondary {
   --tw-text-opacity: 1;
@@ -2521,6 +2520,10 @@ grid label:nth-child(n+49) {
 .text-warning {
   --tw-text-opacity: 1;
   color: hsl(var(--wa) / var(--tw-text-opacity));
+}
+.text-info {
+  --tw-text-opacity: 1;
+  color: hsl(var(--in) / var(--tw-text-opacity));
 }
 .text-success {
   --tw-text-opacity: 1;
@@ -2638,6 +2641,12 @@ grid label:nth-child(n+49) {
   }
   .md\:mr-1 {
     margin-right: 0.25rem;
+  }
+  .md\:mt-auto {
+    margin-top: auto;
+  }
+  .md\:block {
+    display: block;
   }
   .md\:flex {
     display: flex;

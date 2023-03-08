@@ -47,7 +47,10 @@ func routes(_ app: Application) throws {
             ResourceQty(name: .Food, count: 50)
         ]
         return resources
-        
+    }
+    
+    app.get("score") { req async throws -> Int in
+        return Int.random(in: 1...420)
     }
     
     app.get("grid") { req async throws -> [Building] in

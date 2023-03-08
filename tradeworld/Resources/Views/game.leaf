@@ -34,10 +34,10 @@
   <div class="md:w-1/2 mx-auto lg:px-10 mb-2">
     <div id="resources" class="flex-row flex rounded-lg">
       
-      <div class="flex-1 flex md:space-x-2 bg-base-100 py-3 rounded-lg mx-1 my-1 px-1">
+      <div id="scoreDiv" class="flex-1 flex md:space-x-2 bg-base-100 py-3 rounded-lg mx-1 my-1 px-1">
         <div class="mx-auto md:flex-row md:flex md:text-base text-xs">
           <div class="text-accent font-bold md:mr-1 text-center md:text-left">Score:</div>
-          <div class="text-neutral-content text-center md:text-left">0</div>
+          <div id="score" class="text-neutral-content text-center md:text-left">0</div>
         </div>
       </div>
     </div>
@@ -59,7 +59,7 @@
   <!-- Put this part before </body> tag -->
   <input type="checkbox" id="grid-cell-modal" class="modal-toggle"/>
   <label for="grid-cell-modal" class="modal cursor-pointer">
-    <label id="modalMenu" class="modal-box max-w-2xl flex flex-col" for="">
+    <label id="modalMenu" class="modal-box max-w-2xl flex flex-col overflow-clip" for="">
       <h3 id="modalMenuTitle" class="text-7xl font-serif font-extrabold text-primary mx-auto">Build</h3>
       <div class="divider"></div>
       <select id="buildingSelector" class="select select-primary w-full max-w-md"></select>
@@ -73,7 +73,7 @@
           <span class="mt-2 text-xl font-bold text-success">Bonuses:</span>
           <span id="bonuses"></span>
         </div>
-        <div class="mx-0 my-auto">
+        <div class="mx-0 md:mt-auto md:block hidden">
           <img id="modalMenuPicture" class="md:[scale:3] [scale:2]" style="image-rendering: crisp-edges; image-rendering: pixelated;" src="/img/NoHouse.png" alt="Building Image"/>
         </div>
       </div>
