@@ -1,9 +1,8 @@
 import Vapor
-import CoreFoundation
 
 func buildingController(building: RoutesBuilder) {
     building.get { req async throws -> [Building] in
-        guard let buildings = decodeFile("buildings", [Building].self) else {
+        guard let buildings = decodeFile(req: req, "buildings", [Building].self) else {
             throw Abort(.internalServerError)
         }
         return buildings
@@ -22,7 +21,7 @@ func buildingController(building: RoutesBuilder) {
             guard let name = req.parameters.get("name") else {
                 throw Abort(.badRequest)
             }
-            guard let buildings = decodeFile("buildings", [Building].self) else {
+            guard let buildings = decodeFile(req: req, "buildings", [Building].self) else {
                 throw Abort(.internalServerError)
             }
             for building in buildings {
@@ -35,10 +34,11 @@ func buildingController(building: RoutesBuilder) {
     }
 }
 
-func decodeFile<T: Decodable>(_ file: String, _ type: T.Type) -> T? {
+func decodeFile<T: Decodable>(req: Request, _ file: String, _ type: T.Type) -> T? {
+    let urlString = req.application.directory.resourcesDirectory + "json/\(file).json"
+    // Read in data at urlString
     guard
-        let url = Bundle.module.url(forResource: "Resources/" + file, withExtension: "json"),
-        let data = try? Data(contentsOf: url),
+        let data = FileManager.default.contents(atPath: urlString),
         let resource = try? JSONDecoder().decode(type, from: data)
     else {
         return nil
