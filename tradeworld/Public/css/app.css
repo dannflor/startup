@@ -2313,6 +2313,9 @@ grid label:nth-child(n+49) {
 .h-\[300px\] {
   height: 300px;
 }
+.h-\[200px\] {
+  height: 200px;
+}
 .\!h-2 {
   height: 0.5rem !important;
 }
@@ -2337,9 +2340,6 @@ grid label:nth-child(n+49) {
 .w-2\/3 {
   width: 66.666667%;
 }
-.w-\[300px\] {
-  width: 300px;
-}
 .w-1\/3 {
   width: 33.333333%;
 }
@@ -2351,6 +2351,9 @@ grid label:nth-child(n+49) {
 }
 .w-24 {
   width: 6rem;
+}
+.w-\[300px\] {
+  width: 300px;
 }
 .w-\[21\.5rem\] {
   width: 21.5rem;
@@ -2585,13 +2588,13 @@ grid label:nth-child(n+49) {
   color: hsl(var(--ac) / var(--tw-text-opacity));
 }
 @media (min-width: 640px) {
-  .sm\:mx-16 {
-    margin-left: 4rem;
-    margin-right: 4rem;
-  }
   .sm\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
+  }
+  .sm\:mx-16 {
+    margin-left: 4rem;
+    margin-right: 4rem;
   }
   .sm\:ml-0 {
     margin-left: 0px;
@@ -2605,6 +2608,9 @@ grid label:nth-child(n+49) {
   .sm\:mr-2 {
     margin-right: 0.5rem;
   }
+  .sm\:h-\[300px\] {
+    height: 300px;
+  }
   .sm\:w-\[32rem\] {
     width: 32rem;
   }
@@ -2617,6 +2623,9 @@ grid label:nth-child(n+49) {
   .sm\:flex-col {
     flex-direction: column;
   }
+  .sm\:justify-end {
+    justify-content: flex-end;
+  }
   .sm\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
@@ -2624,6 +2633,33 @@ grid label:nth-child(n+49) {
   .sm\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+  .sm\:card-side {
+    align-items: stretch;
+    flex-direction: row;
+  }
+  .sm\:card-side :where(figure:first-child) {
+    overflow: hidden;
+    border-start-start-radius: inherit;
+    border-start-end-radius: unset;
+    border-end-start-radius: inherit;
+    border-end-end-radius: unset;
+  }
+  .sm\:card-side :where(figure:last-child) {
+    overflow: hidden;
+    border-start-start-radius: unset;
+    border-start-end-radius: inherit;
+    border-end-start-radius: unset;
+    border-end-end-radius: inherit;
+  }
+  .sm\:card-side figure > * {
+    max-width: unset;
+  }
+  :where(.sm\:card-side figure > *) {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .sm\:checkbox-md {
     height: 1.5rem;
@@ -2681,10 +2717,6 @@ grid label:nth-child(n+49) {
   }
 }
 @media (min-width: 1024px) {
-  .lg\:mx-0 {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
   .lg\:mt-40 {
     margin-top: 10rem;
   }
@@ -2694,39 +2726,9 @@ grid label:nth-child(n+49) {
   .lg\:hidden {
     display: none;
   }
-  .lg\:justify-end {
-    justify-content: flex-end;
-  }
   .lg\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
-  }
-  .lg\:card-side {
-    align-items: stretch;
-    flex-direction: row;
-  }
-  .lg\:card-side :where(figure:first-child) {
-    overflow: hidden;
-    border-start-start-radius: inherit;
-    border-start-end-radius: unset;
-    border-end-start-radius: inherit;
-    border-end-end-radius: unset;
-  }
-  .lg\:card-side :where(figure:last-child) {
-    overflow: hidden;
-    border-start-start-radius: unset;
-    border-start-end-radius: inherit;
-    border-end-start-radius: unset;
-    border-end-end-radius: inherit;
-  }
-  .lg\:card-side figure > * {
-    max-width: unset;
-  }
-  :where(.lg\:card-side figure > *) {
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
   }
   .lg\:\[scale\:2\] {
     scale: 2;

@@ -7,14 +7,14 @@
   <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 
-<body class="flex-col bg-base-300 flex min-h-screen">
-  <div class="mx-auto my-auto card lg:card-side bg-base-100 shadow-xl">
-    <figure><img src="/img/trees.jpg" alt="Tradeworld Logo" class="w-[300px] h-[300px]"/></figure>
+<body class="flex-col bg-base-300 flex min-h-screen" onload="loadImage();">
+  <div class="mx-auto my-auto card sm:card-side bg-base-100 shadow-xl">
+    <figure id="loginImage"></figure>
     <div class="card-body h-[300px] pt-4">
       <h2 class="card-title font-extrabold text-primary">Welcome to Tradeworld</h2>
       <h2 class="card-title font-medium text-sm text-secondary">Please Login</h2>
       <p></p>
-      <div class="card-actions lg:justify-end lg:mx-0 mx-auto">
+      <div class="card-actions sm:justify-end sm:mx-0 mx-auto">
         <form action="/register" method="post" class="flex-col">
           <input id="username" name="username" type="text" placeholder="Username" class="input flex input-bordered input-primary w-full max-w-xs my-4" />
           <input id="password" name="password" type="password" placeholder="Password" class="input flex input-bordered input-primary w-full max-w-xs my-4" />
@@ -28,6 +28,9 @@
       </div>
     </div>
   </div>
-  
+
 </body>
+
+<script src="/js/login.js"></script>
+
 </html>
