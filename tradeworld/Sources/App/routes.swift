@@ -15,6 +15,18 @@ func routes(_ app: Application) throws {
     app.post("register") { req async throws in
         let register = try req.content.decode(AuthRequest.self)
         let user = try User(register)
+        guard try await User.query(on: req.db).filter(\.$username == register.username).first() == nil else {
+            throw Abort(.badRequest, reason: "Username taken")
+        }
+        guard register.username != "" else {
+            throw Abort(.badRequest, reason: "Username is empty")
+        }
+        guard register.password.count >= 8 else {
+            throw Abort(.badRequest, reason: "Password must be at least 8 characters long")
+        }
+        guard register.username.isAlphanumeric else {
+            throw Abort(.badRequest, reason: "Username must only contain letters and numbers")
+        }
         try await user.create(on: req.db)
         // Give the user a session cookie
         return req.redirect(to: "/game")
@@ -31,9 +43,9 @@ func routes(_ app: Application) throws {
     }
     
     let passwordProtected = app.grouped(User.credentialsAuthenticator())
+    
     passwordProtected.post("login") { req async throws in
         let user = try req.auth.require(User.self)
-        req.auth.login(user)
         req.session.data["name"] = user.username
         req.session.data["timestamp"] = "\(Date())"
         req.logger.info("Login: \(user.username)")
@@ -99,4 +111,10 @@ func routes(_ app: Application) throws {
     loginProtected.group("tech", configure: techController)
     
     loginProtected.group("trade", configure: tradeController)
+}
+
+extension String {
+    var isAlphanumeric: Bool {
+        return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
+    }
 }

@@ -11,19 +11,20 @@ image.appendChild(image2);
 document.getElementById('registerButton').addEventListener('click', register);
 document.getElementById('loginButton').addEventListener('click', login);
 async function register() {
-  console.log("Hello?");
   let username = document.getElementById('username').value;
   let password = document.getElementById('password').value;
-  let response = await fetch('/exists/' + username, {
-    method: 'GET'
+  let response = await fetch('/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username: username,
+      password: password
+    })
   });
-  //Extract bool from body
-  let exists = await response.json();
-  console.log(exists);
-  if (exists) {
-    alert('Username already exists');
-  } else {
-    let response = await fetch('/register', {
+  if (response.redirected) {
+    let loginResponse = await fetch('/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -33,9 +34,12 @@ async function register() {
         password: password
       })
     });
-    if (response.redirected) {
-      window.location.href = response.url;
+    if (loginResponse.redirected) {
+      window.location.href = loginResponse.url;
     }
+  } else {
+    let failure = await response.json();
+    alert(failure.reason);
   }
 }
 
