@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 
-<body class="flex-col bg-base-300 flex min-h-screen" onload="loadImage();">
+<body class="flex-col bg-base-300 flex min-h-screen">
   <div class="mx-auto my-auto card sm:card-side bg-base-100 shadow-xl">
     <figure id="loginImage"></figure>
     <div class="card-body h-[300px] pt-4">
@@ -15,22 +15,20 @@
       <h2 class="card-title font-medium text-sm text-secondary">Please Login</h2>
       <p></p>
       <div class="card-actions sm:justify-end sm:mx-0 mx-auto">
-        <form action="/register" method="post" class="flex-col">
+        <div class="flex-col">
           <input id="username" name="username" type="text" placeholder="Username" class="input flex input-bordered input-primary w-full max-w-xs my-4" />
           <input id="password" name="password" type="password" placeholder="Password" class="input flex input-bordered input-primary w-full max-w-xs my-4" />
           <div class="flex flex-row w-full">
-            <button type="submit" class="btn btn-ghost">Register</button>
-            <button type="submit" formaction="/login" formmethod="post" class="btn btn-primary ml-auto">Login</button>
-            <!-- <a href="/register" class="btn btn-ghost">Register</a>
-            <a href="/game" class="btn btn-primary ml-auto">Login</a> -->
+            <button id="registerButton" class="btn btn-ghost">Register</button>
+            <button id="loginButton" class="btn btn-primary ml-auto">Login</button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
 
 </body>
 
-<script src="/js/login.js"></script>
+<script type="module" src="/js/login.js"></script>
 
 </html>

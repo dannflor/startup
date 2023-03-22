@@ -13,8 +13,9 @@ public func configure(_ app: Application) throws {
     
     app.sessions.use(.fluent(.psql))
     app.middleware.use(app.sessions.middleware)
+    app.middleware.use(User.sessionAuthenticator())
     
-    app.migrations.add(CreateUser(), CreateResource(), AddScoreToUser())
+    app.migrations.add(CreateUser(), CreateResource(), AddScoreToUser(), SessionRecord.migration)
 
     app.views.use(.leaf)
 

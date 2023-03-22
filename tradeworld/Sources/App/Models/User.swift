@@ -2,7 +2,7 @@ import Vapor
 import Fluent
 import Vapor
 
-final class User: Model, Content {
+final class User: Model, Content, ModelSessionAuthenticatable {
     init() { }
     
     static let schema: String = "user"
@@ -37,7 +37,13 @@ final class User: Model, Content {
     }
 }
 
-extension User: ModelAuthenticatable {
+extension User: SessionAuthenticatable {
+    var sessionID: UUID {
+        self.id ?? UUID.generateRandom()
+    }
+}
+
+extension User: ModelCredentialsAuthenticatable {
     static let usernameKey = \User.$username
     static let passwordHashKey = \User.$password
 
