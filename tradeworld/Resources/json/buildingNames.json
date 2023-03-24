@@ -1,0 +1,147 @@
+{
+  "Academy": {
+     "name": "Academy",
+     "terrain": "none",
+     "cost": []
+  },
+  "Armory": {
+     "name": "Armory",
+     "terrain": "none",
+     "cost": []
+  },
+  "Blacksmith": {
+     "name": "Blacksmith",
+     "terrain": "none",
+     "cost": []
+  },
+  "Carpenter": {
+     "name": "Carpenter",
+     "terrain": "none",
+     "cost": []
+  },
+  "Cottage": {
+     "name": "Cottage",
+     "terrain": "none",
+     "cost": []
+  },
+  "Estate": {
+     "name": "Estate",
+     "terrain": "none",
+     "cost": []
+  },
+  "Farm01": {
+     "name": "Farm01",
+     "terrain": "none",
+     "cost": []
+  },
+  "Farm02": {
+     "name": "Farm02",
+     "terrain": "none",
+     "cost": []
+  },
+  "Fishery": {
+     "name": "Fishery",
+     "terrain": "none",
+     "cost": []
+  },
+  "Forest": {
+     "name": "Forest",
+     "terrain": "forest",
+     "cost": []
+  },
+  "Fort": {
+     "name": "Fort",
+     "terrain": "none",
+     "cost": []
+  },
+  "Fortress": {
+     "name": "Fortress",
+     "terrain": "none",
+     "cost": []
+  },
+  "Guild": {
+     "name": "Guild",
+     "terrain": "none",
+     "cost": []
+  },
+  "LargeHouse": {
+     "name": "LargeHouse",
+     "terrain": "none",
+     "cost": []
+  },
+  "LumberCamp": {
+     "name": "LumberCamp",
+     "terrain": "none",
+     "cost": []
+  },
+  "MediumHouse": {
+     "name": "MediumHouse",
+     "terrain": "none",
+     "cost": []
+  },
+  "Mine": {
+     "name": "Mine",
+     "terrain": "none",
+     "cost": []
+  },
+  "Mountain": {
+     "name": "Mountain",
+     "terrain": "mountain",
+     "cost": []
+  },
+  "NoHouse": {
+     "name": "NoHouse",
+     "terrain": "none",
+     "cost": []
+  },
+  "Palace": {
+     "name": "Palace",
+     "terrain": "none",
+     "cost": []
+  },
+  "Pasture": {
+     "name": "Pasture",
+     "terrain": "none",
+     "cost": []
+  },
+  "Quarry": {
+     "name": "Quarry",
+     "terrain": "none",
+     "cost": []
+  },
+  "Quarry02": {
+     "name": "Quarry02",
+     "terrain": "none",
+     "cost": []
+  },
+  "SmallHouse": {
+     "name": "SmallHouse",
+     "terrain": "none",
+     "cost": []
+  },
+  "Tower": {
+     "name": "Tower",
+     "terrain": "none",
+     "cost": []
+  },
+  "University": {
+     "name": "University",
+     "terrain": "none",
+     "cost": []
+  },
+  "Water": {
+     "name": "Water",
+     "terrain": "water",
+     "cost": []
+  },
+  "Watermill": {
+     "name": "Watermill",
+     "terrain": "none",
+     "cost": []
+  },
+  "Windmill": {
+     "name": "Windmill",
+     "terrain": "none",
+     "cost": []
+  }
+}
