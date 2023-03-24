@@ -1,7 +1,7 @@
 [
     {
        "name": "Small House",
-       "resource": false,
+       "terrain": "none",
        "cost": [
             {
                  "name": "Wood",
@@ -15,7 +15,7 @@
     },
     {
         "name": "Medium House",
-        "resource": false,
+        "terrain": "none",
         "cost": [
             {
                  "name": "Wood",
@@ -29,7 +29,7 @@
     },
     {
         "name": "Large House",
-        "resource": false,
+        "terrain": "none",
         "cost": [
             {
                  "name": "Wood",
@@ -43,7 +43,7 @@
     },
     {
         "name": "Pasture",
-        "resource": false,
+        "terrain": "none",
         "cost": [
             {
                  "name": "Wood",
@@ -53,7 +53,7 @@
     },
     {
         "name": "Tower",
-        "resource": false,
+        "terrain": "none",
         "cost": [
             {
                  "name": "Stone",

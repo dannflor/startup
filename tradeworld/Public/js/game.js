@@ -1,27 +1,25 @@
 import getNeighbors from "./getNeighbors.js";
 
 class Building {
-  // constructor(cell) {
-  //   this.name = cell.name;
-  //   this.cost = cell.cost;
-  //   this.resource = cell.resource;
-  // }
-  constructor(name, cost, resource) {
+  constructor(name, cost, terrain) {
     this.name = name;
     this.cost = cost;
-    this.resource = resource;
+    this.terrain = terrain;
   }
 }
 const gridElement = document.getElementById('gameGrid');
 const res = fetch('/grid').then(res => 
   res.json().then(data => {
     //Parse json into Building objects
-    const cells = data.map(cell => new Building(cell.name, cell.cost, cell.resource));
+    const cells = data.map(cell => new Building(cell.name, cell.cost, cell.terrain));
     for (let i = 0; i < cells.length; i++) {
       const cell = cells[i];
 
       let gridCell = document.createElement('label');
       gridCell.setAttribute('for', 'grid-cell-modal');
+      //randomNum between 1 and 3
+      const randomNum = Math.floor(Math.random() * 3) + 1;
+      gridCell.style.setProperty('--ground-image', "url('/img/ground" + randomNum + ".png')");
      
       let img = document.createElement('img');
       img.setAttribute('src', '/img/' + pictureForBuilding(cell.name));
@@ -97,7 +95,7 @@ async function editBuildMenu(building, element) {
       select.removeChild(select.firstChild);
     }
     let buildings = await fetch('/building').then(res => res.json());
-    buildings = buildings.map(building => new Building(building.name, building.cost, building.resource));
+    buildings = buildings.map(building => new Building(building.name, building.cost, building.terrain));
     let optionsTitle = document.createElement('option');
     optionsTitle.innerText = "Select a building";
     optionsTitle.setAttribute('disabled', '');

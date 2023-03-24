@@ -83,9 +83,9 @@ func routes(_ app: Application) throws {
             case 4:
                 grid.append(Building(name: "Tower", cost: [ResourceQty(name: .Stone, count: 25)]))
             case 5:
-                grid.append(Building(name: "Forest", resource: true, cost: []))
+                grid.append(Building(name: "Forest", terrain: .forest, cost: []))
             default:
-                grid.append(Building(name: "", resource: true, cost: []))
+                grid.append(Building(name: "", terrain: .grass, cost: []))
             }
         }
         
