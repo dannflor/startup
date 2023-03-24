@@ -1,64 +1,155 @@
 [
-    {
-       "name": "Small House",
-       "terrain": "none",
-       "cost": [
-            {
-                 "name": "Wood",
-                 "count": 10
-            },
-            {
-                 "name": "Stone",
-                 "count": 5
-            }
-         ]
-    },
-    {
-        "name": "Medium House",
-        "terrain": "none",
-        "cost": [
-            {
-                 "name": "Wood",
-                 "count": 20
-            },
-            {
-                 "name": "Stone",
-                 "count": 10
-            }
-         ]
-    },
-    {
-        "name": "Large House",
-        "terrain": "none",
-        "cost": [
-            {
-                 "name": "Wood",
-                 "count": 30
-            },
-            {
-                 "name": "Stone",
-                 "count": 15
-            }
-         ]
-    },
-    {
-        "name": "Pasture",
-        "terrain": "none",
-        "cost": [
-            {
-                 "name": "Wood",
-                 "count": 20
-            }
-         ]
-    },
-    {
-        "name": "Tower",
-        "terrain": "none",
-        "cost": [
-            {
-                 "name": "Stone",
-                 "count": 25
-            }
-         ]
-    }
+{
+  "name": "Academy",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Armory",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Blacksmith",
+  "terrain": "none",
+  "cost": [
+    { "name": "Stone", "count": 20},
+    { "name": "Iron", "count": 10}
+  ]
+},
+{
+  "name": "Carpenter",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Cottage",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Estate",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Farm",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Fishery",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Fort",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Guild",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Large House",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Lumber Camp",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Medium House",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Mine",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Palace",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Pasture",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Quarry",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Small House",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Tower",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "University",
+  "terrain": "none",
+  "cost": [
+
+  ]
+},
+{
+  "name": "Watermill",
+  "terrain": "none",
+  "cost": []
+},
+{
+  "name": "Windmill",
+  "terrain": "none",
+  "cost": [
+
+  ]
+}
 ]

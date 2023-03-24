@@ -30,12 +30,7 @@
      "cost": []
   },
   "Farm01": {
-     "name": "Farm01",
-     "terrain": "none",
-     "cost": []
-  },
-  "Farm02": {
-     "name": "Farm02",
+     "name": "Farm",
      "terrain": "none",
      "cost": []
   },
@@ -54,28 +49,23 @@
      "terrain": "none",
      "cost": []
   },
-  "Fortress": {
-     "name": "Fortress",
-     "terrain": "none",
-     "cost": []
-  },
   "Guild": {
      "name": "Guild",
      "terrain": "none",
      "cost": []
   },
   "LargeHouse": {
-     "name": "LargeHouse",
+     "name": "Large House",
      "terrain": "none",
      "cost": []
   },
   "LumberCamp": {
-     "name": "LumberCamp",
+     "name": "Lumber Camp",
      "terrain": "none",
      "cost": []
   },
   "MediumHouse": {
-     "name": "MediumHouse",
+     "name": "Medium House",
      "terrain": "none",
      "cost": []
   },
@@ -109,13 +99,8 @@
      "terrain": "none",
      "cost": []
   },
-  "Quarry02": {
-     "name": "Quarry02",
-     "terrain": "none",
-     "cost": []
-  },
   "SmallHouse": {
-     "name": "SmallHouse",
+     "name": "Small House",
      "terrain": "none",
      "cost": []
   },
