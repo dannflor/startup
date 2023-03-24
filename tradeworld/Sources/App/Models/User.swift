@@ -21,12 +21,17 @@ final class User: Model, Content, ModelSessionAuthenticatable {
     
     @Children(for: \.$user)
     var resources: [Resource]
+
+    // Reference to the user's layout
+    @OptionalChild(for: \.$user)
+    var layout: Layout?
     
     init(id: UUID? = nil, username: String, password: String, score: Int) {
         self.id = id
         self.username = username
         self.password = password
         self.resources = []
+        self.layout = nil
         self.score = score
     }
     

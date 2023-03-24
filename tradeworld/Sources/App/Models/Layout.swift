@@ -9,12 +9,16 @@ final class Layout: Model, Content {
 
     @Field(key: "layout")
     var layout: [Building]
+    
+    @Parent(key: "user_id")
+    var user: User
 
     init() { }
 
-    init(id: UUID? = nil, title: String) {
+    init(id: UUID? = nil, layout: [Building], user: UUID) {
         self.id = id
-        self.title = title
+        self.layout = layout
+        self.$user.id = user
     }
 }
 

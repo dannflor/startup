@@ -28,8 +28,17 @@ func routes(_ app: Application) throws {
             throw Abort(.badRequest, reason: "Username must only contain letters and numbers")
         }
         try await user.create(on: req.db)
-        // Give the user a session cookie
+        try await user.$layout.create(createLayout(), on: req.db)
         return req.redirect(to: "/game")
+
+        
+        func createLayout() throws -> Layout {
+            var grid: [Building] = []
+            for _ in 0...48 {
+                grid.append(Building.terrainTypes.randomElement()!)
+            }
+            return Layout(layout: grid, user: try user.requireID())
+        }
     }
 
     app.get("exists", ":user") { req async throws -> Bool in
@@ -50,6 +59,7 @@ func routes(_ app: Application) throws {
         req.session.data["timestamp"] = "\(Date())"
         req.logger.info("Login: \(user.username)")
         return req.redirect(to: "/game")
+        
     }
     
     loginProtected.get("logout") { req async throws -> View in
@@ -77,28 +87,16 @@ func routes(_ app: Application) throws {
         return Int.random(in: 1...420)
     }
     
-    loginProtected.get("grid") { req async throws -> [Building] in
-        var grid: [Building] = []
+    loginProtected.get("grid") { req async throws -> [BuildingResponse] in
+        guard
+            let layout = try await req.auth.require(User.self).$layout.get(on: req.db)?.layout,
+            let mapping = decodeFile(req: req, "buildingNames", [String : BuildingResponse].self)
+        else {
+            throw Abort(.internalServerError)
+        }
         
-        
-        for _ in 0..<49 {
-            let num = Int.random(in: 0...10)
-            switch num {
-            case 0:
-                grid.append(Building(name: "Small House", cost: [ResourceQty(name: .Wood, count: 10), ResourceQty(name: .Stone, count: 5)]))
-            case 1:
-                grid.append(Building(name: "Medium House", cost: [ResourceQty(name: .Wood, count: 15), ResourceQty(name: .Stone, count: 10)]))
-            case 2:
-                grid.append(Building(name: "Large House", cost: [ResourceQty(name: .Wood, count: 20), ResourceQty(name: .Stone, count: 15)]))
-            case 3:
-                grid.append(Building(name: "Pasture", cost: [ResourceQty(name: .Wood, count: 20)]))
-            case 4:
-                grid.append(Building(name: "Tower", cost: [ResourceQty(name: .Stone, count: 25)]))
-            case 5:
-                grid.append(Building(name: "Forest", terrain: .forest, cost: []))
-            default:
-                grid.append(Building(name: "", terrain: .grass, cost: []))
-            }
+        let grid = layout.map { elem -> BuildingResponse in
+            mapping[elem.rawValue] ?? BuildingResponse(name: "", cost: [])
         }
         
         return grid
@@ -117,4 +115,18 @@ extension String {
     var isAlphanumeric: Bool {
         return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
     }
+}
+
+func decodeFile<T: Decodable>(req: Request, _ file: String, _ type: T.Type) -> T? {
+    let urlString = req.application.directory.resourcesDirectory + "json/\(file).json"
+    print(urlString)
+    // Read in data at urlString
+    guard
+        let data = FileManager.default.contents(atPath: urlString),
+        let resource = try? JSONDecoder().decode(type, from: data)
+    else {
+        print("Data not decodable")
+        return nil
+    }
+    return resource
 }

@@ -1,7 +1,13 @@
 import Vapor
 
-enum Building: Content {
+enum Building: String, Content {
     case Academy, Armory, Blacksmith, Carpenter, Cottage, Estate, Farm01, Farm02, Fishery, Forest, Fort, Fortress, Guild, LargeHouse, LumberCamp, MediumHouse, Mine, Mountain, NoHouse, Palace, Pasture, Quarry, Quarry02, SmallHouse, Tower, University, Water, Watermill, Windmill
+    
+    static var terrainTypes: [Building] {
+        get {
+            return [.Forest, .Mountain, .Water, .NoHouse]
+        }
+    }
     
     static func getNeighbors(index: Int) -> (Int?, Int?, Int?, Int?) {
         switch (index) {
