@@ -30,7 +30,13 @@ const res = fetch('/grid').then(res =>
       cell.index = i;
       cell.neighbors = getNeighbors(i);
 
-      gridCell.onclick = () => { editBuildMenu(cell, gridCell) };
+      if (cell.terrain === 'none') {
+        gridCell.onclick = () => { editBuildMenu(cell, gridCell) };
+      }
+      else {
+        gridCell.setAttribute('for', '');
+        // console.log("terrain clicked");
+      }
     }
   })
 );
@@ -90,6 +96,7 @@ async function editBuildMenu(building, element) {
     buildMenuImage.style.visibility = 'visible';
     buildMenuTitle.innerText = "Build";
     buildingTitle.style.display = 'inline';
+    // buildMenuBody.style.display = 'block';
     // Clear options from selector
     while (select.firstChild) {
       select.removeChild(select.firstChild);
@@ -152,6 +159,7 @@ async function editBuildMenu(building, element) {
     select.style.display = 'none';
     buildMenuTitle.innerText = building.name;
     buildingTitle.style.display = 'none';
+    // buildMenuBody.style.display = 'block';
     cost.textContent = 'Value:';
     let valueText = '';
     for (let i = 0; i < building.cost.length; i++) {

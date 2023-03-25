@@ -33,10 +33,24 @@ func routes(_ app: Application) throws {
 
         
         func createLayout() throws -> Layout {
-            var grid: [Building] = []
-            for _ in 0...48 {
-                grid.append(Building.terrainTypes.randomElement()!)
-            }
+            var grid: [Building] = [
+                                        .Mountain,
+                                    .Mountain, .Mountain,
+                                .Mountain, .NoHouse, .Mountain,
+                            .Forest, .NoHouse, .NoHouse, .Forest,
+                        .Forest, .NoHouse, .NoHouse, .NoHouse, .Forest,
+                    .Forest, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .Forest,
+                .Forest, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .Water,
+                    .NoHouse, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .Water,
+                        .NoHouse, .NoHouse, .NoHouse, .NoHouse, .Water,
+                            .NoHouse, .NoHouse, .NoHouse, .Water,
+                                .NoHouse, .NoHouse, .Water,
+                                    .NoHouse, .Water,
+                                        .Water
+            ]
+            // for _ in 0...48 {
+            //     grid.append(Building.terrainTypes.randomElement()!)
+            // }
             return Layout(layout: grid, user: try user.requireID())
         }
     }

@@ -2070,6 +2070,7 @@ grid label:after {
     position: absolute;
     z-index: -1;
     -webkit-transform: translate3d(0, 0, -100);
+    opacity: 0.99;
   }
 grid label img {
     position: absolute;
@@ -2171,23 +2172,41 @@ grid label:nth-child(n+16) {
 grid label:nth-child(n+22) {
     z-index: 7;
   }
+grid label:nth-child(n+28) {
+    z-index: 6;
+  }
 grid label:nth-child(n+29) {
     z-index: 8;
+  }
+grid label:nth-child(n+34) {
+    z-index: 6;
   }
 grid label:nth-child(n+35) {
     z-index: 9;
   }
+grid label:nth-child(n+39) {
+    z-index: 6;
+  }
 grid label:nth-child(n+40) {
     z-index: 10;
+  }
+grid label:nth-child(n+43) {
+    z-index: 6;
   }
 grid label:nth-child(n+44) {
     z-index: 11;
   }
+grid label:nth-child(n+46) {
+    z-index: 6;
+  }
 grid label:nth-child(n+47) {
     z-index: 12;
   }
+grid label:nth-child(n+48) {
+    z-index: 6;
+  }
 grid label:nth-child(n+49) {
-    z-index: 13;
+    z-index: 6;
   }
 /**
  * Here you would add any of your custom component classes; stuff that you'd
