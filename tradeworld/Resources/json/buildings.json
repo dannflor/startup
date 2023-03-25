@@ -116,7 +116,7 @@
   "name": "Quarry",
   "terrain": "none",
   "cost": [
-
+    {"name": "Stone", "count": 20}
   ]
 },
 {

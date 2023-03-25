@@ -1,0 +1,28 @@
+{
+  "Academy" : {
+    "bonusDescription": "Nearby military and educational buildings produce more gold",
+    "bonus": {
+      "University": {"name": "Gold", "count": 5},
+      "Academy": {"name": "Gold", "count": 5},
+      "Armory": {"name": "Gold", "count": 5},
+      "Fortress": {"name": "Gold", "count": 5}
+    },
+    "score": 6,
+    "yield": [
+      { "name": "Gold", "count": 5 }
+    ]
+  },
+  "Armory" : {
+    "bonusDescription": "Nearby blacksmiths produce more gold and nearby military buildings produce wood",
+    
+    "bonus": {
+      "Blacksmith": {"name": "Gold", "count": 3},
+      "Armory": {"name": "Wood", "count": 5},
+      "Fortress": {"name": "Wood", "count": 5}
+    },
+    "score": 3,
+    "yield": [
+
+    ]
+  }
+}
