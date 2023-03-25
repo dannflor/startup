@@ -207,18 +207,18 @@
             &:nth-child(n+11) {z-index: 5;}
             &:nth-child(n+16) {z-index: 6;}
             &:nth-child(n+22) {z-index: 7;}
-            &:nth-child(n+28) {z-index: 6;}
+            &:nth-child(n+28) {z-index: 6;} //water
             &:nth-child(n+29) {z-index: 8;}
-            &:nth-child(n+34) {z-index: 6;}
+            &:nth-child(n+34) {z-index: 6;} //water
             &:nth-child(n+35) {z-index: 9;}
-            &:nth-child(n+39) {z-index: 6;}
+            &:nth-child(n+39) {z-index: 6;} //water
             &:nth-child(n+40) {z-index: 10;}
-            &:nth-child(n+43) {z-index: 6;}
+            &:nth-child(n+43) {z-index: 6;} //water
             &:nth-child(n+44) {z-index: 11;}
-            &:nth-child(n+46) {z-index: 6;}
+            &:nth-child(n+46) {z-index: 6;} //water
             &:nth-child(n+47) {z-index: 12;}
-            &:nth-child(n+48) {z-index: 6;}
-            &:nth-child(n+49) {z-index: 6;}
+            &:nth-child(n+48) {z-index: 6;} //water
+            &:nth-child(n+49) {z-index: 6;} //water
 
             
             -webkit-transform:translate3d(0,0,0); //fixes z-indexing in safari
