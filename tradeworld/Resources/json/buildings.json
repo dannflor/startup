@@ -1,223 +1,222 @@
 [
-  {
-    "name": "Academy",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 500 },
-      { "stone": "Stone", "count": 200 },
-      { "iron": "Iron", "count": 100 },
-      { "gold": "Gold", "count": 50 },
-      { "food": "Food", "count": 1000 }
-    ]
-  },
-  {
-    "name": "Armory",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 150 },
-      { "stone": "Stone", "count": 150 },
-      { "iron": "Iron", "count": 50 },
-      { "gold": "Gold", "count": 20 },
-      { "food": "Food", "count": 500 }
-    ]
-  },
-  {
-    "name": "Blacksmith",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 50 },
-      { "stone": "Stone", "count": 100 },
-      { "iron": "Iron", "count": 30 },
-      { "gold": "Gold", "count": 0 },
-      { "food": "Food", "count": 120 }
-    ]
-  },
-  {
-    "name": "Carpenter",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 120 },
-      { "stone": "Stone", "count": 50 },
-      { "iron": "Iron", "count": 20 },
-      { "gold": "Gold", "count": 0 },
-      { "food": "Food", "count": 100 }
-    ]
-  },
-  {
-    "name": "Cottage",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 40 },
-      { "stone": "Stone", "count": 30 },
-      { "iron": "Iron", "count": 0 },
-      { "gold": "Gold", "count": 0 },
-      { "food": "Food", "count": 30 }
-    ]
-  },
-  {
-    "name": "Estate",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 300 },
-      { "stone": "Stone", "count": 200 },
-      { "iron": "Iron", "count": 100 },
-      { "gold": "Gold", "count": 50 },
-      { "food": "Food", "count": 400 }
-    ]
-  },
-  {
-    "name": "Farm",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 40 },
-      { "stone": "Stone", "count": 0 },
-      { "iron": "Iron", "count": 0 },
-      { "gold": "Gold", "count": 0 },
-      { "food": "Food", "count": 30 }
-    ]
-  },
-  {
-    "name": "Fishery",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 50 },
-      { "stone": "Stone", "count": 20 },
-      { "iron": "Iron", "count": 10 },
-      { "gold": "Gold", "count": 0 },
-      { "food": "Food", "count": 40 }
-    ]
-  },
-  {
-    "name": "Fort",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 150 },
-      { "stone": "Stone", "count": 300 },
-      { "iron": "Iron", "count": 120 },
-      { "gold": "Gold", "count": 30 },
-      { "food": "Food", "count": 600 }
-    ]
-  },
-  {
-    "name": "Guild",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 250 },
-      { "stone": "Stone", "count": 80 },
-      { "iron": "Iron", "count": 50 },
-      { "gold": "Gold", "count": 50 },
-      { "food": "Food", "count": 500 }
-    ]
-  },
-  {
-    "name": "House",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 100 },
-      { "stone": "Stone", "count": 80 },
-      { "iron": "Iron", "count": 20 },
-      { "gold": "Gold", "count": 10 },
-      { "food": "Food", "count": 100 }
-    ]
-  },
-  {
-    "name": "Lumber Camp",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 30 },
-      { "stone": "Stone", "count": 0 },
-      { "iron": "Iron", "count": 10 },
-      { "gold": "Gold", "count": 0 },
-      { "food": "Food", "count": 30 }
-    ]
-  },
-  {
-    "name": "Mine",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 50 },
-      { "stone": "Stone", "count": 0 },
-      { "iron": "Iron", "count": 10 },
-      { "gold": "Gold", "count": 0 },
-      { "food": "Food", "count": 70 }
-    ]
-  },
-  {
-    "name": "Palace",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 800 },
-      { "stone": "Stone", "count": 1500 },
-      { "iron": "Iron", "count": 700 },
-      { "gold": "Gold", "count": 200 },
-      { "food": "Food", "count": 3000 }
-    ]
-  },
-  {
-    "name": "Pasture",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 30 },
-      { "stone": "Stone", "count": 0 },
-      { "iron": "Iron", "count": 0 },
-      { "gold": "Gold", "count": 0 },
-      { "food": "Food", "count": 20 }
-    ]
-  },
-  {
-    "name": "Quarry",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 10 },
-      { "stone": "Stone", "count": 50 },
-      { "iron": "Iron", "count": 0 },
-      { "gold": "Gold", "count": 0 },
-      { "food": "Food", "count": 80 }
-    ]
-  },
-  {
-    "name": "Tower",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 100 },
-      { "stone": "Stone", "count": 150 },
-      { "iron": "Iron", "count": 40 },
-      { "gold": "Gold", "count": 20 },
-      { "food": "Food", "count": 500 }
-    ]
-  },
-  {
-    "name": "University",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 200 },
-      { "stone": "Stone", "count": 500 },
-      { "iron": "Iron", "count": 100 },
-      { "gold": "Gold", "count": 80 },
-      { "food": "Food", "count": 1200 }
-    ]
-  },
-  {
-    "name": "Watermill",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 80 },
-      { "stone": "Stone", "count": 40 },
-      { "iron": "Iron", "count": 10 },
-      { "gold": "Gold", "count": 0 },
-      { "food": "Food", "count": 120 }
-    ]
-  },
-  {
-    "name": "Windmill",
-    "terrain": "none",
-    "cost": [
-      { "wood": "Wood", "count": 60 },
-      { "stone": "Stone", "count": 20 },
-      { "iron": "Iron", "count": 10 },
-      { "gold": "Gold", "count": 0 },
-      { "food": "Food", "count": 100 }
-    ]
-  }
+{
+  "name": "Academy",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 500 },
+    { "name": "Stone", "count": 200 },
+    { "name": "Iron", "count": 100 },
+    { "name": "Gold", "count": 50 },
+    { "name": "Food", "count": 1000 }
   ]
-  
+},
+{
+  "name": "Armory",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 150 },
+    { "name": "Stone", "count": 150 },
+    { "name": "Iron", "count": 50 },
+    { "name": "Gold", "count": 20 },
+    { "name": "Food", "count": 500 }
+  ]
+},
+{
+  "name": "Blacksmith",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 50 },
+    { "name": "Stone", "count": 100 },
+    { "name": "Iron", "count": 30 },
+    { "name": "Gold", "count": 0 },
+    { "name": "Food", "count": 120 }
+  ]
+},
+{
+  "name": "Carpenter",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 120 },
+    { "name": "Stone", "count": 50 },
+    { "name": "Iron", "count": 20 },
+    { "name": "Gold", "count": 0 },
+    { "name": "Food", "count": 100 }
+  ]
+},
+{
+  "name": "Cottage",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 40 },
+    { "name": "Stone", "count": 30 },
+    { "name": "Iron", "count": 0 },
+    { "name": "Gold", "count": 0 },
+    { "name": "Food", "count": 30 }
+  ]
+},
+{
+  "name": "Estate",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 300 },
+    { "name": "Stone", "count": 200 },
+    { "name": "Iron", "count": 100 },
+    { "name": "Gold", "count": 50 },
+    { "name": "Food", "count": 400 }
+  ]
+},
+{
+  "name": "Farm",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 40 },
+    { "name": "Stone", "count": 0 },
+    { "name": "Iron", "count": 0 },
+    { "name": "Gold", "count": 0 },
+    { "name": "Food", "count": 30 }
+  ]
+},
+{
+  "name": "Fishery",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 50 },
+    { "name": "Stone", "count": 20 },
+    { "name": "Iron", "count": 10 },
+    { "name": "Gold", "count": 0 },
+    { "name": "Food", "count": 40 }
+  ]
+},
+{
+  "name": "Fort",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 150 },
+    { "name": "Stone", "count": 300 },
+    { "name": "Iron", "count": 120 },
+    { "name": "Gold", "count": 30 },
+    { "name": "Food", "count": 600 }
+  ]
+},
+{
+  "name": "Guild",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 250 },
+    { "name": "Stone", "count": 80 },
+    { "name": "Iron", "count": 50 },
+    { "name": "Gold", "count": 50 },
+    { "name": "Food", "count": 500 }
+  ]
+},
+{
+  "name": "House",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 100 },
+    { "name": "Stone", "count": 80 },
+    { "name": "Iron", "count": 20 },
+    { "name": "Gold", "count": 10 },
+    { "name": "Food", "count": 100 }
+  ]
+},
+{
+  "name": "Lumber Camp",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 30 },
+    { "name": "Stone", "count": 0 },
+    { "name": "Iron", "count": 10 },
+    { "name": "Gold", "count": 0 },
+    { "name": "Food", "count": 30 }
+  ]
+},
+{
+  "name": "Mine",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 50 },
+    { "name": "Stone", "count": 0 },
+    { "name": "Iron", "count": 10 },
+    { "name": "Gold", "count": 0 },
+    { "name": "Food", "count": 70 }
+  ]
+},
+{
+  "name": "Palace",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 800 },
+    { "name": "Stone", "count": 1500 },
+    { "name": "Iron", "count": 700 },
+    { "name": "Gold", "count": 200 },
+    { "name": "Food", "count": 3000 }
+  ]
+},
+{
+  "name": "Pasture",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 30 },
+    { "name": "Stone", "count": 0 },
+    { "name": "Iron", "count": 0 },
+    { "name": "Gold", "count": 0 },
+    { "name": "Food", "count": 20 }
+  ]
+},
+{
+  "name": "Quarry",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 10 },
+    { "name": "Stone", "count": 50 },
+    { "name": "Iron", "count": 0 },
+    { "name": "Gold", "count": 0 },
+    { "name": "Food", "count": 80 }
+  ]
+},
+{
+  "name": "Tower",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 100 },
+    { "name": "Stone", "count": 150 },
+    { "name": "Iron", "count": 40 },
+    { "name": "Gold", "count": 20 },
+    { "name": "Food", "count": 500 }
+  ]
+},
+{
+  "name": "University",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 200 },
+    { "name": "Stone", "count": 500 },
+    { "name": "Iron", "count": 100 },
+    { "name": "Gold", "count": 80 },
+    { "name": "Food", "count": 1200 }
+  ]
+},
+{
+  "name": "Watermill",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 80 },
+    { "name": "Stone", "count": 40 },
+    { "name": "Iron", "count": 10 },
+    { "name": "Gold", "count": 0 },
+    { "name": "Food", "count": 120 }
+  ]
+},
+{
+  "name": "Windmill",
+  "terrain": "none",
+  "cost": [
+    { "name": "Wood", "count": 60 },
+    { "name": "Stone", "count": 20 },
+    { "name": "Iron", "count": 10 },
+    { "name": "Gold", "count": 0 },
+    { "name": "Food", "count": 100 }
+  ]
+}
+]
