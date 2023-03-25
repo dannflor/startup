@@ -135,6 +135,7 @@
                 position: absolute;
                 z-index: -1;
                 -webkit-transform:translate3d(0,0,-100); //possible fix for safari z-indexing
+                opacity: .99;
             }
             //the sprite
             img {

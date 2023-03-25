@@ -1,12 +1,71 @@
 import Vapor
 
 enum Building: String, Content {
-    case Academy, Armory, Blacksmith, Carpenter, Cottage, Estate, Farm, Fishery, Forest, Fort, Guild, LargeHouse, LumberCamp, MediumHouse, Mine, Mountain, NoHouse, Palace, Pasture, Quarry, SmallHouse, Tower, University, Water, Watermill, Windmill
+    case Academy, Armory, Blacksmith, Carpenter, Cottage, Estate, Farm, Fishery, Forest, Fort, Guild, House, LumberCamp, Mine, Mountain, NoHouse, Palace, Pasture, Quarry, Tower, University, Water, Watermill, Windmill
     
     static var terrainTypes: [Building] {
         get {
             return [.Forest, .Mountain, .Water, .NoHouse]
         }
+    }
+
+    init?(rawValue: String) {
+      switch rawValue {
+        case "Academy":
+          self = .Academy
+        case "Armory":
+          self = .Armory
+        case "Blacksmith":
+          self = .Blacksmith
+        case "Carpenter":
+          self = .Carpenter
+        case "Cottage":
+          self = .Cottage
+        case "Estate":
+          self = .Estate
+        case "Farm":
+          self = .Farm
+        case "Fishery":
+          self = .Fishery
+        case "Forest":
+          self = .Forest
+        case "Fort": 
+          self = .Fort
+        case "Guild":
+          self = .Guild
+        case "House":
+          self = .House
+        case "Lumber Camp":
+          self = .LumberCamp
+        case "LumberCamp":
+          self = .LumberCamp
+        case "Mine":
+          self = .Mine
+        case "Mountain":
+          self = .Mountain
+        case "No House":
+          self = .NoHouse
+        case "NoHouse":
+          self = .NoHouse
+        case "Palace":
+          self = .Palace
+        case "Pasture":
+          self = .Pasture
+        case "Quarry":
+          self = .Quarry
+        case "Tower":
+          self = .Tower
+        case "University":
+          self = .University
+        case "Water":
+          self = .Water
+        case "Watermill":
+          self = .Watermill
+        case "Windmill":
+          self = .Windmill
+        default:
+          self = .NoHouse
+      }
     }
     
     static func getNeighbors(index: Int) -> (Int?, Int?, Int?, Int?) {

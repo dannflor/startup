@@ -54,18 +54,13 @@
      "terrain": "none",
      "cost": []
   },
-  "LargeHouse": {
-     "name": "Large House",
+  "House": {
+     "name": "House",
      "terrain": "none",
      "cost": []
   },
   "LumberCamp": {
      "name": "Lumber Camp",
-     "terrain": "none",
-     "cost": []
-  },
-  "MediumHouse": {
-     "name": "Medium House",
      "terrain": "none",
      "cost": []
   },
@@ -96,11 +91,6 @@
   },
   "Quarry": {
      "name": "Quarry",
-     "terrain": "none",
-     "cost": []
-  },
-  "SmallHouse": {
-     "name": "Small House",
      "terrain": "none",
      "cost": []
   },
