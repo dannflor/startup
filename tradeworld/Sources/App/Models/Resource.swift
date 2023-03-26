@@ -1,7 +1,7 @@
 import Fluent
 import Vapor
 
-final class Resource: Model {
+final class Resource: Model, Content {
     init() { }
     
     static let schema: String = "resource"
@@ -9,19 +9,31 @@ final class Resource: Model {
     @ID(key: .id)
     var id: UUID?
     
-    @Field(key: "name")
-    var name: Int
+    @Field(key: "wood")
+    var wood: Int
 
-    @Field(key: "count")
-    var count: Int
+    @Field(key: "stone")
+    var stone: Int
+    
+    @Field(key: "gold")
+    var gold: Int
+    
+    @Field(key: "iron")
+    var iron: Int
+    
+    @Field(key: "food")
+    var food: Int
     
     @Parent(key: "user_id")
     var user: User
     
-    init(id: UUID? = nil, name: Int, count: Int, userId: UUID) {
+    init(id: UUID? = nil, wood: Int, stone: Int, gold: Int, iron: Int, food: Int, userId: UUID) {
         self.id = id
-        self.name = name
-        self.count = count
+        self.wood = wood
+        self.stone = stone
+        self.gold = gold
+        self.iron = iron
+        self.food = food
         self.$user.id = userId
     }
 }

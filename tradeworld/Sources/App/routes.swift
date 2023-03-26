@@ -29,6 +29,7 @@ func routes(_ app: Application) throws {
         }
         try await user.create(on: req.db)
         try await user.$layout.create(createLayout(), on: req.db)
+        try await user.$resources.create(createResource(), on: req.db)
         return req.redirect(to: "/game")
 
         
@@ -52,6 +53,9 @@ func routes(_ app: Application) throws {
             //     grid.append(Building.terrainTypes.randomElement()!)
             // }
             return Layout(layout: grid, user: try user.requireID())
+        }
+        func createResource() throws -> Resource {
+            Resource(wood: 100, stone: 100, gold: 0, iron: 50, food: 200, userId: try user.requireID())
         }
     }
 
@@ -86,17 +90,6 @@ func routes(_ app: Application) throws {
         return try await req.view.render("game")
     }
     
-    loginProtected.get("resources") { req async throws -> [ResourceQty] in
-        let resources: [ResourceQty] = [
-            ResourceQty(name: .Wood, count: 27),
-            ResourceQty(name: .Stone, count: 21),
-            ResourceQty(name: .Gold, count: 7),
-            ResourceQty(name: .Iron, count: 15),
-            ResourceQty(name: .Food, count: 50)
-        ]
-        return resources
-    }
-    
     loginProtected.get("score") { req async throws -> Int in
         return Int.random(in: 1...420)
     }
@@ -114,6 +107,20 @@ func routes(_ app: Application) throws {
         }
         
         return grid
+    }
+    
+    loginProtected.get("resources") { req async throws -> [ResourceQty] in
+        guard let resource = try await req.auth.require(User.self).$resources.get(on: req.db) else {
+            throw Abort(.internalServerError)
+        }
+        return [
+            ResourceQty(name: .Wood, count: resource.wood),
+            ResourceQty(name: .Stone, count: resource.stone),
+            ResourceQty(name: .Gold, count: resource.gold),
+            ResourceQty(name: .Iron, count: resource.iron),
+            ResourceQty(name: .Food, count: resource.food)
+        ]
+        
     }
     
     loginProtected.group("building", configure: buildingController)
