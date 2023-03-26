@@ -10,7 +10,7 @@ final class Resource: Model {
     var id: UUID?
     
     @Field(key: "name")
-    var name: ResourceType
+    var name: Int
 
     @Field(key: "count")
     var count: Int
@@ -18,7 +18,7 @@ final class Resource: Model {
     @Parent(key: "user_id")
     var user: User
     
-    init(id: UUID? = nil, name: ResourceType, count: Int, userId: UUID) {
+    init(id: UUID? = nil, name: Int, count: Int, userId: UUID) {
         self.id = id
         self.name = name
         self.count = count

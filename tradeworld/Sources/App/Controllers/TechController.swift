@@ -16,7 +16,8 @@ func techController(tech: RoutesBuilder) {
                     id: element,
                     title: "Tech Number \(element)",
                     description: "Description for tech number \(element)",
-                    price: element*10
+                    price: element*10,
+                    effects: []
                 )
             techs.append(tech)
         }
