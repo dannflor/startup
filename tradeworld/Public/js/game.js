@@ -139,6 +139,7 @@ async function editBuildMenu(building, element) {
       
       let costText = '';
       for (let i = 0; i < selectedBuilding.cost.length; i++) {
+        if (selectedBuilding.cost[i].count == 0) { continue; }
         costText += selectedBuilding.cost[i].count + ' ' + selectedBuilding.cost[i].name.toLowerCase() + ', ';
       }
       costValue.innerText = costText.slice(0, -2);
@@ -163,6 +164,7 @@ async function editBuildMenu(building, element) {
     cost.textContent = 'Value:';
     let valueText = '';
     for (let i = 0; i < building.cost.length; i++) {
+      if (building.cost[i].count == 0) { continue; }
       valueText += building.cost[i].count + ' ' + building.cost[i].name.toLowerCase() + ', ';
     }
     costValue.innerText = valueText.slice(0, -2);
@@ -191,9 +193,14 @@ async function editBuildMenu(building, element) {
   }
 }
 
-function showBuildingEffects(building) {
-  document.getElementById('produces').innerText = 'Production for ' + building.name;
-  document.getElementById('bonuses').innerText = 'Bonuses for ' + building.name;
+async function showBuildingEffects(building) {
+  const metadata = await fetch('/building/' + building.name + '/metadata').then(res => res.json());
+  let production = "";
+  for (let i = 0; i < metadata.yield.length; i++) {
+    production += metadata.yield[i].count + ' ' + metadata.yield[i].name.toLowerCase() + '\n';
+  }
+  document.getElementById('produces').innerText = production;
+  document.getElementById('bonuses').innerText = metadata.bonusDescription;
 }
 
 function pictureForBuilding(building) {

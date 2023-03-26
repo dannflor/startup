@@ -8,24 +8,6 @@ func buildingController(building: RoutesBuilder) {
         }
         return buildings
     }
-    building.get("metadata") { req async throws -> [String: BuildingMetadata] in
-        guard let metadata = decodeFile(req: req, "buildingMetadata", [String: BuildingMetadata].self) else {
-            throw Abort(.internalServerError)
-        }
-        return metadata
-//        return [
-//            "Academy": BuildingMetadata(yield: [
-//                ResourceQty(name: .Gold, count: 5)
-//            ],
-//                                        bonus: [
-//                                            "Academy": ResourceQty(name: .Gold, count: 5),
-//                                            "University": ResourceQty(name: .Gold, count: 5),
-//                                        ],
-//                                        bonusDescription: "Nearby military and educational buildings produce more gold",
-//                                        score: 6)
-//        ]
-        
-    }
     building.post("build") { req async throws -> HTTPStatus in
         // Get post body
         let request = try req.content.decode(BuildingRequest.self)
@@ -62,6 +44,19 @@ func buildingController(building: RoutesBuilder) {
                 }
             }
             throw Abort(.notFound)
+        }
+        name.get("metadata") { req async throws -> BuildingMetadata in
+            guard let name = req.parameters.get("name") else {
+                throw Abort(.badRequest)
+            }
+            guard let metadata = decodeFile(req: req, "buildingMetadata", [String: BuildingMetadata].self) else {
+                throw Abort(.internalServerError)
+            }
+            guard let response = metadata[name] else {
+                print("Bad")
+                throw Abort(.notFound)
+            }
+            return response
         }
     }
 }

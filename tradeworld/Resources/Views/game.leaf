@@ -73,8 +73,8 @@
           <span class="mt-2 text-xl font-bold text-success">Bonuses:</span>
           <span id="bonuses"></span>
         </div>
-        <div class="mx-0 md:mt-auto md:block hidden">
-          <img id="modalMenuPicture" class="md:[scale:3] [scale:2]" style="image-rendering: crisp-edges; image-rendering: pixelated;" src="/img/NoHouse.png" alt="Building Image"/>
+        <div class="mx-0 md:mt-auto md:block hidden -mr-10">
+          <img id="modalMenuPicture" class="md:[scale:3] [scale:2] ml-12" style="image-rendering: crisp-edges; image-rendering: pixelated;" src="/img/NoHouse.png" alt="Building Image"/>
         </div>
       </div>
       

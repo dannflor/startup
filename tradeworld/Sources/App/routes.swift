@@ -33,7 +33,7 @@ func routes(_ app: Application) throws {
 
         
         func createLayout() throws -> Layout {
-            var grid: [Building] = [
+            let grid: [Building] = [
                                         .Mountain,
                                     .Mountain, .Mountain,
                                 .Mountain, .NoHouse, .Mountain,

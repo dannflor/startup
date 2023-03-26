@@ -2311,6 +2311,12 @@ grid label:nth-child(n+49) {
 .mt-2 {
   margin-top: 0.5rem;
 }
+.-mr-10 {
+  margin-right: -2.5rem;
+}
+.ml-12 {
+  margin-left: 3rem;
+}
 .ml-auto {
   margin-left: auto;
 }
