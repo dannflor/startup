@@ -7,7 +7,7 @@
     { "name": "Stone", "count": 200 },
     { "name": "Iron", "count": 100 },
     { "name": "Gold", "count": 50 },
-    { "name": "Food", "count": 1000 }
+    { "name": "Food", "count": 1200 }
   ]
 },
 {
@@ -15,10 +15,10 @@
   "terrain": "none",
   "cost": [
     { "name": "Wood", "count": 150 },
-    { "name": "Stone", "count": 150 },
-    { "name": "Iron", "count": 50 },
+    { "name": "Stone", "count": 20 },
+    { "name": "Iron", "count": 70 },
     { "name": "Gold", "count": 20 },
-    { "name": "Food", "count": 500 }
+    { "name": "Food", "count": 600 }
   ]
 },
 {
@@ -29,7 +29,7 @@
     { "name": "Stone", "count": 100 },
     { "name": "Iron", "count": 30 },
     { "name": "Gold", "count": 0 },
-    { "name": "Food", "count": 120 }
+    { "name": "Food", "count": 140 }
   ]
 },
 {
@@ -40,7 +40,7 @@
     { "name": "Stone", "count": 50 },
     { "name": "Iron", "count": 20 },
     { "name": "Gold", "count": 0 },
-    { "name": "Food", "count": 100 }
+    { "name": "Food", "count": 120 }
   ]
 },
 {
@@ -80,11 +80,11 @@
   "name": "Fishery",
   "terrain": "none",
   "cost": [
-    { "name": "Wood", "count": 50 },
+    { "name": "Wood", "count": 60 },
     { "name": "Stone", "count": 20 },
     { "name": "Iron", "count": 10 },
     { "name": "Gold", "count": 0 },
-    { "name": "Food", "count": 40 }
+    { "name": "Food", "count": 80 }
   ]
 },
 {
@@ -95,7 +95,7 @@
     { "name": "Stone", "count": 300 },
     { "name": "Iron", "count": 120 },
     { "name": "Gold", "count": 30 },
-    { "name": "Food", "count": 600 }
+    { "name": "Food", "count": 1000 }
   ]
 },
 {
@@ -170,7 +170,7 @@
   "cost": [
     { "name": "Wood", "count": 10 },
     { "name": "Stone", "count": 50 },
-    { "name": "Iron", "count": 0 },
+    { "name": "Iron", "count": 10 },
     { "name": "Gold", "count": 0 },
     { "name": "Food", "count": 80 }
   ]
@@ -190,11 +190,11 @@
   "name": "University",
   "terrain": "none",
   "cost": [
-    { "name": "Wood", "count": 200 },
+    { "name": "Wood", "count": 300 },
     { "name": "Stone", "count": 500 },
     { "name": "Iron", "count": 100 },
     { "name": "Gold", "count": 80 },
-    { "name": "Food", "count": 1200 }
+    { "name": "Food", "count": 2000 }
   ]
 },
 {

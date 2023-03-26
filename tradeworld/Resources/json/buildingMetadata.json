@@ -1,26 +1,244 @@
 {
   "Academy" : {
-    "bonusDescription": "Nearby military and educational buildings produce more gold",
+    "bonusDescription": "Nearby military and educational buildings produce more gold.",
     "bonus": {
-      "University": {"name": "Gold", "count": 5},
-      "Academy": {"name": "Gold", "count": 5},
-      "Armory": {"name": "Gold", "count": 5},
-      "Fortress": {"name": "Gold", "count": 5}
+      "University": {"name": "Gold", "count": 3},
+      "Academy": {"name": "Gold", "count": 3},
+      "Armory": {"name": "Gold", "count": 3},
+      "Fort": {"name": "Gold", "count": 3}
     },
-    "score": 6,
+    "score": 8,
     "yield": [
       { "name": "Gold", "count": 5 }
     ]
   },
   "Armory" : {
+    "bonusDescription": "Nearby blacksmiths produce more gold and iron, and nearby military buildings produce wood.",
+    "bonus": {
+      "Blacksmith": {"name": "Gold", "count": 3},
+      "Blacksmith": {"name": "Iron", "count": 3},
+      "Armory": {"name": "Wood", "count": 5},
+      "Fortress": {"name": "Wood", "count": 5}
+    },
+    "score": 6,
+    "yield": [
+
+    ]
+  },
+  "Blacksmith" : {
+    "bonusDescription": "Produces iron. Nearby mines produce more stone.",
+    "bonus": {
+      "Mine": {"name": "Stone", "count": 3}
+    },
+    "score": 4,
+    "yield": [
+      { "name": "Iron", "count": 3 }
+    ]
+  },
+  "Carpenter" : {
+    "bonusDescription": "Nearby lumber camps produce more wood.",
+    "bonus": {
+      "Lumber camp": {"name": "Wood", "count": 3}
+    },
+    "score": 3,
+    "yield": [
+      
+    ]
+  },
+  "Cottage" : {
+    "bonusDescription": "Nearby fisheries produce more food, and nearby farms produce more food.",
+    "bonus": {
+      "Fishery": {"name": "Food", "count": 3},
+      "Farm": {"name": "Food", "count": 3}
+    },
+    "score": 1,
+    "yield": [
+      
+    ]
+  },
+  "Estate" : {
+    "bonusDescription": "Nearby fisheries produce more food, and nearby farms produce more food, nearby blacksmiths produce more gold, and nearby carpenters produce more gold.",
+    "bonus": {
+      "Fishery": {"name": "Food", "count": 3},
+      "Farm": {"name": "Food", "count": 3},
+      "Blacksmith": {"name": "Gold", "count": 2},
+      "Carpenter": {"name": "Gold", "count": 2}
+    },
+    "score": 5,
+    "yield": [
+
+    ]
+  },
+  "Farm" : {
+    "bonusDescription": "Produces food.",
+    "bonus": {
+      
+    },
+    "score": 1,
+    "yield": [
+      { "name": "Food", "count": 5 }
+    ]
+  },
+  "Fishery" : {
+    "bonusDescription": "Produces food. Nearby fisheries produce more food.",
+    "bonus": {
+      "Fishery": {"name": "Food", "count": 3}
+    },
+    "score": 2,
+    "yield": [
+      { "name": "Food", "count": 10 }
+    ]
+  },
+  "Fort" : {
+    "bonusDescription": "Produces gold. Nearby military buildings produce more wood.",
+    "bonus": {
+      "Armory": {"name": "Wood", "count": 5},
+      "Fortress": {"name": "Wood", "count": 5}
+    },
+    "score": 7,
+    "yield": [
+      { "name": "Gold", "count": 3 }
+    ]
+  },
+  "Guild" : {
+    "bonusDescription": "Nearby blacksmiths produce more iron, and nearby lumber camps produce more wood.",
+    "bonus": {
+      "Blacksmith": {"name": "Iron", "count": 5},
+      "Carpenter": {"name": "Wood", "count": 5}
+    },
+    "score": 5,
+    "yield": [
+
+    ]
+  },
+  "House" : {
+    "bonusDescription": "Nearby fisheries produce more food, and nearby farms produce more food.",
+    "bonus": {
+      "Fishery": {"name": "Food", "count": 5},
+      "Farm": {"name": "Food", "count": 5}
+    },
+    "score": 3,
+    "yield": [
+      
+    ]
+  },
+  "Lumber Camp" : {
+    "bonusDescription": "Produces wood. Nearby carpenters produce more gold.",
+    "bonus": {
+      "Carpenter": {"name": "Gold", "count": 3}
+    },
+    "score": 1,
+    "yield": [
+      { "name": "Wood", "count": 3 }
+    ]
+  },
+  "Mine" : {
+    "bonusDescription": "Produces stone. Nearby blacksmiths produce more gold and iron.",
+    "bonus": {
+      "Blacksmith": {"name": "Gold", "count": 3},
+      "Blacksmith": {"name": "Iron", "count": 3}
+    },
+    "score": 2,
+    "yield": [
+      { "name": "Stone", "count": 3 }
+    ]
+  },
+  "Palace" : {
+    "bonusDescription": "Nearby buildings gain more of every resource.",
+    "bonus": {
+      "Academy": {"name": "Gold", "count": 3},
+      "Academy": {"name": "Iron", "count": 3},
+      "Academy": {"name": "Stone", "count": 3},
+      "Academy": {"name": "Wood", "count": 3},
+      "Academy": {"name": "Food", "count": 3},
+      "Armory": {"name": "Gold", "count": 3},
+      "Armory": {"name": "Iron", "count": 3},
+      "Armory": {"name": "Stone", "count": 3},
+      "Armory": {"name": "Wood", "count": 3},
+      "Armory": {"name": "Food", "count": 3},
+      "Blacksmith": {"name": "Gold", "count": 3},
+      "Blacksmith": {"name": "Iron", "count": 3},
+      "Blacksmith": {"name": "Stone", "count": 3},
+      "Blacksmith": {"name": "Wood", "count": 3},
+      "Blacksmith": {"name": "Food", "count": 3},
+      "Carpenter": {"name": "Gold", "count": 3},
+      "Carpenter": {"name": "Iron", "count": 3},
+      "Carpenter": {"name": "Stone", "count": 3},
+      "Carpenter": {"name": "Wood", "count": 3},
+      "Carpenter": {"name": "Food", "count": 3}
+    },
+    "score": 10,
+    "yield": [
+      { "name": "Gold", "count": 10 }
+    ]
+  },
+  "Pasture" : {
+    "bonusDescription": "Nearby farms produce more food.",
+    "bonus": {
+      "Farm": {"name": "Food", "count": 3}
+    },
+    "score": 1,
+    "yield": [
+
+    ]
+  },
+  "Quarry" : {
+    "bonusDescription": "Nearby mines produce more iron.",
+    "bonus": {
+      "Mine": {"name": "Iron", "count": 3}
+    },
+    "score": 3,
+    "yield": [
+
+    ]
+  },
+  "Tower" : {
     "bonusDescription": "Nearby blacksmiths produce more gold and nearby military buildings produce wood",
-    
+    "bonus": {
+      "Blacksmith": {"name": "Gold", "count": 3},
+      "Armory": {"name": "Wood", "count": 5},
+      "Fortress": {"name": "Wood", "count": 5}
+    },
+    "score": 6,
+    "yield": [
+
+    ]
+  },
+  "University" : {
+    "bonusDescription": "Nearby military and educational buildings produce more gold. Nearby blacksmiths produce more iron, and nearby carpenters produce more wood.",
+    "bonus": {
+      "Blacksmith": {"name": "Iron", "count": 3},
+      "Carpenter": {"name": "Wood", "count": 3},
+      "University": {"name": "Gold", "count": 3},
+      "Academy": {"name": "Gold", "count": 3},
+      "Armory": {"name": "Gold", "count": 3},
+      "Fort": {"name": "Gold", "count": 3}
+    },
+    "score": 9,
+    "yield": [
+      { "name": "Gold", "count": 5 }
+    ]
+  },
+  "Watermill" : {
+    "bonusDescription": "Nearby blacksmiths produce more gold and nearby military buildings produce wood",
     "bonus": {
       "Blacksmith": {"name": "Gold", "count": 3},
       "Armory": {"name": "Wood", "count": 5},
       "Fortress": {"name": "Wood", "count": 5}
     },
     "score": 3,
+    "yield": [
+
+    ]
+  },
+  "Windmill" : {
+    "bonusDescription": "Nearby blacksmiths produce more gold and nearby military buildings produce wood",
+    "bonus": {
+      "Blacksmith": {"name": "Gold", "count": 3},
+      "Armory": {"name": "Wood", "count": 5},
+      "Fortress": {"name": "Wood", "count": 5}
+    },
+    "score": 2,
     "yield": [
 
     ]
