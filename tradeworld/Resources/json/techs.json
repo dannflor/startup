@@ -1,0 +1,538 @@
+[
+  {
+    "id": 0,
+    "title": "A place of learning",
+    "description": "Unlocks the academy.",
+    "price": [
+      { "name": "Gold", "count": 30 }
+    ],
+    "effects": [],
+    "techUnlocks": [17],
+    "buildingUnlocks": ["Academy"]
+  },
+  {
+    "id": 1,
+    "title": "Arm the troops",
+    "description": "Unlocks the armory.",
+    "price": [
+      { "name": "Gold", "count": 15 }
+    ],
+    "effects": [],
+    "techUnlocks": [8],
+    "buildingUnlocks": ["Armory"]
+  },
+  {
+    "id": 2,
+    "title": "The metalworker",
+    "description": "Unlocks the blacksmith.",
+    "price": [
+      { "name": "Stone", "count": 20 }
+    ],
+    "effects": [],
+    "techUnlocks": [],
+    "buildingUnlocks": ["Blacksmith"]
+  },
+  {
+    "id": 3,
+    "title": "The woodworker",
+    "description": "Unlocks the carpenter.",
+    "price": [
+      { "name": "Gold", "count": 15 }
+    ],
+    "effects": [],
+    "techUnlocks": [9],
+    "buildingUnlocks": ["Carpenter"]
+  },
+  {
+    "id": 4,
+    "title": "A cozy cottage",
+    "description": "Unlocks the cottage.",
+    "price": [
+      { "name": "Wood", "count": 10 }
+    ],
+    "effects": [],
+    "techUnlocks": [],
+    "buildingUnlocks": ["Cottage"]
+  },
+  {
+    "id": 5,
+    "title": "A modest mansion",
+    "description": "Unlocks the estate.",
+    "price": [
+      { "name": "Gold", "count": 20 }
+    ],
+    "effects": [],
+    "techUnlocks": [0],
+    "buildingUnlocks": ["Estate"]
+  },
+  {
+    "id": 6,
+    "title": "Live off the land",
+    "description": "Unlocks the farm.",
+    "price": [
+      { "name": "Wood", "count": 10 }
+    ],
+    "effects": [],
+    "techUnlocks": [12],
+    "buildingUnlocks": ["Farm"]
+  },
+  {
+    "id": 7,
+    "title": "Sitting on the dock",
+    "description": "Unlocks the fishery.",
+    "price": [
+      { "name": "Wood", "count": 15 }
+    ],
+    "effects": [],
+    "techUnlocks": [],
+    "buildingUnlocks": ["Fishery"]
+  },
+  {
+    "id": 8,
+    "title": "A safe fortress",
+    "description": "Unlocks the fort.",
+    "price": [
+      { "name": "Gold", "count": 20 }
+    ],
+    "effects": [],
+    "techUnlocks": [13],
+    "buildingUnlocks": ["Fort"]
+  },
+  {
+    "id": 9,
+    "title": "Craftsmen and merchants",
+    "description": "Unlocks the guild.",
+    "price": [
+      { "name": "Gold", "count": 15 }
+    ],
+    "effects": [],
+    "techUnlocks": [5, 16],
+    "buildingUnlocks": ["Guild"]
+  },
+  {
+    "id": 10,
+    "title": "A new home",
+    "description": "Unlocks the house.",
+    "price": [
+      { "name": "Gold", "count": 10 }
+    ],
+    "effects": [],
+    "techUnlocks": [18, 19],
+    "buildingUnlocks": ["House"]
+  },
+  {
+    "id": 11,
+    "title": "Timber!",
+    "description": "Unlocks the lumber camp.",
+    "price": [
+      { "name": "Stone", "count": 10 }
+    ],
+    "effects": [],
+    "techUnlocks": [3],
+    "buildingUnlocks": ["Lumber Camp"]
+  },
+  {
+    "id": 12,
+    "title": "Tunnels and caves",
+    "description": "Unlocks the mine.",
+    "price": [
+      { "name": "Wood", "count": 10 }
+    ],
+    "effects": [],
+    "techUnlocks": [7, 15],
+    "buildingUnlocks": ["Mine"]
+  },
+  {
+    "id": 13,
+    "title": "Throne room",
+    "description": "Unlocks the palace.",
+    "price": [
+      { "name": "Gold", "count": 100 }
+    ],
+    "effects": [],
+    "techUnlocks": [],
+    "buildingUnlocks": ["Palace"]
+  },
+  {
+    "id": 14,
+    "title": "Herding the sheep",
+    "description": "Unlocks the pasture.",
+    "price": [
+      { "name": "Wood", "count": 10 }
+    ],
+    "effects": [],
+    "techUnlocks": [],
+    "buildingUnlocks": ["Pasture"]
+  },
+  {
+    "id": 15,
+    "title": "",
+    "description": "Unlocks the quarry.",
+    "price": [
+      { "name": "Stone", "count": 10 }
+    ],
+    "effects": [],
+    "techUnlocks": [2],
+    "buildingUnlocks": ["Quarry"]
+  },
+  {
+    "id": 16,
+    "title": "The watchman",
+    "description": "Unlocks the tower.",
+    "price": [
+      { "name": "Gold", "count": 15 }
+    ],
+    "effects": [],
+    "techUnlocks": [1],
+    "buildingUnlocks": ["Tower"]
+  },
+  {
+    "id": 17,
+    "title": "Higher education",
+    "description": "Unlocks the university.",
+    "price": [
+      { "name": "Gold", "count": 40 }
+    ],
+    "effects": [],
+    "techUnlocks": [],
+    "buildingUnlocks": ["University"]
+  },
+  {
+    "id": 18,
+    "title": "Water power",
+    "description": "Unlocks the watermill.",
+    "price": [
+      { "name": "Gold", "count": 10 }
+    ],
+    "effects": [],
+    "techUnlocks": [],
+    "buildingUnlocks": ["Watermill"]
+  },
+  {
+    "id": 19,
+    "title": "Air power",
+    "description": "Unlocks the windmill.",
+    "price": [
+      { "name": "Gold", "count": 10 }
+    ],
+    "effects": [],
+    "techUnlocks": [],
+    "buildingUnlocks": ["Windmill"]
+  },
+  {
+    "id": 20,
+    "title": "Driftwood",
+    "description": "The fishery now produces wood.",
+    "price": [
+      { "name": "Gold", "count": 10 }
+    ],
+    "effects": [
+      {
+        "building": "Fishery",
+        "score": 1,
+        "yield": [
+          { "name": "Wood", "count": 3 }
+        ],
+        "bonus": {}
+      }
+    ],
+    "techUnlocks": [],
+    "buildingUnlocks": []
+  },
+  {
+    "id": 21,
+    "title": "Silver crown",
+    "description": "All nearby buildings gain more of every resource.",
+    "price": [
+      { "name": "Gold", "count": 50 }
+    ],
+    "effects": [
+      {
+        "building": "Palace",
+        "score": 8,
+        "yield": [],
+        "bonus": {
+          "Academy": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Blacksmith": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Carpenter": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Cottage": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Estate": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Farm": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Fishery": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Guild": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "House": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Lumber Camp": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Mine": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Pasture": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Quarry": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "University": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Watermill": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Windmill": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ]
+        }
+      }
+    ],
+    "techUnlocks": [],
+    "buildingUnlocks": []
+  },
+  {
+    "id": 22,
+    "title": "Golden crown",
+    "description": "The palace and all nearby buildings gain more of all resources.",
+    "price": [
+      { "name": "Gold", "count": 50 }
+    ],
+    "effects": [
+      {
+        "building": "Palace",
+        "score": 10,
+        "yield": [
+          {"name": "Gold", "count": 3},
+          {"name": "Iron", "count": 3},
+          {"name": "Stone", "count": 3},
+          {"name": "Wood", "count": 3},
+          {"name": "Food", "count": 3}
+        ],
+        "bonus": {
+          "Academy": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Armory": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Blacksmith": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Carpenter": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Cottage": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Estate": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Farm": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Fishery": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Fort": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Guild": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "House": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Lumber Camp": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Mine": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Palace": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Pasture": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Quarry": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Tower": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "University": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Watermill": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
+          "Windmill": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ]
+        }
+      }
+    ],
+    "techUnlocks": [],
+    "buildingUnlocks": []
+  }
+]

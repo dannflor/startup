@@ -13,6 +13,9 @@
       ],
       "Fort": [
         {"name": "Gold", "count": 3}
+      ],
+      "Tower": [
+        {"name": "Gold", "count": 3}
       ]
     },
     "score": 8,
@@ -24,9 +27,7 @@
     "bonusDescription": "Nearby blacksmiths produce more gold and iron, and nearby military buildings produce wood.",
     "bonus": {
       "Blacksmith": [
-        {"name": "Gold", "count": 3}
-      ],
-      "Blacksmith": [
+        {"name": "Gold", "count": 3},
         {"name": "Iron", "count": 3}
       ],
       "Armory": [
@@ -66,13 +67,16 @@
     ]
   },
   "Cottage" : {
-    "bonusDescription": "Nearby fisheries produce more food, and nearby farms produce more food.",
+    "bonusDescription": "Nearby fisheries produce more food, and nearby farms produce more food. Nearby mines produce more stone.",
     "bonus": {
       "Fishery": [
         {"name": "Food", "count": 3}
       ],
       "Farm": [
         {"name": "Food", "count": 3}
+      ],
+      "Mine": [
+        {"name": "Stone", "count": 3}
       ]
     },
     "score": 1,
@@ -121,6 +125,18 @@
     "score": 2,
     "yield": [
       { "name": "Food", "count": 10 }
+    ]
+  },
+  "Forest": {
+    "bonusDescription": "Nearby lumber camps produce more wood.",
+    "bonus": {
+      "Lumber camp": [
+        {"name": "Wood", "count": 7}
+      ]
+    },
+    "score": 0,
+    "yield": [
+
     ]
   },
   "Fort" : {
@@ -181,12 +197,10 @@
     ]
   },
   "Mine" : {
-    "bonusDescription": "Produces stone. Nearby blacksmiths produce more gold and iron.",
+    "bonusDescription": "Produces stone. Nearby blacksmiths produce more iron, and they now produce gold. Heavily buffed by nearby mountains.",
     "bonus": {
       "Blacksmith": [
-        {"name": "Gold", "count": 3}
-      ],
-      "Blacksmith": [
+        {"name": "Gold", "count": 3},
         {"name": "Iron", "count": 3}
       ]
     },
@@ -195,41 +209,50 @@
       { "name": "Stone", "count": 3 }
     ]
   },
-  "Palace" : {
-    "bonusDescription": "Nearby buildings gain more of every resource.",
+  "Mountain": {
+    "bonusDescription": "Nearby mines produce more stone.",
     "bonus": {
-      "Academy": [
-        {"name": "Gold", "count": 3}
-      ],
-      "Academy": {"name": "Iron", "count": 3},
-      "Academy": {"name": "Stone", "count": 3},
-      "Academy": {"name": "Wood", "count": 3},
-      "Academy": {"name": "Food", "count": 3},
+      "Mine": [
+        {"name": "Stone", "count": 10}
+      ]
+    },
+    "score": 0,
+    "yield": [
+      
+    ]
+  },
+  "Palace" : {
+    "bonusDescription": "The palace and nearby military buildings gain more of every resource.",
+    "bonus": {
       "Armory": [
-        {"name": "Gold", "count": 3}
+        {"name": "Gold", "count": 3},
+        {"name": "Iron", "count": 3},
+        {"name": "Stone", "count": 3},
+        {"name": "Wood", "count": 3},
+        {"name": "Food", "count": 3}
       ],
-      "Armory": {"name": "Iron", "count": 3},
-      "Armory": {"name": "Stone", "count": 3},
-      "Armory": {"name": "Wood", "count": 3},
-      "Armory": {"name": "Food", "count": 3},
-      "Blacksmith": [
-        {"name": "Gold", "count": 3}
+      "Fort": [
+        {"name": "Gold", "count": 3},
+        {"name": "Iron", "count": 3},
+        {"name": "Stone", "count": 3},
+        {"name": "Wood", "count": 3},
+        {"name": "Food", "count": 3}
       ],
-      "Blacksmith": {"name": "Iron", "count": 3},
-      "Blacksmith": {"name": "Stone", "count": 3},
-      "Blacksmith": {"name": "Wood", "count": 3},
-      "Blacksmith": {"name": "Food", "count": 3},
-      "Carpenter": [
-        {"name": "Gold", "count": 3}
-      ],
-      "Carpenter": {"name": "Iron", "count": 3},
-      "Carpenter": {"name": "Stone", "count": 3},
-      "Carpenter": {"name": "Wood", "count": 3},
-      "Carpenter": {"name": "Food", "count": 3}
+      "Palace": [
+        {"name": "Gold", "count": 3},
+        {"name": "Iron", "count": 3},
+        {"name": "Stone", "count": 3},
+        {"name": "Wood", "count": 3},
+        {"name": "Food", "count": 3}
+      ]
     },
     "score": 10,
     "yield": [
-      { "name": "Gold", "count": 10 }
+      { "name": "Gold", "count": 5 },
+      { "name": "Iron", "count": 5 },
+      { "name": "Stone", "count": 5 },
+      { "name": "Wood", "count": 5 },
+      { "name": "Food", "count": 5 }
     ]
   },
   "Pasture" : {
@@ -257,16 +280,16 @@
     ]
   },
   "Tower" : {
-    "bonusDescription": "Nearby blacksmiths produce more gold and nearby military buildings produce wood",
+    "bonusDescription": "Nearby military buildings produce more food.",
     "bonus": {
-      "Blacksmith": [
-        {"name": "Gold", "count": 3}
-      ],
       "Armory": [
-        {"name": "Wood", "count": 5}
+        {"name": "Food", "count": 5}
       ],
-      "Fortress": [
-        {"name": "Wood", "count": 5}
+      "Fort": [
+        {"name": "Food", "count": 5}
+      ],
+      "Tower": [
+        {"name": "Food", "count": 5}
       ]
     },
     "score": 6,
@@ -302,16 +325,13 @@
     ]
   },
   "Watermill" : {
-    "bonusDescription": "Nearby blacksmiths produce more gold and nearby military buildings produce wood",
+    "bonusDescription": "Nearby farms and fisheries produce more food.",
     "bonus": {
-      "Blacksmith": [
-        {"name": "Gold", "count": 3}
+      "Farm": [
+        {"name": "Food", "count": 3}
       ],
-      "Armory": [
-        {"name": "Wood", "count": 5}
-      ],
-      "Fortress": [
-        {"name": "Wood", "count": 5}
+      "Fishery": [
+        {"name": "Food", "count": 3}
       ]
     },
     "score": 3,
@@ -320,16 +340,13 @@
     ]
   },
   "Windmill" : {
-    "bonusDescription": "Nearby blacksmiths produce more gold and nearby military buildings produce wood",
+    "bonusDescription": "Nearby farms and fisheries produce more food.",
     "bonus": {
-      "Blacksmith": [
-        {"name": "Gold", "count": 3}
+      "Farm": [
+        {"name": "Food", "count": 2}
       ],
-      "Armory": [
-        {"name": "Wood", "count": 5}
-      ],
-      "Fortress": [
-        {"name": "Wood", "count": 5}
+      "Fishery": [
+        {"name": "Food", "count": 2}
       ]
     },
     "score": 2,

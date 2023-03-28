@@ -2,8 +2,7 @@ import Vapor
 
 struct TechEffect: Content {
     let building: Building
-    let type: TechEffectType
-    let score: Int?
+    let score: Int
     let yield: [ResourceQty]
     let bonus: [String: ResourceQty]
 }
