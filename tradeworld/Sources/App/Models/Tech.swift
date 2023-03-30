@@ -11,7 +11,7 @@ struct Tech: Content {
     
     static var defaults: [Int] {
         get {
-            [10, 12, 14, 3]
+            [2, 9, 11, 12]
         }
     }
 }

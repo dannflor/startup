@@ -1,5 +1,5 @@
 import getNeighbors from "./getNeighbors.js";
-import populateResources from "./populateResources.js";
+import {populateResources, updateResources} from "./populateResources.js";
 
 class Building {
   constructor(name, cost, terrain) {
@@ -9,7 +9,7 @@ class Building {
   }
 }
 const gridElement = document.getElementById('gameGrid');
-const res = fetch('/grid').then(res => 
+const res = fetch('/grid').then(res =>
   res.json().then(data => {
     //Parse json into Building objects
     const cells = data.map(cell => new Building(cell.name, cell.cost, cell.terrain));
@@ -123,10 +123,12 @@ async function editBuildMenu(building, element) {
     select.onchange();
   }
   else {
+    let ind = building.index;
+    building = await fetch('/building/' + building.name).then(res => res.json());
+    building.index = ind;
     select.style.display = 'none';
     buildMenuTitle.innerText = building.name;
     buildingTitle.style.display = 'none';
-    // buildMenuBody.style.display = 'block';
     cost.textContent = 'Value:';
     let valueText = '';
     for (let i = 0; i < building.cost.length; i++) {
@@ -197,6 +199,7 @@ async function buildBuilding(building, index, element) {
 }
 
 async function destroyBuilding(building, index, element) {
+  building = await fetch('/building/' + building.name).then(res => res.json());
   console.log('destroying ' + building.name + ' at ' + index);
   const buildingData = {
     buildingName: building.name,

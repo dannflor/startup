@@ -7,7 +7,34 @@ func techController(tech: RoutesBuilder) {
     }
     
     tech.get("unresearched") { req async throws -> [Tech] in
-        return try getAvailableTechs(req: req)
+        return try getAvailableTechs(req: req).convertToTechs(req)
+    }
+    
+    tech.get("researchable", ":id") { req async throws -> Bool in
+        guard let id = Int(req.parameters.get("id") ?? "nope") else {
+            throw Abort(.badRequest)
+        }
+        // Add tech id to user's array of ints (User.techs)
+        let user = try req.auth.require(User.self)
+        guard let techs: [Tech] = decodeFile(req: req, "techs", [Tech].self) else {
+            throw Abort(.internalServerError)
+        }
+        guard let tech: Tech = techs[safe: id] else {
+            throw Abort(.notFound)
+        }
+        guard try getAvailableTechs(req: req).contains(id) else {
+            return false
+        }
+        for price in tech.price {
+            guard let resources = try await user.$resources.get(on: req.db) else {
+                throw Abort(.internalServerError)
+            }
+            let resource = resources[price.name]
+            guard resource >= price.count else {
+                return false
+            }
+        }
+        return true
     }
     
     tech.post("research", ":id") { req async throws -> Bool in
@@ -15,7 +42,7 @@ func techController(tech: RoutesBuilder) {
             throw Abort(.badRequest)
         }
         // Add tech id to user's array of ints (User.techs)
-        var user = try req.auth.require(User.self)
+        let user = try req.auth.require(User.self)
         guard let techs: [Tech] = decodeFile(req: req, "techs", [Tech].self) else {
             throw Abort(.internalServerError)
         }
@@ -39,23 +66,22 @@ func techController(tech: RoutesBuilder) {
         return true
     }
     
-    func getAvailableTechs(req: Request) throws -> [Tech] {
+    func getAvailableTechs(req: Request) throws -> [Int] {
         let user = try req.auth.require(User.self)
         // Only ints that are in defaults but not in user.techs
-        var techs = Tech.defaults.filter { Set(user.techs).contains($0) }
+        var techs = Tech.defaults.filter { !Set(user.techs).contains($0) }
         guard let techData = decodeFile(req: req, "techs", [Tech].self) else {
             throw Abort(.internalServerError)
         }
         // Iterate through user.techs and add all techs that are in that tech's "techUnlocks" array but not in user.techs
         for tech in user.techs {
-            let tech = Tech.defaults[tech]
             for techUnlock in techData[tech].techUnlocks {
                 if !user.techs.contains(techUnlock) {
                     techs.append(techUnlock)
                 }
             }
         }
-        return try techs.convertToTechs(req)
+        return techs
     }
 }
 
@@ -67,7 +93,7 @@ extension Collection {
 }
 
 extension Array where Element == Int {
-    mutating func convertToTechs(_ req: Request) throws -> [Tech] {
+    func convertToTechs(_ req: Request) throws -> [Tech] {
         guard let techs: [Tech] = decodeFile(req: req, "techs", [Tech].self) else {
             throw Abort(.internalServerError)
         }
