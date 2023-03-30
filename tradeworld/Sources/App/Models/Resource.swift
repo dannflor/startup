@@ -36,6 +36,37 @@ final class Resource: Model, Content {
         self.food = food
         self.$user.id = userId
     }
+
+    public subscript(_ resource: ResourceType) -> Int {
+        get {
+            switch resource {
+            case .Wood:
+                return wood
+            case .Stone:
+                return stone
+            case .Gold:
+                return gold
+            case .Iron:
+                return iron
+            case .Food:
+                return food
+            }
+        }
+        set {
+            switch resource {
+            case .Wood:
+                wood = newValue
+            case .Stone:
+                stone = newValue
+            case .Gold:
+                gold = newValue
+            case .Iron:
+                iron = newValue
+            case .Food:
+                food = newValue
+            }
+        }
+    }
 }
 
 enum ResourceType: String, Codable {

@@ -18,6 +18,9 @@ final class User: Model, Content, ModelSessionAuthenticatable {
     
     @Field(key: "score")
     var score: Int
+    
+    @Field(key: "techs")
+    var techs: [Int]
 
     // Reference to the user's layout
     @OptionalChild(for: \.$user)

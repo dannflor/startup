@@ -1,3 +1,4 @@
+import Vapor
 import Fluent
 
 struct CreateUser: AsyncMigration {
@@ -38,5 +39,19 @@ struct CreateResource: AsyncMigration {
 
     func revert(on database: Database) async throws {
         try await database.schema(Resource.schema).delete()
+    }
+}
+
+struct AddTechToUser: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database.schema(User.schema)
+            .field("techs", .array(of: .int), .required, .sql(raw: "DEFAULT ARRAY[]::integer[]"))
+            .update()
+    }
+    
+    func revert(on database: Database) async throws {
+        try await database.schema(User.schema)
+            .deleteField("techs")
+            .update()
     }
 }

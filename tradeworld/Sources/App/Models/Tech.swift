@@ -8,4 +8,10 @@ struct Tech: Content {
     let effects: [TechEffect]
     let techUnlocks: [Int]
     let buildingUnlocks: [Building]
+    
+    static var defaults: [Int] {
+        get {
+            [10, 12, 14, 3]
+        }
+    }
 }
