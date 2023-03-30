@@ -35,6 +35,9 @@
       ],
       "Fortress": [
         {"name": "Wood", "count": 5}
+      ],
+      "Tower": [
+        {"name": "Wood", "count": 5}
       ]
     },
     "score": 6,
@@ -147,6 +150,9 @@
       ],
       "Fortress": [
         {"name": "Wood", "count": 5}
+      ],
+      "Tower": [
+        {"name": "Wood", "count": 5}
       ]
     },
     "score": 7,
@@ -238,7 +244,7 @@
         {"name": "Wood", "count": 3},
         {"name": "Food", "count": 3}
       ],
-      "Palace": [
+      "Tower": [
         {"name": "Gold", "count": 3},
         {"name": "Iron", "count": 3},
         {"name": "Stone", "count": 3},
@@ -316,6 +322,9 @@
         {"name": "Gold", "count": 3}
       ],
       "Fort": [
+        {"name": "Gold", "count": 3}
+      ],
+      "Tower": [
         {"name": "Gold", "count": 3}
       ]
     },

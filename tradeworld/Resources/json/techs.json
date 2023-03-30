@@ -329,6 +329,13 @@
             {"name": "Wood", "count": 3},
             {"name": "Food", "count": 3}
           ],
+          "Palace": [
+            {"name": "Gold", "count": 3},
+            {"name": "Iron", "count": 3},
+            {"name": "Stone", "count": 3},
+            {"name": "Wood", "count": 3},
+            {"name": "Food", "count": 3}
+          ],
           "Pasture": [
             {"name": "Gold", "count": 3},
             {"name": "Iron", "count": 3},
