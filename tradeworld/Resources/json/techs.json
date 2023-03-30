@@ -44,17 +44,6 @@
     "buildingUnlocks": ["Carpenter"]
   },
   {
-    "id": 4,
-    "title": "A cozy cottage",
-    "description": "Unlocks the cottage.",
-    "price": [
-      { "name": "Wood", "count": 10 }
-    ],
-    "effects": [],
-    "techUnlocks": [10],
-    "buildingUnlocks": ["Cottage"]
-  },
-  {
     "id": 5,
     "title": "A modest mansion",
     "description": "Unlocks the estate.",
@@ -64,17 +53,6 @@
     "effects": [],
     "techUnlocks": [0],
     "buildingUnlocks": ["Estate"]
-  },
-  {
-    "id": 6,
-    "title": "Live off the land",
-    "description": "Unlocks the farm.",
-    "price": [
-      { "name": "Wood", "count": 10 }
-    ],
-    "effects": [],
-    "techUnlocks": [12, 14],
-    "buildingUnlocks": ["Farm"]
   },
   {
     "id": 7,
@@ -121,17 +99,6 @@
     "buildingUnlocks": ["House"]
   },
   {
-    "id": 11,
-    "title": "Timber!",
-    "description": "Unlocks the lumber camp.",
-    "price": [
-      { "name": "Stone", "count": 10 }
-    ],
-    "effects": [],
-    "techUnlocks": [3],
-    "buildingUnlocks": ["LumberCamp"]
-  },
-  {
     "id": 12,
     "title": "Tunnels and caves",
     "description": "Unlocks the mine.",
@@ -166,7 +133,7 @@
   },
   {
     "id": 15,
-    "title": "",
+    "title": "Rock pit",
     "description": "Unlocks the quarry.",
     "price": [
       { "name": "Stone", "count": 10 }
@@ -315,7 +282,7 @@
             {"name": "Wood", "count": 3},
             {"name": "Food", "count": 3}
           ],
-          "LumberCamp": [
+          "Lumber Camp": [
             {"name": "Gold", "count": 3},
             {"name": "Iron", "count": 3},
             {"name": "Stone", "count": 3},
@@ -473,7 +440,7 @@
             {"name": "Wood", "count": 3},
             {"name": "Food", "count": 3}
           ],
-          "LumberCamp": [
+          "Lumber Camp": [
             {"name": "Gold", "count": 3},
             {"name": "Iron", "count": 3},
             {"name": "Stone", "count": 3},
