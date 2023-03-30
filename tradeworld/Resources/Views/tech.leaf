@@ -31,6 +31,18 @@
       <a href="/logout" class="link link-secondary mr-4">Logout</a>
     </div>
   </div>
+  <div class="md:w-1/2 mx-auto lg:px-10 mb-2">
+    <div id="resources" class="flex-row flex rounded-lg">
+      <div id="scoreDiv" class="flex-1 flex md:space-x-2 bg-base-100 py-3 rounded-lg mx-1 my-1 px-1">
+        <div class="mx-auto md:flex-row md:flex md:text-base text-xs">
+          <div class="text-accent font-bold md:mr-1 text-center md:text-left">Score:</div>
+          <div id="score" class="text-neutral-content text-center md:text-left">0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divider mx-auto md:w-1/2 !my-0.5"></div>
+
   <main class="mt-8 flex-grow flex">
     <ul id="techList" class="sm:mx-16 mx-2 flex-col flex w-1/3 mb-8">
 

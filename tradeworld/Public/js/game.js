@@ -73,8 +73,6 @@ async function populateResources() {
     div.appendChild(innerDiv);
     resourceDiv.insertBefore(div, scoreDiv);
   });
-
-
 }
 
 /**

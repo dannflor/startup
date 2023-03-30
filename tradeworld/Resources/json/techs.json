@@ -51,7 +51,7 @@
       { "name": "Wood", "count": 10 }
     ],
     "effects": [],
-    "techUnlocks": [],
+    "techUnlocks": [10],
     "buildingUnlocks": ["Cottage"]
   },
   {
@@ -73,7 +73,7 @@
       { "name": "Wood", "count": 10 }
     ],
     "effects": [],
-    "techUnlocks": [12],
+    "techUnlocks": [12, 14],
     "buildingUnlocks": ["Farm"]
   },
   {
@@ -84,7 +84,7 @@
       { "name": "Wood", "count": 15 }
     ],
     "effects": [],
-    "techUnlocks": [],
+    "techUnlocks": [23],
     "buildingUnlocks": ["Fishery"]
   },
   {
@@ -129,7 +129,7 @@
     ],
     "effects": [],
     "techUnlocks": [3],
-    "buildingUnlocks": ["Lumber Camp"]
+    "buildingUnlocks": ["LumberCamp"]
   },
   {
     "id": 12,
@@ -315,7 +315,7 @@
             {"name": "Wood", "count": 3},
             {"name": "Food", "count": 3}
           ],
-          "Lumber Camp": [
+          "LumberCamp": [
             {"name": "Gold", "count": 3},
             {"name": "Iron", "count": 3},
             {"name": "Stone", "count": 3},
@@ -473,7 +473,7 @@
             {"name": "Wood", "count": 3},
             {"name": "Food", "count": 3}
           ],
-          "Lumber Camp": [
+          "LumberCamp": [
             {"name": "Gold", "count": 3},
             {"name": "Iron", "count": 3},
             {"name": "Stone", "count": 3},
@@ -537,6 +537,62 @@
             {"name": "Food", "count": 3}
           ]
         }
+      }
+    ],
+    "techUnlocks": [],
+    "buildingUnlocks": []
+  },
+  {
+    "id": 23,
+    "title": "Fishing net",
+    "description": "The fishery now produces more food.",
+    "price": [
+      { "name": "Gold", "count": 10 }
+    ],
+    "effects": [
+      {
+        "building": "Fishery",
+        "score": 2,
+        "yield": [
+          { "name": "Food", "count": 3 }
+        ],
+        "bonus": {}
+      }
+    ],
+    "techUnlocks": [],
+    "buildingUnlocks": []
+  },
+  {
+    "id": 24,
+    "title": "Home gardening",
+    "description": "Homes now produce food.",
+    "price": [
+      { "name": "Gold", "count": 30 }
+    ],
+    "effects": [
+      {
+        "building": "Cottage",
+        "score": 3,
+        "yield": [
+          { "name": "Food", "count": 3 }
+        ],
+        "bonus": {}
+      },
+      {
+        "building": "House",
+        "score": 3,
+        "yield": [
+          { "name": "Food", "count": 3 }
+        ],
+        "bonus": {}
+      },
+      {
+        "building": "Estate",
+        "score": 3,
+        "yield": [
+          { "name": "Food", "count": 3 }
+        ],
+        "bonus": {}
       }
     ],
     "techUnlocks": [],
