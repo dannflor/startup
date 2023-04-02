@@ -1,6 +1,6 @@
 import Vapor
 import Fluent
-import Vapor
+import Foundation
 
 final class User: Model, Content, ModelSessionAuthenticatable {
     init() { }
@@ -21,6 +21,9 @@ final class User: Model, Content, ModelSessionAuthenticatable {
     
     @Field(key: "techs")
     var techs: [Int]
+    
+    @Field(key: "visit_time")
+    var visited: Date
 
     // Reference to the user's layout
     @OptionalChild(for: \.$user)
@@ -36,6 +39,7 @@ final class User: Model, Content, ModelSessionAuthenticatable {
         self.resources = nil
         self.layout = nil
         self.score = score
+        self.visited = Date.now
     }
     
     init(_ request: AuthRequest) throws {

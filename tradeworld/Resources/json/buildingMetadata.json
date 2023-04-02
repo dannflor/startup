@@ -227,6 +227,12 @@
       
     ]
   },
+  "No House": {
+    "bonusDescription": "No bonus.",
+    "bonus": {},
+    "score": 0,
+    "yield": []
+  },
   "Palace" : {
     "bonusDescription": "The palace and nearby military buildings gain more of every resource.",
     "bonus": {

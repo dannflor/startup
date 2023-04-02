@@ -110,9 +110,7 @@ func routes(_ app: Application) throws {
     }
     
     loginProtected.get("resources") { req async throws -> [ResourceQty] in
-        guard let resource = try await req.auth.require(User.self).$resources.get(on: req.db) else {
-            throw Abort(.internalServerError)
-        }
+        let resource = try await Resource.compute(req)
         return [
             ResourceQty(name: .Wood, count: resource.wood),
             ResourceQty(name: .Stone, count: resource.stone),
@@ -146,7 +144,7 @@ func decodeFile<T: Decodable>(req: Request, _ file: String, _ type: T.Type) -> T
         return nil
     }
     guard let resource = try? JSONDecoder().decode(type, from: data) else {
-        print("Data not decodable")
+        print("Data not decodable at \(file)")
         return nil
     }
     return resource

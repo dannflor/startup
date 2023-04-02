@@ -1,11 +1,17 @@
 import Vapor
 
-enum Building: String, Content {
+enum Building: String, CaseIterable, Content {
     case Academy, Armory, Blacksmith, Carpenter, Cottage, Estate, Farm, Fishery, Forest, Fort, Guild, House, LumberCamp, Mine, Mountain, NoHouse, Palace, Pasture, Quarry, Tower, University, Water, Watermill, Windmill
     
     static var terrainTypes: [Building] {
         get {
             return [.Forest, .Mountain, .Water, .NoHouse]
+        }
+    }
+    
+    var index: Int {
+        get {
+            return Building.allCases.firstIndex(of: self)!
         }
     }
 
@@ -67,8 +73,45 @@ enum Building: String, Content {
           self = .NoHouse
       }
     }
+
+    public func yield(neighbors: [Building], techs: [Tech], req: Request) -> [ResourceQty] {
+        // Iterate over each neighbor and aggregate their return ResourceQty arrays
+        let bonuses = neighbors.map {
+            return bonus(recipient: $0, techs: techs, req: req)
+        }.reduce ([ResourceQty]()) {
+            return $0.add($1)
+        }
+        // Get the yield for this building
+        let yield = getMetadata(req: req).yield
+        // Add the bonuses to the yield
+        return yield.add(bonuses)
+    }
+
+    public func bonus(recipient: Building, techs: [Tech], req: Request) -> [ResourceQty] {
+        var bonuses = [ResourceQty]()
+        for tech in techs {
+            for effect in tech.effects {
+                guard effect.building == self else {
+                    continue
+                }
+                guard let bonus = effect.bonus[recipient.rawValue] else {
+                    continue
+                }
+                bonuses = bonuses.add(bonus)
+            }
+        }
+        return bonuses
+    }
+
+    public func getMetadata(req: Request) -> BuildingMetadata {
+        guard let buildings = decodeFile(req: req, "buildingMetadata", [String: BuildingMetadata].self) else {
+            return BuildingMetadata(yield: [], bonus: [:], bonusDescription: "", score: 0)
+        }
+        return buildings[self.rawValue] ?? BuildingMetadata(yield: [], bonus: [:], bonusDescription: "", score: 0)
+    }
     
-    static func getNeighbors(index: Int) -> (Int?, Int?, Int?, Int?) {
+    
+    static func getNeighbors(_ index: Int) -> (Int?, Int?, Int?, Int?) {
         switch (index) {
             case 0:
               return (nil, nil, 1, 2)
@@ -172,5 +215,19 @@ enum Building: String, Content {
             default:
               return (nil, nil, nil, nil)
         }
+    }
+}
+
+extension Array where Element == ResourceQty {
+    func add(_ other: [ResourceQty]) -> [ResourceQty] {
+        var result = self
+        for qty in other {
+            if let index = result.firstIndex(where: { $0.name == qty.name }) {
+                result[index] = ResourceQty(name: qty.name, count: result[index].count + qty.count)
+            } else {
+                result.append(qty)
+            }
+        }
+        return result
     }
 }

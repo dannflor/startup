@@ -1,5 +1,6 @@
 import Vapor
 import Fluent
+import FluentSQL
 
 struct CreateUser: AsyncMigration {
     func prepare(on database: Database) async throws {
@@ -52,6 +53,19 @@ struct AddTechToUser: AsyncMigration {
     func revert(on database: Database) async throws {
         try await database.schema(User.schema)
             .deleteField("techs")
+            .update()
+    }
+}
+
+struct AddTimestampToUser: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database.schema(User.schema)
+            .field("visit_time", .datetime, .required, .sql(.default(SQLRaw("CURRENT_TIMESTAMP"))))
+            .update()
+    }
+    func revert(on database: Database) async throws {
+        try await database.schema(User.schema)
+            .deleteField("visit_time")
             .update()
     }
 }

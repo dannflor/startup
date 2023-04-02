@@ -67,7 +67,55 @@ final class Resource: Model, Content {
             }
         }
     }
+    
+    public static func compute(_ req: Request) async throws -> Resource {
+        guard let resource = try await req.auth.require(User.self).$resources.get(on: req.db) else {
+            throw Abort(.internalServerError)
+        }
+        guard let layout = try await req.auth.require(User.self).$layout.get(on: req.db)?.layout else {
+            throw Abort(.internalServerError)
+        }
+        let techs = try Tech.lookup(req)
+
+        let timeElapsed = try Date().timeIntervalSince(req.auth.require(User.self).visited)
+
+        for (index, building) in layout.enumerated() {
+            let neighborsOpt = Building.getNeighbors(index)
+            var neighbors: [Int] = []
+            if let first = neighborsOpt.0 {
+                neighbors.append(first)
+            }
+            if let second = neighborsOpt.1 {
+                neighbors.append(second)
+            }
+            if let third = neighborsOpt.2 {
+                neighbors.append(third)
+            }
+            if let fourth = neighborsOpt.3 {
+                neighbors.append(fourth)
+            }
+            let neighborsBuildings = neighbors.map { layout[$0] }
+
+           
+            let yieldPerHour = building.yield(neighbors: neighborsBuildings, techs: techs, req: req)
+            let hoursElapsed = timeElapsed / 3600
+            let yield = yieldPerHour.map { ResourceQty(name: $0.name, count: Int((Double($0.count) * hoursElapsed).rounded(.up))) }
+            resource.addResources(resources: yield)
+        }
+        // Put the resource back in the database
+        try await resource.save(on: req.db)
+        return resource
+    }
+    
+
+    private func addResources(resources: [ResourceQty]) {
+        for resource in resources {
+            self[resource.name] += resource.count
+        }
+    }
 }
+
+
 
 enum ResourceType: String, Codable {
     case Wood, Stone, Gold, Iron, Food

@@ -28,7 +28,7 @@ func buildingController(building: RoutesBuilder) {
         guard let building = Building(rawValue: request.buildingName) else {
             throw Abort(.badRequest)
         }
-        guard var layout = try await req.auth.require(User.self).$layout.get(on: req.db) else {
+        guard let layout = try await req.auth.require(User.self).$layout.get(on: req.db) else {
             throw Abort(.internalServerError)
         }
         guard let buildings = decodeFile(req: req, "buildings", [BuildingResponse].self) else {
@@ -54,10 +54,10 @@ func buildingController(building: RoutesBuilder) {
     }
     building.post("destroy") { req async throws -> HTTPStatus in
         let request = try req.content.decode(BuildingRequest.self)
-        guard let building = Building(rawValue: request.buildingName) else {
+        guard Building(rawValue: request.buildingName) != nil else {
             throw Abort(.badRequest)
         }
-        guard var layout = try await req.auth.require(User.self).$layout.get(on: req.db) else {
+        guard let layout = try await req.auth.require(User.self).$layout.get(on: req.db) else {
             throw Abort(.internalServerError)
         }
         guard let buildings = decodeFile(req: req, "buildings", [BuildingResponse].self) else {
