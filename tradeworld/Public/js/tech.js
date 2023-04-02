@@ -1,12 +1,12 @@
 import fadeAway from "./fadeAway.js";
-import populateResources from "./populateResources.js";
+import {populateResources, updateResources} from "./populateResources.js";
 
 class Tech {
   constructor(tech) {
     this.id = tech.id;
-    this.name = tech.title;
+    this.title = tech.title;
     this.description = tech.description;
-    this.price = tech.price;
+    this.price = tech.price[0].count + " " + tech.price[0].name;
   }
 }
 
@@ -14,8 +14,9 @@ loadTechList();
 
 async function loadTechList() {
   const techList = document.getElementById("techList");
-  const techs = await fetch("/tech/unresearched").then((res) => res.json());
-  techs.map(tech => new Tech(tech));
+  let techs = await fetch("/tech/unresearched").then((res) => res.json());
+  techs = techs.map(tech => new Tech(tech));
+  console.log(techs);
   /*
   #for(tech in techs):
     <li id="cell#(tech.id)" class="mb-4 max-h-36 min-h-[5rem] sm:w-[32rem] w-[21.5rem] border-2 border-primary hover:border-primary-focus rounded-xl flex p-2 flex-row">
@@ -47,7 +48,7 @@ async function loadTechList() {
     const input = document.createElement("input");
     input.setAttribute("type", "checkbox");
     input.setAttribute("class", "checkbox hover:checkbox-accent sm:checkbox-md checkbox-sm flex my-auto sm:ml-4 ml-2");
-    input.onclick = () => researchTech(tech);
+    input.onclick = () => researchTech(tech, input);
     const div = document.createElement("div");
     div.setAttribute("class", "my-auto flex-col ml-4");
     const div2 = document.createElement("div");
@@ -78,11 +79,19 @@ async function loadTechList() {
   });
 }
 
-async function researchTech(tech) {
+async function researchTech(tech, input) {
+  let res = await fetch("/tech/researchable/" + tech.id);
+  res = await res.json();
+  if (!res) {
+    input.checked = false;
+    alert("You don't have enough resources to research this technology!");
+    return;
+  }
   fadeAway("cell" + tech.id);
   await fetch("/tech/research/" + tech.id, {
     method: "POST"
   });
+  await updateResources();
 }
 
 await populateResources();

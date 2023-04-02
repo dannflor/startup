@@ -1,5 +1,5 @@
 import fadeAway from "./fadeAway.js";
-import populateResources from "./populateResources.js";
+import {populateResources, updateResources} from "./populateResources.js";
 
 class Trade {
   constructor(trade) {

@@ -7,7 +7,7 @@
       { "name": "Gold", "count": 30 }
     ],
     "effects": [],
-    "techUnlocks": [17],
+    "techUnlocks": [14],
     "buildingUnlocks": ["Academy"]
   },
   {
@@ -18,7 +18,7 @@
       { "name": "Gold", "count": 15 }
     ],
     "effects": [],
-    "techUnlocks": [8],
+    "techUnlocks": [6],
     "buildingUnlocks": ["Armory"]
   },
   {
@@ -40,11 +40,11 @@
       { "name": "Gold", "count": 15 }
     ],
     "effects": [],
-    "techUnlocks": [9],
+    "techUnlocks": [7],
     "buildingUnlocks": ["Carpenter"]
   },
   {
-    "id": 5,
+    "id": 4,
     "title": "A modest mansion",
     "description": "Unlocks the estate.",
     "price": [
@@ -55,62 +55,62 @@
     "buildingUnlocks": ["Estate"]
   },
   {
-    "id": 7,
+    "id": 5,
     "title": "Sitting on the dock",
     "description": "Unlocks the fishery.",
     "price": [
       { "name": "Wood", "count": 15 }
     ],
     "effects": [],
-    "techUnlocks": [23],
+    "techUnlocks": [17, 21],
     "buildingUnlocks": ["Fishery"]
   },
   {
-    "id": 8,
+    "id": 6,
     "title": "A safe fortress",
     "description": "Unlocks the fort.",
     "price": [
       { "name": "Gold", "count": 20 }
     ],
     "effects": [],
-    "techUnlocks": [13],
+    "techUnlocks": [10],
     "buildingUnlocks": ["Fort"]
   },
   {
-    "id": 9,
+    "id": 7,
     "title": "Craftsmen and merchants",
     "description": "Unlocks the guild.",
     "price": [
       { "name": "Gold", "count": 15 }
     ],
     "effects": [],
-    "techUnlocks": [5, 16],
+    "techUnlocks": [4, 13],
     "buildingUnlocks": ["Guild"]
   },
   {
-    "id": 10,
+    "id": 8,
     "title": "A new home",
     "description": "Unlocks the house.",
     "price": [
       { "name": "Gold", "count": 10 }
     ],
     "effects": [],
-    "techUnlocks": [18, 19],
+    "techUnlocks": [15, 16],
     "buildingUnlocks": ["House"]
   },
   {
-    "id": 12,
+    "id": 9,
     "title": "Tunnels and caves",
     "description": "Unlocks the mine.",
     "price": [
       { "name": "Wood", "count": 10 }
     ],
     "effects": [],
-    "techUnlocks": [7, 15],
+    "techUnlocks": [5, 12],
     "buildingUnlocks": ["Mine"]
   },
   {
-    "id": 13,
+    "id": 10,
     "title": "Throne room",
     "description": "Unlocks the palace.",
     "price": [
@@ -121,7 +121,7 @@
     "buildingUnlocks": ["Palace"]
   },
   {
-    "id": 14,
+    "id": 11,
     "title": "Herding the sheep",
     "description": "Unlocks the pasture.",
     "price": [
@@ -132,7 +132,7 @@
     "buildingUnlocks": ["Pasture"]
   },
   {
-    "id": 15,
+    "id": 12,
     "title": "Rock pit",
     "description": "Unlocks the quarry.",
     "price": [
@@ -143,7 +143,7 @@
     "buildingUnlocks": ["Quarry"]
   },
   {
-    "id": 16,
+    "id": 13,
     "title": "The watchman",
     "description": "Unlocks the tower.",
     "price": [
@@ -154,7 +154,7 @@
     "buildingUnlocks": ["Tower"]
   },
   {
-    "id": 17,
+    "id": 14,
     "title": "Higher education",
     "description": "Unlocks the university.",
     "price": [
@@ -165,7 +165,7 @@
     "buildingUnlocks": ["University"]
   },
   {
-    "id": 18,
+    "id": 15,
     "title": "Water power",
     "description": "Unlocks the watermill.",
     "price": [
@@ -176,7 +176,7 @@
     "buildingUnlocks": ["Watermill"]
   },
   {
-    "id": 19,
+    "id": 16,
     "title": "Air power",
     "description": "Unlocks the windmill.",
     "price": [
@@ -187,7 +187,7 @@
     "buildingUnlocks": ["Windmill"]
   },
   {
-    "id": 20,
+    "id": 17,
     "title": "Driftwood",
     "description": "The fishery now produces wood.",
     "price": [
@@ -203,11 +203,11 @@
         "bonus": {}
       }
     ],
-    "techUnlocks": [],
+    "techUnlocks": [20],
     "buildingUnlocks": []
   },
   {
-    "id": 21,
+    "id": 18,
     "title": "Silver crown",
     "description": "All nearby buildings gain more of every resource.",
     "price": [
@@ -341,11 +341,11 @@
         }
       }
     ],
-    "techUnlocks": [],
+    "techUnlocks": [19],
     "buildingUnlocks": []
   },
   {
-    "id": 22,
+    "id": 19,
     "title": "Golden crown",
     "description": "The palace and all nearby buildings gain more of all resources.",
     "price": [
@@ -510,7 +510,7 @@
     "buildingUnlocks": []
   },
   {
-    "id": 23,
+    "id": 20,
     "title": "Fishing net",
     "description": "The fishery now produces more food.",
     "price": [
@@ -530,7 +530,7 @@
     "buildingUnlocks": []
   },
   {
-    "id": 24,
+    "id": 21,
     "title": "Home gardening",
     "description": "Homes now produce food.",
     "price": [

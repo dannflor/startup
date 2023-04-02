@@ -140,7 +140,6 @@ extension String {
 
 func decodeFile<T: Decodable>(req: Request, _ file: String, _ type: T.Type) -> T? {
     let urlString = req.application.directory.resourcesDirectory + "json/\(file).json"
-    print(urlString)
     // Read in data at urlString
     guard let data = FileManager.default.contents(atPath: urlString) else {
         print("File not found")
