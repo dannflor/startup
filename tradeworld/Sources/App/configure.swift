@@ -15,7 +15,7 @@ public func configure(_ app: Application) throws {
     app.middleware.use(app.sessions.middleware)
     app.middleware.use(User.sessionAuthenticator())
     
-    app.migrations.add(CreateUser(), CreateResource(), AddScoreToUser(), SessionRecord.migration, CreateLayout(), RecreateResource(), AddTechToUser(), AddTimestampToUser())
+    app.migrations.add(CreateUser(), CreateResource(), AddScoreToUser(), SessionRecord.migration, CreateLayout(), RecreateResource(), AddTechToUser(), AddTimestampToUser(), CreateTrade(), CreateAsk(), CreateOffer())
 
     app.views.use(.leaf)
 

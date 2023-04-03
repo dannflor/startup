@@ -7,27 +7,28 @@ func tradeController(trade: RoutesBuilder) {
         return try await req.view.render("trade")
     }
     
-    trade.get("all") { req async throws -> [Trade] in
-        var trades: [Trade] = []
-        let arr = Array(1...10)
-        for element in arr {
-            let trade =
-                Trade(
-                    id: element,
-                    seller: "Seller ID \(element)",
-                    message: "Message from seller Message from seller Message from seller Message from sellerMessage from seller Message from seller Message from seller \(element)",
-                    offer: ResourceQty(name: .Wood, count: 10),
-                    ask: ResourceQty(name: .Gold, count: 1)
-                )
-            trades.append(trade)
+    trade.get("all") { req async throws -> [TradeResponse] in
+        let trades = try await Trade.query(on: req.db).all()
+        var tradeResponses: [TradeResponse] = []
+        for trade in trades {
+            try await tradeResponses.append(TradeResponse(trade, req))
         }
-        return trades
+        return tradeResponses
     }
     
     trade.post("accept", ":id") { req async throws -> HTTPStatus in
         guard let _ = req.parameters.get("id") else {
             throw Abort(.badRequest)
         }
+        return .ok
+    }
+    
+    trade.post("add") { req async throws -> HTTPStatus in
+        let request = try req.content.decode(TradeResponse.self)
+        let trade = Trade(id: request.id, seller: request.seller, message: request.message)
+        try await trade.create(on: req.db)
+        try await trade.$offer.create(Offer(name: request.offer.name, count: request.offer.count, tradeId: trade.requireID()), on: req.db)
+        try await trade.$ask.create(Ask(name: request.ask.name, count: request.ask.count, tradeId: trade.requireID()), on: req.db)
         return .ok
     }
 }
