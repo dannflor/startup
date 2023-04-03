@@ -14,7 +14,8 @@ func tradeController(trade: RoutesBuilder) {
             for trade in trades {
                 try await tradeResponses.append(TradeResponse(trade, req))
             }
-            try await ws.send(String(decoding: JSONEncoder().encode(tradeResponses), as: UTF8.self))
+            let tradeSocketResponse = TradeSocketResponse(type: .addTrades, trades: tradeResponses)
+            try await ws.send(String(decoding: JSONEncoder().encode(tradeSocketResponse), as: UTF8.self))
         }
         catch {
             print(error)
