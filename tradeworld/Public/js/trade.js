@@ -9,14 +9,59 @@ class Trade {
     this.offer = trade.offer;
     this.ask = trade.ask;
   }
+
+  constructor(seller, message, offer, ask) {
+    this.seller = seller;
+    this.message = message;
+    this.offer = offer;
+    this.ask = ask;
+  }
 }
 
-loadTrades();
+class ResourceQty {
+  constructor(name, count) {
+    this.name = name;
+    this.count = count;
+  }
+}
 
-async function loadTrades() {
+class TradeResponse {
+  constructor(trade, type) {
+    this.trade = trade;
+    this.type = type;
+  }
+}
+
+let socket = null;
+
+function configureWebSocket() {
+  const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+  socket = new WebSocket(`${protocol}://${window.location.host}/trade/all`);
+  socket.onopen = (event) => {
+    console.log('connected');
+  };
+  socket.onclose = (event) => {
+    console.log('disconnected');
+  };
+  socket.onmessage = (event) => {
+    const msg = JSON.parse(event.data);
+    let trades = [];
+    if (msg.type === "addTrades") {
+      trades = msg.trades.map(trade => new Trade(trade));
+    }
+    loadTrades(trades);
+    // if (msg.type === GameEndEvent) {
+    //   this.displayTrade('player', msg.from, `scored ${msg.value.score}`);
+    // } else if (msg.type === GameStartEvent) {
+    //   this.displayTrade('player', msg.from, `started a new game`);
+    // }
+  };
+}
+
+async function loadTrades(trades) {
   const tradeList = document.getElementById("tradeList");
-  const trades = await fetch("/trade/all").then((res) => res.json());
-  trades.map(trade => new Trade(trade));
+  // const trades = await fetch("/trade/all").then((res) => res.json());
+  // trades.map(trade => new Trade(trade));
   /*
   #for(trade in trades):
     <li id="cell#(trade.id)" class="mb-4 max-h-36 min-h-[5rem] sm:w-[32rem] w-[21.5rem] border-2 border-primary hover:border-primary-focus rounded-xl flex p-2 flex-row">
@@ -100,4 +145,19 @@ async function acceptTrade(tradeId) {
   });
 }
 
+function sendTrade() {
+  let offerSelect = document.getElementById("offerSelect");
+  let askSelect = document.getElementById("askSelect");
+  let offerType = offerSelect.options[offerSelect.selectedIndex].text;
+  let offerCount = document.getElementById("offerCount").value;
+  let askType = askSelect.options[askSelect.selectedIndex].text;
+  let askCount = document.getElementById("askCount").value;
+  let message = document.getElementById("tradeMessage").value;
+  let username = fetch("/user/me").then((res) => res.json());
+  let trade = new Trade(username, message, new ResourceQty(offerType, offerCount), new ResourceQty(askType, askCount));
+  socket.send(JSON.stringify(new TradeResponse(trade, "addTrade")));
+}
+
 await populateResources();
+
+configureWebSocket();
