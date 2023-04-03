@@ -7,6 +7,9 @@ func userController(user: RoutesBuilder) {
         let users = try await User.query(on: req.db).all()
         return users
     }
+    user.get("me") { req throws -> User in
+        try req.auth.require(User.self)
+    }
     user.group(":name") { name in
         name.get { req async throws -> User in
             guard let username = req.parameters.get("name") else {
