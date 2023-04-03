@@ -14,6 +14,9 @@ final class Trade: Model {
     
     @Field(key: "message")
     var message: String
+
+    @Field(key: "created_at")
+    var createdAt: Date
     
     @OptionalChild(for: \.$trade)
     var offer: Offer?
@@ -21,7 +24,7 @@ final class Trade: Model {
     @OptionalChild(for: \.$trade)
     var ask: Ask?
     
-    init(id: UUID? = nil, seller: String, message: String) {
+    init(id: UUID? = nil, seller: String, message: String, createdAt: Date = Date.now) {
         self.id = id
         self.seller = seller
         self.message = message

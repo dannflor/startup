@@ -1,4 +1,5 @@
 import Fluent
+import FluentSQL
 
 struct CreateTrade: AsyncMigration {
     func prepare(on database: Database) async throws {
@@ -41,5 +42,19 @@ struct CreateAsk: AsyncMigration {
 
     func revert(on database: Database) async throws {
         try await database.schema(Ask.schema).delete()
+    }
+}
+
+struct AddTimestampToTrade: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database.schema(Trade.schema)
+            .field("created_at", .datetime, .required, .sql(.default(SQLRaw("CURRENT_TIMESTAMP"))))
+            .update()
+    }
+    
+    func revert(on database: Database) async throws {
+        try await database.schema(Trade.schema)
+            .deleteField("created_at")
+            .update()
     }
 }

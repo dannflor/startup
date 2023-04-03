@@ -6,14 +6,28 @@ func tradeController(trade: RoutesBuilder) {
     trade.get { req async throws -> View in
         return try await req.view.render("trade")
     }
-    
-    trade.get("all") { req async throws -> [TradeResponse] in
-        let trades = try await Trade.query(on: req.db).all()
-        var tradeResponses: [TradeResponse] = []
-        for trade in trades {
-            try await tradeResponses.append(TradeResponse(trade, req))
+
+    trade.webSocket("all") { req, ws async in
+        do {
+            let trades = try await Trade.query(on: req.db).all()
+            var tradeResponses: [TradeResponse] = []
+            for trade in trades {
+                try await tradeResponses.append(TradeResponse(trade, req))
+            }
+            try await ws.send(String(decoding: JSONEncoder().encode(tradeResponses), as: UTF8.self))
         }
-        return tradeResponses
+        catch {
+            print(error)
+        }
+        
+        ws.onText { ws, text async in
+            do {
+                try await ws.send(text)
+            }
+            catch {
+                print(error)
+            }
+        }
     }
     
     trade.post("accept", ":id") { req async throws -> HTTPStatus in
