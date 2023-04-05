@@ -164,9 +164,12 @@ async function loadTrades(trades, remove) {
 
 async function acceptTrade(trade) {
   const resources = await fetch('/resources').then(res => res.json());
-  if (resources[trade.ask.name] < trade.ask.count) {
-    alert("You don't have enough " + trade.ask.name + " to accept this trade!");
-    return;
+  for (let i = 0; i < resources.length; i++) {
+    if (resources[i].name === trade.ask.name && resources[i].count < trade.ask.count) {
+      alert("You don't have enough " + trade.ask.name + " to accept this trade!");
+      document.getElementById("cell" + trade.id).children[0].checked = false;
+      return;
+    }
   }
   socket.sendJsonBlob(new TradeResponse(trade, "acceptTrade"));
   setTimeout(async () => {
