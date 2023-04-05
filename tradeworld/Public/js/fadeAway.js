@@ -5,6 +5,6 @@ export default function fadeAway(id) {
   element.addEventListener("animationend", function() {
     setTimeout(function() {
       element.classList.add("hidden");
-    }, 200);
+    }, 300);
   });
 }

@@ -66,16 +66,26 @@ function configureWebSocket() {
     const msg = await blobToJson(event.data);
     if (msg.type === "addTrades") {
       trades = msg.trades.map(trade => new Trade(trade));
+      loadTrades(trades, false);
     }
     else if (msg.type === "removeTrades") {
       trades = trades.filter(trade => !msg.trades.includes(trade.id));
+      loadTrades(trades, true);
     }
-    loadTrades(trades);
   };
 }
 
-async function loadTrades(trades) {
+async function loadTrades(trades, remove) {
   const tradeList = document.getElementById("tradeList");
+  if (remove) {
+    tradeList.childNodes.forEach(child => {
+      if (trades.map(trade => 'cell' + trade.id).includes(child.id)) {
+        fadeAway(child.id);
+        setTimeout(() => child.remove(), 500);
+      }
+    });
+    return;
+  }
   /*
   #for(trade in trades):
     <li id="cell#(trade.id)" class="mb-4 max-h-36 min-h-[5rem] sm:w-[32rem] w-[21.5rem] border-2 border-primary hover:border-primary-focus rounded-xl flex p-2 flex-row">
@@ -153,9 +163,7 @@ async function loadTrades(trades) {
 }
 
 async function acceptTrade(trade) {
-  fadeAway("cell" + trade.id);
   socket.sendJsonBlob(new TradeResponse(trade, "acceptTrade"));
-  
 }
 
 async function sendTrade() {
