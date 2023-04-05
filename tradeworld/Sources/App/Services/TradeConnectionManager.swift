@@ -47,6 +47,7 @@ public final class TradeConnectionManager {
     }
 
     func connect(_ ws: WebSocket) {
+        ws.pingInterval = .seconds(10)
         ws.onText { ws, text async in
             print(text)
         }
@@ -65,7 +66,10 @@ public final class TradeConnectionManager {
                         try await tradeResponses.append(TradeResponse(trade, db))
                     }
                     let tradeSocketResponse = TradeSocketResponse(type: .addTrades, trades: tradeResponses)
-                    try await ws.send([UInt8](JSONEncoder().encode(tradeSocketResponse)))
+                    // Send response to every client in the dictionary
+                    for (_, ws) in self.connections {
+                        try await ws.send([UInt8](JSONEncoder().encode(tradeSocketResponse)))
+                    }
                 }
                 catch {
                     print(error)
@@ -82,7 +86,9 @@ public final class TradeConnectionManager {
                         try await trade.$ask.create(Ask(name: msg.data.trade.ask.name, count: msg.data.trade.ask.count, tradeId: trade.requireID()), on: db)
                         let tradeResponse = try await TradeResponse(trade, db)
                         let tradeSocketResponse = TradeSocketResponse(type: .addTrades, trades: [tradeResponse])
-                        try await ws.send([UInt8](JSONEncoder().encode(tradeSocketResponse)))
+                        for (_, ws) in self.connections {
+                            try await ws.send([UInt8](JSONEncoder().encode(tradeSocketResponse)))
+                        }
                     case .acceptTrade:
                         guard let trade = try await Trade.find(msg.data.trade.id, on: db) else {
                             throw Abort(.badRequest)
@@ -96,7 +102,9 @@ public final class TradeConnectionManager {
                         let tradeResponse = try await TradeResponse(trade, db)
                         try await trade.delete(on: db)
                         let tradeSocketResponse = TradeSocketResponse(type: .removeTrades, trades: [tradeResponse])
-                        try await ws.send([UInt8](JSONEncoder().encode(tradeSocketResponse)))
+                        for (_, ws) in self.connections {
+                            try await ws.send([UInt8](JSONEncoder().encode(tradeSocketResponse)))
+                        }
                     }
                 }
                 catch {
@@ -105,6 +113,14 @@ public final class TradeConnectionManager {
                 
             }
 
+        }
+
+        ws.onClose.whenComplete { [unowned self] _ in
+            for (key, value) in self.connections {
+                if value === ws {
+                    self.connections.removeValue(forKey: key)
+                }
+            }
         }
     }
 
