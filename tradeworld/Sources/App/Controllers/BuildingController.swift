@@ -7,9 +7,6 @@ func buildingController(building: RoutesBuilder) {
             throw Abort(.internalServerError)
         }
         let techs = try Tech.lookup(req)
-        for tech in techs {
-            print(tech.title)
-        }
         let buildingNames = techs.reduce([]) { addedTechs, tech in
             addedTechs + tech.buildingUnlocks.reduce([]) { addedBuildings, buildingName in
                 addedBuildings + [buildingName]
@@ -58,13 +55,7 @@ func buildingController(building: RoutesBuilder) {
             neighbors.append(fourth)
         }
         let neighborsBuildings = neighbors.map { layout[$0] }
-        for building in neighborsBuildings {
-            print(building.rawValue)
-        }
         let yield = layout[index].yield(neighbors: neighborsBuildings, techs: try Tech.lookup(req), req: req)
-        for item in yield {
-            print("\(item.count) \(item.name)")
-        }
         return yield
     }
     building.post("build") { req async throws -> Bool in

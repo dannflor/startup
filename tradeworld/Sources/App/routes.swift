@@ -13,31 +13,6 @@ func routes(_ app: Application) throws {
         try await req.view.render("login")
     }
     
-    app.webSocket("ws") { req, ws in
-        print("Connected")
-        do {
-            try await ws.send("Test")
-        } catch {
-            print(error)
-        }
-        
-        // req.tradeConnectionManager.client.connect(ws)
-        ws.onText { ws, text in
-            print(text)
-        }
-        
-        ws.onPing { ws in
-            print("Ping")
-        }
-        ws.onPong { ws in
-            print("Pong")
-        }
-
-        ws.onClose.whenComplete { _ in
-            print("Closed")
-        }
-    }
-    
     app.post("register") { req async throws in
         let register = try req.content.decode(AuthRequest.self)
         let user = try User(register)
