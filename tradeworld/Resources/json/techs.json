@@ -564,5 +564,14 @@
     ],
     "techUnlocks": [],
     "buildingUnlocks": []
+  },
+  {
+    "id": 22,
+    "title": "Default",
+    "description": "",
+    "price": [],
+    "effects": [],
+    "techUnlocks": [2, 9, 11, 12],
+    "buildingUnlocks": ["Lumber Camp", "Cottage", "Farm"]
   }
 ]
