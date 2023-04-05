@@ -24,6 +24,7 @@ export async function populateResources() {
 
 export async function updateResources() {
   const resources = await fetch('/resources').then(res => res.json());
+  document.getElementById('score').textContent = await fetch('/score').then(res => res.text());
   resources.forEach(resource => {
     document.getElementById('resource' + resource.name).textContent = resource.count;
   });

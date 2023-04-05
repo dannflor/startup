@@ -6,7 +6,20 @@ func buildingController(building: RoutesBuilder) {
         guard let buildings = decodeFile(req: req, "buildings", [BuildingResponse].self) else {
             throw Abort(.internalServerError)
         }
-        return buildings
+        let techs = try Tech.lookup(req)
+        let buildingNames = techs.reduce([]) { addedTechs, tech in
+            addedTechs + tech.buildingUnlocks.reduce([]) { addedBuildings, buildingName in
+                addedBuildings + [buildingName]
+            }
+        }
+        var response: [BuildingResponse] = []
+        // get building responses that have a name property matching a Building.rawValue in buildingNames
+        for building in buildings {
+            if buildingNames.contains(.init(rawValue: building.name) ?? .NoHouse) {
+                response.append(building)
+            }
+        }
+        return response
     }
     building.get(":name") { req async throws -> BuildingResponse in
         guard let name = req.parameters.get("name") else {
