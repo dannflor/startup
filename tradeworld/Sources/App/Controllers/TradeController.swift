@@ -9,18 +9,7 @@ func tradeController(trade: RoutesBuilder) {
     }
 
     trade.webSocket("all") { req, ws async in
-        print("Connected")
-        do {
-            try await ws.send("Hello")
-        } catch {
-            print(error)
-        }
-        
-//        req.tradeConnectionManager.client.connect(ws)
-        ws.onText { ws, text in
-            print(text)
-            ws.send("Recieved")
-        }
+        req.tradeConnectionManager.client.connect(ws)
     }
     
     trade.post("accept", ":id") { req async throws -> HTTPStatus in
@@ -38,8 +27,6 @@ func tradeController(trade: RoutesBuilder) {
         try await trade.$ask.create(Ask(name: request.ask.name, count: request.ask.count, tradeId: trade.requireID()), on: req.db)
         return .ok
     }
-
-    
 }
 
 

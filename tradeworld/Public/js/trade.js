@@ -27,6 +27,7 @@ class TradeResponse {
 
 WebSocket.prototype.sendJsonBlob = function(data) {
   const string = JSON.stringify({ client: uuid, data: data })
+  console.log(string)
   const blob = new Blob([string], {type: "application/json"});
   this.send(blob)
 };
@@ -48,30 +49,28 @@ function uuidv4() {
 const uuid = uuidv4()
 let socket = null;
 
+let trades = [];
 function configureWebSocket() {
   const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
   socket = new WebSocket(`${protocol}://${window.location.host}/trade/all`);
+  socket.binaryType = 'blob';
   socket.onopen = (event) => {
     console.log('connected');
-    // socket.sendJsonBlob({connect: true});
-    socket.send('hello');
+    socket.sendJsonBlob({connect: true});
   };
   socket.onclose = (event) => {
     console.log('disconnected ' + event.code);
   };
   socket.onmessage = async (event) => {
-    console.log(event.data);
+    // console.log(event.data);
     const msg = await blobToJson(event.data);
-    let trades = [];
     if (msg.type === "addTrades") {
       trades = msg.trades.map(trade => new Trade(trade));
     }
-    loadTrades(trades);
-    if (msg.type === GameEndEvent) {
-      this.displayTrade('player', msg.from, `scored ${msg.value.score}`);
-    } else if (msg.type === GameStartEvent) {
-      this.displayTrade('player', msg.from, `started a new game`);
+    else if (msg.type === "removeTrades") {
+      trades = trades.filter(trade => !msg.trades.includes(trade.id));
     }
+    loadTrades(trades);
   };
 }
 
@@ -160,16 +159,17 @@ async function acceptTrade(tradeId) {
   });
 }
 
-function sendTrade() {
+async function sendTrade() {
   let offerSelect = document.getElementById("offerResource");
   let askSelect = document.getElementById("askResource");
   let offerType = offerSelect.options[offerSelect.selectedIndex].text;
-  let offerCount = document.getElementById("offerCount").value;
+  let offerCount = parseInt(document.getElementById("offerCount").value);
   let askType = askSelect.options[askSelect.selectedIndex].text;
-  let askCount = document.getElementById("askCount").value;
+  let askCount = parseInt(document.getElementById("askCount").value);
   let message = document.getElementById("tradeMessage").value;
-  let username = fetch("/user/me").then((res) => res.text());
+  let username = await fetch("/user/me").then((res) => res.text());
   let trade = {
+    id: null,
     seller: username,
     offer: {
       name: offerType,
@@ -182,8 +182,7 @@ function sendTrade() {
     message: message
   }
   console.log("Sending trade");
-  // socket.sendJsonBlob(new TradeResponse(trade, "addTrade"));
-  socket.send("Hello");
+  socket.sendJsonBlob(new TradeResponse(trade, "addTrade"));
   console.log("Sent trade");
 }
 
