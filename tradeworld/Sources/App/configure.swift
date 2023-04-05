@@ -19,10 +19,10 @@ public func configure(_ app: Application) throws {
         CreateAsk(), CreateOffer(), AddTimestampToTrade())
 
     app.views.use(.leaf)
-    app.http.server.configuration.tlsConfiguration = .makeServerConfiguration(
-        certificateChain: try NIOSSLCertificate.fromPEMFile(app.directory.resourcesDirectory + "cert/signed_certificate.pem").map { .certificate($0) },
-        privateKey: .file(app.directory.resourcesDirectory + "cert/private_key.pem")
-    )
+    // app.http.server.configuration.tlsConfiguration = .makeServerConfiguration(
+    //     certificateChain: try NIOSSLCertificate.fromPEMFile(app.directory.resourcesDirectory + "cert/signed_certificate.pem").map { .certificate($0) },
+    //     privateKey: .file(app.directory.resourcesDirectory + "cert/private_key.pem")
+    // )
     app.tradeConnectionManager.client = .init(app: app)
 
     // register routes
