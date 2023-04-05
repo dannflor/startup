@@ -20,7 +20,7 @@ const res = fetch('/grid').then(res =>
       gridCell.setAttribute('for', 'grid-cell-modal');
       //randomNum between 1 and 3
       const randomNum = Math.floor(Math.random() * 3) + 1;
-      gridCell.style.setProperty('--ground-image', "url('/img/ground" + randomNum + ".png')");
+      gridCell.style.setProperty('--ground-image', "url('/img/Ground" + randomNum + ".png')");
      
       let img = document.createElement('img');
       img.setAttribute('src', '/img/' + pictureForBuilding(cell.name));
@@ -177,6 +177,20 @@ function pictureForBuilding(building) {
 }
 
 async function buildBuilding(building, index, element) {
+  // alert if not enough resources
+  const resources = await fetch('/resources').then(res => res.json());
+  console.log(building.cost);
+  for (let i = 0; i < building.cost.length; i++) {
+    // console.log(resources[i].count + ' ' + resources[i].name + ' ' + building.cost[i].count + ' ' + building.cost[i].name)
+    for (let j = 0; j < resources.length; j++) {
+      if (building.cost[i].name === resources[j].name) {
+        if (building.cost[i].count > resources[j].count) {
+          alert('Not enough resources!');
+          return;
+        }
+      }
+    }
+  }
   console.log('building ' + building.name + ' at ' + index);
   const buildingData = {
     buildingName: building.name,
@@ -196,6 +210,9 @@ async function buildBuilding(building, index, element) {
   
   building.index = index;
   element.onclick = () => { editBuildMenu(building, element) };
+  setTimeout(async () => {
+    await updateResources();
+  }, 2000);
 }
 
 async function destroyBuilding(building, index, element) {
@@ -220,4 +237,7 @@ async function destroyBuilding(building, index, element) {
   let newBuilding = new Building('', 0, false);
   newBuilding.index = index;
   element.onclick = () => { editBuildMenu(newBuilding, element) };
+  setTimeout(async () => {
+    await updateResources();
+  }, 2000);
 }

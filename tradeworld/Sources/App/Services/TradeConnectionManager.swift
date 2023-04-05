@@ -55,12 +55,12 @@ public final class TradeConnectionManager {
             return
         }
         try await db.transaction { [unowned self] transaction in
-            guard var sellerResources = try await User.query(on: transaction).filter(\.$username == trade.seller).first()?.$resources.get(on: transaction) else {
+            guard let sellerResources = try await User.query(on: transaction).filter(\.$username == trade.seller).first()?.$resources.get(on: transaction) else {
                 throw Abort(.badRequest)
             }
             sellerResources[ask.name] += ask.count
             try await sellerResources.save(on: transaction)
-            guard var userResources = try await self.users[recipient]?.$resources.get(on: transaction) else {
+            guard let userResources = try await self.users[recipient]?.$resources.get(on: transaction) else {
                 throw Abort(.badRequest)
             }
             guard userResources[ask.name] - ask.count > 0 else {
@@ -108,7 +108,7 @@ public final class TradeConnectionManager {
                     case .addTrade:
                         print("Adding trade")
                         let trade = Trade(seller: msg.data.trade.seller, message: msg.data.trade.message)
-                        guard var userResources = try await User.query(on: db).filter(\.$username == msg.data.trade.seller).first()?.$resources.get(on: db) else {
+                        guard let userResources = try await User.query(on: db).filter(\.$username == msg.data.trade.seller).first()?.$resources.get(on: db) else {
                             throw Abort(.badRequest)
                         }
                         guard userResources[msg.data.trade.offer.name] - msg.data.trade.offer.count > 0 else {

@@ -91,7 +91,9 @@ async function researchTech(tech, input) {
   await fetch("/tech/research/" + tech.id, {
     method: "POST"
   });
-  await updateResources();
+  setTimeout(async () => {
+    await updateResources();
+  }, 2000);
 }
 
 await populateResources();

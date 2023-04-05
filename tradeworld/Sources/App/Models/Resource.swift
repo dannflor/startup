@@ -96,12 +96,20 @@ final class Resource: Model, Content {
             }
             let neighborsBuildings = neighbors.map { layout[$0] }
 
-           
             let yieldPerHour = building.yield(neighbors: neighborsBuildings, techs: techs, req: req)
             let hoursElapsed = timeElapsed / 3600
-            let yield = yieldPerHour.map { ResourceQty(name: $0.name, count: Int((Double($0.count) * hoursElapsed).rounded(.up))) }
+            let yield = yieldPerHour.map { ResourceQty(name: $0.name, count: Int((Double($0.count) * hoursElapsed).rounded())) }
+            for resource in yield {
+                if resource.count > 0 {
+                    print("Yielded \(resource.count) \(resource.name)")
+                    print(hoursElapsed)
+                }
+            }
             resource.addResources(resources: yield)
         }
+        let user = try req.auth.require(User.self)
+        user.visited = Date.now
+        try await user.save(on: req.db)
         // Put the resource back in the database
         try await resource.save(on: req.db)
         return resource

@@ -184,9 +184,11 @@ async function sendTrade() {
   const message = document.getElementById("tradeMessage").value;
   const username = await fetch("/user/me").then((res) => res.text());
   const resources = await fetch('/resources').then(res => res.json());
-  if (resources[offerType] < offerCount) {
-    alert("You don't have enough " + offerType + " to make this trade!");
-    return;
+  for (let i = 0; i < resources.length; i++) {
+    if (resources[i].name === offerType && resources[i].count < offerCount) {
+      alert("You don't have enough " + offerType + " to make this trade!");
+      return;
+    }
   }
   const trade = {
     id: null,

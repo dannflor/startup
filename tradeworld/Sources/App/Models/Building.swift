@@ -1,7 +1,7 @@
 import Vapor
 
 enum Building: String, CaseIterable, Content {
-    case Academy, Armory, Blacksmith, Carpenter, Cottage, Estate, Farm, Fishery, Forest, Fort, Guild, House, LumberCamp, Mine, Mountain, NoHouse, Palace, Pasture, Quarry, Tower, University, Water, Watermill, Windmill
+    case Academy, Armory, Blacksmith, Carpenter, Cottage, Estate, Farm, Fishery, Forest, Fort, Guild, House, LumberCamp = "Lumber Camp", Mine, Mountain, NoHouse, Palace, Pasture, Quarry, Tower, University, Water, Watermill, Windmill
     
     static var terrainTypes: [Building] {
         get {
@@ -105,6 +105,7 @@ enum Building: String, CaseIterable, Content {
 
     public func getMetadata(req: Request) -> BuildingMetadata {
         guard let buildings = decodeFile(req: req, "buildingMetadata", [String: BuildingMetadata].self) else {
+            print("Could not decode")
             return BuildingMetadata(yield: [], bonus: [:], bonusDescription: "", score: 0)
         }
         return buildings[self.rawValue] ?? BuildingMetadata(yield: [], bonus: [:], bonusDescription: "", score: 0)
