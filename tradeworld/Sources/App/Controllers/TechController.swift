@@ -69,7 +69,7 @@ func techController(tech: RoutesBuilder) {
     func getAvailableTechs(req: Request) throws -> [Int] {
         let user = try req.auth.require(User.self)
         // Only ints that are in defaults but not in user.techs
-        var techs = Tech.defaults.filter { !Set(user.techs).contains($0) }
+        var techs: [Int] = []
         guard let techData = decodeFile(req: req, "techs", [Tech].self) else {
             throw Abort(.internalServerError)
         }

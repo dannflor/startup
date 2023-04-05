@@ -163,6 +163,11 @@ async function editBuildMenu(building, element) {
 
 async function showBuildingEffects(building) {
   const metadata = await fetch('/building/' + building.name + '/metadata').then(res => res.json());
+  if (building.index !== undefined) {
+    console.log(building.index)
+    const myYield = await fetch('/building/yield/' + building.index).then(res => res.json());
+    metadata.yield = myYield;
+  }
   let production = "";
   for (let i = 0; i < metadata.yield.length; i++) {
     production += metadata.yield[i].count + ' ' + metadata.yield[i].name.toLowerCase() + '\n';

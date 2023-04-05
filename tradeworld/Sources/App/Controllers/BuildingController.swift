@@ -7,6 +7,9 @@ func buildingController(building: RoutesBuilder) {
             throw Abort(.internalServerError)
         }
         let techs = try Tech.lookup(req)
+        for tech in techs {
+            print(tech.title)
+        }
         let buildingNames = techs.reduce([]) { addedTechs, tech in
             addedTechs + tech.buildingUnlocks.reduce([]) { addedBuildings, buildingName in
                 addedBuildings + [buildingName]
@@ -34,6 +37,35 @@ func buildingController(building: RoutesBuilder) {
             }
         }
         throw Abort(.notFound)
+    }
+    building.get("yield", ":index") { req async throws -> [ResourceQty] in
+        let index = try req.parameters.require("index", as: Int.self)
+        guard let layout = try await req.auth.require(User.self).$layout.get(on: req.db)?.layout else {
+            throw Abort(.internalServerError)
+        }
+        let neighborsOpt = Building.getNeighbors(index)
+        var neighbors: [Int] = []
+        if let first = neighborsOpt.0 {
+            neighbors.append(first)
+        }
+        if let second = neighborsOpt.1 {
+            neighbors.append(second)
+        }
+        if let third = neighborsOpt.2 {
+            neighbors.append(third)
+        }
+        if let fourth = neighborsOpt.3 {
+            neighbors.append(fourth)
+        }
+        let neighborsBuildings = neighbors.map { layout[$0] }
+        for building in neighborsBuildings {
+            print(building.rawValue)
+        }
+        let yield = layout[index].yield(neighbors: neighborsBuildings, techs: try Tech.lookup(req), req: req)
+        for item in yield {
+            print("\(item.count) \(item.name)")
+        }
+        return yield
     }
     building.post("build") { req async throws -> Bool in
         // Get post body

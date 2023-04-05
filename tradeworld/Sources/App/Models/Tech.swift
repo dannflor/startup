@@ -9,11 +9,11 @@ struct Tech: Content {
     let techUnlocks: [Int]
     let buildingUnlocks: [Building]
     
-    static var defaults: [Int] {
-        get {
-            [2, 9, 11, 12]
-        }
-    }
+//    static var defaults: [Int] {
+//        get {
+//            [2, 9, 11, 12]
+//        }
+//    }
 
     public static func lookup(_ req: Request) throws -> [Tech] {
         let ids = try req.auth.require(User.self).techs
@@ -27,6 +27,6 @@ struct Tech: Content {
             }
             myTechs.append(tech)
         }
-        return techs
+        return myTechs
     }
 }

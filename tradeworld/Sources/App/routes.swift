@@ -53,6 +53,7 @@ func routes(_ app: Application) throws {
         guard register.username.isAlphanumeric else {
             throw Abort(.badRequest, reason: "Username must only contain letters and numbers")
         }
+        user.techs = [ 22 ]
         try await user.create(on: req.db)
         try await user.$layout.create(createLayout(), on: req.db)
         try await user.$resources.create(createResource(), on: req.db)

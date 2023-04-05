@@ -77,7 +77,7 @@ enum Building: String, CaseIterable, Content {
     public func yield(neighbors: [Building], techs: [Tech], req: Request) -> [ResourceQty] {
         // Iterate over each neighbor and aggregate their return ResourceQty arrays
         let bonuses = neighbors.map {
-            return bonus(recipient: $0, techs: techs, req: req)
+            return $0.bonus(recipient: self, techs: techs, req: req)
         }.reduce ([ResourceQty]()) {
             return $0.add($1)
         }
@@ -89,15 +89,21 @@ enum Building: String, CaseIterable, Content {
 
     public func bonus(recipient: Building, techs: [Tech], req: Request) -> [ResourceQty] {
         var bonuses = [ResourceQty]()
-        for tech in techs {
-            for effect in tech.effects {
-                guard effect.building == self else {
-                    continue
+        let metadata = getMetadata(req: req)
+        if recipient == .LumberCamp && self == .Forest {
+            for tech in techs {
+                for effect in tech.effects {
+                    guard effect.building == recipient else {
+                        continue
+                    }
+                    guard let bonus = effect.bonus[recipient.rawValue] else {
+                        continue
+                    }
+                    bonuses = bonuses.add(bonus)
                 }
-                guard let bonus = effect.bonus[recipient.rawValue] else {
-                    continue
-                }
-                bonuses = bonuses.add(bonus)
+            }
+            for bonus in metadata.bonus[recipient.rawValue] ?? [] {
+                bonuses = bonuses.add([bonus])
             }
         }
         return bonuses

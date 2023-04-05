@@ -60,7 +60,7 @@
   "Carpenter" : {
     "bonusDescription": "Nearby lumber camps produce more wood.",
     "bonus": {
-      "Lumber camp": [
+      "Lumber Camp": [
         {"name": "Wood", "count": 3}
       ]
     },
@@ -70,12 +70,15 @@
     ]
   },
   "Cottage" : {
-    "bonusDescription": "Nearby fisheries produce more food, and nearby farms produce more food. Nearby mines produce more stone.",
+    "bonusDescription": "Nearby fisheries produce more food, and nearby farms and pastures produce more food. Nearby mines produce more stone.",
     "bonus": {
       "Fishery": [
         {"name": "Food", "count": 3}
       ],
       "Farm": [
+        {"name": "Food", "count": 3}
+      ],
+      "Pasture": [
         {"name": "Food", "count": 3}
       ],
       "Mine": [
@@ -119,7 +122,7 @@
     ]
   },
   "Fishery" : {
-    "bonusDescription": "Produces food. Nearby fisheries produce more food.",
+    "bonusDescription": "Produces food. Nearby fisheries produce more food. Can only be built adjacent to water.",
     "bonus": {
       "Fishery": [
         {"name": "Food", "count": 3}
@@ -133,7 +136,7 @@
   "Forest": {
     "bonusDescription": "Nearby lumber camps produce more wood.",
     "bonus": {
-      "Lumber camp": [
+      "Lumber Camp": [
         {"name": "Wood", "count": 7}
       ]
     },
@@ -191,7 +194,7 @@
     ]
   },
   "Lumber Camp" : {
-    "bonusDescription": "Produces wood. Nearby carpenters produce more gold.",
+    "bonusDescription": "Produces wood. Nearby carpenters produce more gold. Nearby forests increase wood output.",
     "bonus": {
       "Carpenter": [
         {"name": "Gold", "count": 3}
@@ -276,7 +279,7 @@
     },
     "score": 1,
     "yield": [
-
+      { "name": "Food", "count": 3 }
     ]
   },
   "Quarry" : {
@@ -340,7 +343,7 @@
     ]
   },
   "Watermill" : {
-    "bonusDescription": "Nearby farms and fisheries produce more food.",
+    "bonusDescription": "Nearby farms and fisheries produce more food. Can only be built adjacent to water.",
     "bonus": {
       "Farm": [
         {"name": "Food", "count": 3}
