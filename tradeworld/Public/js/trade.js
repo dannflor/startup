@@ -113,7 +113,7 @@ async function loadTrades(trades) {
     const input = document.createElement("input");
     input.setAttribute("type", "checkbox");
     input.setAttribute("class", "checkbox hover:checkbox-accent sm:checkbox-md checkbox-sm flex my-auto sm:ml-4 ml-2");
-    input.onclick = () => acceptTrade(trade.id);
+    input.onclick = () => acceptTrade(trade);
     const div = document.createElement("div");
     div.setAttribute("class", "my-auto flex-col ml-4");
     const div1 = document.createElement("div");
@@ -152,11 +152,10 @@ async function loadTrades(trades) {
   });
 }
 
-async function acceptTrade(tradeId) {
-  fadeAway("cell" + tradeId);
-  await fetch("/trade/accept/" + tradeId, {
-    method: "POST"
-  });
+async function acceptTrade(trade) {
+  fadeAway("cell" + trade.id);
+  socket.sendJsonBlob(new TradeResponse(trade, "acceptTrade"));
+  
 }
 
 async function sendTrade() {

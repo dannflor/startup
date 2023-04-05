@@ -93,9 +93,10 @@ public final class TradeConnectionManager {
                         if let ask = try await trade.$ask.get(on: db) {
                             try await ask.delete(on: db)
                         }
+                        let tradeResponse = try await TradeResponse(trade, db)
                         try await trade.delete(on: db)
-                        // let tradeSocketResponse = TradeSocketResponse(type: .acceptTrade, trades: [tradeSocketRequest.trade])
-                        // try await ws.send(String(decoding: JSONEncoder().encode(tradeSocketResponse), as: UTF8.self))
+                        let tradeSocketResponse = TradeSocketResponse(type: .removeTrades, trades: [tradeResponse])
+                        try await ws.send([UInt8](JSONEncoder().encode(tradeSocketResponse)))
                     }
                 }
                 catch {

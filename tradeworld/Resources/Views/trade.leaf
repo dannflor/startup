@@ -74,7 +74,7 @@
                 <option>Gold</option>
                 <option>Stone</option>
                 <option>Iron</option>
-                <option>Wheat</option>
+                <option>Food</option>
               </select>
               <input id="offerCount" type="number" min="1" max="100" value="1" class="input input-bordered input-accent mx-2 !max-w-fit" />
             </div>
@@ -86,7 +86,7 @@
                 <option>Gold</option>
                 <option>Stone</option>
                 <option>Iron</option>
-                <option>Wheat</option>
+                <option>Food</option>
               </select>
               <input id="askCount" type="number" min="1" max="100" value="1" class="input input-bordered input-info mx-2 !max-w-fit" />
             </div>
