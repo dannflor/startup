@@ -3,31 +3,23 @@ import CoreFoundation
 import Fluent
 
 func tradeController(trade: RoutesBuilder) {
+    
     trade.get { req async throws -> View in
         return try await req.view.render("trade")
     }
 
     trade.webSocket("all") { req, ws async in
+        print("Connected")
         do {
-            let trades = try await Trade.query(on: req.db).all()
-            var tradeResponses: [TradeResponse] = []
-            for trade in trades {
-                try await tradeResponses.append(TradeResponse(trade, req))
-            }
-            let tradeSocketResponse = TradeSocketResponse(type: .addTrades, trades: tradeResponses)
-            try await ws.send(String(decoding: JSONEncoder().encode(tradeSocketResponse), as: UTF8.self))
-        }
-        catch {
+            try await ws.send("Hello")
+        } catch {
             print(error)
         }
         
-        ws.onText { ws, text async in
-            do {
-                try await ws.send(text)
-            }
-            catch {
-                print(error)
-            }
+//        req.tradeConnectionManager.client.connect(ws)
+        ws.onText { ws, text in
+            print(text)
+            ws.send("Recieved")
         }
     }
     
@@ -46,4 +38,11 @@ func tradeController(trade: RoutesBuilder) {
         try await trade.$ask.create(Ask(name: request.ask.name, count: request.ask.count, tradeId: trade.requireID()), on: req.db)
         return .ok
     }
+
+    
 }
+
+
+    
+
+

@@ -2,6 +2,7 @@ import Fluent
 import Vapor
 
 func routes(_ app: Application) throws {
+    
     app.get { req in
         req.redirect(to: "/login")
     }
@@ -10,6 +11,31 @@ func routes(_ app: Application) throws {
     
     app.get("login") { req async throws in
         try await req.view.render("login")
+    }
+    
+    app.webSocket("ws") { req, ws in
+        print("Connected")
+        do {
+            try await ws.send("Test")
+        } catch {
+            print(error)
+        }
+        
+        // req.tradeConnectionManager.client.connect(ws)
+        ws.onText { ws, text in
+            print(text)
+        }
+        
+        ws.onPing { ws in
+            print("Ping")
+        }
+        ws.onPong { ws in
+            print("Pong")
+        }
+
+        ws.onClose.whenComplete { _ in
+            print("Closed")
+        }
     }
     
     app.post("register") { req async throws in

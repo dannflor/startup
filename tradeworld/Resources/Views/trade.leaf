@@ -92,7 +92,7 @@
             </div>
           </div>
           <div class="sm:flex-col flex-row sm:mx-0 mx-auto my-auto">
-            <label onclick="sendTrade()" for="trade-modal" class="btn my-1 btn-primary w-24">Submit</label>
+            <label id="sendTradeButton" for="trade-modal" class="btn my-1 btn-primary w-24">Submit</label>
             <label for="trade-modal" class="sm:ml-0 ml-4 btn my-1 btn-secondary w-24">Cancel</label>
           </div>
         </div>

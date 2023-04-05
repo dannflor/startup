@@ -9,13 +9,6 @@ class Trade {
     this.offer = trade.offer;
     this.ask = trade.ask;
   }
-
-  constructor(seller, message, offer, ask) {
-    this.seller = seller;
-    this.message = message;
-    this.offer = offer;
-    this.ask = ask;
-  }
 }
 
 class ResourceQty {
@@ -32,6 +25,27 @@ class TradeResponse {
   }
 }
 
+WebSocket.prototype.sendJsonBlob = function(data) {
+  const string = JSON.stringify({ client: uuid, data: data })
+  const blob = new Blob([string], {type: "application/json"});
+  this.send(blob)
+};
+
+function blobToJson(blob) {
+  return new Promise((resolve, reject) => {
+    let fr = new FileReader();
+    fr.onload = () => {
+        resolve(JSON.parse(fr.result));
+    };
+    fr.readAsText(blob);
+});
+}
+
+function uuidv4() {
+  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
+}
+
+const uuid = uuidv4()
 let socket = null;
 
 function configureWebSocket() {
@@ -39,29 +53,30 @@ function configureWebSocket() {
   socket = new WebSocket(`${protocol}://${window.location.host}/trade/all`);
   socket.onopen = (event) => {
     console.log('connected');
+    // socket.sendJsonBlob({connect: true});
+    socket.send('hello');
   };
   socket.onclose = (event) => {
-    console.log('disconnected');
+    console.log('disconnected ' + event.code);
   };
-  socket.onmessage = (event) => {
-    const msg = JSON.parse(event.data);
+  socket.onmessage = async (event) => {
+    console.log(event.data);
+    const msg = await blobToJson(event.data);
     let trades = [];
     if (msg.type === "addTrades") {
       trades = msg.trades.map(trade => new Trade(trade));
     }
     loadTrades(trades);
-    // if (msg.type === GameEndEvent) {
-    //   this.displayTrade('player', msg.from, `scored ${msg.value.score}`);
-    // } else if (msg.type === GameStartEvent) {
-    //   this.displayTrade('player', msg.from, `started a new game`);
-    // }
+    if (msg.type === GameEndEvent) {
+      this.displayTrade('player', msg.from, `scored ${msg.value.score}`);
+    } else if (msg.type === GameStartEvent) {
+      this.displayTrade('player', msg.from, `started a new game`);
+    }
   };
 }
 
 async function loadTrades(trades) {
   const tradeList = document.getElementById("tradeList");
-  // const trades = await fetch("/trade/all").then((res) => res.json());
-  // trades.map(trade => new Trade(trade));
   /*
   #for(trade in trades):
     <li id="cell#(trade.id)" class="mb-4 max-h-36 min-h-[5rem] sm:w-[32rem] w-[21.5rem] border-2 border-primary hover:border-primary-focus rounded-xl flex p-2 flex-row">
@@ -146,18 +161,34 @@ async function acceptTrade(tradeId) {
 }
 
 function sendTrade() {
-  let offerSelect = document.getElementById("offerSelect");
-  let askSelect = document.getElementById("askSelect");
+  let offerSelect = document.getElementById("offerResource");
+  let askSelect = document.getElementById("askResource");
   let offerType = offerSelect.options[offerSelect.selectedIndex].text;
   let offerCount = document.getElementById("offerCount").value;
   let askType = askSelect.options[askSelect.selectedIndex].text;
   let askCount = document.getElementById("askCount").value;
   let message = document.getElementById("tradeMessage").value;
-  let username = fetch("/user/me").then((res) => res.json());
-  let trade = new Trade(username, message, new ResourceQty(offerType, offerCount), new ResourceQty(askType, askCount));
-  socket.send(JSON.stringify(new TradeResponse(trade, "addTrade")));
+  let username = fetch("/user/me").then((res) => res.text());
+  let trade = {
+    seller: username,
+    offer: {
+      name: offerType,
+      count: offerCount
+    },
+    ask: {
+      name: askType,
+      count: askCount
+    },
+    message: message
+  }
+  console.log("Sending trade");
+  // socket.sendJsonBlob(new TradeResponse(trade, "addTrade"));
+  socket.send("Hello");
+  console.log("Sent trade");
 }
 
 await populateResources();
 
 configureWebSocket();
+
+document.getElementById("sendTradeButton").onclick = () => sendTrade();

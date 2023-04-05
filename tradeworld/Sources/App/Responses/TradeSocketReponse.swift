@@ -11,7 +11,7 @@ enum TradeSocketResponseType: String, Codable {
 
 struct TradeSocketRequest: Content {
     let type: TradeSocketRequestType
-    let trades: [TradeResponse]
+    let trade: TradeResponse
 }
 
 enum TradeSocketRequestType: String, Codable {
