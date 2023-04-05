@@ -163,19 +163,32 @@ async function loadTrades(trades, remove) {
 }
 
 async function acceptTrade(trade) {
+  const resources = await fetch('/resources').then(res => res.json());
+  if (resources[trade.ask.name] < trade.ask.count) {
+    alert("You don't have enough " + trade.ask.name + " to accept this trade!");
+    return;
+  }
   socket.sendJsonBlob(new TradeResponse(trade, "acceptTrade"));
+  setTimeout(async () => {
+    await updateResources();
+  }, 2000);
 }
 
 async function sendTrade() {
-  let offerSelect = document.getElementById("offerResource");
-  let askSelect = document.getElementById("askResource");
-  let offerType = offerSelect.options[offerSelect.selectedIndex].text;
-  let offerCount = parseInt(document.getElementById("offerCount").value);
-  let askType = askSelect.options[askSelect.selectedIndex].text;
-  let askCount = parseInt(document.getElementById("askCount").value);
-  let message = document.getElementById("tradeMessage").value;
-  let username = await fetch("/user/me").then((res) => res.text());
-  let trade = {
+  const offerSelect = document.getElementById("offerResource");
+  const askSelect = document.getElementById("askResource");
+  const offerType = offerSelect.options[offerSelect.selectedIndex].text;
+  const offerCount = parseInt(document.getElementById("offerCount").value);
+  const askType = askSelect.options[askSelect.selectedIndex].text;
+  const askCount = parseInt(document.getElementById("askCount").value);
+  const message = document.getElementById("tradeMessage").value;
+  const username = await fetch("/user/me").then((res) => res.text());
+  const resources = await fetch('/resources').then(res => res.json());
+  if (resources[offerType] < offerCount) {
+    alert("You don't have enough " + offerType + " to make this trade!");
+    return;
+  }
+  const trade = {
     id: null,
     seller: username,
     offer: {
@@ -191,6 +204,9 @@ async function sendTrade() {
   console.log("Sending trade");
   socket.sendJsonBlob(new TradeResponse(trade, "addTrade"));
   console.log("Sent trade");
+  setTimeout(async () => {
+    await updateResources();
+  }, 2000);
 }
 
 await populateResources();

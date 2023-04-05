@@ -40,19 +40,45 @@ public final class TradeConnectionManager {
     let db: Database
     let eventLoop: EventLoop
     var connections: [UUID: WebSocket] = [:]
+    var users: [UUID: User] = [:]
 
     init(app: Application) {
         self.eventLoop = app.eventLoopGroup.next()
         self.db = app.db
     }
+    
+    func confirmTrade(_ trade: Trade, _ recipient: UUID) async throws {
+        guard let offer = try await trade.$offer.get(on: db) else {
+            return
+        }
+        guard let ask = try await trade.$ask.get(on: db) else {
+            return
+        }
+        try await db.transaction { [unowned self] transaction in
+            guard var sellerResources = try await User.query(on: transaction).filter(\.$username == trade.seller).first()?.$resources.get(on: transaction) else {
+                throw Abort(.badRequest)
+            }
+            sellerResources[ask.name] += ask.count
+            try await sellerResources.save(on: transaction)
+            guard var userResources = try await self.users[recipient]?.$resources.get(on: transaction) else {
+                throw Abort(.badRequest)
+            }
+            guard userResources[ask.name] - ask.count > 0 else {
+                throw Abort(.badRequest)
+            }
+            userResources[offer.name] += offer.count
+            userResources[ask.name] -= ask.count
+            try await userResources.save(on: transaction)
+        }
+    }
 
-    func connect(_ ws: WebSocket) {
+    func connect(_ ws: WebSocket, _ req: Request) {
         ws.pingInterval = .seconds(10)
         ws.onText { ws, text async in
             print(text)
         }
         
-        ws.onBinary { [unowned self] ws, buffer in
+        ws.onBinary { [unowned self, req] ws, buffer in
             // decode binary to string
 //            let string = String(decoding: buffer, as: UTF8.self)
 //            print(string)
@@ -60,6 +86,7 @@ public final class TradeConnectionManager {
             if let msg = buffer.decodeWebsocketMessage(Connect.self) {
                 self.connections[msg.client] = ws
                 do {
+                    self.users[msg.client] = try req.auth.require(User.self)
                     let trades = try await Trade.query(on: db).all()
                     var tradeResponses: [TradeResponse] = []
                     for trade in trades {
@@ -81,9 +108,19 @@ public final class TradeConnectionManager {
                     case .addTrade:
                         print("Adding trade")
                         let trade = Trade(seller: msg.data.trade.seller, message: msg.data.trade.message)
-                        try await trade.create(on: db)
-                        try await trade.$offer.create(Offer(name: msg.data.trade.offer.name, count: msg.data.trade.offer.count, tradeId: trade.requireID()), on: db)
-                        try await trade.$ask.create(Ask(name: msg.data.trade.ask.name, count: msg.data.trade.ask.count, tradeId: trade.requireID()), on: db)
+                        guard var userResources = try await User.query(on: db).filter(\.$username == msg.data.trade.seller).first()?.$resources.get(on: db) else {
+                            throw Abort(.badRequest)
+                        }
+                        guard userResources[msg.data.trade.offer.name] - msg.data.trade.offer.count > 0 else {
+                            throw Abort(.badRequest)
+                        }
+                        userResources[msg.data.trade.offer.name] -= msg.data.trade.offer.count
+                        try await db.transaction { [userResources, trade] transaction in
+                            try await userResources.save(on: transaction)
+                            try await trade.create(on: transaction)
+                            try await trade.$offer.create(Offer(name: msg.data.trade.offer.name, count: msg.data.trade.offer.count, tradeId: trade.requireID()), on: transaction)
+                            try await trade.$ask.create(Ask(name: msg.data.trade.ask.name, count: msg.data.trade.ask.count, tradeId: trade.requireID()), on: transaction)
+                        }
                         let tradeResponse = try await TradeResponse(trade, db)
                         let tradeSocketResponse = TradeSocketResponse(type: .addTrades, trades: [tradeResponse])
                         for (_, ws) in self.connections {
@@ -93,6 +130,7 @@ public final class TradeConnectionManager {
                         guard let trade = try await Trade.find(msg.data.trade.id, on: db) else {
                             throw Abort(.badRequest)
                         }
+                        try await self.confirmTrade(trade, msg.client)
                         if let offer = try await trade.$offer.get(on: db) {
                             try await offer.delete(on: db)
                         }
@@ -119,6 +157,7 @@ public final class TradeConnectionManager {
             for (key, value) in self.connections {
                 if value === ws {
                     self.connections.removeValue(forKey: key)
+                    self.users.removeValue(forKey: key)
                 }
             }
         }

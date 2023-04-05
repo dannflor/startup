@@ -9,7 +9,7 @@ func tradeController(trade: RoutesBuilder) {
     }
 
     trade.webSocket("all") { req, ws async in
-        req.tradeConnectionManager.client.connect(ws)
+        req.tradeConnectionManager.client.connect(ws, req)
     }
     
     trade.post("accept", ":id") { req async throws -> HTTPStatus in
