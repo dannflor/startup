@@ -41,6 +41,15 @@ The way there's a flow of data through parameters as we pass them to stuff like 
 
 Once again we wrote a bunch of backend logic while writing the js to save ourselves work. We're launching right into backend stuff now to get the game RUNNING.
 
+## Startup Service
+Phew... where to even begin? I am beginning to see the usefulness of React, because our vanilla javascript has grown very large and unreadable, and a lot of it is just fiddling with the DOM.
+
+While in the process of writing and debugging websockets, we discovered that my SPECIFIC COMPUTER is messed up for some reason. It can't address the `localhost` DNS, it can't run TLS locally, and it can't hold connections with `ws` websockets, only `wss`. The combination of those meant I couldn't actually test websockets locally, which was a huge pain but luckily Ethan saved the day with his normal, boring, functional computer.
+
+Keeping a log of all of your database migrations is nice so you can go back and revert them if needs be. Just SQL thingz. Sorry we didn't use Mongo lol.
+
+When you have a stateful application, you need to do ALL of your logic and validation in the backend, even if you have initial frontend validation stuff. The fact that people can just inspect element and change the js to whatever they like means you can't count on the state of the frontend at all and need to design the backend like it doesn't even exist.
+
 # Sam's notes:
 
 ## Merge conflicts
