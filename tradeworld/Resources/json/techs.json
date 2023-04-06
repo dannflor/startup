@@ -567,11 +567,55 @@
   },
   {
     "id": 22,
+    "title": "Logging operation",
+    "description": "Unlocks the lumber camp.",
+    "price": [
+      { "name": "Wood", "count": 5 }
+    ],
+    "effects": [],
+    "techUnlocks": [9, 12],
+    "buildingUnlocks": ["Lumber Camp"]
+  },
+  {
+    "id": 23,
+    "title": "A cozy cottage",
+    "description": "Unlocks the cottage.",
+    "price": [
+      { "name": "Wood", "count": 5 }
+    ],
+    "effects": [],
+    "techUnlocks": [2],
+    "buildingUnlocks": ["Cottage"]
+  },
+  {
+    "id": 24,
+    "title": "Scarecrow",
+    "description": "Unlocks the farm.",
+    "price": [
+      { "name": "Food", "count": 10 }
+    ],
+    "effects": [],
+    "techUnlocks": [11],
+    "buildingUnlocks": ["Farm"]
+  },
+  {
+    "id": 25,
     "title": "Default",
     "description": "",
     "price": [],
     "effects": [],
-    "techUnlocks": [2, 9, 11, 12],
-    "buildingUnlocks": ["Lumber Camp", "Cottage", "Farm"]
+    "techUnlocks": [22, 23, 24],
+    "buildingUnlocks": []
+  },
+  {
+    "id": 26,
+    "title": "",
+    "description": "",
+    "price": [
+      { "name": "Gold", "count": 10 }
+    ],
+    "effects": [],
+    "techUnlocks": [],
+    "buildingUnlocks": []
   }
 ]

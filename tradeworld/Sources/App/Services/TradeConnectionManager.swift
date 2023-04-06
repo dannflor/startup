@@ -63,7 +63,7 @@ public final class TradeConnectionManager {
             guard let userResources = try await self.users[recipient]?.$resources.get(on: transaction) else {
                 throw Abort(.badRequest)
             }
-            guard userResources[ask.name] - ask.count > 0 else {
+            guard userResources[ask.name] - ask.count >= 0 else {
                 throw Abort(.badRequest)
             }
             userResources[offer.name] += offer.count
@@ -109,7 +109,7 @@ public final class TradeConnectionManager {
                         guard let userResources = try await User.query(on: db).filter(\.$username == msg.data.trade.seller).first()?.$resources.get(on: db) else {
                             throw Abort(.badRequest)
                         }
-                        guard userResources[msg.data.trade.offer.name] - msg.data.trade.offer.count > 0 else {
+                        guard userResources[msg.data.trade.offer.name] - msg.data.trade.offer.count >= 0 else {
                             throw Abort(.badRequest)
                         }
                         userResources[msg.data.trade.offer.name] -= msg.data.trade.offer.count

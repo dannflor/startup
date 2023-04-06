@@ -172,6 +172,13 @@ async function showBuildingEffects(building) {
   for (let i = 0; i < metadata.yield.length; i++) {
     production += metadata.yield[i].count + ' ' + metadata.yield[i].name.toLowerCase() + '\n';
   }
+  production = production.slice(0, -1);
+  if (production === "") {
+    production = "Nothing";
+  }
+  else {
+    production += ' per hour';
+  }
   document.getElementById('produces').innerText = production;
   document.getElementById('bonuses').innerText = metadata.bonusDescription;
 }
