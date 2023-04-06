@@ -94,9 +94,7 @@ public final class TradeConnectionManager {
                     }
                     let tradeSocketResponse = TradeSocketResponse(type: .addTrades, trades: tradeResponses)
                     // Send response to every client in the dictionary
-                    for (_, ws) in self.connections {
-                        try await ws.send([UInt8](JSONEncoder().encode(tradeSocketResponse)))
-                    }
+                    try await ws.send([UInt8](JSONEncoder().encode(tradeSocketResponse)))
                 }
                 catch {
                     print(error)
