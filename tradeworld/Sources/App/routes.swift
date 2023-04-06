@@ -133,7 +133,10 @@ func routes(_ app: Application) throws {
             ResourceQty(name: .Iron, count: resource.iron),
             ResourceQty(name: .Food, count: resource.food)
         ]
-        
+    }
+    
+    loginProtected.get("resources", "yields") { req async throws -> [ResourceQty] in
+        return try await Resource.getYields(req)
     }
     
     loginProtected.group("building", configure: buildingController)

@@ -68,16 +68,19 @@ final class Resource: Model, Content {
         }
     }
     
-    public static func compute(_ req: Request) async throws -> Resource {
-        guard let resource = try await req.auth.require(User.self).$resources.get(on: req.db) else {
-            throw Abort(.internalServerError)
-        }
+    public static func getYields(_ req: Request) async throws -> [ResourceQty] {
         guard let layout = try await req.auth.require(User.self).$layout.get(on: req.db)?.layout else {
             throw Abort(.internalServerError)
         }
         let techs = try Tech.lookup(req)
-
-        let timeElapsed = try Date().timeIntervalSince(req.auth.require(User.self).visited)
+        
+        var yields: [ResourceQty] = [
+            ResourceQty(name: .Wood, count: 0),
+            ResourceQty(name: .Stone, count: 0),
+            ResourceQty(name: .Gold, count: 0),
+            ResourceQty(name: .Iron, count: 0),
+            ResourceQty(name: .Food, count: 0)
+        ]
 
         for (index, building) in layout.enumerated() {
             let neighborsOpt = Building.getNeighbors(index)
@@ -97,16 +100,19 @@ final class Resource: Model, Content {
             let neighborsBuildings = neighbors.map { layout[$0] }
 
             let yieldPerHour = building.yield(neighbors: neighborsBuildings, techs: techs, req: req)
-            let hoursElapsed = timeElapsed / 3600
-            let yield = yieldPerHour.map { ResourceQty(name: $0.name, count: Int((Double($0.count) * hoursElapsed).rounded())) }
-            for resource in yield {
-                if resource.count > 0 {
-                    print("Yielded \(resource.count) \(resource.name)")
-                    print(hoursElapsed)
-                }
-            }
-            resource.addResources(resources: yield)
+            yields = yields.add(yieldPerHour)
         }
+        return yields
+    }
+    
+    public static func compute(_ req: Request) async throws -> Resource {
+        guard let resource = try await req.auth.require(User.self).$resources.get(on: req.db) else {
+            throw Abort(.internalServerError)
+        }
+        let yields = try await getYields(req)
+        let timeElapsed = try Date().timeIntervalSince(req.auth.require(User.self).visited) / 3600
+        let yield = yields.map { ResourceQty(name: $0.name, count: Int((Double($0.count) * timeElapsed).rounded())) }
+        resource.addResources(resources: yield)
         let user = try req.auth.require(User.self)
         user.visited = Date.now
         try await user.save(on: req.db)
@@ -115,15 +121,12 @@ final class Resource: Model, Content {
         return resource
     }
     
-
     private func addResources(resources: [ResourceQty]) {
         for resource in resources {
             self[resource.name] += resource.count
         }
     }
 }
-
-
 
 enum ResourceType: String, Codable {
     case Wood, Stone, Gold, Iron, Food
