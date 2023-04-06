@@ -69,8 +69,7 @@ function configureWebSocket() {
       loadTrades(trades, false);
     }
     else if (msg.type === "removeTrades") {
-      trades = trades.filter(trade => !msg.trades.includes(trade.id));
-      loadTrades(trades, true);
+      loadTrades(msg.trades, true);
     }
   };
 }

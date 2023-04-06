@@ -106,7 +106,7 @@
       { "name": "Wood", "count": 10 }
     ],
     "effects": [],
-    "techUnlocks": [5, 12],
+    "techUnlocks": [5],
     "buildingUnlocks": ["Mine"]
   },
   {
