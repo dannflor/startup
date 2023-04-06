@@ -15,6 +15,10 @@ loadTechList();
 async function loadTechList() {
   const techList = document.getElementById("techList");
   let techs = await fetch("/tech/unresearched").then((res) => res.json());
+  // clear out all children of techList
+  while (techList.firstChild) {
+    techList.removeChild(techList.firstChild);
+  }
   techs = techs.map(tech => new Tech(tech));
   console.log(techs);
   /*
@@ -93,6 +97,7 @@ async function researchTech(tech, input) {
   });
   setTimeout(async () => {
     await updateResources();
+    loadTechList();
   }, 2000);
 }
 
