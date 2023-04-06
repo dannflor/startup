@@ -1,4 +1,5 @@
 import fadeAway from "./fadeAway.js";
+import fadeIn from "./fadeIn.js";
 import {populateResources, updateResources} from "./populateResources.js";
 
 class Trade {
@@ -118,7 +119,7 @@ async function loadTrades(trades, remove) {
   trades.forEach(trade => {
     const li = document.createElement("li");
     li.setAttribute("id", "cell" + trade.id);
-    li.setAttribute("class", "mb-4 max-h-36 min-h-[5rem] sm:w-[32rem] w-[21.5rem] border-2 border-primary hover:border-primary-focus rounded-xl flex p-2 flex-row");
+    li.setAttribute("class", "mb-4 max-h-36 min-h-[5rem] sm:w-[32rem] w-[21.5rem] border-2 border-primary hover:border-primary-focus rounded-xl flex p-2 flex-row hidden");
     const input = document.createElement("input");
     input.setAttribute("type", "checkbox");
     input.setAttribute("class", "checkbox hover:checkbox-accent sm:checkbox-md checkbox-sm flex my-auto sm:ml-4 ml-2");
@@ -158,6 +159,7 @@ async function loadTrades(trades, remove) {
     li.appendChild(input);
     li.appendChild(div);
     tradeList.appendChild(li);
+    fadeIn("cell" + trade.id);
   });
 }
 

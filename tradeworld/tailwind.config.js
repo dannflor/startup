@@ -5,6 +5,8 @@ module.exports = {
     extend: {
       animation: {
         fadeAway: "fadeAway 0.5s ease-in both",
+        fadeIn: "fadeIn 1.2s ease-in cubic-bezier(0.390, 0.575, 0.565, 1.000) both"
+
       },
       gridTemplateRows: {
         '13': 'repeat(13, minmax(0, 1fr))',
@@ -23,6 +25,16 @@ module.exports = {
             opacity: 0 
           },
         },
+        fadeIn: {
+          "0%" : {
+            transform: "translateY(50px)",
+            opacity: 0
+          },
+          "100%": {
+            transform: "translateY(0)",
+            opacity: 1
+          }
+        }
       },
       backgroundImage: {
         'backdrop': "url('/img/bg.jpg')"
