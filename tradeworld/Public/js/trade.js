@@ -200,6 +200,10 @@ async function sendTrade() {
       return;
     }
   }
+  if (offerCount <= 0 || askCount <= 0) {
+    alert("You can't trade 0 or less of a resource!");
+    return;
+  }
   const trade = {
     id: null,
     seller: username,
