@@ -222,8 +222,8 @@
     "bonusDescription": "Nearby mines produce more stone.",
     "bonus": {
       "Mine": [
-        {"name": "Stone", "count": 10},
-        {"name": "Iron", "count": 5}
+        {"name": "Stone", "count": 5},
+        {"name": "Iron", "count": 10}
       ]
     },
     "score": 0,
@@ -284,15 +284,15 @@
     ]
   },
   "Quarry" : {
-    "bonusDescription": "Nearby mines produce more iron.",
+    "bonusDescription": "Nearby mines produce more stone.",
     "bonus": {
       "Mine": [
-        {"name": "Iron", "count": 3}
+        {"name": "Stone", "count": 1}
       ]
     },
     "score": 3,
     "yield": [
-
+      { "name": "Stone", "count": 5 }
     ]
   },
   "Tower" : {
