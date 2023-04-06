@@ -124,6 +124,27 @@ func routes(_ app: Application) throws {
         return grid
     }
     
+    loginProtected.get("view") { req async throws in
+        try await req.view.render("view")
+    }
+    
+    loginProtected.get("grid", ":user") { req async throws -> [BuildingResponse] in
+        guard
+            let user = try await User.query(on: req.db).filter(\.$username == req.parameters.get("user") ?? "").first(),
+            let layout = try await user.$layout.get(on: req.db)?.layout,
+            let mapping = decodeFile(req: req, "buildingNames", [String : BuildingResponse].self)
+        else {
+            throw Abort(.internalServerError)
+        }
+        
+        let grid = layout.map { elem -> BuildingResponse in
+            mapping[elem.rawValue] ?? BuildingResponse(name: "", cost: [])
+        }
+        
+        return grid
+
+    }
+    
     loginProtected.get("resources") { req async throws -> [ResourceQty] in
         let resource = try await Resource.compute(req)
         return [

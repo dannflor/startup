@@ -34,7 +34,7 @@ struct CreateResource: AsyncMigration {
             .id()
             .field("name", .string, .required)
             .field("count", .int, .required)
-            .field("user_id", .uuid, .required, .references(User.schema, "id"))
+            .field("user_id", .uuid, .required, .references(User.schema, "id", onDelete: .cascade))
             .create()
     }
 

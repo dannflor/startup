@@ -21,7 +21,7 @@ struct CreateOffer: AsyncMigration {
             .id()
             .field("name", .string, .required)
             .field("count", .int, .required)
-            .field("trade_id", .uuid, .required, .references(Trade.schema, "id"))
+            .field("trade_id", .uuid, .required, .references(Trade.schema, "id", onDelete: .cascade))
             .create()
     }
 
@@ -36,7 +36,7 @@ struct CreateAsk: AsyncMigration {
             .id()
             .field("name", .string, .required)
             .field("count", .int, .required)
-            .field("trade_id", .uuid, .required, .references(Trade.schema, "id"))
+            .field("trade_id", .uuid, .required, .references(Trade.schema, "id", onDelete: .cascade))
             .create()
     }
 

@@ -5,7 +5,7 @@ struct CreateLayout: AsyncMigration {
         try await database.schema(Layout.schema)
             .id()
             .field("layout", .array(of: .string), .required)
-            .field("user_id", .uuid, .required, .references(User.schema, "id"))
+            .field("user_id", .uuid, .required, .references(User.schema, "id", onDelete: .cascade))
             .unique(on: "user_id")
             .create()
     }

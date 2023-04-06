@@ -10,7 +10,7 @@ struct RecreateResource: AsyncMigration {
             .field("gold", .int, .required)
             .field("iron", .int, .required)
             .field("food", .int, .required)
-            .field("user_id", .uuid, .required, .references(User.schema, "id"))
+            .field("user_id", .uuid, .required, .references(User.schema, "id", onDelete: .cascade))
             .create()
     }
 
