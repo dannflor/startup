@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       animation: {
         fadeAway: "fadeAway 0.5s ease-in both",
-        fadeIn: "fadeIn 1.2s ease-in cubic-bezier(0.390, 0.575, 0.565, 1.000) both"
+        fadeIn: "fadeIn 1.2s ease-in both"
 
       },
       gridTemplateRows: {

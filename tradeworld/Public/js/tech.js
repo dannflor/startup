@@ -1,4 +1,5 @@
 import fadeAway from "./fadeAway.js";
+import fadeIn from "./fadeIn.js";
 import {populateResources, updateResources} from "./populateResources.js";
 
 class Tech {
@@ -80,6 +81,7 @@ async function loadTechList() {
     li.appendChild(input);
     li.appendChild(div);
     techList.appendChild(li);
+    // fadeIn("cell" + tech.id);
   });
 }
 
