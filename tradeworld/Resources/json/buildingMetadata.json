@@ -215,14 +215,15 @@
     },
     "score": 2,
     "yield": [
-      { "name": "Stone", "count": 3 }
+      { "name": "Iron", "count": 3 }
     ]
   },
   "Mountain": {
     "bonusDescription": "Nearby mines produce more stone.",
     "bonus": {
       "Mine": [
-        {"name": "Stone", "count": 10}
+        {"name": "Stone", "count": 10},
+        {"name": "Iron", "count": 5}
       ]
     },
     "score": 0,

@@ -573,7 +573,7 @@
       { "name": "Wood", "count": 5 }
     ],
     "effects": [],
-    "techUnlocks": [9, 12],
+    "techUnlocks": [3, 9, 12],
     "buildingUnlocks": ["Lumber Camp"]
   },
   {
