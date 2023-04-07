@@ -164,13 +164,15 @@
     ]
   },
   "Guild" : {
-    "bonusDescription": "Nearby blacksmiths produce more iron, and nearby lumber camps produce more wood.",
+    "bonusDescription": "Nearby blacksmiths produce more iron, and nearby Carpenters produce more wood, and both produce more gold.",
     "bonus": {
       "Blacksmith": [
-        {"name": "Iron", "count": 5}
+        {"name": "Iron", "count": 5},
+        {"name": "Gold", "count": 5}
       ],
       "Carpenter": [
-        {"name": "Wood", "count": 5}
+        {"name": "Wood", "count": 5},
+        {"name": "Gold", "count": 5}
       ]
     },
     "score": 5,
@@ -288,6 +290,9 @@
     "bonus": {
       "Mine": [
         {"name": "Stone", "count": 1}
+      ],
+      "Mountain": [
+        {"name": "Stone", "count": 3}
       ]
     },
     "score": 3,
