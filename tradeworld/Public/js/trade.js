@@ -167,9 +167,9 @@ async function acceptTrade(trade) {
   const resources = await fetch('/resources').then(res => res.json());
   const username = await fetch('/user/me').then(res => res.text());
   if (trade.seller === username) {
-    // alert("You can't accept your own trade!");
-    // document.getElementById("cell" + trade.id).children[0].checked = false;
-    // return;
+    alert("You can't accept your own trade!");
+    document.getElementById("cell" + trade.id).children[0].checked = false;
+    return;
   }
   for (let i = 0; i < resources.length; i++) {
     if (resources[i].name === trade.ask.name && resources[i].count < trade.ask.count) {
