@@ -102,6 +102,9 @@ func buildingController(building: RoutesBuilder) {
         guard let resources = try await req.auth.require(User.self).$resources.get(on: req.db) else {
             throw Abort(.internalServerError)
         }
+        guard layout.layout[request.index] != .NoHouse else {
+            throw Abort(.badRequest)
+        }
         for b in buildings {
             if b.name == request.buildingName {
                 for cost in b.cost {

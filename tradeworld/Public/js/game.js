@@ -229,7 +229,7 @@ async function buildBuilding(building, index, element) {
 
 async function destroyBuilding(building, index, element) {
   building = await fetch('/building/' + building.name).then(res => res.json());
-  console.log('destroying ' + building.name + ' at ' + index);
+  // console.log('destroying ' + building.name + ' at ' + index);
   const buildingData = {
     buildingName: building.name,
     index: index
