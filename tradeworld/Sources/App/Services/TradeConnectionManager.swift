@@ -111,6 +111,9 @@ public final class TradeConnectionManager {
                     switch msg.data.type {
                     case .addTrade:
                         print("Adding trade")
+                        guard msg.data.trade.ask.count > 0 && msg.data.trade.offer.count > 0 else {
+                            throw Abort(.badRequest)
+                        }
                         let trade = Trade(seller: msg.data.trade.seller, message: msg.data.trade.message)
                         guard let userResources = try await User.query(on: db).filter(\.$username == msg.data.trade.seller).first()?.$resources.get(on: db) else {
                             throw Abort(.badRequest)

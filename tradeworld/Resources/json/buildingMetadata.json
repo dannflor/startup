@@ -164,13 +164,15 @@
     ]
   },
   "Guild" : {
-    "bonusDescription": "Nearby blacksmiths produce more iron, and nearby lumber camps produce more wood.",
+    "bonusDescription": "Nearby blacksmiths produce more iron, and nearby Carpenters produce more wood, and both produce more gold.",
     "bonus": {
       "Blacksmith": [
-        {"name": "Iron", "count": 5}
+        {"name": "Iron", "count": 5},
+        {"name": "Gold", "count": 5}
       ],
       "Carpenter": [
-        {"name": "Wood", "count": 5}
+        {"name": "Wood", "count": 5},
+        {"name": "Gold", "count": 5}
       ]
     },
     "score": 5,
@@ -222,8 +224,8 @@
     "bonusDescription": "Nearby mines produce more stone.",
     "bonus": {
       "Mine": [
-        {"name": "Stone", "count": 10},
-        {"name": "Iron", "count": 5}
+        {"name": "Stone", "count": 5},
+        {"name": "Iron", "count": 10}
       ]
     },
     "score": 0,
@@ -284,15 +286,18 @@
     ]
   },
   "Quarry" : {
-    "bonusDescription": "Nearby mines produce more iron.",
+    "bonusDescription": "Nearby mines produce more stone.",
     "bonus": {
       "Mine": [
-        {"name": "Iron", "count": 3}
+        {"name": "Stone", "count": 1}
+      ],
+      "Mountain": [
+        {"name": "Stone", "count": 3}
       ]
     },
     "score": 3,
     "yield": [
-
+      { "name": "Stone", "count": 5 }
     ]
   },
   "Tower" : {
