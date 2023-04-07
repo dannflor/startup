@@ -28,7 +28,28 @@
       <a href="/trade" class="btn px-12 mx-8">Trade</a>
     </div>
     <div class="navbar-end">
-      <a href="/logout" class="link link-secondary mr-4">Logout</a>
+      <div class="pr-4">
+        <label for="my-modal" class="btn">?</label>
+
+        <!-- Put this part before </body> tag -->
+        <input type="checkbox" id="my-modal" class="modal-toggle" />
+        <label for="my-modal" class="modal cursor-pointer">
+          <label class="modal-box relative" for="">
+            <h2 class="text-xl font-bold">Techs</h2>
+            <p class="py-4">This menu is where you research new technology. Some techs unlock buildings, 
+            and others give existing buildings new bonuses. As you research techs, new ones will become available.</p>
+            <div class="modal-action">
+              <label for="my-modal" class="btn btn-secondary">Close</label>
+            </div>
+          </label>
+        </label>
+      </div>
+      <div class="flex-col justify-end">
+        <div id="username" class="flex-row flex my-auto justify-end items-end mr-4 text-info font-bold"></div>
+        <div class="flex-row flex my-auto justify-end items-end">
+          <a href="/logout" class="link link-secondary mr-4">Logout</a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="md:w-1/2 mx-auto lg:px-10 mb-2">

@@ -13,6 +13,10 @@ document.getElementById('loginButton').addEventListener('click', login);
 async function register() {
   let username = document.getElementById('username').value;
   let password = document.getElementById('password').value;
+  if (username === '' || password === '') {
+    alert('Choose a new username and password, then click register');
+    return;
+  }
   let response = await fetch('/register', {
     method: 'POST',
     headers: {

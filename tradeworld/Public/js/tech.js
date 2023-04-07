@@ -1,6 +1,9 @@
 import fadeAway from "./fadeAway.js";
 import fadeIn from "./fadeIn.js";
+import setUsername from "./setUsername.js";
 import {populateResources, updateResources} from "./populateResources.js";
+
+await setUsername();
 
 class Tech {
   constructor(tech) {
@@ -81,7 +84,7 @@ async function loadTechList() {
     li.appendChild(input);
     li.appendChild(div);
     techList.appendChild(li);
-    // fadeIn("cell" + tech.id);
+    fadeIn("cell" + tech.id);
   });
 }
 
@@ -93,10 +96,10 @@ async function researchTech(tech, input) {
     alert("You don't have enough resources to research this technology!");
     return;
   }
-  fadeAway("cell" + tech.id);
   await fetch("/tech/research/" + tech.id, {
     method: "POST"
   });
+  fadeAway("cell" + tech.id);
   setTimeout(async () => {
     await updateResources();
     loadTechList();

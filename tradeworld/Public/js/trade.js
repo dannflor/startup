@@ -1,6 +1,9 @@
 import fadeAway from "./fadeAway.js";
 import fadeIn from "./fadeIn.js";
+import setUsername from "./setUsername.js";
 import {populateResources, updateResources} from "./populateResources.js";
+
+await setUsername();
 
 class Trade {
   constructor(trade) {
@@ -179,6 +182,7 @@ async function acceptTrade(trade) {
     }
   }
   socket.sendJsonBlob(new TradeResponse(trade, "acceptTrade"));
+  fadeAway("cell" + trade.id);
   setTimeout(async () => {
     await updateResources();
   }, 2000);

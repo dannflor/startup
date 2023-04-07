@@ -30,7 +30,29 @@
       </div>
     </div>
     <div class="navbar-end">
-      <a href="/logout" class="link link-secondary mr-4">Logout</a>
+      <div class="pr-4">
+        <label for="my-modal" class="btn">?</label>
+
+        <!-- Put this part before </body> tag -->
+        <input type="checkbox" id="my-modal" class="modal-toggle" />
+        <label for="my-modal" class="modal cursor-pointer">
+          <label class="modal-box relative" for="">
+            <h2 class="text-xl font-bold">Trades</h2>
+            <p class="py-4">This menu is where you can trade resources with other users. 
+            When you post a trade, it immediately takes the "offer" out of your resources. 
+            You can't trade with yourself, so make sure you are deliberate in your trading.</p>
+            <div class="modal-action">
+              <label for="my-modal" class="btn btn-secondary">Close</label>
+            </div>
+          </label>
+        </label>
+      </div>
+      <div class="flex-col justify-end">
+        <div id="username" class="flex-row flex my-auto justify-end items-end mr-4 text-info font-bold"></div>
+        <div class="flex-row flex my-auto justify-end items-end">
+          <a href="/logout" class="link link-secondary mr-4">Logout</a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="md:w-1/2 mx-auto lg:px-10 mb-2">
