@@ -40,7 +40,7 @@
       { "name": "Gold", "count": 15 }
     ],
     "effects": [],
-    "techUnlocks": [7],
+    "techUnlocks": [7, 8],
     "buildingUnlocks": ["Carpenter"]
   },
   {

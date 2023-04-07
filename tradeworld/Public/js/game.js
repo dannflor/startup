@@ -192,7 +192,14 @@ function pictureForBuilding(building) {
 }
 
 async function buildBuilding(building, index, element) {
-  // alert if not enough resources
+  const waterNeighbors = [26, 32, 37, 41, 44, 46];
+  console.log(building.name + ' ' + index);
+  if (building.name === 'Watermill' || building.name === 'Fishery') {
+    if (!(waterNeighbors.includes(index))) {
+      alert('Watermill and Fishery must be built next to water!');
+      return;
+    }
+  }
   const resources = await fetch('/resources').then(res => res.json());
   console.log(building.cost);
   for (let i = 0; i < building.cost.length; i++) {

@@ -61,8 +61,14 @@ func buildingController(building: RoutesBuilder) {
     building.post("build") { req async throws -> Bool in
         // Get post body
         let request = try req.content.decode(BuildingRequest.self)
+        let waterNeighbors = [26, 32, 37, 41, 44, 46]
         guard let building = Building(rawValue: request.buildingName) else {
             throw Abort(.badRequest)
+        }
+        if building == .Watermill || building == .Fishery {
+            guard waterNeighbors.contains(request.index) else {
+                throw Abort(.badRequest)
+            }
         }
         guard let layout = try await req.auth.require(User.self).$layout.get(on: req.db) else {
             throw Abort(.internalServerError)
@@ -90,8 +96,14 @@ func buildingController(building: RoutesBuilder) {
     }
     building.post("destroy") { req async throws -> HTTPStatus in
         let request = try req.content.decode(BuildingRequest.self)
-        guard Building(rawValue: request.buildingName) != nil else {
+        let waterNeighbors = [26, 32, 37, 41, 44, 46]
+        guard let building = Building(rawValue: request.buildingName) else {
             throw Abort(.badRequest)
+        }
+        if building == .Watermill || building == .Fishery {
+            guard waterNeighbors.contains(request.index) else {
+                throw Abort(.badRequest)
+            }
         }
         guard let layout = try await req.auth.require(User.self).$layout.get(on: req.db) else {
             throw Abort(.internalServerError)
