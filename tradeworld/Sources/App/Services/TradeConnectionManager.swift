@@ -57,7 +57,8 @@ public final class TradeConnectionManager {
         guard let sellerUser = try await User.query(on: db).filter(\.$username == trade.seller).first() else {
             throw Abort(.badRequest)
         }
-        guard sellerUser.id != recipient else {
+        // print("Seller: \(sellerUser.id), Recipient: \(self.users[recipient]?.id)")
+        guard sellerUser.id != self.users[recipient]?.id else {
             throw Abort(.badRequest)
         }
         try await db.transaction { [unowned self] transaction in
