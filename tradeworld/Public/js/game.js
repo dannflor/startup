@@ -65,13 +65,10 @@ async function editBuildMenu(building, element) {
     buildMenuImage.style.visibility = 'visible';
     buildMenuTitle.innerText = "Build";
     buildingTitle.style.display = 'inline';
-    // buildMenuBody.style.display = 'block';
-    // Clear options from selector
     while (select.firstChild) {
       select.removeChild(select.firstChild);
     }
     let resources = await fetch('/resources').then(res => res.json());
-    console.log(resources);
     let buildings = await fetch('/building').then(res => res.json());
     buildings = buildings.map(building => new Building(building.name, building.cost, building.terrain));
     let optionsTitle = document.createElement('option');
