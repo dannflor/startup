@@ -70,6 +70,8 @@ async function editBuildMenu(building, element) {
     while (select.firstChild) {
       select.removeChild(select.firstChild);
     }
+    let resources = await fetch('/resources').then(res => res.json());
+    console.log(resources);
     let buildings = await fetch('/building').then(res => res.json());
     buildings = buildings.map(building => new Building(building.name, building.cost, building.terrain));
     let optionsTitle = document.createElement('option');
@@ -105,7 +107,6 @@ async function editBuildMenu(building, element) {
     select.onchange = () => {
       let selectedBuilding = buildings[select.selectedIndex - 1];
       buildingTitle.innerText = selectedBuilding.name;
-      
       let costText = '';
       for (let i = 0; i < selectedBuilding.cost.length; i++) {
         if (selectedBuilding.cost[i].count == 0) { continue; }
@@ -117,6 +118,16 @@ async function editBuildMenu(building, element) {
       buildButton.onclick = () => {
         buildBuilding(selectedBuilding, building.index, element);
         document.getElementById('grid-cell-modal').checked = false;
+      }
+      buildButton.removeAttribute('disabled');
+      for (let i = 0; i < selectedBuilding.cost.length; i++) {
+        for (let j = 0; j < resources.length; j++) {
+          if (selectedBuilding.cost[i].name === resources[j].name) {
+            if (selectedBuilding.cost[i].count > resources[j].count) {
+              buildButton.setAttribute('disabled', '');
+            }
+          }
+        }
       }
     }
     select.style.display = 'block';
