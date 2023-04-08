@@ -84,7 +84,7 @@ async function loadTechList() {
     li.appendChild(input);
     li.appendChild(div);
     techList.appendChild(li);
-    fadeIn("cell" + tech.id);
+    // fadeIn("cell" + tech.id);
   });
 }
 

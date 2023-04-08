@@ -139,7 +139,7 @@
       { "name": "Stone", "count": 10 }
     ],
     "effects": [],
-    "techUnlocks": [2],
+    "techUnlocks": [],
     "buildingUnlocks": ["Quarry"]
   },
   {
