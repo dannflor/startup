@@ -57,7 +57,10 @@ public final class TradeConnectionManager {
         guard let sellerUser = try await User.query(on: db).filter(\.$username == trade.seller).first() else {
             throw Abort(.badRequest)
         }
-        guard sellerUser.id != self.users[recipient]?.id else {
+        guard let buyerId = self.users[recipient]?.id else {
+            throw Abort(.badRequest)
+        }
+        guard sellerUser.id != buyerId else {
             throw Abort(.badRequest)
         }
         try await db.transaction { [unowned self] transaction in
@@ -74,7 +77,7 @@ public final class TradeConnectionManager {
             }
             userResources[offer.name] += offer.count
             userResources[ask.name] -= ask.count
-            let tradeTransaction = try TradeTransaction(seller: sellerUser.requireID(), buyer: recipient, offerAmount: offer.count, offerResource: offer.name, askAmount: ask.count, askResource: ask.name)
+            let tradeTransaction = try TradeTransaction(seller: sellerUser.requireID(), buyer: buyerId, offerAmount: offer.count, offerResource: offer.name, askAmount: ask.count, askResource: ask.name)
             try await userResources.save(on: transaction)
             try await tradeTransaction.create(on: transaction)
         }
