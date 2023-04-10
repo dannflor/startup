@@ -136,3 +136,17 @@ struct ResourceQty: Content {
     let name: ResourceType
     let count: Int
 }
+
+struct ResourceProgress: Content {
+    let name: ResourceType
+    let current: Int
+    let total: Int
+    
+    static func zipQty(qty1: [ResourceQty], qty2: [ResourceQty]) -> [ResourceProgress] {
+        var progress: [ResourceProgress] = []
+        for (item1, item2) in zip(qty1, qty2) {
+            progress.append(ResourceProgress(name: item1.name, current: item1.count, total: item2.count))
+        }
+        return progress
+    }
+}
