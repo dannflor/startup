@@ -5,7 +5,26 @@ import Fluent
 func tradeController(trade: RoutesBuilder) {
     
     trade.get { req async throws -> View in
-        return try await req.view.render("trade")
+        let trades = try await TradeTransaction.query(on: req.db).sort(\.$createdAt, .descending).limit(10).all()
+        var transactions: [TradeTransactionResponse] = []
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "MMM d, h:mm a"
+        for trade in trades {
+            let seller = try await trade.$seller.get(on: req.db)
+            let buyer = try await trade.$buyer.get(on: req.db)
+            transactions.append(
+                TradeTransactionResponse(
+                    seller: seller.username,
+                    buyer: buyer.username,
+                    date: dateFormat.string(from: trade.createdAt),
+                    askResource: trade.askResource.rawValue,
+                    askAmount: trade.askAmount,
+                    offerResource: trade.offerResource.rawValue,
+                    offerAmount: trade.offerAmount
+                )
+            )
+        }
+        return try await req.view.render("trade", TradeContext(trades: transactions))
     }
 
     trade.webSocket("all") { req, ws async in

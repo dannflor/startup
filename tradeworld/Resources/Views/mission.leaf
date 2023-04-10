@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" data-theme="dracula">
+<head>
+  <meta charset="utf-8">
+  <meta viewpoint name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tradeworld</title>
+  <link rel="stylesheet" type="text/css" href="/css/app.css">
+</head>
+
+<body class="flex-col bg-base-300 flex h-screen xl:mb-12">
+  <div class="navbar bg-base-100">
+    <div class="navbar-start">
+      <div class="dropdown">
+        <label tabindex="0" class="btn btn-ghost lg:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+        </label>
+        <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+          <li><a class="/game">Build</a></li>
+          <li><a href="/tech">Tech</a></li>
+          <li><a href="/trade">Trade</a></li>
+          <li><a class="text-primary">Mission</a></li>
+        </ul>
+      </div>
+      <a href="/game" class="btn btn-ghost normal-case text-xl">Tradeworld</a>
+    </div>
+    <div class="navbar-center hidden lg:flex">
+      <a href="/game" class="btn px-12 mx-8">Build</a>
+      <a href="/tech" class="btn px-12 mx-8">Tech</a>
+      <a href="/trade" class="btn px-12 mx-8">Trade</a>
+      <a class="btn btn-primary px-12 mx-8">Mission</a>
+    </div>
+    <div class="navbar-end">
+      <div class="flex-col justify-end">
+        <div id="username" class="flex-row flex my-auto justify-end items-end mr-4 text-info font-bold"></div>
+        <div class="flex-row flex my-auto justify-end items-end">
+          <a href="/logout" class="link link-secondary mr-4">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-col">
+    <div class="flex">
+      
+    </div>
+  </main>
+  
+
+  <footer class="footer flex bg-base-100 fixed !bottom-0 left-0 right-0 h-10">
+    <div class="my-auto ml-4 text-xs grid grid-cols-2 min-w-full">
+      <div class="md:mx-0 mx-auto text-center md:text-left">
+        A game by Samuel Bishop and Ethan Michaelis  (<a class="link link-success" href="https://github.com/dannflor/startup/">Source</a>)
+      </div>
+      <div class="fixed right-4">
+        Pixelart by <a class="link link-success" href="https://2058.itch.io/">green guy</a>
+      </div>
+    </div>
+  </footer>
+  <!-- Put this part before </body> tag -->
+  <input type="checkbox" id="grid-cell-modal" class="modal-toggle"/>
+  <label for="grid-cell-modal" class="modal cursor-pointer">
+    <label id="modalMenu" class="modal-box max-w-2xl flex flex-col overflow-clip" for="">
+      <h3 id="modalMenuTitle" class="text-7xl font-serif font-extrabold text-primary mx-auto">Build</h3>
+      <div class="divider"></div>
+      <select id="buildingSelector" class="select select-primary w-full max-w-md"></select>
+      <div id="modalMenuContent" class="flex-row flex">
+        <div id="modalMenuBody" class="flex flex-col w-2/3">
+          <span id="buildingTitle" class="mt-2 text-3xl font-bold text-secondary"></span>
+          <span id="buildingCost" class="text-xl mt-2 font-bold text-warning"></span>
+          <span id="cost"></span>
+          <span class="mt-2 text-xl font-bold text-info">Produces:</span>
+          <span id="produces"></span>
+          <span class="mt-2 text-xl font-bold text-success">Bonuses:</span>
+          <span id="bonuses"></span>
+        </div>
+        <div class="mx-0 md:mt-auto md:block hidden -mr-10">
+          <img id="modalMenuPicture" class="md:[scale:3] [scale:2] ml-12" style="image-rendering: crisp-edges; image-rendering: pixelated;" src="/img/NoHouse.png" alt="Building Image"/>
+        </div>
+      </div>
+      
+    </label>
+  </label>
+</body>
+
+<script type="module" src="/js/game.js"></script>
+
+</html>

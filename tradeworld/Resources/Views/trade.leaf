@@ -67,8 +67,20 @@
   </div>
   <div class="divider mx-auto md:w-1/2 !my-0.5"></div>
 
-  <main class="mt-8 flex">
+  <main class="mt-8 flex flex-col">
     <ul id="tradeList" class="sm:mx-16 mx-2 flex-col flex w-1/3 mb-8"></ul>
+    #if(count(trades) > 0):
+    <h2 class="text-xl font-bold mx-4">Last 10 trades</h2>
+    <div class="divider mx-2 md:w-1/2 !my-0.5"></div>
+    <ul id="transactionLog" class="mx-2 flex-col flex w-1/3 mb-8">
+      #for(trade in trades):
+        <li class="ml-8">
+          <span class="text-primary font-bold">#(trade.date)</span> : <span class="text-accent font-bold">#(trade.seller)</span> sold <span class="text-secondary font-bold">#(trade.offerAmount) #(trade.offerResource)</span> to <span class="text-success font-bold">#(trade.buyer)</span> for <span class="text-secondary font-bold">#(trade.askAmount) #(trade.askResource)</span>
+        </li>
+      #endfor
+    </ul>
+    #endif
+    
   </main>
   <footer class="footer flex bg-base-100 fixed !bottom-0 left-0 right-0 h-10">
     <div class="my-auto ml-4 text-xs grid grid-cols-2 min-w-full">
