@@ -53,9 +53,6 @@ final class MissionTransaction: Model, Content {
         guard let mission = Mission.current(req: req) else {
             return []
         }
-        guard let sql = req.db as? SQLDatabase else {
-            return []
-        }
         let contributions = try await MissionTransaction.query(on: req.db)
             .all()
         // Group by user

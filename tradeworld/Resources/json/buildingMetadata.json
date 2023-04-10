@@ -226,6 +226,9 @@
       "Mine": [
         {"name": "Stone", "count": 5},
         {"name": "Iron", "count": 10}
+      ],
+      "Quarry": [
+        {"name": "Stone", "count": 10}
       ]
     },
     "score": 0,
@@ -289,7 +292,7 @@
     "bonusDescription": "Nearby mines produce more stone.",
     "bonus": {
       "Mine": [
-        {"name": "Stone", "count": 1}
+        {"name": "Stone", "count": 5}
       ],
       "Mountain": [
         {"name": "Stone", "count": 3}
