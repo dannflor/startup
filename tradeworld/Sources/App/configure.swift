@@ -16,7 +16,7 @@ public func configure(_ app: Application) throws {
     
     app.migrations.add(CreateUser(), CreateResource(), AddScoreToUser(), SessionRecord.migration, 
         CreateLayout(), RecreateResource(), AddTechToUser(), AddTimestampToUser(), CreateTrade(), 
-        CreateAsk(), CreateOffer(), AddTimestampToTrade(), CreateTradeTransaction())
+        CreateAsk(), CreateOffer(), AddTimestampToTrade(), CreateTradeTransaction(), CreateMissionTransaction())
 
     app.views.use(.leaf)
     // app.http.server.configuration.tlsConfiguration = .makeServerConfiguration(

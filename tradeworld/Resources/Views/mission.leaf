@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 
-<body class="flex-col bg-base-300 flex h-screen xl:mb-12">
+<body class="flex-col bg-base-300 flex min-h-screen xl:mb-12">
   <div class="navbar bg-base-100">
     <div class="navbar-start">
       <div class="dropdown">
@@ -18,7 +18,7 @@
           <li><a class="/game">Build</a></li>
           <li><a href="/tech">Tech</a></li>
           <li><a href="/trade">Trade</a></li>
-          <li><a class="text-primary">Mission</a></li>
+          <li><a class="text-primary">Event</a></li>
         </ul>
       </div>
       <a href="/game" class="btn btn-ghost normal-case text-xl">Tradeworld</a>
@@ -27,9 +27,24 @@
       <a href="/game" class="btn px-12 mx-8">Build</a>
       <a href="/tech" class="btn px-12 mx-8">Tech</a>
       <a href="/trade" class="btn px-12 mx-8">Trade</a>
-      <a class="btn btn-primary px-12 mx-8">Mission</a>
+      <a class="btn btn-primary px-12 mx-8">Event</a>
     </div>
     <div class="navbar-end">
+      <div class="pr-4">
+        <label for="my-modal" class="btn">?</label>
+
+        <!-- Put this part before </body> tag -->
+        <input type="checkbox" id="my-modal" class="modal-toggle" />
+        <label for="my-modal" class="modal cursor-pointer">
+          <label class="modal-box relative" for="">
+            <h2 class="text-xl font-bold">Event</h2>
+            <p class="py-4">Work together or against one another to shift the landscape of tradeworld</p>
+            <div class="modal-action">
+              <label for="my-modal" class="btn btn-secondary">Close</label>
+            </div>
+          </label>
+        </label>
+      </div>
       <div class="flex-col justify-end">
         <div id="username" class="flex-row flex my-auto justify-end items-end mr-4 text-info font-bold"></div>
         <div class="flex-row flex my-auto justify-end items-end">
@@ -38,13 +53,74 @@
       </div>
     </div>
   </div>
-
-  <main class="flex-col">
-    <div class="flex">
-      
+  <div class="md:w-1/2 mx-auto lg:px-10 mb-2">
+    <div id="resources" class="flex-row flex rounded-lg">
+      <div id="scoreDiv" class="flex-1 flex md:space-x-2 bg-base-100 py-3 rounded-lg mx-1 my-1 px-1">
+        <div class="mx-auto md:flex-row md:flex md:text-base text-xs">
+          <div class="text-accent font-bold md:mr-1 text-center md:text-left">Score:</div>
+          <div id="score" class="text-neutral-content text-center md:text-left">0</div>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <main class="flex-col flex my-8">
+    <h1 class="text-3xl font-serif font-extrabold text-primary text-center mx-auto">#(mission.name)</h1>
+    <div class="divider md:w-1/3 w-2/3 mx-auto"></div>
+    <div class="tooltip tooltip-bottom tooltip-secondary md:w-1/4 w:3/4 mx-auto" data-tip="#(mission.description)">
+      <img src="#(mission.img)" class="w-full" alt="Monster"/>
+    </div>
+    #for(requirement in requirements):
+      <div class="flex-row flex mx-auto border-2 border-primary md:w-1/4 w:3/4 hover:border-primary-focus my-4 rounded-xl p-3 ">
+        <span class="text-2xl font-bold text-secondary mr-2 my-auto">#(requirement.name)</span>
+        <progress id="progress" class="progress progress-success w-3/4 my-auto !bg-success-content" value="#(requirement.current)" max="#(requirement.total)"></progress>
+        <span class="my-auto"><span id="currentRes" class="ml-2 text-info text-xl font-normal">#(requirement.current)</span>/<span class="text-xl font-bold text-accent">#(requirement.total)</span></span>
+      </div>
+    #endfor
+    <label for="contribute-modal" class="btn btn-primary mt-4 mx-auto">Contribute</label>
+
+    <h1 class="text-3xl font-serif font-extrabold text-primary mx-auto mt-8 tooltip" data-tip="The person who contributes the most will become Tradeworld's first king, with all the honors and privileges thereof">Leaderboard</h1>
+    <div class="divider w-1/3 mx-auto"></div>
+    <ol class="mx-auto mb-8">
+    #for(leader in topFive):
+      <li class="flex-row flex mx-auto mb-2">
+        <a href="/view?user=#(leader.username)" class="text-2xl link-accent my-auto">#(leader.username)</a> <span class="text-2xl text-accent my-auto mr-4"> :</span>
+        #for(resource in leader.score):
+          <span class="text-2xl text-info my-auto">#(resource.count) #(resource.name) </span>
+        #endfor
+      </li>
+    #endfor
+    </ol>
+    
   </main>
   
+  <input type="checkbox" id="contribute-modal" class="modal-toggle" />
+  <label for="contribute-modal" class="modal cursor-pointer">
+    <div class="modal-box w-1/2 max-w-sm">
+      <h3 class="font-bold text-lg text-center">Contribute resources</h3>
+      <form class="flex-col">
+        <div class="flex-col flex">
+          <div class="mx-auto flex-col">
+            <div class="mx-auto sm:flex-row flex-col flex my-2">
+              <select id="contributeResource" class="select select-accent max-w-xs mx-2 flex">
+                <option disabled selected>Resource</option>
+                #for(requirement in requirements):
+                  <option>#(requirement.name)</option>
+                #endfor
+              </select>
+              <input id="contributeCount" type="number" min="1" max="100" value="1" class="input input-bordered input-accent sm:mx-2 mx-auto sm:mt-0 mt-2 !max-w-fit" />
+            </div>
+          </div>
+          <div class="flex-row mx-auto my-auto">
+            <label id="contributeButton" for="contribute-modal" class="sm:ml-0 ml-4 btn my-1 btn-primary w-24" onclick="contributeRes()">Submit</label>
+            <label for="contribute-modal" class="sm:ml-0 ml-4 btn my-1 btn-secondary w-24">Cancel</label>
+          </div>
+        </div>
+      </form>
+        
+    </div>
+  </label>
+
 
   <footer class="footer flex bg-base-100 fixed !bottom-0 left-0 right-0 h-10">
     <div class="my-auto ml-4 text-xs grid grid-cols-2 min-w-full">
@@ -56,32 +132,14 @@
       </div>
     </div>
   </footer>
-  <!-- Put this part before </body> tag -->
-  <input type="checkbox" id="grid-cell-modal" class="modal-toggle"/>
-  <label for="grid-cell-modal" class="modal cursor-pointer">
-    <label id="modalMenu" class="modal-box max-w-2xl flex flex-col overflow-clip" for="">
-      <h3 id="modalMenuTitle" class="text-7xl font-serif font-extrabold text-primary mx-auto">Build</h3>
-      <div class="divider"></div>
-      <select id="buildingSelector" class="select select-primary w-full max-w-md"></select>
-      <div id="modalMenuContent" class="flex-row flex">
-        <div id="modalMenuBody" class="flex flex-col w-2/3">
-          <span id="buildingTitle" class="mt-2 text-3xl font-bold text-secondary"></span>
-          <span id="buildingCost" class="text-xl mt-2 font-bold text-warning"></span>
-          <span id="cost"></span>
-          <span class="mt-2 text-xl font-bold text-info">Produces:</span>
-          <span id="produces"></span>
-          <span class="mt-2 text-xl font-bold text-success">Bonuses:</span>
-          <span id="bonuses"></span>
-        </div>
-        <div class="mx-0 md:mt-auto md:block hidden -mr-10">
-          <img id="modalMenuPicture" class="md:[scale:3] [scale:2] ml-12" style="image-rendering: crisp-edges; image-rendering: pixelated;" src="/img/NoHouse.png" alt="Building Image"/>
-        </div>
-      </div>
-      
-    </label>
-  </label>
 </body>
 
-<script type="module" src="/js/game.js"></script>
+<script src="/js/mission.js" type="module"></script>
+
+<script>
+  fetch("/user/me").then(res => res.text()).then(data => {
+      document.getElementById("username").innerHTML = data;
+  });
+</script>
 
 </html>
