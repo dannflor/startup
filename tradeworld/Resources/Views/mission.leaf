@@ -21,13 +21,12 @@ you'll only gain back half of the resources you spent on it.</p>
 
 #export("body"):
 <main class="flex-col flex my-8">
-  <h1 class="text-3xl font-serif font-extrabold text-primary text-center mx-auto">#(mission.name)</h1>
+  <h1 class="text-3xl font-serif font-extrabold text-primary text-center mx-auto tooltip tooltip-bottom tooltip-primary" data-tip="#(mission.description)">#(mission.name)</h1>
   <div class="divider md:w-1/3 w-2/3 mx-auto"></div>
-  <div class="tooltip tooltip-bottom tooltip-secondary md:w-1/4 w:3/4 mx-auto" data-tip="#(mission.description)">
-    <img src="#(mission.img)" class="w-full" alt="Monster"/>
-  </div>
+  <img src="#(mission.img)" class="mx-auto w-1/3 rounded-xl" alt="Monster" style="image-rendering: pixelated; image-rendering: crisp-edges;"/>
+
   #for(requirement in requirements):
-    <div class="flex-row flex mx-auto border-2 border-primary md:w-1/4 w:3/4 hover:border-primary-focus my-4 rounded-xl p-3 ">
+    <div class="flex-row flex mx-auto border-2 border-primary md:w-1/4 w:3/4 hover:border-primary-focus my-4 rounded-xl p-3">
       <span class="text-2xl font-bold text-secondary mr-2 my-auto">#(requirement.name)</span>
       <progress id="progress" class="progress progress-success w-3/4 my-auto !bg-success-content" value="#(requirement.current)" max="#(requirement.total)"></progress>
       <span class="my-auto"><span id="currentRes" class="ml-2 text-info text-xl font-normal">#(requirement.current)</span>/<span class="text-xl font-bold text-accent">#(requirement.total)</span></span>

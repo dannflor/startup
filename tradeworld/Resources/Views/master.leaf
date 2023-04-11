@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
 </head>
-<body class="flex-col bg-base-300 flex h-screen xl:mb-12 pb-8">
+<body class="flex-col bg-base-300 flex min-h-screen xl:mb-12 pb-8">
   <div class="navbar bg-base-100">
     <div class="navbar-start">
       <div class="dropdown">

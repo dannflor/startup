@@ -8,7 +8,7 @@
 </head>
 
 <body class="flex-col bg-base-300 flex min-h-screen">
-  <img src="/img/logo/Logo_Big.png" style="image-rendering: pixelated; image-rendering: crisp-edges;" class="" />
+  <img src="/img/logo/Logo_Big.png" style="image-rendering: pixelated; image-rendering: crisp-edges;" class="w-1/2 mx-auto mt-16" />
   <div class="mx-auto my-auto card sm:card-side bg-base-100 shadow-xl">
     <figure id="loginImage"></figure>
     <div class="card-body h-[300px] pt-4">

@@ -1,8 +1,8 @@
 {
     "name": "Build the Great Tradeworldian Wall!",
-    "description": "Monsters have been spotted encroaching on the borders of Tradeworld. We must all band together to build a great wall to keep them out permanently.",
+    "description": "OH MY GOODNESS. This guy is out of control, and he's huge!! We need a wall twice as big to keep him out!!",
     "requirements": [
-        {"name": "Stone", "count": 100000}
+        {"name": "Stone", "count": 200000}
     ],
-    "img": "/img/monster/monsters.png"
+    "img": "/img/monster/greg.png"
 }
