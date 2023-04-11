@@ -5,8 +5,12 @@
   <meta viewpoint name="viewport" content="width=device-width, initial-scale=1">
   <title>Tradeworld: #import("title")</title>
   <link rel="stylesheet" type="text/css" href="/css/app.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 </head>
-<body class="flex-col bg-base-300 flex h-screen xl:mb-12">
+<body class="flex-col bg-base-300 flex h-screen xl:mb-12 mb-8">
   <div class="navbar bg-base-100">
     <div class="navbar-start">
       <div class="dropdown">

@@ -10,6 +10,11 @@ image.appendChild(image2);
 
 document.getElementById('registerButton').addEventListener('click', register);
 document.getElementById('loginButton').addEventListener('click', login);
+document.onkeydown = function (e) {
+  if (e.keyCode === 13 || e.key === 'Enter' || e.key === 'Return') {
+    login();
+  }
+};
 async function register() {
   let username = document.getElementById('username').value;
   let password = document.getElementById('password').value;
@@ -48,6 +53,7 @@ async function register() {
 }
 
 async function login() {
+  console.log("login");
   let username = document.getElementById('username').value;
   let password = document.getElementById('password').value;
   let response = await fetch('/login', {

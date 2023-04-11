@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 
-<body class="flex-col bg-base-300 flex min-h-screen">
+<body class="flex-col bg-base-300 flex min-h-screen mb-8">
   <div class="navbar bg-base-100">
     <div class="navbar-start">
       <div class="dropdown">

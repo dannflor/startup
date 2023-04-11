@@ -8,6 +8,7 @@
 </head>
 
 <body class="flex-col bg-base-300 flex min-h-screen">
+  <img src="/img/logo/Logo_Big.png" style="image-rendering: pixelated; image-rendering: crisp-edges;" class="" />
   <div class="mx-auto my-auto card sm:card-side bg-base-100 shadow-xl">
     <figure id="loginImage"></figure>
     <div class="card-body h-[300px] pt-4">
@@ -21,6 +22,7 @@
           <div class="flex flex-row w-full">
             <button id="registerButton" class="btn btn-ghost">Register</button>
             <button id="loginButton" class="btn btn-primary ml-auto">Login</button>
+            <input type="text" id="loginListener" class="hidden" />
           </div>
         </div>
       </div>
