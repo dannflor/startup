@@ -209,7 +209,7 @@
   {
     "id": 18,
     "title": "Silver crown",
-    "description": "All nearby buildings gain more of every resource.",
+    "description": "All adjacent buildings gain more of every resource.",
     "price": [
       { "name": "Gold", "count": 50 }
     ],
@@ -347,7 +347,7 @@
   {
     "id": 19,
     "title": "Golden crown",
-    "description": "The palace and all nearby buildings gain more of all resources.",
+    "description": "The palace and all adjacent buildings gain more of all resources.",
     "price": [
       { "name": "Gold", "count": 50 }
     ],

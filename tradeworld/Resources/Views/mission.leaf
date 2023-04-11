@@ -1,145 +1,85 @@
-<!doctype html>
-<html lang="en" data-theme="dracula">
-<head>
-  <meta charset="utf-8">
-  <meta viewpoint name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tradeworld</title>
-  <link rel="stylesheet" type="text/css" href="/css/app.css">
-</head>
+#extend("master"):
+#export("title", "Event")
+#export("helpText"):
+<h2 class="text-xl font-bold">Welcome to Tradeworld!</h2>
+<p class="py-4">In this game, you can build your town by researching technology, 
+trading resources, and gathering resources to construct buildings. 
+Increase your score by researching techs and building.</p>
+<h2 class="text-lg font-bold">Getting started</h2>
+<p class="py-4">Make sure you choose your buildings wisely. 
+Buildings can receive bonuses depending on other buildings and 
+geographical features with which they share an edge. 
+In order to have a building available to build, 
+you must first research it in the Tech tab first.</p>
+<h2 class="text-lg font-bold">Building</h2>
+<p class="py-4">Click on an empty cell to build a building. 
+Click on a building to see what it does. 
+You can destroy a building to free up the space, but be careful because 
+you'll only gain back half of the resources you spent on it.</p>
+#endexport
 
-<body class="flex-col bg-base-300 flex min-h-screen xl:mb-12">
-  <div class="navbar bg-base-100">
-    <div class="navbar-start">
-      <div class="dropdown">
-        <label tabindex="0" class="btn btn-ghost lg:hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-        </label>
-        <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a class="/game">Build</a></li>
-          <li><a href="/tech">Tech</a></li>
-          <li><a href="/trade">Trade</a></li>
-          <li><a class="text-primary">Event</a></li>
-        </ul>
-      </div>
-      <a href="/game" class="btn btn-ghost normal-case text-xl">Tradeworld</a>
-    </div>
-    <div class="navbar-center hidden lg:flex">
-      <a href="/game" class="btn px-12 mx-8">Build</a>
-      <a href="/tech" class="btn px-12 mx-8">Tech</a>
-      <a href="/trade" class="btn px-12 mx-8">Trade</a>
-      <a class="btn btn-primary px-12 mx-8">Event</a>
-    </div>
-    <div class="navbar-end">
-      <div class="pr-4">
-        <label for="my-modal" class="btn">?</label>
 
-        <!-- Put this part before </body> tag -->
-        <input type="checkbox" id="my-modal" class="modal-toggle" />
-        <label for="my-modal" class="modal cursor-pointer">
-          <label class="modal-box relative" for="">
-            <h2 class="text-xl font-bold">Event</h2>
-            <p class="py-4">Work together or against one another to shift the landscape of tradeworld</p>
-            <div class="modal-action">
-              <label for="my-modal" class="btn btn-secondary">Close</label>
-            </div>
-          </label>
-        </label>
-      </div>
-      <div class="flex-col justify-end">
-        <div id="username" class="flex-row flex my-auto justify-end items-end mr-4 text-info font-bold"></div>
-        <div class="flex-row flex my-auto justify-end items-end">
-          <a href="/logout" class="link link-secondary mr-4">Logout</a>
-        </div>
-      </div>
-    </div>
+#export("body"):
+<main class="flex-col flex my-8">
+  <h1 class="text-3xl font-serif font-extrabold text-primary text-center mx-auto">#(mission.name)</h1>
+  <div class="divider md:w-1/3 w-2/3 mx-auto"></div>
+  <div class="tooltip tooltip-bottom tooltip-secondary md:w-1/4 w:3/4 mx-auto" data-tip="#(mission.description)">
+    <img src="#(mission.img)" class="w-full" alt="Monster"/>
   </div>
-  <div class="md:w-1/2 mx-auto lg:px-10 mb-2">
-    <div id="resources" class="flex-row flex rounded-lg">
-      <div id="scoreDiv" class="flex-1 flex md:space-x-2 bg-base-100 py-3 rounded-lg mx-1 my-1 px-1">
-        <div class="mx-auto md:flex-row md:flex md:text-base text-xs">
-          <div class="text-accent font-bold md:mr-1 text-center md:text-left">Score:</div>
-          <div id="score" class="text-neutral-content text-center md:text-left">0</div>
-        </div>
-      </div>
+  #for(requirement in requirements):
+    <div class="flex-row flex mx-auto border-2 border-primary md:w-1/4 w:3/4 hover:border-primary-focus my-4 rounded-xl p-3 ">
+      <span class="text-2xl font-bold text-secondary mr-2 my-auto">#(requirement.name)</span>
+      <progress id="progress" class="progress progress-success w-3/4 my-auto !bg-success-content" value="#(requirement.current)" max="#(requirement.total)"></progress>
+      <span class="my-auto"><span id="currentRes" class="ml-2 text-info text-xl font-normal">#(requirement.current)</span>/<span class="text-xl font-bold text-accent">#(requirement.total)</span></span>
     </div>
-  </div>
+  #endfor
+  <label for="contribute-modal" class="btn btn-primary mt-4 mx-auto">Contribute</label>
 
-  <main class="flex-col flex my-8">
-    <h1 class="text-3xl font-serif font-extrabold text-primary text-center mx-auto">#(mission.name)</h1>
-    <div class="divider md:w-1/3 w-2/3 mx-auto"></div>
-    <div class="tooltip tooltip-bottom tooltip-secondary md:w-1/4 w:3/4 mx-auto" data-tip="#(mission.description)">
-      <img src="#(mission.img)" class="w-full" alt="Monster"/>
-    </div>
-    #for(requirement in requirements):
-      <div class="flex-row flex mx-auto border-2 border-primary md:w-1/4 w:3/4 hover:border-primary-focus my-4 rounded-xl p-3 ">
-        <span class="text-2xl font-bold text-secondary mr-2 my-auto">#(requirement.name)</span>
-        <progress id="progress" class="progress progress-success w-3/4 my-auto !bg-success-content" value="#(requirement.current)" max="#(requirement.total)"></progress>
-        <span class="my-auto"><span id="currentRes" class="ml-2 text-info text-xl font-normal">#(requirement.current)</span>/<span class="text-xl font-bold text-accent">#(requirement.total)</span></span>
-      </div>
-    #endfor
-    <label for="contribute-modal" class="btn btn-primary mt-4 mx-auto">Contribute</label>
-
-    <h1 class="text-3xl font-serif font-extrabold text-primary mx-auto mt-8 tooltip" data-tip="The person who contributes the most will become Tradeworld's first king, with all the honors and privileges thereof">Leaderboard</h1>
-    <div class="divider w-1/3 mx-auto"></div>
-    <ol class="mx-auto mb-8">
-    #for(leader in topFive):
-      <li class="flex-row flex mx-auto mb-2">
-        <a href="/view?user=#(leader.username)" class="text-2xl link-accent my-auto">#(leader.username)</a> <span class="text-2xl text-accent my-auto mr-4"> :</span>
-        #for(resource in leader.score):
-          <span class="text-2xl text-info my-auto">#(resource.count) #(resource.name) </span>
-        #endfor
-      </li>
-    #endfor
-    </ol>
-    
-  </main>
+  <h1 class="text-3xl font-serif font-extrabold text-primary mx-auto mt-8 tooltip" data-tip="The person who contributes the most will become Tradeworld's first king, with all the honors and privileges thereof">Leaderboard</h1>
+  <div class="divider w-1/3 mx-auto"></div>
+  <ol class="mx-auto mb-8">
+  #for(leader in topFive):
+    <li class="flex-row flex mx-auto mb-2">
+      <a href="/view?user=#(leader.username)" class="text-2xl link-accent my-auto">#(leader.username)</a> <span class="text-2xl text-accent my-auto mr-4"> :</span>
+      #for(resource in leader.score):
+        <span class="text-2xl text-info my-auto">#(resource.count) #(resource.name) </span>
+      #endfor
+    </li>
+  #endfor
+  </ol>
   
-  <input type="checkbox" id="contribute-modal" class="modal-toggle" />
-  <label for="contribute-modal" class="modal cursor-pointer">
-    <div class="modal-box w-1/2 max-w-sm">
-      <h3 class="font-bold text-lg text-center">Contribute resources</h3>
-      <form class="flex-col">
-        <div class="flex-col flex">
-          <div class="mx-auto flex-col">
-            <div class="mx-auto sm:flex-row flex-col flex my-2">
-              <select id="contributeResource" class="select select-accent max-w-xs mx-2 flex">
-                <option disabled selected>Resource</option>
-                #for(requirement in requirements):
-                  <option>#(requirement.name)</option>
-                #endfor
-              </select>
-              <input id="contributeCount" type="number" min="1" max="100" value="1" class="input input-bordered input-accent sm:mx-2 mx-auto sm:mt-0 mt-2 !max-w-fit" />
-            </div>
-          </div>
-          <div class="flex-row mx-auto my-auto">
-            <label id="contributeButton" for="contribute-modal" class="sm:ml-0 ml-4 btn my-1 btn-primary w-24" onclick="contributeRes()">Submit</label>
-            <label for="contribute-modal" class="sm:ml-0 ml-4 btn my-1 btn-secondary w-24">Cancel</label>
+</main>
+
+<input type="checkbox" id="contribute-modal" class="modal-toggle" />
+<label for="contribute-modal" class="modal cursor-pointer">
+  <div class="modal-box w-1/2 max-w-sm">
+    <h3 class="font-bold text-lg text-center">Contribute resources</h3>
+    <form class="flex-col">
+      <div class="flex-col flex">
+        <div class="mx-auto flex-col">
+          <div class="mx-auto sm:flex-row flex-col flex my-2">
+            <select id="contributeResource" class="select select-accent max-w-xs mx-2 flex">
+              <option disabled selected>Resource</option>
+              #for(requirement in requirements):
+                <option>#(requirement.name)</option>
+              #endfor
+            </select>
+            <input id="contributeCount" type="number" min="1" max="100" value="1" class="input input-bordered input-accent sm:mx-2 mx-auto sm:mt-0 mt-2 !max-w-fit" />
           </div>
         </div>
-      </form>
-        
-    </div>
-  </label>
-
-
-  <footer class="footer flex bg-base-100 fixed !bottom-0 left-0 right-0 h-10">
-    <div class="my-auto ml-4 text-xs grid grid-cols-2 min-w-full">
-      <div class="md:mx-0 mx-auto text-center md:text-left">
-        A game by Samuel Bishop and Ethan Michaelis  (<a class="link link-success" href="https://github.com/dannflor/startup/">Source</a>)
+        <div class="flex-row mx-auto my-auto">
+          <label id="contributeButton" for="contribute-modal" class="sm:ml-0 ml-4 btn my-1 btn-primary w-24" onclick="contributeRes()">Submit</label>
+          <label for="contribute-modal" class="sm:ml-0 ml-4 btn my-1 btn-secondary w-24">Cancel</label>
+        </div>
       </div>
-      <div class="fixed right-4">
-        Pixelart by <a class="link link-success" href="https://2058.itch.io/">green guy</a>
-      </div>
-    </div>
-  </footer>
-</body>
+    </form>
+      
+  </div>
+</label>
 
-<script src="/js/mission.js" type="module"></script>
+#endexport
 
-<script>
-  fetch("/user/me").then(res => res.text()).then(data => {
-      document.getElementById("username").innerHTML = data;
-  });
-</script>
-
-</html>
+#export("js"):
+<script type="module" src="/js/mission.js"></script>
+#endexport
+#endextend
