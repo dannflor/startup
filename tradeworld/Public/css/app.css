@@ -1305,6 +1305,11 @@ html {
   --tw-text-opacity: 1;
   color: hsl(var(--sc) / var(--tw-text-opacity));
 }
+.btm-nav>*:where(.active) {
+  border-top-width: 2px;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b1) / var(--tw-bg-opacity));
+}
 .btm-nav>*.disabled,
     .btm-nav>*.disabled:hover,
     .btm-nav>*[disabled],
@@ -2008,6 +2013,13 @@ html {
   border-bottom-right-radius: var(--tab-radius, 0.5rem);
   border-bottom-left-radius: var(--tab-radius, 0.5rem);
 }
+.table tr.active th,
+    .table tr.active td,
+    .table tr.active:nth-child(even) th,
+    .table tr.active:nth-child(even) td {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b3, var(--b2)) / var(--tw-bg-opacity));
+}
 .textarea:focus {
   outline: 2px solid hsla(var(--bc) / 0.2);
   outline-offset: 2px;
@@ -2095,6 +2107,18 @@ html {
 }
 .rounded-box {
   border-radius: var(--rounded-box, 1rem);
+}
+.btm-nav-xs>*:where(.active) {
+  border-top-width: 1px;
+}
+.btm-nav-sm>*:where(.active) {
+  border-top-width: 2px;
+}
+.btm-nav-md>*:where(.active) {
+  border-top-width: 2px;
+}
+.btm-nav-lg>*:where(.active) {
+  border-top-width: 4px;
 }
 .checkbox-sm {
   height: 1.25rem;
@@ -2492,14 +2516,14 @@ grid label:nth-child(n+49) {
 .mt-3 {
   margin-top: 0.75rem;
 }
+.ml-4 {
+  margin-left: 1rem;
+}
 .mr-4 {
   margin-right: 1rem;
 }
 .mb-2 {
   margin-bottom: 0.5rem;
-}
-.ml-4 {
-  margin-left: 1rem;
 }
 .mr-2 {
   margin-right: 0.5rem;
@@ -2822,6 +2846,10 @@ grid label:nth-child(n+49) {
 .text-neutral-content {
   --tw-text-opacity: 1;
   color: hsl(var(--nc) / var(--tw-text-opacity));
+}
+.text-base-100 {
+  --tw-text-opacity: 1;
+  color: hsl(var(--b1) / var(--tw-text-opacity));
 }
 .text-white {
   --tw-text-opacity: 1;

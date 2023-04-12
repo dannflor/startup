@@ -7,7 +7,8 @@ func missionController(mission: RoutesBuilder) {
         return try await req.view.render("mission", MissionContext(
             mission: mission, 
             requirements: ResourceProgress.zipQty(qty1: totals, qty2: mission?.requirements ?? []), 
-            topFive: try await MissionTransaction.getTopFive(req: req)
+            topFive: try await MissionTransaction.getTopFive(req: req),
+            yourContrib: try await MissionTransaction.getMyTotal(req: req)
         ))
     }
     
