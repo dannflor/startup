@@ -48,6 +48,23 @@ final class MissionTransaction: Model, Content {
         }
         return totals
     }
+    
+    static func getMyTotal(req: Request) async throws -> MissionScore {
+        let user = try req.auth.require(User.self)
+        var totals: [ResourceQty] = []
+        guard let mission = Mission.current(req: req) else {
+            return MissionScore(username: user.username, score: [])
+        }
+        for requirement in mission.requirements {
+            let count = try await MissionTransaction.query(on: req.db)
+                .filter(\.$contributor.$id == user.requireID())
+                .filter(\.$contribResource == requirement.name)
+                .all()
+                .reduce(0) { $0 + $1.contribAmount }
+            totals.append(ResourceQty(name: requirement.name, count: count))
+        }
+        return MissionScore(username: user.username, score: totals)
+    }
 
     static func getTopFive(req: Request) async throws -> [MissionScore] {
         guard let mission = Mission.current(req: req) else {

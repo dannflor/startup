@@ -39,13 +39,20 @@ you'll only gain back half of the resources you spent on it.</p>
   <ol class="mx-auto mb-8">
   #for(leader in topFive):
     <li class="flex-row flex mx-auto mb-2">
-      <a href="/view?user=#(leader.username)" class="text-2xl link-accent my-auto">#(leader.username)</a> <span class="text-2xl text-accent my-auto mr-4"> :</span>
+      <a href="/view?user=#(leader.username)" class="text-2xl link-accent my-auto">#(leader.username)</a> <span class="text-2xl text-base-100 my-auto mr-4"> :</span>
       #for(resource in leader.score):
         <span class="text-2xl text-info my-auto">#(resource.count) #(resource.name) </span>
       #endfor
     </li>
   #endfor
   </ol>
+  <div class="flex-row flex mx-auto mb-2">
+    <div class="text-2xl text-success my-auto">Your contribution</div> <span class="text-2xl text-base-100 my-auto mr-4"> :</span>
+    #for(resource in yourContrib.score):
+      <span class="text-2xl text-info my-auto">#(resource.count) #(resource.name) </span>
+    #endfor
+  </div>
+    
   
 </main>
 
