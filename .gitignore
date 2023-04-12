@@ -1,5 +1,6 @@
 Packages
 .build
+tradeworld/build
 xcuserdata
 *.xcodeproj
 DerivedData/
