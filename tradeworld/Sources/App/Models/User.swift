@@ -25,6 +25,9 @@ final class User: Model, Content, ModelSessionAuthenticatable {
     @Field(key: "visit_time")
     var visited: Date
 
+    @Field(key: "join_date")
+    var createdAt: Date
+
     // Reference to the user's layout
     @OptionalChild(for: \.$user)
     var layout: Layout?
@@ -32,7 +35,7 @@ final class User: Model, Content, ModelSessionAuthenticatable {
     @OptionalChild(for: \.$user)
     var resources: Resource?
     
-    init(id: UUID? = nil, username: String, password: String, score: Int) {
+    init(id: UUID? = nil, username: String, password: String, score: Int, createdAt: Date = Date.now) {
         self.id = id
         self.username = username
         self.password = password
@@ -40,6 +43,7 @@ final class User: Model, Content, ModelSessionAuthenticatable {
         self.layout = nil
         self.score = score
         self.visited = Date.now
+        self.createdAt = createdAt
     }
     
     init(_ request: AuthRequest) throws {

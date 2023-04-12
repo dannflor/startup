@@ -126,6 +126,9 @@ public final class TradeConnectionManager {
                         guard userResources[msg.data.trade.offer.name] - msg.data.trade.offer.count >= 0 else {
                             throw Abort(.badRequest)
                         }
+                        guard msg.data.trade.ask.name != msg.data.trade.offer.name else {
+                            throw Abort(.badRequest)
+                        }
                         userResources[msg.data.trade.offer.name] -= msg.data.trade.offer.count
                         try await db.transaction { [userResources, trade] transaction in
                             try await userResources.save(on: transaction)

@@ -69,3 +69,16 @@ struct AddTimestampToUser: AsyncMigration {
             .update()
     }
 }
+
+struct AddJoinDateToUser: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database.schema(User.schema)
+            .field("join_date", .datetime, .required, .sql(.default(SQLRaw("CURRENT_TIMESTAMP"))))
+            .update()
+    }
+    func revert(on database: Database) async throws {
+        try await database.schema(User.schema)
+            .deleteField("join_date")
+            .update()
+    }
+}

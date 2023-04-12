@@ -208,6 +208,10 @@ async function sendTrade() {
     alert("You can't trade 0 or less of a resource!");
     return;
   }
+  if (offerType === askType) {
+    alert("You can't trade the same resource!");
+    return;
+  }
   const trade = {
     id: null,
     seller: username,
