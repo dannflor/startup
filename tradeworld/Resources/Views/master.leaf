@@ -24,14 +24,16 @@
           <li><a id="EventHeaderList"href="/mission">Event</a></li>
         </ul>
       </div>
-      <a href="/game" class="btn btn-ghost normal-case text-xl">Tradeworld</a>
+      <a href="/game" class="btn btn-ghost normal-case text-xl">
+        <img src="/img/logo/Logo_Big.png" class="h-8" alt="logo">
+      </a>
       <div id="activeUsers" class="my-auto ml-4 text-info font-bold tooltip hidden lg:flex tooltip-bottom"></div>
     </div>
     <div class="navbar-center hidden lg:flex">
-      <a id="BuildHeader" href="/game" class="btn px-12 mx-8">Build</a>
-      <a id="TechHeader" href="/tech" class="btn px-12 mx-8">Tech</a>
-      <a id="TradeHeader" href="/trade" class="btn px-12 mx-8">Trade</a>
-      <a id="EventHeader" href="/mission" class="btn px-12 mx-8">Event</a>
+      <a id="BuildHeader" href="/game" class="btn px-12 xl:mx-6 mx-1">Build</a>
+      <a id="TechHeader" href="/tech" class="btn px-12 xl:mx-6 mx-1">Tech</a>
+      <a id="TradeHeader" href="/trade" class="btn px-12 xl:mx-6 mx-1">Trade</a>
+      <a id="EventHeader" href="/mission" class="btn px-12 xl:mx-6 mx-1">Event</a>
     </div>
     <div class="navbar-end">
       <div class="pr-4">
@@ -105,12 +107,29 @@ fetch("/user/me").then(res => res.text()).then(data => {
 });
 setHeader('#import("title")')
 function setHeader(element) {
-  document.getElementById(element + "Header").classList.add("btn-primary")
-  document.getElementById(element + "HeaderList").classList.add("text-primary")
+  document.getElementById(element + "Header").classList.add("btn-primary");
+  document.getElementById(element + "HeaderList").classList.add("text-primary");
+  if (element == "Trade") {
+    let tradeHeader = document.getElementById(element + "Header");
+    let tradeHeaderList = document.getElementById(element + "HeaderList");
+    tradeHeader.classList.add("btn-primary");
+    tradeHeaderList.classList.add("text-primary");
+    let newTradeHeader = document.createElement("div");
+    newTradeHeader.classList.add("tooltip", "tooltip-bottom", "tooltip-primary");
+    newTradeHeader.setAttribute("data-tip", "Open a new trade");
+    let newTradeLabel = document.createElement("label");
+    newTradeLabel.setAttribute("for", "trade-modal");
+    newTradeLabel.classList.add("btn", "btn-primary", "px-8", "xl:mx-6", "mx-1");
+    newTradeLabel.textContent = "New Trade";
+    newTradeHeader.appendChild(newTradeLabel);
+    tradeHeader.parentNode.replaceChild(newTradeHeader, tradeHeader);
+    let newTradeLabelList = document.createElement("label");
+    newTradeLabelList.setAttribute("for", "trade-modal");
+    newTradeLabelList.classList.add("text-primary", "font-bold");
+    newTradeLabelList.textContent = "New Trade";
+    tradeHeaderList.parentNode.replaceChild(newTradeLabelList, tradeHeaderList);
+  }
 }
-
-
-
 
 </script>
 #import("js")

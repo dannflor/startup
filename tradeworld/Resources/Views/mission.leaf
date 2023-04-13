@@ -1,21 +1,11 @@
 #extend("master"):
 #export("title", "Event")
 #export("helpText"):
-<h2 class="text-xl font-bold">Welcome to Tradeworld!</h2>
-<p class="py-4">In this game, you can build your town by researching technology, 
-trading resources, and gathering resources to construct buildings. 
-Increase your score by researching techs and building.</p>
-<h2 class="text-lg font-bold">Getting started</h2>
-<p class="py-4">Make sure you choose your buildings wisely. 
-Buildings can receive bonuses depending on other buildings and 
-geographical features with which they share an edge. 
-In order to have a building available to build, 
-you must first research it in the Tech tab first.</p>
-<h2 class="text-lg font-bold">Building</h2>
-<p class="py-4">Click on an empty cell to build a building. 
-Click on a building to see what it does. 
-You can destroy a building to free up the space, but be careful because 
-you'll only gain back half of the resources you spent on it.</p>
+<h2 class="text-xl font-bold">Events</h2>
+<p class="py-4">New events will show up here periodically. 
+Contribute resources alongside other players to achieve the goal. 
+The player who contributes the most and the other top 5 players 
+will earn a special prize.</p>
 #endexport
 
 

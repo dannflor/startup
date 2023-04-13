@@ -2464,10 +2464,6 @@ grid label:nth-child(n+49) {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.mx-8 {
-  margin-left: 2rem;
-  margin-right: 2rem;
-}
 .mx-1 {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
@@ -2491,6 +2487,10 @@ grid label:nth-child(n+49) {
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 .mt-10 {
   margin-top: 2.5rem;
@@ -2572,6 +2572,9 @@ grid label:nth-child(n+49) {
 }
 .h-5 {
   height: 1.25rem;
+}
+.h-8 {
+  height: 2rem;
 }
 .h-10 {
   height: 2.5rem;
@@ -2754,6 +2757,10 @@ grid label:nth-child(n+49) {
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 .pt-4 {
   padding-top: 1rem;
@@ -3075,6 +3082,10 @@ grid label:nth-child(n+49) {
   }
 }
 @media (min-width: 1280px) {
+  .xl\:mx-6 {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
   .xl\:mt-56 {
     margin-top: 14rem;
   }
