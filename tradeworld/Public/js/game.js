@@ -23,10 +23,10 @@ const res = fetch('/grid').then(res =>
       gridCell.setAttribute('for', 'grid-cell-modal');
       //randomNum between 1 and 3
       const randomNum = Math.floor(Math.random() * 3) + 1;
-      gridCell.style.setProperty('--ground-image', "url('/img/Ground" + randomNum + ".png')");
+      gridCell.style.setProperty('--ground-image', "url('/img/building/Ground" + randomNum + ".png')");
      
       let img = document.createElement('img');
-      img.setAttribute('src', '/img/' + pictureForBuilding(cell.name));
+      img.setAttribute('src', '/img/building/' + pictureForBuilding(cell.name));
       img.setAttribute('class', '');
       img.setAttribute('style', 'image-rendering: crisp-edges; image-rendering: pixelated;');
       gridCell.appendChild(img);
@@ -110,7 +110,7 @@ async function editBuildMenu(building, element) {
         costText += selectedBuilding.cost[i].count + ' ' + selectedBuilding.cost[i].name.toLowerCase() + ', ';
       }
       costValue.innerText = costText.slice(0, -2);
-      buildMenuImage.setAttribute('src', '/img/' + pictureForBuilding(selectedBuilding.name));
+      buildMenuImage.setAttribute('src', '/img/building/' + pictureForBuilding(selectedBuilding.name));
       showBuildingEffects(selectedBuilding);
       buildButton.onclick = () => {
         buildBuilding(selectedBuilding, building.index, element);
@@ -170,7 +170,7 @@ async function editBuildMenu(building, element) {
       buildMenu.removeChild(buildMenu.lastChild);
     }
     buildMenu.appendChild(buttonDiv);
-    buildMenuImage.setAttribute('src', '/img/' + pictureForBuilding(building.name));
+    buildMenuImage.setAttribute('src', '/img/building/' + pictureForBuilding(building.name));
   }
 }
 
@@ -238,7 +238,7 @@ async function buildBuilding(building, index, element) {
 
   // Get img child of element
   let img = element.children[0];
-  img.setAttribute('src', '/img/' + pictureForBuilding(building.name));
+  img.setAttribute('src', '/img/building/' + pictureForBuilding(building.name));
   
   building.index = index;
   element.onclick = () => { editBuildMenu(building, element) };
@@ -264,7 +264,7 @@ async function destroyBuilding(building, index, element) {
 
   // Get img child of element
   let img = element.children[0];
-  img.setAttribute('src', '/img/' + pictureForBuilding(''));
+  img.setAttribute('src', '/img/building/' + pictureForBuilding(''));
 
   let newBuilding = new Building('', 0, false);
   newBuilding.index = index;

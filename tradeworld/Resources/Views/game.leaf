@@ -41,7 +41,7 @@ you'll only gain back half of the resources you spent on it.</p>
         <span id="bonuses"></span>
       </div>
       <div class="mx-0 md:mt-auto md:block hidden -mr-10">
-        <img id="modalMenuPicture" class="md:[scale:3] [scale:2] ml-12" style="image-rendering: crisp-edges; image-rendering: pixelated;" src="/img/NoHouse.png" alt="Building Image"/>
+        <img id="modalMenuPicture" class="md:[scale:3] [scale:2] ml-12" style="image-rendering: crisp-edges; image-rendering: pixelated;" src="/img/building/NoHouse.png" alt="Building Image"/>
       </div>
     </div>
     

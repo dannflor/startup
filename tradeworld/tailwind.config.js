@@ -35,10 +35,7 @@ module.exports = {
             opacity: 1
           }
         }
-      },
-      backgroundImage: {
-        'backdrop': "url('/img/bg.jpg')"
-      },
+      }
     },
   },
   plugins: [
