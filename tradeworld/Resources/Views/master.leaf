@@ -25,7 +25,7 @@
         </ul>
       </div>
       <a href="/game" class="btn btn-ghost normal-case text-xl">
-        <img src="/img/logo/Logo_Big.png" class="h-8" alt="logo">
+        <img src="/img/logo/Logo_Alt_Big_icon_2x.png" class="h-8" alt="logo">
       </a>
       <div id="activeUsers" class="my-auto ml-4 text-info font-bold tooltip hidden lg:flex tooltip-bottom"></div>
     </div>
