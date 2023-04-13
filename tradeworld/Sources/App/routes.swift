@@ -38,17 +38,17 @@ func routes(_ app: Application) throws {
         func createLayout() throws -> Layout {
             let grid: [Building] = [
                                         .Mountain,
-                                    .NoHouse, .NoHouse,
-                                .Forest, .NoHouse, .Mountain,
-                            .NoHouse, .NoHouse, .NoHouse, .NoHouse,
-                        .Forest, .NoHouse, .NoHouse, .NoHouse, .NoHouse,
-                    .NoHouse, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .Forest,
-                .Mountain, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .Water,
+                                    .Mountain, .Mountain,
+                                .Mountain, .NoHouse, .Mountain,
+                            .Forest, .NoHouse, .NoHouse, .Forest,
+                        .Forest, .NoHouse, .NoHouse, .NoHouse, .Forest,
+                    .Forest, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .Forest,
+                .Forest, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .Water,
                     .NoHouse, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .Water,
                         .NoHouse, .NoHouse, .NoHouse, .NoHouse, .Water,
                             .NoHouse, .NoHouse, .NoHouse, .Water,
                                 .NoHouse, .NoHouse, .Water,
-                                    .Forest, .Water,
+                                    .NoHouse, .Water,
                                         .Water
             ]
             // for _ in 0...48 {

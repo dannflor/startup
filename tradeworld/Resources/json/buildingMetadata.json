@@ -1,78 +1,384 @@
 {
   "Academy" : {
-
+    "bonusDescription": "Adjacent military and educational buildings produce more gold.",
+    "bonus": {
+      "University": [
+        {"name": "Gold", "count": 3}
+      ],
+      "Academy": [
+        {"name": "Gold", "count": 3}
+      ],
+      "Armory": [
+        {"name": "Gold", "count": 3}
+      ],
+      "Fort": [
+        {"name": "Gold", "count": 3}
+      ],
+      "Tower": [
+        {"name": "Gold", "count": 3}
+      ]
+    },
+    "score": 8,
+    "yield": [
+      { "name": "Gold", "count": 5 }
+    ]
   },
   "Armory" : {
+    "bonusDescription": "Adjacent blacksmiths produce more gold and iron, and adjacent military buildings produce wood.",
+    "bonus": {
+      "Blacksmith": [
+        {"name": "Gold", "count": 3},
+        {"name": "Iron", "count": 3}
+      ],
+      "Armory": [
+        {"name": "Wood", "count": 5}
+      ],
+      "Fortress": [
+        {"name": "Wood", "count": 5}
+      ],
+      "Tower": [
+        {"name": "Wood", "count": 5}
+      ]
+    },
+    "score": 6,
+    "yield": [
 
+    ]
   },
   "Blacksmith" : {
-
+    "bonusDescription": "Produces iron. Adjacent mines produce more stone.",
+    "bonus": {
+      "Mine": [
+        {"name": "Stone", "count": 3}
+      ]
+    },
+    "score": 4,
+    "yield": [
+      { "name": "Iron", "count": 3 }
+    ]
   },
   "Carpenter" : {
-
+    "bonusDescription": "Adjacent lumber camps produce more wood.",
+    "bonus": {
+      "Lumber Camp": [
+        {"name": "Wood", "count": 3}
+      ]
+    },
+    "score": 3,
+    "yield": [
+      
+    ]
   },
   "Cottage" : {
-
+    "bonusDescription": "Adjacent fisheries produce more food, and adjacent farms and pastures produce more food. Adjacent mines produce more stone.",
+    "bonus": {
+      "Fishery": [
+        {"name": "Food", "count": 3}
+      ],
+      "Farm": [
+        {"name": "Food", "count": 3}
+      ],
+      "Pasture": [
+        {"name": "Food", "count": 3}
+      ],
+      "Mine": [
+        {"name": "Stone", "count": 3}
+      ]
+    },
+    "score": 1,
+    "yield": [
+      
+    ]
   },
   "Estate" : {
+    "bonusDescription": "Adjacent fisheries produce more food, and adjacent farms produce more food, adjacent blacksmiths produce more gold, and adjacent carpenters produce more gold.",
+    "bonus": {
+      "Fishery": [
+        {"name": "Food", "count": 3}
+      ],
+      "Farm": [
+        {"name": "Food", "count": 3}
+      ],
+      "Blacksmith": [
+        {"name": "Gold", "count": 2}
+      ],
+      "Carpenter": [
+        {"name": "Gold", "count": 2}
+      ]
+    },
+    "score": 5,
+    "yield": [
 
+    ]
   },
   "Farm" : {
-
+    "bonusDescription": "Produces food.",
+    "bonus": {
+      
+    },
+    "score": 1,
+    "yield": [
+      { "name": "Food", "count": 5 }
+    ]
   },
   "Fishery" : {
-
+    "bonusDescription": "Produces food. Adjacent fisheries produce more food. Can only be built adjacent to water.",
+    "bonus": {
+      "Fishery": [
+        {"name": "Food", "count": 3}
+      ]
+    },
+    "score": 2,
+    "yield": [
+      { "name": "Food", "count": 10 }
+    ]
   },
   "Forest": {
-    
+    "bonusDescription": "Adjacent lumber camps produce more wood.",
+    "bonus": {
+      "Lumber Camp": [
+        {"name": "Wood", "count": 7}
+      ]
+    },
+    "score": 0,
+    "yield": [
+
+    ]
   },
   "Fort" : {
-
+    "bonusDescription": "Produces gold. Adjacent military buildings produce more wood.",
+    "bonus": {
+      "Armory": [
+        {"name": "Wood", "count": 5}
+      ],
+      "Fortress": [
+        {"name": "Wood", "count": 5}
+      ],
+      "Tower": [
+        {"name": "Wood", "count": 5}
+      ]
+    },
+    "score": 7,
+    "yield": [
+      { "name": "Gold", "count": 3 }
+    ]
   },
   "Guild" : {
+    "bonusDescription": "Adjacent blacksmiths produce more iron, and adjacent Carpenters produce more wood, and both produce more gold.",
+    "bonus": {
+      "Blacksmith": [
+        {"name": "Iron", "count": 5},
+        {"name": "Gold", "count": 5}
+      ],
+      "Carpenter": [
+        {"name": "Wood", "count": 5},
+        {"name": "Gold", "count": 5}
+      ]
+    },
+    "score": 5,
+    "yield": [
 
+    ]
   },
   "House" : {
-
+    "bonusDescription": "Adjacent fisheries produce more food, and adjacent farms produce more food.",
+    "bonus": {
+      "Fishery": [
+        {"name": "Food", "count": 5}
+      ],
+      "Farm": [
+        {"name": "Food", "count": 5}
+      ]
+    },
+    "score": 3,
+    "yield": [
+      
+    ]
   },
   "Lumber Camp" : {
-
+    "bonusDescription": "Produces wood. Adjacent carpenters produce more gold. Adjacent forests increase wood output.",
+    "bonus": {
+      "Carpenter": [
+        {"name": "Gold", "count": 3}
+      ]
+    },
+    "score": 1,
+    "yield": [
+      { "name": "Wood", "count": 3 }
+    ]
   },
   "Mine" : {
-
+    "bonusDescription": "Produces stone. Adjacent blacksmiths produce more iron, and they now produce gold. Heavily buffed by adjacent mountains.",
+    "bonus": {
+      "Blacksmith": [
+        {"name": "Gold", "count": 3},
+        {"name": "Iron", "count": 3}
+      ]
+    },
+    "score": 2,
+    "yield": [
+      { "name": "Iron", "count": 3 }
+    ]
   },
   "Mountain": {
-
+    "bonusDescription": "Adjacent mines produce more stone.",
+    "bonus": {
+      "Mine": [
+        {"name": "Stone", "count": 5},
+        {"name": "Iron", "count": 10}
+      ],
+      "Quarry": [
+        {"name": "Stone", "count": 10}
+      ]
+    },
+    "score": 0,
+    "yield": [
+      
+    ]
   },
   "No House": {
-    "yield": [],
     "bonusDescription": "No bonus.",
-    "yieldBonus": {},
-    "bonusBonus": {},
-    "directionBonus": {},
-    "direction": "SE",
-    "directionQty": 0,
-    "score": 0
+    "bonus": {},
+    "score": 0,
+    "yield": []
   },
   "Palace" : {
-  
+    "bonusDescription": "The palace and adjacent military buildings gain more of every resource.",
+    "bonus": {
+      "Armory": [
+        {"name": "Gold", "count": 3},
+        {"name": "Iron", "count": 3},
+        {"name": "Stone", "count": 3},
+        {"name": "Wood", "count": 3},
+        {"name": "Food", "count": 3}
+      ],
+      "Fort": [
+        {"name": "Gold", "count": 3},
+        {"name": "Iron", "count": 3},
+        {"name": "Stone", "count": 3},
+        {"name": "Wood", "count": 3},
+        {"name": "Food", "count": 3}
+      ],
+      "Tower": [
+        {"name": "Gold", "count": 3},
+        {"name": "Iron", "count": 3},
+        {"name": "Stone", "count": 3},
+        {"name": "Wood", "count": 3},
+        {"name": "Food", "count": 3}
+      ]
+    },
+    "score": 10,
+    "yield": [
+      { "name": "Gold", "count": 5 },
+      { "name": "Iron", "count": 5 },
+      { "name": "Stone", "count": 5 },
+      { "name": "Wood", "count": 5 },
+      { "name": "Food", "count": 5 }
+    ]
   },
   "Pasture" : {
-
+    "bonusDescription": "Adjacent farms produce more food.",
+    "bonus": {
+      "Farm": [
+        {"name": "Food", "count": 3}
+      ]
+    },
+    "score": 1,
+    "yield": [
+      { "name": "Food", "count": 3 }
+    ]
   },
   "Quarry" : {
-
+    "bonusDescription": "Adjacent mines produce more stone.",
+    "bonus": {
+      "Mine": [
+        {"name": "Stone", "count": 5}
+      ],
+      "Mountain": [
+        {"name": "Stone", "count": 3}
+      ]
+    },
+    "score": 3,
+    "yield": [
+      { "name": "Stone", "count": 5 }
+    ]
   },
   "Tower" : {
+    "bonusDescription": "Adjacent military buildings produce more food.",
+    "bonus": {
+      "Armory": [
+        {"name": "Food", "count": 5}
+      ],
+      "Fort": [
+        {"name": "Food", "count": 5}
+      ],
+      "Tower": [
+        {"name": "Food", "count": 5}
+      ]
+    },
+    "score": 6,
+    "yield": [
 
+    ]
   },
   "University" : {
-
+    "bonusDescription": "Adjacent military and educational buildings produce more gold. Adjacent blacksmiths produce more iron, and adjacent carpenters produce more wood.",
+    "bonus": {
+      "Blacksmith": [
+        {"name": "Iron", "count": 3}
+      ],
+      "Carpenter": [
+        {"name": "Wood", "count": 3}
+      ],
+      "University": [
+        {"name": "Gold", "count": 3}
+      ],
+      "Academy": [
+        {"name": "Gold", "count": 3}
+      ],
+      "Armory": [
+        {"name": "Gold", "count": 3}
+      ],
+      "Fort": [
+        {"name": "Gold", "count": 3}
+      ],
+      "Tower": [
+        {"name": "Gold", "count": 3}
+      ]
+    },
+    "score": 9,
+    "yield": [
+      { "name": "Gold", "count": 5 }
+    ]
   },
   "Watermill" : {
+    "bonusDescription": "Adjacent farms and fisheries produce more food. Can only be built adjacent to water.",
+    "bonus": {
+      "Farm": [
+        {"name": "Food", "count": 3}
+      ],
+      "Fishery": [
+        {"name": "Food", "count": 3}
+      ]
+    },
+    "score": 3,
+    "yield": [
 
+    ]
   },
   "Windmill" : {
-    
+    "bonusDescription": "Adjacent farms and fisheries produce more food.",
+    "bonus": {
+      "Farm": [
+        {"name": "Food", "count": 2}
+      ],
+      "Fishery": [
+        {"name": "Food", "count": 2}
+      ]
+    },
+    "score": 2,
+    "yield": [
+
+    ]
   }
 }
