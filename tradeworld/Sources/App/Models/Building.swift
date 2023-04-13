@@ -110,7 +110,7 @@ enum Building: String, CaseIterable, Content {
                 bonuses = bonuses.add(bonus)
             }
         }
-        for bonus in getMetadata(req: req).bonus[recipient.rawValue] ?? [] {
+        for bonus in getMetadata(req: req).yieldBonus[recipient.rawValue] ?? [] {
             bonuses = bonuses.add([bonus])
         }
         return bonuses
@@ -119,9 +119,9 @@ enum Building: String, CaseIterable, Content {
     public func getMetadata(req: Request) -> BuildingMetadata {
         guard let buildings = decodeFile(req: req, "buildingMetadata", [String: BuildingMetadata].self) else {
             print("Could not decode")
-            return BuildingMetadata(yield: [], bonus: [:], bonusDescription: "", score: 0)
+            return BuildingMetadata(yield: [], yieldBonus: [:], bonusBonus: [:], directionBonus: [:], direction: .SE, directionQty: 0, bonusDescription: "", score: 0)
         }
-        return buildings[self.rawValue] ?? BuildingMetadata(yield: [], bonus: [:], bonusDescription: "", score: 0)
+        return buildings[self.rawValue] ?? BuildingMetadata(yield: [], yieldBonus: [:], bonusBonus: [:], directionBonus: [:], direction: .SE, directionQty: 0, bonusDescription: "", score: 0)
     }
     
     
