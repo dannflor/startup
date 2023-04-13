@@ -82,3 +82,18 @@ struct AddJoinDateToUser: AsyncMigration {
             .update()
     }
 }
+struct AddRolesToUsers: AsyncMigration {
+    // Prepares the database for storing user models.
+    func prepare(on database: Database) async throws {
+        try await database.schema(User.schema)
+            .field("roles", .int64, .required, .sql(.default(0)))
+            .update()
+    }
+    
+    // Optionally reverts the changes made in the prepare method.
+    func revert(on database: Database) async throws {
+        try await database.schema(User.schema)
+            .deleteField("roles")
+            .update()
+    }
+}

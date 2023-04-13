@@ -12,6 +12,8 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0"),
         .package(url: "https://github.com/vapor/fluent-postgres-driver.git", from: "2.0.0"),
         .package(url: "https://github.com/vapor/leaf.git", from: "4.0.0"),
+        .package(url: "https://github.com/vapor-community/leaf-markdown.git", from: "3.0.0"),
+        .package(url: "https://github.com/rexmas/JSONValue.git", from: "7.0.0")
     ],
     targets: [
         .target(
@@ -20,7 +22,9 @@ let package = Package(
                 .product(name: "Fluent", package: "fluent"),
                 .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver"),
                 .product(name: "Leaf", package: "leaf"),
-                .product(name: "Vapor", package: "vapor")
+                .product(name: "Vapor", package: "vapor"),
+                .product(name: "LeafMarkdown", package: "leaf-markdown"),
+                .product(name: "JSONValueRX", package: "jsonvalue")
             ],
             swiftSettings: [
                 // Enable better optimizations when building in Release configuration. Despite the use of

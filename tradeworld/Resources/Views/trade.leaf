@@ -1,4 +1,4 @@
-#extend("master"):
+#extend("resourceVisible"):
 #export("title", "Trade")
 #export("helpText"):
 <h2 class="text-xl font-bold">Trades</h2>

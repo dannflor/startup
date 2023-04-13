@@ -1,4 +1,4 @@
-#extend("master"):
+#extend("resourceVisible"):
 #export("title", "Build")
 #export("helpText"):
 <h2 class="text-xl font-bold">Welcome to Tradeworld!</h2>

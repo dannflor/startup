@@ -169,6 +169,8 @@ func routes(_ app: Application) throws {
     loginProtected.group("trade", configure: tradeController)
     
     loginProtected.group("mission", configure: missionController)
+
+    loginProtected.group("news", configure: newsController)
 }
 
 extension String {
