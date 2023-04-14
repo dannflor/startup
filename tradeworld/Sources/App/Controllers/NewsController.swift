@@ -19,7 +19,7 @@ func newsController(news: RoutesBuilder) {
             }
         }
         let newsPosts = try await NewsPost.query(on: req.db).all().map { NewsResponse(post: $0) }
-        return try await req.view.render("news", ["news": newsPosts])
+        return try await req.view.render("news", ["news": newsPosts.sorted { $0.date > $1.date }])
     }
 
     func adminProtectedController(adminProtected: RoutesBuilder) {

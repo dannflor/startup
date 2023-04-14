@@ -16,7 +16,7 @@ You can't trade with yourself, so make sure you are deliberate in your trading.<
   <ul id="transactionLog" class="mx-2 flex-col flex mb-8">
     #for(trade in trades):
       <li class="ml-8">
-        <span class="text-primary font-bold">#(trade.date)</span> : <span class="text-accent font-bold">#(trade.seller)</span> sold <span class="text-secondary font-bold">#(trade.offerAmount) #(trade.offerResource)</span> to <span class="text-success font-bold">#(trade.buyer)</span> for <span class="text-secondary font-bold">#(trade.askAmount) #(trade.askResource)</span>
+        <span class="text-primary font-bold">#(trade.date)</span> : <a href="/view?user=#(trade.seller)" class="link-accent font-bold">#(trade.seller)</a> sold <span class="text-secondary font-bold">#(trade.offerAmount) #(trade.offerResource)</span> to <a href="/view?user=#(trade.buyer)" class="link-success font-bold">#(trade.buyer)</a> for <span class="text-secondary font-bold">#(trade.askAmount) #(trade.askResource)</span>
       </li>
     #endfor
   </ul>
