@@ -74,6 +74,7 @@ function configureWebSocket() {
     }
     else if (msg.type === "removeTrades") {
       loadTrades(msg.trades, true);
+      updateResources();
     }
   };
 }
