@@ -181,8 +181,8 @@ async function acceptTrade(trade) {
       return;
     }
   }
-  socket.sendJsonBlob(new TradeResponse(trade, "acceptTrade"));
   fadeAway("cell" + trade.id);
+  socket.sendJsonBlob(new TradeResponse(trade, "acceptTrade"));
   setTimeout(async () => {
     await updateResources();
   }, 2000);
