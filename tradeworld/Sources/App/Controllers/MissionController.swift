@@ -19,6 +19,9 @@ func missionController(mission: RoutesBuilder) {
         guard let amount = Int(req.parameters.get("amount") ?? "") else {
             throw Abort(.badRequest)
         }
+        guard amount > 0 else {
+            throw Abort(.badRequest)
+        }
         let user = try req.auth.require(User.self)
         guard let resources = try await user.$resources.get(on: req.db) else {
             throw Abort(.internalServerError)

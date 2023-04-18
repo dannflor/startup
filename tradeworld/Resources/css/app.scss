@@ -86,7 +86,7 @@
         padding-top: $topMargin;
         
         label {
-            --ground-image: url('../img/Ground1.png');
+            --ground-image: url('../img/building/Ground1.png');
             
             width: $tile;
             height: $tile;
@@ -144,7 +144,7 @@
                 z-index: 1;
                 image-rendering: crisp-edges;
                 image-rendering: pixelated;
-                background-image: url('../img/NoHouse.png');
+                background-image: url('../img/building/NoHouse.png');
                 
                 -webkit-transform:translate3d(0,0,100); //fixes z-indexing in safari
             }

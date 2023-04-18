@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "cmark-gfm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/brokenhandsio/cmark-gfm.git",
+      "state" : {
+        "revision" : "e97450a77a40f12b4f88f95891621c3b5d8669de",
+        "version" : "2.1.0"
+      }
+    },
+    {
       "identity" : "console-kit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/vapor/console-kit.git",
@@ -55,6 +64,15 @@
       }
     },
     {
+      "identity" : "jsonvalue",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rexmas/JSONValue.git",
+      "state" : {
+        "revision" : "696916c028fdb0e30ec2771639135172700d424c",
+        "version" : "7.2.0"
+      }
+    },
+    {
       "identity" : "leaf",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/vapor/leaf.git",
@@ -70,6 +88,24 @@
       "state" : {
         "revision" : "c67a1b06561bfb8a427ed7e50e27792e083f2d3e",
         "version" : "1.8.0"
+      }
+    },
+    {
+      "identity" : "leaf-markdown",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vapor-community/leaf-markdown.git",
+      "state" : {
+        "revision" : "ecec9a93102139609aa5a84c51990fc305fbc1d6",
+        "version" : "3.0.1"
+      }
+    },
+    {
+      "identity" : "markdown",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vapor-community/markdown.git",
+      "state" : {
+        "revision" : "f0cdf125947c06685ebaef633fd00ae5247a1cfc",
+        "version" : "0.7.1"
       }
     },
     {

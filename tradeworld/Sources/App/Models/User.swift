@@ -21,12 +21,18 @@ final class User: Model, Content, ModelSessionAuthenticatable {
     
     @Field(key: "techs")
     var techs: [Int]
+
+    @Children(for: \.$user)
+    var trophies: [Trophy]
     
     @Field(key: "visit_time")
     var visited: Date
 
     @Field(key: "join_date")
     var createdAt: Date
+
+    @Field(key: "roles")
+    var roles: User.Roles
 
     // Reference to the user's layout
     @OptionalChild(for: \.$user)
@@ -65,5 +71,14 @@ extension User: ModelCredentialsAuthenticatable {
 
     func verify(password: String) throws -> Bool {
         try Bcrypt.verify(password, created: self.password)
+    }
+}
+
+extension User {
+    struct Roles: OptionSet, Codable {
+        let rawValue: Int64
+        static let admin = Self(rawValue: 1 << 32)
+        static let verifiedEmail = Self(rawValue: 1)
+        static let founder = Self(rawValue: 1 << 1)
     }
 }

@@ -1,4 +1,4 @@
-#extend("master"):
+#extend("resourceVisible"):
 #export("title", "Event")
 #export("helpText"):
 <h2 class="text-xl font-bold">Events</h2>

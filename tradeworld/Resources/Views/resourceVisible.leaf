@@ -1,0 +1,20 @@
+#extend("master"):
+
+#export("masterBody"):
+  <div class="md:w-1/2 mx-auto lg:px-10 mb-2">
+    <div id="resources" class="flex-row flex rounded-lg">
+      <div id="scoreDiv" class="flex-1 flex md:space-x-2 bg-base-100 py-3 rounded-lg mx-1 my-1 px-1">
+        <div class="mx-auto md:flex-row md:flex md:text-base text-xs">
+          <div class="text-accent font-bold md:mr-1 text-center md:text-left">Score:</div>
+          <div id="score" class="text-neutral-content text-center md:text-left">0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  #import("body")
+#endexport
+
+#export("masterJs"):
+  #import("js")
+#endexport
+#endextend

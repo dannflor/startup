@@ -1,4 +1,4 @@
-#extend("master"):
+#extend("resourceVisible"):
 #export("title", "Tech")
 #export("helpText"):
 <h2 class="text-xl font-bold">Techs</h2>

@@ -1,4 +1,4 @@
-#extend("master"):
+#extend("resourceVisible"):
 #export("title", "Trade")
 #export("helpText"):
 <h2 class="text-xl font-bold">Trades</h2>
@@ -16,7 +16,7 @@ You can't trade with yourself, so make sure you are deliberate in your trading.<
   <ul id="transactionLog" class="mx-2 flex-col flex mb-8">
     #for(trade in trades):
       <li class="ml-8">
-        <span class="text-primary font-bold">#(trade.date)</span> : <span class="text-accent font-bold">#(trade.seller)</span> sold <span class="text-secondary font-bold">#(trade.offerAmount) #(trade.offerResource)</span> to <span class="text-success font-bold">#(trade.buyer)</span> for <span class="text-secondary font-bold">#(trade.askAmount) #(trade.askResource)</span>
+        <span class="text-primary font-bold">#(trade.date)</span> : <a href="/view?user=#(trade.seller)" class="link-accent font-bold">#(trade.seller)</a> sold <span class="text-secondary font-bold">#(trade.offerAmount) #(trade.offerResource)</span> to <a href="/view?user=#(trade.buyer)" class="link-success font-bold">#(trade.buyer)</a> for <span class="text-secondary font-bold">#(trade.askAmount) #(trade.askResource)</span>
       </li>
     #endfor
   </ul>
@@ -41,7 +41,7 @@ You can't trade with yourself, so make sure you are deliberate in your trading.<
                 <option>Iron</option>
                 <option>Food</option>
               </select>
-              <input id="offerCount" type="number" min="1" max="100" value="1" class="input input-bordered input-accent mx-2 !max-w-fit" />
+              <input id="offerCount" type="number" min="1" max="100" value="1" class="input input-bordered input-accent mx-2 !max-w-fit w-24" />
             </div>
             <div class="sm:mx-0 mx-auto flex-row flex my-2">
               <div class="label mx-2 font-bold text-info w-10">Ask</div>
@@ -53,7 +53,7 @@ You can't trade with yourself, so make sure you are deliberate in your trading.<
                 <option>Iron</option>
                 <option>Food</option>
               </select>
-              <input id="askCount" type="number" min="1" max="100" value="1" class="input input-bordered input-info mx-2 !max-w-fit" />
+              <input id="askCount" type="number" min="1" max="100" value="1" class="input input-bordered input-info mx-2 !max-w-fit w-24" />
             </div>
           </div>
           <div class="sm:flex-col flex-row sm:mx-0 mx-auto my-auto">

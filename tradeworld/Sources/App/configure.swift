@@ -3,6 +3,7 @@ import FluentPostgresDriver
 import Leaf
 import Vapor
 import NIOSSL
+import LeafMarkdown
 
 // configures your application
 public func configure(_ app: Application) throws {
@@ -14,12 +15,15 @@ public func configure(_ app: Application) throws {
     app.middleware.use(app.sessions.middleware)
     app.middleware.use(User.sessionAuthenticator())
     
-    app.migrations.add(CreateUser(), CreateResource(), AddScoreToUser(), SessionRecord.migration, 
+    app.migrations.add(
+        CreateUser(), CreateResource(), AddScoreToUser(), SessionRecord.migration, 
         CreateLayout(), RecreateResource(), AddTechToUser(), AddTimestampToUser(), CreateTrade(), 
         CreateAsk(), CreateOffer(), AddTimestampToTrade(), CreateTradeTransaction(), CreateMissionTransaction(),
-        AddJoinDateToUser())
+        AddJoinDateToUser(), AddRolesToUsers(), CreateTrophy(), CreateNewsPost()
+    )
 
     app.views.use(.leaf)
+    app.leaf.tags["markdown"] = Markdown()
     // app.http.server.configuration.tlsConfiguration = .makeServerConfiguration(
     //     certificateChain: try NIOSSLCertificate.fromPEMFile(app.directory.resourcesDirectory + "cert/signed_certificate.pem").map { .certificate($0) },
     //     privateKey: .file(app.directory.resourcesDirectory + "cert/private_key.pem")

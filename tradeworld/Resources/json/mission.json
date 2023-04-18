@@ -2,7 +2,7 @@
     "name": "Build the Great Tradeworldian Wall!",
     "description": "OH MY GOODNESS. This guy is out of control, and he's huge!! We need a wall twice as big to keep him out!!",
     "requirements": [
-        {"name": "Stone", "count": 200000}
+        {"name": "Stone", "count": 1000000}
     ],
     "img": "/img/monster/greg.png"
 }

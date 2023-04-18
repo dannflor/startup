@@ -22,6 +22,7 @@
           <li><a id="TechHeaderList" href="/tech">Tech</a></li>
           <li><a id="TradeHeaderList" href="/trade">Trade</a></li>
           <li><a id="EventHeaderList"href="/mission">Event</a></li>
+          <li><a id="NewsHeaderList"href="/news">News</a></li>
         </ul>
       </div>
       <a href="/game" class="btn btn-ghost normal-case text-xl">
@@ -34,9 +35,10 @@
       <a id="TechHeader" href="/tech" class="btn px-12 xl:mx-6 mx-1">Tech</a>
       <a id="TradeHeader" href="/trade" class="btn px-12 xl:mx-6 mx-1">Trade</a>
       <a id="EventHeader" href="/mission" class="btn px-12 xl:mx-6 mx-1">Event</a>
+      <a id="NewsHeader" href="/news" class="btn px-12 xl:mx-6 mx-1">News</a>
     </div>
     <div class="navbar-end">
-      <div class="pr-4">
+      <div id="helpButton" class="pr-4">
         <label for="my-modal" class="btn">?</label>
 
         <!-- Put this part before </body> tag -->
@@ -58,17 +60,7 @@
       </div>
     </div>
   </div>
-  <div class="md:w-1/2 mx-auto lg:px-10 mb-2">
-    <div id="resources" class="flex-row flex rounded-lg">
-      <div id="scoreDiv" class="flex-1 flex md:space-x-2 bg-base-100 py-3 rounded-lg mx-1 my-1 px-1">
-        <div class="mx-auto md:flex-row md:flex md:text-base text-xs">
-          <div class="text-accent font-bold md:mr-1 text-center md:text-left">Score:</div>
-          <div id="score" class="text-neutral-content text-center md:text-left">0</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  #import("body")
+  #import("masterBody")
   <footer class="footer flex bg-base-100 fixed !bottom-0 left-0 right-0 h-10">
     <div class="my-auto ml-4 text-xs grid grid-cols-2 min-w-full">
       <div class="md:mx-0 mx-auto text-center md:text-left">
@@ -132,5 +124,5 @@ function setHeader(element) {
 }
 
 </script>
-#import("js")
+#import("masterJs")
 </html>
