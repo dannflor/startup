@@ -3136,6 +3136,10 @@ grid label:nth-child(n+49) {
 .w-full {
   width: 100%;
 }
+.min-w-fit {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
 .min-w-full {
   min-width: 100%;
 }
