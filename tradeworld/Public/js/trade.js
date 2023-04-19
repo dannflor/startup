@@ -141,13 +141,13 @@ async function loadTrades(trades, remove) {
     const div4 = document.createElement("div");
     // <div class="w-8 my-auto mx-1"><img src="/img/icon/#lowercased(trade.offerResource).png" class="w-full h-auto block" style="image-rendering: pixelated; image-rendering: crisp-edges;" /></div>
     const resourceImage = document.createElement("div");
-    resourceImage.setAttribute("class", "w-8 my-auto mx-1");
+    resourceImage.setAttribute("class", "sm:w-8 w-4 my-auto mx-1");
     const img = document.createElement("img");
     img.setAttribute("src", "/img/icon/" + trade.offer.name.toLowerCase() + ".png");
-    img.setAttribute("class", "w-full h-auto block");
+    img.setAttribute("class", "sm:w-full sm:h-full w-4 h-4 block");
     img.setAttribute("style", "image-rendering: pixelated; image-rendering: crisp-edges;");
     resourceImage.appendChild(img);
-    div4.appendChild(resourceImage);
+    // div4.appendChild(resourceImage);
     div4.setAttribute("class", "sm:text-base text-xs my-auto");
     div4.textContent = trade.offer.count;
     const div5 = document.createElement("div");
@@ -155,15 +155,15 @@ async function loadTrades(trades, remove) {
     div5.textContent = "ASK:";
     const div6 = document.createElement("div");
     const askResourceImage = document.createElement("div");
-    askResourceImage.setAttribute("class", "w-8 my-auto mx-1");
+    askResourceImage.setAttribute("class", "sm:w-8 w-4 my-auto mx-1");
     const askImg = document.createElement("img");
     askImg.setAttribute("src", "/img/icon/" + trade.ask.name.toLowerCase() + ".png");
-    askImg.setAttribute("class", "w-full h-auto block");
+    askImg.setAttribute("class", "sm:w-full sm:h-full w-4 h-4 block");
     askImg.setAttribute("style", "image-rendering: pixelated; image-rendering: crisp-edges;");
     askResourceImage.appendChild(askImg);
-    div6.appendChild(askResourceImage);
+    // div6.appendChild(askResourceImage);
     div6.setAttribute("class", "sm:text-base text-xs my-auto");
-    div6.textContent = trade.ask.count + " " + trade.ask.name;
+    div6.textContent = trade.ask.count;
     const div7 = document.createElement("div");
     div7.setAttribute("class", "divider !my-0 mr-4 !h-2 sm:w-[27rem] w-[17rem]");
     const div8 = document.createElement("div");
@@ -171,8 +171,10 @@ async function loadTrades(trades, remove) {
     div8.textContent = trade.message;
     div1.appendChild(div2);
     div1.appendChild(div3);
+    div1.appendChild(resourceImage);
     div1.appendChild(div4);
     div1.appendChild(div5);
+    div1.appendChild(askResourceImage);
     div1.appendChild(div6);
     div.appendChild(div1);
     div.appendChild(div7);

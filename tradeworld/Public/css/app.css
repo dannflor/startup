@@ -2994,9 +2994,6 @@ grid label:nth-child(n+49) {
 .mb-8 {
   margin-bottom: 2rem;
 }
-.ml-1 {
-  margin-left: 0.25rem;
-}
 .ml-12 {
   margin-left: 3rem;
 }
@@ -3069,6 +3066,9 @@ grid label:nth-child(n+49) {
 .h-10 {
   height: 2.5rem;
 }
+.h-4 {
+  height: 1rem;
+}
 .h-5 {
   height: 1.25rem;
 }
@@ -3116,6 +3116,9 @@ grid label:nth-child(n+49) {
 }
 .w-3\/4 {
   width: 75%;
+}
+.w-4 {
+  width: 1rem;
 }
 .w-5 {
   width: 1.25rem;
@@ -3518,11 +3521,20 @@ grid label:nth-child(n+49) {
   .sm\:h-\[300px\] {
     height: 300px;
   }
+  .sm\:h-full {
+    height: 100%;
+  }
+  .sm\:w-8 {
+    width: 2rem;
+  }
   .sm\:w-\[27rem\] {
     width: 27rem;
   }
   .sm\:w-\[32rem\] {
     width: 32rem;
+  }
+  .sm\:w-full {
+    width: 100%;
   }
   .sm\:flex-row {
     flex-direction: row;
