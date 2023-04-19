@@ -126,6 +126,10 @@ final class Resource: Model, Content {
             self[resource.name] += resource.count
         }
     }
+
+    public static func < (lhs: Resource, rhs: Resource) -> Bool {
+        return lhs.wood + lhs.stone + lhs.gold + lhs.iron + lhs.food < rhs.wood + rhs.stone + rhs.gold + rhs.iron + rhs.food
+    }
 }
 
 enum ResourceType: String, Codable {

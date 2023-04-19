@@ -93,20 +93,7 @@ func routes(_ app: Application) throws {
     }
     
     loginProtected.get("score") { req async throws -> Int in
-        var score = 0
-        guard let layout = try await req.auth.require(User.self).$layout.get(on: req.db)?.layout else {
-            throw Abort(.internalServerError)
-        }
-        let techs = try Tech.lookup(req)
-        score += layout.reduce(score) { addedScore, building in
-            addedScore + building.getMetadata(req: req).score
-        }
-        score += techs.reduce(score) { addedScore, tech in
-            addedScore + tech.effects.reduce(0) { effectScore, effect in
-                effectScore + effect.score
-            }
-        }
-        return score
+        try await req.auth.require(User.self).getScore(req)
     }
     
     loginProtected.get("grid") { req async throws -> [BuildingResponse] in
@@ -161,16 +148,12 @@ func routes(_ app: Application) throws {
     }
     
     loginProtected.group("building", configure: buildingController)
-    
     loginProtected.group("user", configure: userController)
-    
     loginProtected.group("tech", configure: techController)
-    
     loginProtected.group("trade", configure: tradeController)
-    
     loginProtected.group("mission", configure: missionController)
-
     loginProtected.group("news", configure: newsController)
+    loginProtected.group("leaderboard", configure: leaderboardController)
 }
 
 extension String {

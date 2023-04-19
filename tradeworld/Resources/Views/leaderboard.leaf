@@ -1,0 +1,23 @@
+#extend("master"):
+#export("title", "Leaderboard")
+#export("helpText", "")
+#export("masterBody"):
+  <h1 class="text-5xl mx-auto text-left mt-8 font-extrabold text-info">Leaderboard</h1>
+  <div class="divider"></div>
+  <div class="mx-14 mb-8">
+
+  #for(user in users):
+    <div class="flex flex-col ml-8">
+      <div class="flex-row">
+        <a class="ml-2 link-accent" href="/view?user=#(user.username)">#(user.username)</div>
+        <div class="ml-2 text-accent">#(user.score)</div>
+      </div>
+  #endfor
+  </div>
+#endexport
+
+#export("masterJs"): 
+  
+#endexport
+
+#endextend

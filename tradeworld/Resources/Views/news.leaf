@@ -2,14 +2,14 @@
 #export("title", "News")
 #export("helpText", "")
 #export("masterBody"):
-  <h1 class="text-5xl mx-auto text-center md:text-left mt-8 font-extrabold text-info">News</h1>
+  <h1 class="text-5xl mx-auto text-left mt-8 font-extrabold text-info">News</h1>
   <div class="mx-14 mb-8">
   #for(post in news):
     <div class="divider"></div>
     <div class="flex flex-col ml-8">
-      <h1 id="postTitle" class="text-neutral-content text-center md:text-left font-extrabold text-5xl mb-2">#(post.title)</h1>
-      <div id="postDate" class="text-accent text-center md:text-left text-3xl mb-4">#(post.date)</div>
-      <div id="postBody" class="text-neutral-content text-center md:text-left prose mb-16">#markdown(post.body)</div>
+      <h1 id="postTitle" class="text-neutral-content text-left font-extrabold text-5xl mb-2">#(post.title)</h1>
+      <div id="postDate" class="text-accent text-left text-3xl mb-4">#(post.date)</div>
+      <div id="postBody" class="text-neutral-content text-left prose mb-16">#markdown(post.body)</div>
     </div>
   #endfor
   </div>

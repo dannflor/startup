@@ -61,7 +61,14 @@ public final class TradeConnectionManager {
             throw Abort(.badRequest)
         }
         guard sellerUser.id != buyerId else {
-            throw Abort(.badRequest)
+            try await db.transaction { transaction in
+                guard let sellerResources = try await User.query(on: transaction).filter(\.$username == trade.seller).first()?.$resources.get(on: transaction) else {
+                    throw Abort(.badRequest)
+                }
+                sellerResources[offer.name] += offer.count
+                try await sellerResources.save(on: transaction)
+            }
+            return
         }
         try await db.transaction { [unowned self] transaction in
             guard let sellerResources = try await User.query(on: transaction).filter(\.$username == trade.seller).first()?.$resources.get(on: transaction) else {
@@ -90,9 +97,6 @@ public final class TradeConnectionManager {
         }
         
         ws.onBinary { [unowned self, req] ws, buffer in
-            // decode binary to string
-//            let string = String(decoding: buffer, as: UTF8.self)
-//            print(string)
             print("Receiving binary")
             if let msg = buffer.decodeWebsocketMessage(Connect.self) {
                 self.connections[msg.client] = ws

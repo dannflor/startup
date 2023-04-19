@@ -57,6 +57,23 @@ final class User: Model, Content, ModelSessionAuthenticatable {
         self.password = try Bcrypt.hash(request.password, cost: 8)
         self.score = 0
     }
+
+    func getScore(_ req: Request) async throws -> Int {
+        var score = 0
+        guard let layout = try await req.auth.require(User.self).$layout.get(on: req.db)?.layout else {
+            throw Abort(.internalServerError)
+        }
+        let techs = try Tech.lookup(req)
+        score += layout.reduce(score) { addedScore, building in
+            addedScore + building.getMetadata(req: req).score
+        }
+        score += techs.reduce(score) { addedScore, tech in
+            addedScore + tech.effects.reduce(0) { effectScore, effect in
+                effectScore + effect.score
+            }
+        }
+        return score
+    }
 }
 
 extension User: SessionAuthenticatable {
