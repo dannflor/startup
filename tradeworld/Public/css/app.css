@@ -3129,6 +3129,10 @@ grid label:nth-child(n+49) {
 .w-\[300px\] {
   width: 300px;
 }
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
 .w-full {
   width: 100%;
 }
@@ -3141,6 +3145,10 @@ grid label:nth-child(n+49) {
 }
 .max-w-2xl {
   max-width: 42rem;
+}
+.max-w-fit {
+  max-width: -moz-fit-content;
+  max-width: fit-content;
 }
 .max-w-md {
   max-width: 28rem;
@@ -3300,6 +3308,10 @@ grid label:nth-child(n+49) {
 .text-7xl {
   font-size: 4.5rem;
   line-height: 1;
+}
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 .text-lg {
   font-size: 1.125rem;

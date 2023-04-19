@@ -4,50 +4,53 @@
 #export("masterBody"):
   <h1 class="text-5xl mx-auto text-left mt-8 font-extrabold text-info">Leaderboard</h1>
   <div class="divider"></div>
-  <ul class="mx-14 mb-8">
+  <ul class="mx-14 mb-8 max-w-fit">
 
     #for(user in users):
-    <li class="mb-4 max-h-36 min-h-[5rem] border-2 border-primary rounded-xl flex p-2 flex-row w-2/3">
+    <li class="mb-4 max-h-36 min-h-[5rem] border-2 border-primary rounded-xl flex p-2 flex-row">
       <div class="my-auto ml-4 w-full">
         <div class="flex-row flex w-full">
-          <a class="link-accent font-bold text-xl my-auto" href="/view?user=#(user.username)">
+          <a class="link-accent font-bold text-xl my-auto mr-4" href="/view?user=#(user.username)">
             #(user.username)
           </a>
-          <div class="flex-row flex w-8 ml-auto">
-            <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/wood.png" />
-          </div>
-          <p class="text-base font-black my-auto text-info ml-2">
-            #(user.resource.wood)
-          </p>
-          <div class="flex-row flex ml-2 w-8">
-            <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/stone.png" />
-          </div>
-          <p class="text-base font-black my-auto text-info ml-2">
-            #(user.resource.stone)
-          </p>
-          <div class="flex-row flex ml-2 w-8">
-            <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/gold.png" />
-          </div>
-          <p class="text-base font-black my-auto text-info ml-2">
-            #(user.resource.gold)
-          </p>
-          <div class="flex-row flex ml-2 w-8">
-            <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/iron.png" />
-          </div>
-          <p class="text-base font-black my-auto text-info ml-2">
-            #(user.resource.iron)
-          </p>
-          <div class="flex-row flex ml-2 w-8">
-            <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/food.png" />
-          </div>
-          <p class="text-base font-black my-auto text-info ml-2">
-            #(user.resource.food)
-          </p>
-          <div class="flex-row flex ml-2 w-8">
-            <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/crown.png" />
-          </div>
-          <div class="text-xl font-black my-auto text-secondary ml-2">
-            #(user.score)
+          <div class="ml-auto flex-row flex w-fit">
+            
+            <div class="flex-row flex w-8 ml-auto">
+              <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/wood.png" />
+            </div>
+            <p class="text-base font-black my-auto text-info ml-2">
+              #(user.resource.wood)
+            </p>
+            <div class="flex-row flex ml-2 w-8">
+              <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/stone.png" />
+            </div>
+            <p class="text-base font-black my-auto text-info ml-2">
+              #(user.resource.stone)
+            </p>
+            <div class="flex-row flex ml-2 w-8">
+              <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/gold.png" />
+            </div>
+            <p class="text-base font-black my-auto text-info ml-2">
+              #(user.resource.gold)
+            </p>
+            <div class="flex-row flex ml-2 w-8">
+              <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/iron.png" />
+            </div>
+            <p class="text-base font-black my-auto text-info ml-2">
+              #(user.resource.iron)
+            </p>
+            <div class="flex-row flex ml-2 w-8">
+              <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/food.png" />
+            </div>
+            <p class="text-base font-black my-auto text-info ml-2">
+              #(user.resource.food)
+            </p>
+            <div class="flex-row flex ml-2 w-8">
+              <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/crown.png" />
+            </div>
+            <div class="text-xl font-black my-auto text-secondary ml-2">
+              #(user.score)
+            </div>
           </div>
 
           
