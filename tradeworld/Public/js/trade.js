@@ -170,16 +170,13 @@ async function loadTrades(trades, remove) {
 async function acceptTrade(trade) {
   const resources = await fetch('/resources').then(res => res.json());
   // const username = await fetch('/user/me').then(res => res.text());
-  // if (trade.seller === username) {
-  //   alert("You can't accept your own trade!");
-  //   document.getElementById("cell" + trade.id).children[0].checked = false;
-  //   return;
-  // }
-  for (let i = 0; i < resources.length; i++) {
-    if (resources[i].name === trade.ask.name && resources[i].count < trade.ask.count) {
-      alert("You don't have enough " + trade.ask.name + " to accept this trade!");
-      document.getElementById("cell" + trade.id).children[0].checked = false;
-      return;
+  if (trade.seller !== username) {
+    for (let i = 0; i < resources.length; i++) {
+      if (resources[i].name === trade.ask.name && resources[i].count < trade.ask.count) {
+        alert("You don't have enough " + trade.ask.name + " to accept this trade!");
+        document.getElementById("cell" + trade.id).children[0].checked = false;
+        return;
+      }
     }
   }
   fadeAway("cell" + trade.id);
