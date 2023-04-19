@@ -4,52 +4,63 @@
 #export("masterBody"):
   <h1 class="text-5xl mx-auto text-left mt-8 font-extrabold text-info">Leaderboard</h1>
   <div class="divider"></div>
-  <ul class="mx-14 mb-8 max-w-fit">
+  <div class="md:mx-14 flex-col flex mx-auto mb-8 max-w-fit">
 
     #for(user in users):
-    <li class="mb-4 max-h-36 min-h-[5rem] border-2 border-primary rounded-xl flex p-2 flex-row">
+    <a class="mb-4 max-h-36 min-h-[5rem] border-2 border-primary rounded-xl flex p-2 flex-row hover:border-primary-focus" href="/view?user=#(user.username)">
       <div class="my-auto ml-4 w-full">
         <div class="flex-row flex w-full">
-          <a class="link-accent font-bold text-xl my-auto mr-4" href="/view?user=#(user.username)">
+          <div class="text-accent font-bold md:text-xl text-md my-auto md:mr-4 mr-2">
             #(user.username)
-          </a>
-          <div class="ml-auto flex-row flex w-fit">
-            
-            <div class="flex-row flex w-8 ml-auto">
-              <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/wood.png" />
+          </div>
+          <div class="ml-auto flex-row flex w-fit md:mr-4 my-auto">
+            <div class="md:flex-row flex flex-col my-auto md:my-0">
+              <div class="md:w-8 w-6 mx-auto md:mx-0 md:ml-2">
+                <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/wood.png" />
+              </div>
+              <p class="md:text-base text-sm font-black md:my-auto mx-auto md:mx-0 text-info md:ml-2">
+                #(user.resource.wood)
+              </p>
             </div>
-            <p class="text-base font-black my-auto text-info ml-2">
-              #(user.resource.wood)
-            </p>
-            <div class="flex-row flex ml-2 w-8">
-              <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/stone.png" />
+            <div class="md:flex-row flex flex-col my-auto md:my-0 ml-2 md:ml-0">
+              <div class="md:w-8 w-6 mx-auto md:mx-0 md:ml-2">
+                <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/stone.png" />
+              </div>
+              <p class="md:text-base text-sm font-black md:my-auto mx-auto md:mx-0 text-info md:ml-2">
+                #(user.resource.stone)
+              </p>
             </div>
-            <p class="text-base font-black my-auto text-info ml-2">
-              #(user.resource.stone)
-            </p>
-            <div class="flex-row flex ml-2 w-8">
-              <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/gold.png" />
+            <div class="md:flex-row flex flex-col my-auto md:my-0 ml-2 md:ml-0">
+              <div class="md:w-8 w-6 mx-auto md:mx-0 md:ml-2">
+                <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/gold.png" />
+              </div>
+              <p class="md:text-base text-sm font-black md:my-auto mx-auto md:mx-0 text-info md:ml-2">
+                #(user.resource.gold)
+              </p>
             </div>
-            <p class="text-base font-black my-auto text-info ml-2">
-              #(user.resource.gold)
-            </p>
-            <div class="flex-row flex ml-2 w-8">
-              <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/iron.png" />
+            <div class="md:flex-row flex flex-col my-auto md:my-0 ml-2 md:ml-0">
+              <div class="md:w-8 w-6 mx-auto md:mx-0 md:ml-2">
+                <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/iron.png" />
+              </div>
+              <p class="md:text-base text-sm font-black md:my-auto mx-auto md:mx-0 text-info md:ml-2">
+                #(user.resource.iron)
+              </p>
             </div>
-            <p class="text-base font-black my-auto text-info ml-2">
-              #(user.resource.iron)
-            </p>
-            <div class="flex-row flex ml-2 w-8">
-              <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/food.png" />
+            <div class="md:flex-row flex flex-col my-auto md:my-0 ml-2 md:ml-0">
+              <div class="md:w-8 w-6 mx-auto md:mx-0 md:ml-2">
+                <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/food.png" />
+              </div>
+              <p class="md:text-base text-sm font-black md:my-auto mx-auto md:mx-0 text-info md:ml-2">
+                #(user.resource.food)
+              </p>
             </div>
-            <p class="text-base font-black my-auto text-info ml-2">
-              #(user.resource.food)
-            </p>
-            <div class="flex-row flex ml-2 w-8">
-              <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/crown.png" />
-            </div>
-            <div class="text-xl font-black my-auto text-secondary ml-2">
-              #(user.score)
+            <div class="md:flex-row flex flex-col my-auto md:my-0 ml-2 md:ml-0">
+              <div class="md:w-8 w-6 mx-auto md:mx-0 md:ml-2">
+                <img class="block w-full h-auto" style="image-rendering: pixelated; image-rendering: crisp-edges;" src="/img/icon/crown.png" />
+              </div>
+              <p class="md:text-base text-sm font-black md:my-auto mx-auto md:mx-0 text-secondary md:ml-2">
+                #(user.score)
+              </p>
             </div>
           </div>
 
@@ -57,7 +68,7 @@
         </div>
       </div>
       
-    </li>
+    </a>
     #endfor
   </ul>
 #endexport
