@@ -34,9 +34,9 @@ you'll only gain back half of the resources you spent on it.</p>
       <div id="modalMenuBody" class="flex flex-col w-2/3">
         <span id="buildingTitle" class="mt-2 text-3xl font-bold text-secondary"></span>
         <span id="buildingCost" class="text-xl mt-2 font-bold text-warning"></span>
-        <span id="cost"></span>
+        <div id="cost" class="flex-row flex"></div>
         <span class="mt-2 text-xl font-bold text-info">Produces:</span>
-        <span id="produces"></span>
+        <div id="produces" class="flex-row flex"></div>
         <span class="mt-2 text-xl font-bold text-success">Bonuses:</span>
         <span id="bonuses"></span>
       </div>

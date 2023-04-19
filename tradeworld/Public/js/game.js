@@ -104,12 +104,25 @@ async function editBuildMenu(building, element) {
     select.onchange = () => {
       let selectedBuilding = buildings[select.selectedIndex - 1];
       buildingTitle.innerText = selectedBuilding.name;
-      let costText = '';
-      for (let i = 0; i < selectedBuilding.cost.length; i++) {
-        if (selectedBuilding.cost[i].count == 0) { continue; }
-        costText += selectedBuilding.cost[i].count + ' ' + selectedBuilding.cost[i].name.toLowerCase() + ', ';
+      // remove all children of costValue
+      while (costValue.firstChild) {
+        costValue.removeChild(costValue.firstChild);
       }
-      costValue.innerText = costText.slice(0, -2);
+      for (let i = 0; i < selectedBuilding.cost.length; i++) {
+        const costImageContainer = document.createElement('div');
+        costImageContainer.setAttribute('class', 'w-6 ml-1');
+        const costImage = document.createElement('img');
+        costImage.setAttribute('src', '/img/icon/' + selectedBuilding.cost[i].name.toLowerCase() + '.png');
+        costImage.setAttribute('class', 'w-full h-auto block');
+        costImage.setAttribute('style', 'image-rendering: crisp-edges; image-rendering: pixelated;');
+        costImageContainer.appendChild(costImage);
+        costValue.appendChild(costImageContainer);
+        const costText = document.createElement('span');
+        costText.innerText = selectedBuilding.cost[i].count;
+        costText.setAttribute('class', 'ml-1');
+        costValue.appendChild(costText);
+      }
+      
       buildMenuImage.setAttribute('src', '/img/building/' + pictureForBuilding(selectedBuilding.name));
       showBuildingEffects(selectedBuilding);
       buildButton.onclick = () => {
@@ -117,7 +130,6 @@ async function editBuildMenu(building, element) {
         document.getElementById('grid-cell-modal').checked = false;
       }
       buildButton.removeAttribute('disabled');
-      costValue.setAttribute('class', 'text-white');
       for (let i = 0; i < selectedBuilding.cost.length; i++) {
         for (let j = 0; j < resources.length; j++) {
           if (selectedBuilding.cost[i].name === resources[j].name) {
@@ -143,12 +155,26 @@ async function editBuildMenu(building, element) {
     buildMenuTitle.innerText = building.name;
     buildingTitle.style.display = 'none';
     cost.textContent = 'Value:';
-    let valueText = '';
-    for (let i = 0; i < building.cost.length; i++) {
-      if (building.cost[i].count == 0) { continue; }
-      valueText += building.cost[i].count + ' ' + building.cost[i].name.toLowerCase() + ', ';
+    // remove all children of costValue
+    while (costValue.firstChild) {
+      costValue.removeChild(costValue.firstChild);
     }
-    costValue.innerText = valueText.slice(0, -2);
+
+    for (let i = 0; i < building.cost.length; i++) {
+      const costImageContainer = document.createElement('div');
+      costImageContainer.setAttribute('class', 'w-6 ml-1');
+      const costImage = document.createElement('img');
+      costImage.setAttribute('src', '/img/icon/' + building.cost[i].name.toLowerCase() + '.png');
+      costImage.setAttribute('class', 'w-full h-auto block');
+      costImage.setAttribute('style', 'image-rendering: crisp-edges; image-rendering: pixelated;');
+      costImageContainer.appendChild(costImage);
+      costValue.appendChild(costImageContainer);
+      const costText = document.createElement('span');
+      costText.innerText = building.cost[i].count;
+      costText.setAttribute('class', 'ml-1');
+      costValue.appendChild(costText);
+    }
+
     showBuildingEffects(building);
 
     let buttonDiv = document.createElement('div');
@@ -175,24 +201,39 @@ async function editBuildMenu(building, element) {
 }
 
 async function showBuildingEffects(building) {
+  // Delete all children of id produces
+  while (produces.firstChild) {
+    produces.removeChild(produces.firstChild);
+  }
   const metadata = await fetch('/building/' + building.name + '/metadata').then(res => res.json());
   if (building.index !== undefined) {
     console.log(building.index)
     const myYield = await fetch('/building/yield/' + building.index).then(res => res.json());
     metadata.yield = myYield;
   }
-  let production = "";
   for (let i = 0; i < metadata.yield.length; i++) {
-    production += metadata.yield[i].count + ' ' + metadata.yield[i].name.toLowerCase() + '\n';
+    const yieldDiv = document.createElement('div');
+    yieldDiv.setAttribute('class', 'flex flex-row ml-2');
+    const yieldImgContainer = document.createElement('div');
+    yieldImgContainer.setAttribute('class', 'w-6');
+    const yieldImg = document.createElement('img');
+    yieldImg.setAttribute('class', 'w-full h-auto block');
+    yieldImg.setAttribute('src', '/img/icon/' + metadata.yield[i].name + '.png');
+    yieldImg.setAttribute('style', 'image-rendering: pixelated; image-rendering: crisp-edges;');
+    yieldImgContainer.appendChild(yieldImg);
+    yieldDiv.appendChild(yieldImgContainer);
+    const yieldText = document.createElement('div');
+    yieldText.setAttribute('class', 'ml-1 my-auto');
+    yieldText.innerText = metadata.yield[i].count;
+    yieldDiv.appendChild(yieldText);
+    document.getElementById('produces').appendChild(yieldDiv);
   }
-  production = production.slice(0, -1);
-  if (production === "") {
-    production = "Nothing";
+  if (metadata.yield.length === 0) {
+    const noneDiv = document.createElement('div');
+    noneDiv.innerText = 'None';
+    document.getElementById('produces').appendChild(noneDiv);
   }
-  else {
-    production += ' per hour';
-  }
-  document.getElementById('produces').innerText = production;
+
   document.getElementById('bonuses').innerText = metadata.bonusDescription;
 }
 
