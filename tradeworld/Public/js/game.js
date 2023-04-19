@@ -218,7 +218,7 @@ async function showBuildingEffects(building) {
     yieldImgContainer.setAttribute('class', 'w-6');
     const yieldImg = document.createElement('img');
     yieldImg.setAttribute('class', 'w-full h-auto block');
-    yieldImg.setAttribute('src', '/img/icon/' + metadata.yield[i].name + '.png');
+    yieldImg.setAttribute('src', '/img/icon/' + metadata.yield[i].name.toLowerCase() + '.png');
     yieldImg.setAttribute('style', 'image-rendering: pixelated; image-rendering: crisp-edges;');
     yieldImgContainer.appendChild(yieldImg);
     yieldDiv.appendChild(yieldImgContainer);

@@ -41,6 +41,7 @@
       </div>
     </div>
   </div>
+  <div class="mx-auto">Under construction</div>
   <div class="divider mx-auto md:w-1/2 !my-0.5"></div>
   <grid id="gameGrid" class="xl:[scale:3] lg:[scale:2] md:[scale:1] [scale:0.75] xl:mt-56 lg:mt-40 mt-10 md:mx-auto">
   </grid>
@@ -48,7 +49,7 @@
   <footer class="footer flex bg-base-100 fixed !bottom-0 left-0 right-0 h-10">
     <div class="my-auto ml-4 text-xs grid grid-cols-2 min-w-full">
       <div class="md:mx-0 mx-auto text-center md:text-left">
-        A game by Samuel Bishop and Ethan Michaelis  (<a class="link link-success" href="https://github.com/dannflor/startup/">Source</a>)
+        A game by Samuel Bishop and Ethan Michaelis (<a class="link link-success" href="https://github.com/dannflor/startup/">Source</a>)
       </div>
       <div class="fixed right-4">
         Pixelart by <a class="link link-success" href="https://2058.itch.io/">green guy</a>
