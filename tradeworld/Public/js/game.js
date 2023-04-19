@@ -130,13 +130,15 @@ async function editBuildMenu(building, element) {
         document.getElementById('grid-cell-modal').checked = false;
       }
       buildButton.removeAttribute('disabled');
-      costValue.setAttribute('class', 'text-white');
+      // costValue.setAttribute('class', 'text-white');
+      // costValue.classList.appendChild('text-white');
       for (let i = 0; i < selectedBuilding.cost.length; i++) {
         for (let j = 0; j < resources.length; j++) {
           if (selectedBuilding.cost[i].name === resources[j].name) {
             if (selectedBuilding.cost[i].count > resources[j].count) {
               buildButton.setAttribute('disabled', '');
-              costValue.setAttribute('class', 'text-error');
+              // costValue.setAttribute('class', 'text-error');
+              // costValue.classList.appendChild('text-error');
             }
           }
         }
@@ -174,7 +176,8 @@ async function editBuildMenu(building, element) {
       costText.innerText = building.cost[i].count;
       costText.setAttribute('class', 'ml-1');
       costValue.appendChild(costText);
-      costValue.setAttribute('class', 'text-white');
+      // costValue.setAttribute('class', 'text-white');
+      // costValue.classList.appendChild('text-white');
     }
 
     showBuildingEffects(building);
