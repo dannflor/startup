@@ -105,7 +105,29 @@ public final class TradeConnectionManager {
                     let trades = try await Trade.query(on: db).all()
                     var tradeResponses: [TradeResponse] = []
                     for trade in trades {
-                        try await tradeResponses.append(TradeResponse(trade, db))
+                        let currentTime = Date.now
+                        if (currentTime.timeIntervalSince(trade.createdAt) < 36*60*60) {
+                            try await tradeResponses.append(TradeResponse(trade, db))
+                        }
+                        else {
+                            if let offer = try await trade.$offer.get(on: db) {
+                                try await offer.delete(on: db)
+                            }
+                            if let ask = try await trade.$ask.get(on: db) {
+                                try await ask.delete(on: db)
+                            }
+                            try await db.transaction { [unowned self] transaction in
+                                guard let offer = try await trade.$offer.get(on: db) else {
+                                    return
+                                }
+                                guard let sellerResources = try await User.query(on: transaction).filter(\.$username == trade.seller).first()?.$resources.get(on: transaction) else {
+                                    throw Abort(.badRequest)
+                                }
+                                sellerResources[offer.name] += offer.count
+                                try await sellerResources.save(on: transaction)
+                            }
+                            try await trade.delete(on: db)
+                        }
                     }
                     let tradeSocketResponse = TradeSocketResponse(type: .addTrades, trades: tradeResponses)
                     // Send response to every client in the dictionary
