@@ -174,6 +174,7 @@ async function editBuildMenu(building, element) {
       costText.innerText = building.cost[i].count;
       costText.setAttribute('class', 'ml-1');
       costValue.appendChild(costText);
+      costValue.setAttribute('class', 'text-white');
     }
 
     showBuildingEffects(building);
