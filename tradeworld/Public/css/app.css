@@ -3075,6 +3075,9 @@ grid label:nth-child(n+49) {
 .h-\[300px\] {
   height: 300px;
 }
+.h-auto {
+  height: auto;
+}
 .h-screen {
   height: 100vh;
 }
@@ -3113,6 +3116,9 @@ grid label:nth-child(n+49) {
 }
 .w-52 {
   width: 13rem;
+}
+.w-8 {
+  width: 2rem;
 }
 .w-\[17rem\] {
   width: 17rem;
