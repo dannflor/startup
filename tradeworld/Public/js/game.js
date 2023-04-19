@@ -130,6 +130,7 @@ async function editBuildMenu(building, element) {
         document.getElementById('grid-cell-modal').checked = false;
       }
       buildButton.removeAttribute('disabled');
+      costValue.setAttribute('class', 'text-white');
       for (let i = 0; i < selectedBuilding.cost.length; i++) {
         for (let j = 0; j < resources.length; j++) {
           if (selectedBuilding.cost[i].name === resources[j].name) {
