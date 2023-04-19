@@ -1,7 +1,7 @@
 import Fluent
 import Vapor
 
-final class Resource: Model, Content {
+final class Resource: Model, Content, Comparable {
     init() { }
     
     static let schema: String = "resource"
@@ -129,6 +129,10 @@ final class Resource: Model, Content {
 
     public static func < (lhs: Resource, rhs: Resource) -> Bool {
         return lhs.wood + lhs.stone + lhs.gold + lhs.iron + lhs.food < rhs.wood + rhs.stone + rhs.gold + rhs.iron + rhs.food
+    }
+
+    public static func == (lhs: Resource, rhs: Resource) -> Bool {
+        return lhs.wood == rhs.wood && lhs.stone == rhs.stone && lhs.gold == rhs.gold && lhs.iron == rhs.iron && lhs.food == rhs.food
     }
 }
 
