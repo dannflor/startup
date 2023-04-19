@@ -17,7 +17,9 @@ will earn a special prize.</p>
 
   #for(requirement in requirements):
     <div class="flex-row flex mx-auto border-2 border-primary md:w-1/4 w:3/4 hover:border-primary-focus my-4 rounded-xl p-3">
-      <span class="text-2xl font-bold text-secondary mr-2 my-auto">#(requirement.name)</span>
+      <div class="w-10 md:mr-2">
+        <img src="/img/icon/#lowercased(requirement.name).png" class="w-full h-auto block" style="image-rendering: pixelated; image-rendering: crisp-edges;" />
+      </div>
       <progress id="progress" class="progress progress-success w-3/4 my-auto !bg-success-content" value="#(requirement.current)" max="#(requirement.total)"></progress>
       <span class="my-auto"><span id="currentRes" class="ml-2 text-info text-xl font-normal">#(requirement.current)</span>/<span class="text-xl font-bold text-accent">#(requirement.total)</span></span>
     </div>
@@ -29,17 +31,23 @@ will earn a special prize.</p>
   <ol class="mx-auto mb-8">
   #for(leader in topFive):
     <li class="flex-row flex mx-auto mb-2">
-      <a href="/view?user=#(leader.username)" class="text-2xl link-accent my-auto">#(leader.username)</a> <span class="text-2xl text-base-100 my-auto mr-4"> :</span>
+      <a href="/view?user=#(leader.username)" class="text-2xl link-accent my-auto">#(leader.username)</a> <span class="text-2xl text-accent my-auto mr-4"> :</span>
       #for(resource in leader.score):
-        <span class="text-2xl text-info my-auto">#(resource.count) #(resource.name) </span>
+        <div class="w-8 md:mr-2">
+          <img src="/img/icon/#lowercased(resource.name).png" class="w-full h-auto block" style="image-rendering: pixelated; image-rendering: crisp-edges;" />
+        </div>
+        <span class="text-2xl font-bold text-info my-auto">#(resource.count)</span>
       #endfor
     </li>
   #endfor
   </ol>
   <div class="flex-row flex mx-auto mb-2">
-    <div class="text-2xl text-success my-auto">Your contribution</div> <span class="text-2xl text-base-100 my-auto mr-4"> :</span>
+    <div class="text-2xl text-success my-auto">You</div> <span class="text-2xl text-success my-auto mr-4"> :</span>
     #for(resource in yourContrib.score):
-      <span class="text-2xl text-info my-auto">#(resource.count) #(resource.name) </span>
+      <div class="w-8 md:mr-2">
+        <img src="/img/icon/#lowercased(resource.name).png" class="w-full h-auto block" style="image-rendering: pixelated; image-rendering: crisp-edges;" />
+      </div>
+      <span class="text-2xl font-bold text-info my-auto">#(resource.count) </span>
     #endfor
   </div>
     

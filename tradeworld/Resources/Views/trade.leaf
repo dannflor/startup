@@ -15,8 +15,11 @@ You can't trade with yourself, so make sure you are deliberate in your trading.<
   <div class="divider mx-2 md:w-1/2 !my-0.5"></div>
   <ul id="transactionLog" class="mx-2 flex-col flex mb-8">
     #for(trade in trades):
-      <li class="ml-8">
-        <span class="text-primary font-bold">#(trade.date)</span> : <a href="/view?user=#(trade.seller)" class="link-accent font-bold">#(trade.seller)</a> sold <span class="text-secondary font-bold">#(trade.offerAmount) #(trade.offerResource)</span> to <a href="/view?user=#(trade.buyer)" class="link-success font-bold">#(trade.buyer)</a> for <span class="text-secondary font-bold">#(trade.askAmount) #(trade.askResource)</span>
+      <li class="ml-8 my-auto flex-row flex">
+        <span class="text-primary my-auto font-bold my-a">#(trade.date)</span> <a href="/view?user=#(trade.seller)" class="link-accent my-auto font-bold mr-1 ml-2">#(trade.seller)</a> <span class="my-auto">sold</span>
+        <div class="w-8 my-auto mx-1"><img src="/img/icon/#lowercased(trade.offerResource).png" class="w-full h-auto block" style="image-rendering: pixelated; image-rendering: crisp-edges;" /></div>
+        <span class="text-secondary my-auto mr-1 font-bold">#(trade.offerAmount)</span> <span class="my-auto">to</span> <a href="/view?user=#(trade.buyer)" class="link-success my-auto mx-1 font-bold">#(trade.buyer)</a> <span class="my-auto">for</span>
+          <div class="w-8 my-auto mx-1"><img src="/img/icon/#lowercased(trade.askResource).png" class="w-full h-auto block" style="image-rendering: pixelated; image-rendering: crisp-edges;" /></div><span class="text-secondary my-auto font-bold">#(trade.askAmount)</span>
       </li>
     #endfor
   </ul>
