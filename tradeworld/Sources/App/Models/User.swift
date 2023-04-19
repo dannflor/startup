@@ -60,7 +60,7 @@ final class User: Model, Content, ModelSessionAuthenticatable {
 
     func getScore(_ req: Request) async throws -> Int {
         var score = 0
-        guard let layout = try await req.auth.require(User.self).$layout.get(on: req.db)?.layout else {
+        guard let layout = try await self.$layout.get(on: req.db)?.layout else {
             throw Abort(.internalServerError)
         }
         let techs = try Tech.lookup(req)
