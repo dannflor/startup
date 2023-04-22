@@ -154,6 +154,7 @@ func routes(_ app: Application) throws {
     loginProtected.group("mission", configure: missionController)
     loginProtected.group("news", configure: newsController)
     loginProtected.group("leaderboard", configure: leaderboardController)
+    loginProtected.group("feedback", configure: feedbackController)
 }
 
 extension String {

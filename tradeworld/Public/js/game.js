@@ -12,38 +12,39 @@ class Building {
   }
 }
 const gridElement = document.getElementById('gameGrid');
-const res = fetch('/grid').then(res =>
-  res.json().then(data => {
-    //Parse json into Building objects
-    const cells = data.map(cell => new Building(cell.name, cell.cost, cell.terrain));
-    for (let i = 0; i < cells.length; i++) {
-      const cell = cells[i];
+const res = await fetch('/grid');
+const data = await res.json();
 
-      let gridCell = document.createElement('label');
-      gridCell.setAttribute('for', 'grid-cell-modal');
-      //randomNum between 1 and 3
-      const randomNum = Math.floor(Math.random() * 3) + 1;
-      gridCell.style.setProperty('--ground-image', "url('/img/building/Ground" + randomNum + ".png')");
-     
-      let img = document.createElement('img');
-      img.setAttribute('src', '/img/building/' + pictureForBuilding(cell.name));
-      img.setAttribute('class', '');
-      img.setAttribute('style', 'image-rendering: crisp-edges; image-rendering: pixelated;');
-      gridCell.appendChild(img);
-      gridElement.appendChild(gridCell);
-      cell.index = i;
-      cell.neighbors = getNeighbors(i);
 
-      if (cell.terrain === 'none') {
-        gridCell.onclick = () => { editBuildMenu(cell, gridCell) };
-      }
-      else {
-        gridCell.setAttribute('for', '');
-        // console.log("terrain clicked");
-      }
-    }
-  })
-);
+//Parse json into Building objects
+const cells = data.map(cell => new Building(cell.name, cell.cost, cell.terrain));
+for (let i = 0; i < cells.length; i++) {
+  const cell = cells[i];
+
+  let gridCell = document.createElement('label');
+  gridCell.setAttribute('for', 'grid-cell-modal');
+  //randomNum between 1 and 3
+  const randomNum = Math.floor(Math.random() * 3) + 1;
+  gridCell.style.setProperty('--ground-image', "url('/img/building/Ground" + randomNum + ".png')");
+  
+  let img = document.createElement('img');
+  img.setAttribute('src', '/img/building/' + pictureForBuilding(cell.name));
+  img.setAttribute('class', '');
+  img.setAttribute('style', 'image-rendering: crisp-edges; image-rendering: pixelated;');
+  gridCell.appendChild(img);
+  gridElement.appendChild(gridCell);
+  cell.index = i;
+  cell.neighbors = getNeighbors(i);
+
+  if (cell.terrain === 'none') {
+    gridCell.onclick = () => { editBuildMenu(cell, gridCell) };
+  }
+  else {
+    gridCell.setAttribute('for', '');
+    // console.log("terrain clicked");
+  }
+}
+
 await populateResources();
 
 /**
@@ -176,8 +177,6 @@ async function editBuildMenu(building, element) {
       costText.innerText = building.cost[i].count;
       costText.setAttribute('class', 'ml-1');
       costValue.appendChild(costText);
-      // costValue.setAttribute('class', 'text-white');
-      // costValue.classList.appendChild('text-white');
     }
 
     showBuildingEffects(building);

@@ -1,20 +1,28 @@
 import getNeighbors from "./getNeighbors.js";
 
-let response = await fetch(`https://source.unsplash.com/300x300/?nature`);
-let image = document.getElementById('loginImage');
-let image2 = document.createElement('img');
-image2.setAttribute('src', response.url);
-image2.setAttribute('alt', 'Tradeworld Logo');
-image2.setAttribute('class', 'w-[300px] sm:h-[300px] h-[200px]');
-image.appendChild(image2);
+try {
+  let response = await fetch(`https://source.unsplash.co/300x300/?nature`);
+  let image = document.getElementById('loginImage');
+  let image2 = document.createElement('img');
+  image2.setAttribute('src', response.url);
+  image2.setAttribute('alt', 'Tradeworld Logo');
+  image2.setAttribute('class', 'w-[300px] sm:h-[300px] h-[200px]');
+  image.appendChild(image2);
+} catch (e) {
+  console.log(e);
+} finally {
+  document.getElementById('registerButton').addEventListener('click', register);
+  document.getElementById('loginButton').addEventListener('click', login);
+  document.onkeydown = function (e) {
+    if (e.keyCode === 13 || e.key === 'Enter' || e.key === 'Return') {
+      login();
+    }
+  };
+}
 
-document.getElementById('registerButton').addEventListener('click', register);
-document.getElementById('loginButton').addEventListener('click', login);
-document.onkeydown = function (e) {
-  if (e.keyCode === 13 || e.key === 'Enter' || e.key === 'Return') {
-    login();
-  }
-};
+
+
+
 async function register() {
   let username = document.getElementById('username').value;
   let password = document.getElementById('password').value;

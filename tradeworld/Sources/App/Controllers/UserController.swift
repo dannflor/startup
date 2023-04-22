@@ -22,14 +22,27 @@ func userController(user: RoutesBuilder) {
         }
     }
     user.group(":name") { name in
-        name.get { req async throws -> User in
+        name.get { req async throws -> UserResponse in
             guard let username = req.parameters.get("name") else {
                 throw Abort(.badRequest)
             }
             guard let user = try await User.query(on: req.db).filter(\.$username == username).first() else {
                 throw Abort(.notFound)
             }
-            return user
+            return UserResponse(user)
         }
+        name.get("resource") { req async throws -> Resource in
+            guard let username = req.parameters.get("name") else {
+                throw Abort(.badRequest)
+            }
+            guard let user = try await User.query(on: req.db).filter(\.$username == username).first() else {
+                throw Abort(.notFound)
+            }
+            guard let resource = try await user.$resources.get(on: req.db) else {
+                throw Abort(.notFound)
+            }
+            return resource
+        }
+        
     }
 }
