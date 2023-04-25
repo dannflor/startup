@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dracula">
+<html lang="en" data-theme="dracula" class="bg-base-300">
 <head>
   <meta charset="utf-8">
   <meta viewpoint name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
 </head>
-<body class="flex-col bg-base-300 flex min-h-screen xl:mb-12 pb-8 min-w-fit">
+<body class="flex-col bg-base-300 flex min-h-screen pb-8 min-w-fit">
   <div class="navbar bg-base-100">
     <div class="navbar-start">
       <div class="dropdown">
@@ -81,17 +81,7 @@
       </div>
     </div>
   </div>
-  #import("masterBody")
-  <footer class="footer flex bg-base-100 fixed !bottom-0 left-0 right-0 h-10">
-    <div class="my-auto ml-4 text-xs grid grid-cols-2 min-w-full">
-      <div class="md:mx-0 mx-auto text-center md:text-left">
-        A game by Samuel Bishop and Ethan Michaelis  (<a class="link link-success" href="https://github.com/dannflor/startup/">Source</a>)
-      </div>
-      <div class="fixed right-4">
-        Pixelart by <a class="link link-success" href="https://2058.itch.io/">green guy</a>
-      </div>
-    </div>
-  </footer>
+  #import("body")
 </body>
 
 <script>
@@ -145,5 +135,5 @@ function setHeader(element) {
 }
 
 </script>
-#import("masterJs")
+#import("js")
 </html>

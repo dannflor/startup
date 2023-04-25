@@ -1,0 +1,8 @@
+{
+    "showPopup": true,
+    "popup": {
+        "name": "redirect",
+        "title": "Minor Update: A New Home",
+        "content": "We've moved to [https://tradeworldgame.com](https://tradeworldgame.com). I'll be shutting off the old domain in a few weeks, so just switch over right now. More information at [news](/news)."
+    }
+}

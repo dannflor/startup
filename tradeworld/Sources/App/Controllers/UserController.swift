@@ -31,17 +31,30 @@ func userController(user: RoutesBuilder) {
             }
             return UserResponse(user)
         }
-        name.get("resource") { req async throws -> Resource in
+        name.get("resources") { req async throws -> [ResourceQty] in
             guard let username = req.parameters.get("name") else {
                 throw Abort(.badRequest)
             }
             guard let user = try await User.query(on: req.db).filter(\.$username == username).first() else {
                 throw Abort(.notFound)
             }
-            guard let resource = try await user.$resources.get(on: req.db) else {
+            let resource = try await Resource.compute(req, user: user)
+            return [
+                ResourceQty(name: .Wood, count: resource.wood),
+                ResourceQty(name: .Stone, count: resource.stone),
+                ResourceQty(name: .Gold, count: resource.gold),
+                ResourceQty(name: .Iron, count: resource.iron),
+                ResourceQty(name: .Food, count: resource.food)
+            ]
+        }
+        name.get("resources", "yields") { req async throws -> [ResourceQty] in
+            guard let username = req.parameters.get("name") else {
+                throw Abort(.badRequest)
+            }
+            guard let user = try await User.query(on: req.db).filter(\.$username == username).first() else {
                 throw Abort(.notFound)
             }
-            return resource
+            return try await Resource.getYields(req, user: user)
         }
         
     }

@@ -1,4 +1,4 @@
-#extend("resourceVisible"):
+#extend("master"):
 #export("title", "Event")
 #export("helpText"):
 <h2 class="text-xl font-bold">Events</h2>
@@ -10,6 +10,7 @@ will earn a special prize.</p>
 
 
 #export("body"):
+#extend("resources")
 <main class="flex-col flex my-8">
   <h1 class="text-3xl font-serif font-extrabold text-primary text-center mx-auto tooltip tooltip-bottom tooltip-primary" data-tip="#(mission.description)">#(mission.name)</h1>
   <div class="divider md:w-1/3 w-2/3 mx-auto"></div>

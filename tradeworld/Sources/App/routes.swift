@@ -4,7 +4,19 @@ import Vapor
 func routes(_ app: Application) throws {
     
     app.get { req in
-        req.redirect(to: "/login")
+        if req.auth.has(User.self) {
+            #if DEBUG
+            return req.redirect(to: "/game")
+            #endif
+            return req.redirect(to: "https://tradeworldgame.com/game")
+        }
+        else {
+            #if DEBUG
+            return req.redirect(to: "/login")
+            #endif
+            return req.redirect(to: "https://tradeworldgame.com/login")
+        }
+        
     }
     
     let loginProtected = app.grouped(User.redirectMiddlewareAsync(path: "/login"))
@@ -89,7 +101,19 @@ func routes(_ app: Application) throws {
     }
     
     loginProtected.get("game") { req async throws -> View in
-        return try await req.view.render("game")
+        struct PopupResponse: Encodable {
+            let showPopup: Bool
+            let name: String
+            let title: String
+            let content: String
+        }
+        guard let config = decodeFile(req: req, "config", Config.self) else {
+            throw Abort(.internalServerError, reason: "Couldn't decode configuration file")
+        }
+        
+        return try await req.view.render("game", [
+            "popup" : PopupResponse(showPopup: config.showPopup, name: config.popup.name, title: config.popup.title, content: config.popup.content)
+        ])
     }
     
     loginProtected.get("score") { req async throws -> Int in

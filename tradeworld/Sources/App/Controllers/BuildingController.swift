@@ -36,8 +36,18 @@ func buildingController(building: RoutesBuilder) {
         throw Abort(.notFound)
     }
     building.get("yield", ":index") { req async throws -> [ResourceQty] in
+        struct YieldQuery: Content {
+            let name: String?
+        }
+        let query = try req.query.decode(YieldQuery.self)
         let index = try req.parameters.require("index", as: Int.self)
-        guard let layout = try await req.auth.require(User.self).$layout.get(on: req.db)?.layout else {
+        var user = try req.auth.require(User.self)
+        if
+            let name = query.name,
+            let viewUser = try await User.query(on: req.db).filter(\.$username == name).first() {
+                user = viewUser
+        }
+        guard let layout = try await user.$layout.get(on: req.db)?.layout else {
             throw Abort(.internalServerError)
         }
         let neighborsOpt = Building.getNeighbors(index)

@@ -1,4 +1,4 @@
-#extend("resourceVisible"):
+#extend("master"):
 #export("title", "Build")
 #export("helpText"):
 <h2 class="text-xl font-bold">Welcome to Tradeworld!</h2>
@@ -20,7 +20,8 @@ you'll only gain back half of the resources you spent on it.</p>
 
 
 #export("body"):
-<div class="mx-auto">Under construction</div>
+<div id="usernameTitle" class="mx-auto text-4xl font-extrabold text-info mt-2"></div>
+#extend("resources")
 <div class="divider mx-auto md:w-1/2 !my-0.5"></div>
 <grid id="gameGrid" class="xl:[scale:3] lg:[scale:2] md:[scale:1] [scale:0.75] xl:mt-56 lg:mt-40 mt-10 md:mx-auto">
 </grid>
@@ -30,7 +31,6 @@ you'll only gain back half of the resources you spent on it.</p>
   <label id="modalMenu" class="modal-box max-w-2xl flex flex-col overflow-clip" for="">
     <h3 id="modalMenuTitle" class="text-7xl font-serif font-extrabold text-primary mx-auto">Build</h3>
     <div class="divider"></div>
-    <select id="buildingSelector" class="select select-primary w-full max-w-md"></select>
     <div id="modalMenuContent" class="flex-row flex">
       <div id="modalMenuBody" class="flex flex-col w-2/3">
         <span id="buildingTitle" class="mt-2 text-3xl font-bold text-secondary"></span>
@@ -41,7 +41,7 @@ you'll only gain back half of the resources you spent on it.</p>
         <span class="mt-2 text-xl font-bold text-success">Bonuses:</span>
         <span id="bonuses"></span>
       </div>
-      <div class="mx-0 md:mt-auto md:block hidden -mr-10">
+      <div class="mx-0 md:block hidden -mr-10">
         <img id="modalMenuPicture" class="md:[scale:3] [scale:2] ml-12" style="image-rendering: crisp-edges; image-rendering: pixelated;" src="/img/building/NoHouse.png" alt="Building Image"/>
       </div>
     </div>

@@ -1,7 +1,5 @@
-import getNeighbors from "./getNeighbors.js";
-
 try {
-  let response = await fetch(`https://source.unsplash.co/300x300/?nature`);
+  let response = await fetch(`https://source.unsplash.com/300x300/?nature`);
   let image = document.getElementById('loginImage');
   let image2 = document.createElement('img');
   image2.setAttribute('src', response.url);
@@ -19,9 +17,6 @@ try {
     }
   };
 }
-
-
-
 
 async function register() {
   let username = document.getElementById('username').value;

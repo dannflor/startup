@@ -1,8 +1,8 @@
 
 
-export async function populateResources() {
-  const resources = await fetch('/resources').then(res => res.json());
-  const resourceYields = await fetch('/resources/yields').then(res => res.json());
+export async function populateResources(user = "") {
+  const resources = await fetch(user + '/resources').then(res => res.json());
+  const resourceYields = await fetch(user + '/resources/yields').then(res => res.json());
   const resourceDiv = document.getElementById('resources');
   const scoreDiv = document.getElementById('scoreDiv');
   document.getElementById('score').textContent = await fetch('/score').then(res => res.text());

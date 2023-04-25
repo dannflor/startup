@@ -1,4 +1,4 @@
-#extend("resourceVisible"):
+#extend("master"):
 #export("title", "Build")
 #export("helpText"):
 <h2 class="text-xl font-bold">Welcome to Tradeworld!</h2>
@@ -20,6 +20,7 @@ you'll only gain back half of the resources you spent on it.</p>
 
 
 #export("body"):
+#extend("resources")
 <div class="divider mx-auto md:w-1/2 !my-0.5"></div>
 <grid id="gameGrid" class="xl:[scale:3] lg:[scale:2] md:[scale:1] [scale:0.75] xl:mt-56 lg:mt-40 mt-10 md:mx-auto">
 </grid>
@@ -47,6 +48,29 @@ you'll only gain back half of the resources you spent on it.</p>
     
   </label>
 </label>
+
+#if(popup.showPopup):
+<input type="checkbox" id="popup" class="modal-toggle" />
+<label for="popup" class="modal cursor-pointer">
+  <label class="modal-box relative" for="">
+    <h3 class="text-lg font-bold">#(popup.title)</h3>
+    <p class="py-4">#markdown(popup.content)</p>
+  </label>
+</label>
+
+<script type="module">
+  if (!document.cookie.includes("popup=#(popup.name)")) {
+    const popup = document.getElementById("popup");
+    setTimeout(() => {
+      popup.checked = true;
+      document.cookie = "popup=#(popup.name); expires=" + new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 10).toUTCString() + "; path=/";
+    }, 3000);
+    
+  }
+  
+</script>
+
+#endif
 #endexport
 
 #export("js"):

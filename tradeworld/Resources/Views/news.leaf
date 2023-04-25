@@ -1,7 +1,7 @@
 #extend("master"):
 #export("title", "News")
 #export("helpText", "")
-#export("masterBody"):
+#export("body"):
   <h1 class="text-5xl mx-auto text-left mt-8 font-extrabold text-info">News</h1>
   <div class="mx-14 mb-8">
   #for(post in news):
@@ -15,7 +15,7 @@
   </div>
 #endexport
 
-#export("masterJs"): 
+#export("js"): 
   
 #endexport
 

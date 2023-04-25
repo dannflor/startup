@@ -69,7 +69,11 @@ final class Resource: Model, Content, Comparable {
     }
     
     public static func getYields(_ req: Request) async throws -> [ResourceQty] {
-        guard let layout = try await req.auth.require(User.self).$layout.get(on: req.db)?.layout else {
+        return try await Resource.getYields(req, user: req.auth.require(User.self))
+    }
+
+    public static func getYields(_ req: Request, user: User) async throws -> [ResourceQty] {
+        guard let layout = try await user.$layout.get(on: req.db)?.layout else {
             throw Abort(.internalServerError)
         }
         let techs = try Tech.lookup(req)
@@ -106,14 +110,17 @@ final class Resource: Model, Content, Comparable {
     }
     
     public static func compute(_ req: Request) async throws -> Resource {
-        guard let resource = try await req.auth.require(User.self).$resources.get(on: req.db) else {
+        return try await compute(req, user: req.auth.require(User.self))
+    }
+
+    public static func compute(_ req: Request, user: User) async throws -> Resource {
+        guard let resource = try await user.$resources.get(on: req.db) else {
             throw Abort(.internalServerError)
         }
-        let yields = try await getYields(req)
-        let timeElapsed = try Date().timeIntervalSince(req.auth.require(User.self).visited) / 3600
+        let yields = try await getYields(req, user: user)
+        let timeElapsed = Date().timeIntervalSince(user.visited) / 3600
         let yield = yields.map { ResourceQty(name: $0.name, count: Int((Double($0.count) * timeElapsed).rounded())) }
         resource.addResources(resources: yield)
-        let user = try req.auth.require(User.self)
         user.visited = Date.now
         try await user.save(on: req.db)
         // Put the resource back in the database

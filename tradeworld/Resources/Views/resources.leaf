@@ -1,0 +1,12 @@
+<div class="md:w-1/2 mx-auto lg:px-10 mb-2">
+  <div id="resources" class="flex-row flex rounded-lg">
+    <div id="scoreDiv" class="flex-1 flex md:space-x-2 py-3 rounded-lg mx-1 my-1 px-1">
+      <div class="mx-auto md:flex-row md:flex text-base">
+        <div class="w-10">
+          <img src="/img/icon/crown.png" class="w-full h-auto block" style="image-rendering: pixelated; image-rendering: crisp-edges;" />
+        </div>
+        <div id="score" class="text-secondary font-bold my-auto text-center md:ml-2 md:text-left">0</div>
+      </div>
+    </div>
+  </div>
+</div>

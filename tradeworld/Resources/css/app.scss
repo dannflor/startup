@@ -62,6 +62,14 @@
  */
 
  @layer base {
+
+    a {
+        @apply link-accent;
+    }
+
+    strong {
+        @apply text-info;
+    }
     
  }
 

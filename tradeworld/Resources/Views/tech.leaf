@@ -1,4 +1,4 @@
-#extend("resourceVisible"):
+#extend("master"):
 #export("title", "Tech")
 #export("helpText"):
 <h2 class="text-xl font-bold">Techs</h2>
@@ -8,6 +8,7 @@ As you research techs, new ones will become available.</p>
 #endexport
 
 #export("body"):
+#extend("resources")
 <main class="mt-8 flex-grow flex">
   <ul id="techList" class="sm:mx-16 mx-2 flex-col flex w-1/3 mb-8">
 

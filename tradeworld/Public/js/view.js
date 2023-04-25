@@ -1,5 +1,5 @@
 import getNeighbors from "./getNeighbors.js";
-import {populateResources, updateResources} from "./populateResources.js";
+import {populateResources} from "./populateResources.js";
 
 class Building {
   constructor(name, cost, terrain) {
@@ -13,7 +13,9 @@ const gridElement = document.getElementById('gameGrid');
 const urlParams = new URLSearchParams(window.location.search);
 const user = urlParams.get('user');
 console.log(user);
-const res = fetch('/grid/' + user).then(res =>
+document.getElementById('usernameTitle').innerText = user;
+
+fetch('/grid/' + user).then(res =>
   res.json().then(data => {
     //Parse json into Building objects
     const cells = data.map(cell => new Building(cell.name, cell.cost, cell.terrain));
@@ -35,7 +37,8 @@ const res = fetch('/grid/' + user).then(res =>
       cell.index = i;
       cell.neighbors = getNeighbors(i);
 
-      if (cell.terrain === 'none') {
+      if (cell.terrain === 'none' && cell.name !== '') {
+        console.log(cell);
         gridCell.onclick = () => { editBuildMenu(cell, gridCell) };
       }
       else {
@@ -45,7 +48,7 @@ const res = fetch('/grid/' + user).then(res =>
     }
   })
 );
-await populateResources();
+await populateResources('/user/' + user);
 
 /**
  * Building prompt behaves differently depending on
@@ -53,8 +56,6 @@ await populateResources();
  */
 async function editBuildMenu(building, element) {
   // clearModal();
-  const buildMenu = document.getElementById('modalMenu');
-  const buildMenuBody = document.getElementById('modalMenuBody');
   const buildMenuTitle = document.getElementById('modalMenuTitle');
   const buildMenuImage = document.getElementById('modalMenuPicture');
   const buildingTitle = document.getElementById('buildingTitle');
@@ -63,10 +64,6 @@ async function editBuildMenu(building, element) {
 
   if (building.name === "") {
     buildMenuImage.style.visibility = 'visible';
-    buildMenuTitle.innerText = "Build";
-    buildingTitle.style.display = 'inline';
-    // buildMenuBody.style.display = 'block';
-    // Clear options from selector
   }
   else {
     let ind = building.index;
@@ -75,106 +72,66 @@ async function editBuildMenu(building, element) {
     buildMenuTitle.innerText = building.name;
     buildingTitle.style.display = 'none';
     cost.textContent = 'Value:';
-    let valueText = '';
-    for (let i = 0; i < building.cost.length; i++) {
-      if (building.cost[i].count == 0) { continue; }
-      valueText += building.cost[i].count + ' ' + building.cost[i].name.toLowerCase() + ', ';
+    while (costValue.firstChild) {
+      costValue.removeChild(costValue.firstChild);
     }
-    costValue.innerText = valueText.slice(0, -2);
+
+    for (let i = 0; i < building.cost.length; i++) {
+      const costImageContainer = document.createElement('div');
+      costImageContainer.setAttribute('class', 'w-6 ml-1');
+      const costImage = document.createElement('img');
+      costImage.setAttribute('src', '/img/icon/' + building.cost[i].name.toLowerCase() + '.png');
+      costImage.setAttribute('class', 'w-full h-auto block');
+      costImage.setAttribute('style', 'image-rendering: crisp-edges; image-rendering: pixelated;');
+      costImageContainer.appendChild(costImage);
+      costValue.appendChild(costImageContainer);
+      const costText = document.createElement('span');
+      costText.innerText = building.cost[i].count;
+      costText.setAttribute('class', 'ml-1');
+      costValue.appendChild(costText);
+    }
     showBuildingEffects(building);
     buildMenuImage.setAttribute('src', '/img/building/' + pictureForBuilding(building.name));
   }
 }
 
 async function showBuildingEffects(building) {
+  // Delete all children of id produces
+  while (produces.firstChild) {
+    produces.removeChild(produces.firstChild);
+  }
   const metadata = await fetch('/building/' + building.name + '/metadata').then(res => res.json());
   if (building.index !== undefined) {
     console.log(building.index)
-    const myYield = await fetch('/building/yield/' + building.index).then(res => res.json());
+    const myYield = await fetch('/building/yield/' + building.index + "?name=" + user).then(res => res.json());
     metadata.yield = myYield;
   }
-  let production = "";
   for (let i = 0; i < metadata.yield.length; i++) {
-    production += metadata.yield[i].count + ' ' + metadata.yield[i].name.toLowerCase() + '\n';
+    const yieldDiv = document.createElement('div');
+    yieldDiv.setAttribute('class', 'flex flex-row ml-2');
+    const yieldImgContainer = document.createElement('div');
+    yieldImgContainer.setAttribute('class', 'w-6');
+    const yieldImg = document.createElement('img');
+    yieldImg.setAttribute('class', 'w-full h-auto block');
+    yieldImg.setAttribute('src', '/img/icon/' + metadata.yield[i].name.toLowerCase() + '.png');
+    yieldImg.setAttribute('style', 'image-rendering: pixelated; image-rendering: crisp-edges;');
+    yieldImgContainer.appendChild(yieldImg);
+    yieldDiv.appendChild(yieldImgContainer);
+    const yieldText = document.createElement('div');
+    yieldText.setAttribute('class', 'ml-1 my-auto');
+    yieldText.innerText = metadata.yield[i].count;
+    yieldDiv.appendChild(yieldText);
+    document.getElementById('produces').appendChild(yieldDiv);
   }
-  production = production.slice(0, -1);
-  if (production === "") {
-    production = "Nothing";
+  if (metadata.yield.length === 0) {
+    const noneDiv = document.createElement('div');
+    noneDiv.innerText = 'None';
+    document.getElementById('produces').appendChild(noneDiv);
   }
-  else {
-    production += ' per hour';
-  }
-  document.getElementById('produces').innerText = production;
   document.getElementById('bonuses').innerText = metadata.bonusDescription;
 }
 
 function pictureForBuilding(building) {
   // Remove spaces and append .png
   return building === '' ? 'NoHouse.png' : building.replace(/\s/g, '') + '.png';
-}
-
-async function buildBuilding(building, index, element) {
-  // alert if not enough resources
-  const resources = await fetch('/resources').then(res => res.json());
-  console.log(building.cost);
-  for (let i = 0; i < building.cost.length; i++) {
-    // console.log(resources[i].count + ' ' + resources[i].name + ' ' + building.cost[i].count + ' ' + building.cost[i].name)
-    for (let j = 0; j < resources.length; j++) {
-      if (building.cost[i].name === resources[j].name) {
-        if (building.cost[i].count > resources[j].count) {
-          alert('Not enough resources!');
-          return;
-        }
-      }
-    }
-  }
-  console.log('building ' + building.name + ' at ' + index);
-  const buildingData = {
-    buildingName: building.name,
-    index: index
-  }
-  await fetch('/building/build', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(buildingData)
-  })
-
-  // Get img child of element
-  let img = element.children[0];
-  img.setAttribute('src', '/img/building/' + pictureForBuilding(building.name));
-  
-  building.index = index;
-  element.onclick = () => { editBuildMenu(building, element) };
-  setTimeout(async () => {
-    await updateResources();
-  }, 2000);
-}
-
-async function destroyBuilding(building, index, element) {
-  building = await fetch('/building/' + building.name).then(res => res.json());
-  console.log('destroying ' + building.name + ' at ' + index);
-  const buildingData = {
-    buildingName: building.name,
-    index: index
-  }
-  await fetch('/building/destroy', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(buildingData)
-  })
-
-  // Get img child of element
-  let img = element.children[0];
-  img.setAttribute('src', '/img/building/' + pictureForBuilding(''));
-
-  let newBuilding = new Building('', 0, false);
-  newBuilding.index = index;
-  element.onclick = () => { editBuildMenu(newBuilding, element) };
-  setTimeout(async () => {
-    await updateResources();
-  }, 2000);
 }

@@ -139,7 +139,6 @@ async function loadTrades(trades, remove) {
     div3.setAttribute("class", "sm:text-base text-xs font-black text-accent my-auto sm:ml-5 ml-2 sm:mr-2 mr-0.5");
     div3.textContent = "OFFER:";
     const div4 = document.createElement("div");
-    // <div class="w-8 my-auto mx-1"><img src="/img/icon/#lowercased(trade.offerResource).png" class="w-full h-auto block" style="image-rendering: pixelated; image-rendering: crisp-edges;" /></div>
     const resourceImage = document.createElement("div");
     resourceImage.setAttribute("class", "sm:w-8 w-4 my-auto mx-1");
     const img = document.createElement("img");
@@ -147,7 +146,6 @@ async function loadTrades(trades, remove) {
     img.setAttribute("class", "sm:w-full sm:h-full w-4 h-4 block");
     img.setAttribute("style", "image-rendering: pixelated; image-rendering: crisp-edges;");
     resourceImage.appendChild(img);
-    // div4.appendChild(resourceImage);
     div4.setAttribute("class", "sm:text-base text-xs my-auto");
     div4.textContent = trade.offer.count;
     const div5 = document.createElement("div");
@@ -161,7 +159,6 @@ async function loadTrades(trades, remove) {
     askImg.setAttribute("class", "sm:w-full sm:h-full w-4 h-4 block");
     askImg.setAttribute("style", "image-rendering: pixelated; image-rendering: crisp-edges;");
     askResourceImage.appendChild(askImg);
-    // div6.appendChild(askResourceImage);
     div6.setAttribute("class", "sm:text-base text-xs my-auto");
     div6.textContent = trade.ask.count;
     const div7 = document.createElement("div");
@@ -188,7 +185,7 @@ async function loadTrades(trades, remove) {
 
 async function acceptTrade(trade) {
   const resources = await fetch('/resources').then(res => res.json());
-  // const username = await fetch('/user/me').then(res => res.text());
+  const username = await fetch('/user/me').then(res => res.text());
   if (trade.seller !== username) {
     for (let i = 0; i < resources.length; i++) {
       if (resources[i].name === trade.ask.name && resources[i].count < trade.ask.count) {
