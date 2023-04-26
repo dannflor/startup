@@ -19,7 +19,7 @@ public func configure(_ app: Application) throws {
         CreateUser(), CreateResource(), AddScoreToUser(), SessionRecord.migration, 
         CreateLayout(), RecreateResource(), AddTechToUser(), AddTimestampToUser(), CreateTrade(), 
         CreateAsk(), CreateOffer(), AddTimestampToTrade(), CreateTradeTransaction(), CreateMissionTransaction(),
-        AddJoinDateToUser(), AddRolesToUsers(), CreateTrophy(), CreateNewsPost()
+        AddJoinDateToUser(), AddRolesToUsers(), CreateTrophy(), CreateNewsPost(), AddTimestampToTrophy()
     )
 
     app.views.use(.leaf)

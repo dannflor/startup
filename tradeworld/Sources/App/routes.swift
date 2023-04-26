@@ -20,6 +20,7 @@ func routes(_ app: Application) throws {
     }
     
     let loginProtected = app.grouped(User.redirectMiddlewareAsync(path: "/login"))
+    let adminProtected = app.grouped(AdminMiddleware())
     
     app.get("login") { req async throws in
         try await req.view.render("login")
@@ -179,6 +180,7 @@ func routes(_ app: Application) throws {
     loginProtected.group("news", configure: newsController)
     loginProtected.group("leaderboard", configure: leaderboardController)
     loginProtected.group("feedback", configure: feedbackController)
+    adminProtected.group("trophy", configure: trophyController)
 }
 
 extension String {

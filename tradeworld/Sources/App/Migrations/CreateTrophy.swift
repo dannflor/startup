@@ -1,5 +1,6 @@
 import Vapor
 import Fluent
+import FluentSQL
 
 struct CreateTrophy: AsyncMigration {
     func prepare(on database: Database) async throws {
@@ -13,5 +14,21 @@ struct CreateTrophy: AsyncMigration {
     
     func revert(on database: Database) async throws {
         try await database.schema(Trophy.schema).delete()
+    }
+}
+
+struct AddTimestampToTrophy: AsyncMigration {
+    func prepare(on database: Database) async throws {
+        try await database.schema(Trophy.schema)
+            .field("award_date", .datetime, .required, .sql(.default(SQLRaw("CURRENT_TIMESTAMP"))))
+            .field("tier", .int, .required)
+            .update()
+    }
+    
+    func revert(on database: Database) async throws {
+        try await database.schema(Trophy.schema)
+            .deleteField("award_date")
+            .deleteField("tier")
+            .update()
     }
 }

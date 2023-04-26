@@ -22,9 +22,10 @@ you'll only gain back half of the resources you spent on it.</p>
 #export("body"):
 #extend("resources")
 <div class="divider mx-auto md:w-1/2 !my-0.5"></div>
-<grid id="gameGrid" class="xl:[scale:3] lg:[scale:2] md:[scale:1] [scale:0.75] xl:mt-56 lg:mt-40 mt-10 md:mx-auto">
-</grid>
-<!-- Put this part before </body> tag -->
+<grid id="gameGrid" class="xl:[scale:3] lg:[scale:2] md:[scale:1] [scale:0.75] xl:mt-56 lg:mt-40 mt-10 mb-10 md:mx-auto"></grid>
+
+
+<!-- Modals -->
 <input type="checkbox" id="grid-cell-modal" class="modal-toggle"/>
 <label for="grid-cell-modal" class="modal cursor-pointer">
   <label id="modalMenu" class="modal-box max-w-2xl flex flex-col overflow-clip" for="">
@@ -69,7 +70,6 @@ you'll only gain back half of the resources you spent on it.</p>
   }
   
 </script>
-
 #endif
 #endexport
 

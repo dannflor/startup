@@ -1275,30 +1275,6 @@ strong {
   visibility: visible;
   opacity: 1;
 }
-.footer {
-  display: grid;
-  width: 100%;
-  grid-auto-flow: row;
-  place-items: start;
-  row-gap: 2.5rem;
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-.footer > * {
-  display: grid;
-  place-items: start;
-  gap: 0.5rem;
-}
-@media (min-width: 48rem) {
-  .footer {
-    grid-auto-flow: column;
-  }
-  .footer-center {
-    grid-auto-flow: row dense;
-  }
-}
 .label {
   display: flex;
   -webkit-user-select: none;
@@ -2697,6 +2673,7 @@ grid {
     flex-wrap: wrap;
     width: 480px;
     padding-top: 72px;
+    padding-bottom: 72px;
   }
 @media (max-width: 500px) {
     grid {
@@ -2914,23 +2891,8 @@ grid label:nth-child(n+49) {
 .visible {
   visibility: visible;
 }
-.fixed {
-  position: fixed;
-}
 .relative {
   position: relative;
-}
-.\!bottom-0 {
-  bottom: 0px !important;
-}
-.left-0 {
-  left: 0px;
-}
-.right-0 {
-  right: 0px;
-}
-.right-4 {
-  right: 1rem;
 }
 .z-10 {
   z-index: 10;
@@ -2989,6 +2951,9 @@ grid label:nth-child(n+49) {
 }
 .-mr-10 {
   margin-right: -2.5rem;
+}
+.mb-10 {
+  margin-bottom: 2.5rem;
 }
 .mb-16 {
   margin-bottom: 4rem;
@@ -3074,9 +3039,6 @@ grid label:nth-child(n+49) {
 .\!h-2 {
   height: 0.5rem !important;
 }
-.h-10 {
-  height: 2.5rem;
-}
 .h-4 {
   height: 1rem;
 }
@@ -3160,9 +3122,6 @@ grid label:nth-child(n+49) {
   min-width: -moz-fit-content;
   min-width: fit-content;
 }
-.min-w-full {
-  min-width: 100%;
-}
 .\!max-w-fit {
   max-width: -moz-fit-content !important;
   max-width: fit-content !important;
@@ -3188,6 +3147,9 @@ grid label:nth-child(n+49) {
 }
 .flex-grow {
   flex-grow: 1;
+}
+.flex-grow-0 {
+  flex-grow: 0;
 }
 @keyframes fadeAway {
   0% {
@@ -3217,9 +3179,6 @@ grid label:nth-child(n+49) {
 }
 .cursor-pointer {
   cursor: pointer;
-}
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .flex-row {
   flex-direction: row;
@@ -3672,9 +3631,6 @@ grid label:nth-child(n+49) {
   .xl\:mx-6 {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
-  }
-  .xl\:mb-12 {
-    margin-bottom: 3rem;
   }
   .xl\:mt-56 {
     margin-top: 14rem;
