@@ -124,110 +124,82 @@ enum Building: String, CaseIterable, Content {
         return buildings[self.rawValue] ?? BuildingMetadata(yield: [], bonus: [:], bonusDescription: "", score: 0)
     }
     
-    
-    static func getNeighbors(_ index: Int) -> (Int?, Int?, Int?, Int?) {
-        switch (index) {
-            case 0:
-              return (nil, nil, 1, 2)
-            case 1:
-              return (nil, 0, 3, 4)
-            case 2:
-              return (0, nil, 4, 5)
-            case 3:
-              return (nil, 1, 6, 7)
-            case 4:
-              return (1, 2, 7, 8)
-            case 5:
-              return (2, nil, 8, 9)
-            case 6:
-              return (nil, 3, 10, 11)
-            case 7:
-              return (3, 4, 11, 12)
-            case 8:
-              return (4, 5, 12, 13)
-            case 9:
-              return (5, nil, 13, 14)
-            case 10:
-              return (nil, 6, 15, 16)
-            case 11:
-              return (6, 7, 16, 17)
-            case 12:
-              return (7, 8, 17, 18)
-            case 13:
-              return (8, 9, 18, 19)
-            case 14:
-              return (9, nil, 19, 20)
-            case 15:
-              return (nil, 10, 21, 22)
-            case 16:
-              return (10, 11, 22, 23)
-            case 17:
-              return (11, 12, 23, 24)
-            case 18:
-              return (12, 13, 24, 25)
-            case 19:
-              return (13, 14, 25, 26)
-            case 20:
-              return (14, nil, 26, 27)
-            case 21:
-              return (nil, 15, nil, 28)
-            case 22:
-              return (15, 16, 28, 29)
-            case 23:
-              return (16, 17, 29, 30)
-            case 24:
-              return (17, 18, 30, 31)
-            case 25:
-              return (18, 19, 31, 32)
-            case 26:
-              return (19, 20, 32, 33)
-            case 27:
-              return (20, nil, 33, nil)
-            case 28:
-              return (21, 22, nil, 34)
-            case 29:
-              return (22, 23, 34, 35)
-            case 30:
-              return (23, 24, 35, 36)
-            case 31:
-              return (24, 25, 36, 37)
-            case 32:
-              return (25, 26, 37, 38)
-            case 33:
-              return (26, 27, 38, nil)
-            case 34:
-              return (28, 29, nil, 39)
-            case 35:
-              return (29, 30, 39, 40)
-            case 36:
-              return (30, 31, 40, 41)
-            case 37:
-              return (31, 32, 41, 42)
-            case 38:
-              return (32, 33, 42, nil)
-            case 39:
-              return (34, 35, nil, 43)
-            case 40:
-              return (35, 36, 43, 44)
-            case 41:
-              return (36, 37, 44, 45)
-            case 42:
-              return (37, 38, 45, nil)
-            case 43:
-              return (39, 40, nil, 46)
-            case 44:
-              return (40, 41, 46, 47)
-            case 45:
-              return (41, 42, 47, nil)
-            case 46:
-              return (43, 44, nil, 48)
-            case 47:
-              return (44, 45, 48, nil)
-            case 48:
-              return (46, 47, nil, nil)
-          
-            default:
-              return (nil, nil, nil, nil)
+//     var corner_vectors = [Vector2i(1,-1),Vector2i(-1,-1),Vector2i(-1,1),Vector2i(1,1)]
+// var side_directions = [Vector2i(-1,0),Vector2i(0,1),Vector2i(1,0),Vector2i(0,-1)]
+// func _ulam_spiral(n) -> Vector2i:
+// 	if n == 0:
+// 		return Vector2i(0,0)
+// 	var k = int(ceil(floor(sqrt(n))/2))
+// 	var distance_from_cycle_start = n - (4*k*(k-1) + 1)
+// 	# Identify which of the four sides (straight sections)
+// 	# of the cycle n is in:
+// 	var side_length = 2*k
+// 	var side = int(floor(distance_from_cycle_start / side_length))
+// 	var distance_along_side = 1 + distance_from_cycle_start % side_length
+// 	var ref_position = k * corner_vectors[side]
+// 	return ref_position + distance_along_side * side_directions[side]
+
+// # Return the value of n such that f(n) has the given coordinates
+// func _sequence_number(p: Vector2i) -> int:
+// 	var x = p.x
+// 	var y = p.y
+// 	var k = max(x, y, -x, -y) # the cycle number
+// 	var side = (3 if x == k
+// 			else 2 if y == k
+// 			else 1 if x == -k
+// 			else 0)
+// 	var ref_position = k * corner_vectors[side]
+// 	var n = (4*k*(k-1) + 1) + side * 2*k + max(abs(ref_position[0] - p[0]), abs(ref_position[1] - p[1])) - 1
+// 	return n
+
+// func get_neighbors(n: int) -> Array:
+// 	var p = _ulam_spiral(n)
+// 	var neighbors = []
+// 	for i in range(4):
+// 		var neighbor = p + side_directions[i]
+// 		var index: int = _sequence_number(neighbor)
+// 		if index < buildings.size():
+// 			neighbors.append(index)
+// 	return neighbors
+    static func getNeighbors(_ index: Int, _ req: Request) async throws -> [Int] {
+        let cornerVectors: [(Int, Int)] = [ (1, -1), (-1, -1), (-1, 1), (1, 1) ]
+        let sideDirections: [(Int, Int)] = [ (-1, 0), (0, 1), (1, 0), (0, -1) ]
+
+        let p = ulamSpiral(index)
+        var neighbors = [Int]()
+        for i in 0..<4 {
+            let neighbor = (p.0 + sideDirections[i].0, p.1 + sideDirections[i].1)
+            let index = sequenceNumber(neighbor)
+            guard let layout = try await req.auth.require(User.self).$layout.get(on: req.db)?.layout else {
+                throw Abort(.internalServerError)
+            }
+            if index < layout.count {
+                neighbors.append(index)
+            }
+        }
+        
+        return neighbors
+
+        func ulamSpiral(_ index: Int) -> (Int, Int) {
+            if index == 0 {
+                return (0, 0)
+            }
+            let k = Int(ceil(floor(sqrt(Double(index)))/2))
+            let distanceFromCycleStart = index - (4*k*(k-1) + 1)
+            let sideLength = 2*k
+            let side = Int(floor(Double(distanceFromCycleStart) / Double(sideLength)))
+            let distanceAlongSide = 1 + distanceFromCycleStart % sideLength
+            let refPosition = (k * cornerVectors[side].0, k * cornerVectors[side].1)
+            return (refPosition.0 + distanceAlongSide * sideDirections[side].0, refPosition.1 + distanceAlongSide * sideDirections[side].1)
+        }
+        func sequenceNumber(_ p: (Int, Int)) -> Int {
+            let x = p.0
+            let y = p.1
+            let k = max(x, y, -x, -y)
+            let side = (3 == x ? 3 : 2 == y ? 2 : 1 == x ? 1 : 0)
+            let refPosition = (k * cornerVectors[side].0, k * cornerVectors[side].1)
+            let n = (4*k*(k-1) + 1) + side * 2*k + max(abs(refPosition.0 - p.0), abs(refPosition.1 - p.1)) - 1
+            return n
         }
     }
 }

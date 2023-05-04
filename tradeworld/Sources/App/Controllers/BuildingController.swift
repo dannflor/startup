@@ -50,20 +50,7 @@ func buildingController(building: RoutesBuilder) {
         guard let layout = try await user.$layout.get(on: req.db)?.layout else {
             throw Abort(.internalServerError)
         }
-        let neighborsOpt = Building.getNeighbors(index)
-        var neighbors: [Int] = []
-        if let first = neighborsOpt.0 {
-            neighbors.append(first)
-        }
-        if let second = neighborsOpt.1 {
-            neighbors.append(second)
-        }
-        if let third = neighborsOpt.2 {
-            neighbors.append(third)
-        }
-        if let fourth = neighborsOpt.3 {
-            neighbors.append(fourth)
-        }
+        let neighbors = try await Building.getNeighbors(index, req)
         let neighborsBuildings = neighbors.map { layout[$0] }
         let yield = layout[index].yield(neighbors: neighborsBuildings, techs: try Tech.lookup(req), req: req)
         return yield

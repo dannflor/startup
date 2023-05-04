@@ -22,7 +22,7 @@ you'll only gain back half of the resources you spent on it.</p>
 #export("body"):
 #extend("resources")
 <div class="divider mx-auto md:w-1/2 !my-0.5"></div>
-<grid id="gameGrid" class="xl:[scale:3] lg:[scale:2] md:[scale:1] [scale:0.75] xl:mt-56 lg:mt-40 mt-10 mb-10 md:mx-auto"></grid>
+<iframe id="gamegame" class="mx-auto flex-grow min-h-full w-full bg-base-300" src="/game/grid/tradeworld.html"></iframe>
 
 
 <!-- Modals -->

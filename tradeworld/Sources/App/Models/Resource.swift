@@ -87,20 +87,7 @@ final class Resource: Model, Content, Comparable {
         ]
 
         for (index, building) in layout.enumerated() {
-            let neighborsOpt = Building.getNeighbors(index)
-            var neighbors: [Int] = []
-            if let first = neighborsOpt.0 {
-                neighbors.append(first)
-            }
-            if let second = neighborsOpt.1 {
-                neighbors.append(second)
-            }
-            if let third = neighborsOpt.2 {
-                neighbors.append(third)
-            }
-            if let fourth = neighborsOpt.3 {
-                neighbors.append(fourth)
-            }
+            let neighbors = try await Building.getNeighbors(index, req)
             let neighborsBuildings = neighbors.map { layout[$0] }
 
             let yieldPerHour = building.yield(neighbors: neighborsBuildings, techs: techs, req: req)

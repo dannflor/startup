@@ -1620,13 +1620,6 @@ strong {
   --tw-text-opacity: 1;
   color: hsl(var(--s) / var(--tw-text-opacity));
 }
-.btn-outline.btn-error .badge-outline {
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--er) / var(--tw-border-opacity));
-  background-color: transparent;
-  --tw-text-opacity: 1;
-  color: hsl(var(--er) / var(--tw-text-opacity));
-}
 .btn-outline.btn-primary:hover .badge {
   --tw-border-opacity: 1;
   border-color: hsl(var(--pc) / var(--tw-border-opacity));
@@ -1731,24 +1724,6 @@ strong {
 .btn-secondary:focus-visible {
   outline: 2px solid hsl(var(--s));
 }
-.btn-error {
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--er) / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--er) / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--erc, var(--nc)) / var(--tw-text-opacity));
-}
-.btn-error:hover,
-    .btn-error.btn-active {
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--er) / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--er) / var(--tw-bg-opacity));
-}
-.btn-error:focus-visible {
-  outline: 2px solid hsl(var(--er));
-}
 .btn.glass:hover,
     .btn.glass.btn-active {
   --glass-opacity: 25%;
@@ -1797,19 +1772,6 @@ strong {
   background-color: hsl(var(--sf, var(--s)) / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: hsl(var(--sc) / var(--tw-text-opacity));
-}
-.btn-outline.btn-error {
-  --tw-text-opacity: 1;
-  color: hsl(var(--er) / var(--tw-text-opacity));
-}
-.btn-outline.btn-error:hover,
-      .btn-outline.btn-error.btn-active {
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--er) / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--er) / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--erc, var(--nc)) / var(--tw-text-opacity));
 }
 .btn-disabled,
   .btn-disabled:hover,
@@ -1957,9 +1919,6 @@ strong {
 }
 .drawer-toggle:focus-visible ~ .drawer-content .drawer-button.btn-secondary {
   outline: 2px solid hsl(var(--s));
-}
-.drawer-toggle:focus-visible ~ .drawer-content .drawer-button.btn-error {
-  outline: 2px solid hsl(var(--er));
 }
 .drawer-toggle:focus-visible ~ .drawer-content .drawer-button.btn-ghost {
   outline: 2px solid currentColor;
@@ -2952,9 +2911,6 @@ grid label:nth-child(n+49) {
 .-mr-10 {
   margin-right: -2.5rem;
 }
-.mb-10 {
-  margin-bottom: 2.5rem;
-}
 .mb-16 {
   margin-bottom: 4rem;
 }
@@ -3000,9 +2956,6 @@ grid label:nth-child(n+49) {
 .mr-4 {
   margin-right: 1rem;
 }
-.mr-auto {
-  margin-right: auto;
-}
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -3023,9 +2976,6 @@ grid label:nth-child(n+49) {
 }
 .block {
   display: block;
-}
-.inline {
-  display: inline;
 }
 .flex {
   display: flex;
@@ -3062,6 +3012,9 @@ grid label:nth-child(n+49) {
 }
 .min-h-\[5rem\] {
   min-height: 5rem;
+}
+.min-h-full {
+  min-height: 100%;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -3148,9 +3101,6 @@ grid label:nth-child(n+49) {
 .flex-grow {
   flex-grow: 1;
 }
-.flex-grow-0 {
-  flex-grow: 0;
-}
 @keyframes fadeAway {
   0% {
     transform: translateX(0);
@@ -3194,9 +3144,6 @@ grid label:nth-child(n+49) {
 }
 .justify-between {
   justify-content: space-between;
-}
-.justify-items-end {
-  justify-items: end;
 }
 .overflow-clip {
   overflow: clip;
@@ -3341,10 +3288,6 @@ grid label:nth-child(n+49) {
   --tw-text-opacity: 1;
   color: hsl(var(--a) / var(--tw-text-opacity));
 }
-.text-error {
-  --tw-text-opacity: 1;
-  color: hsl(var(--er) / var(--tw-text-opacity));
-}
 .text-info {
   --tw-text-opacity: 1;
   color: hsl(var(--in) / var(--tw-text-opacity));
@@ -3368,10 +3311,6 @@ grid label:nth-child(n+49) {
 .text-warning {
   --tw-text-opacity: 1;
   color: hsl(var(--wa) / var(--tw-text-opacity));
-}
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);

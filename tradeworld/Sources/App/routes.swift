@@ -5,16 +5,10 @@ func routes(_ app: Application) throws {
     
     app.get { req in
         if req.auth.has(User.self) {
-            #if DEBUG
             return req.redirect(to: "/game")
-            #endif
-            return req.redirect(to: "https://tradeworldgame.com/game")
         }
         else {
-            #if DEBUG
             return req.redirect(to: "/login")
-            #endif
-            return req.redirect(to: "https://tradeworldgame.com/login")
         }
         
     }
@@ -50,19 +44,12 @@ func routes(_ app: Application) throws {
         
         func createLayout() throws -> Layout {
             let grid: [Building] = [
-                                        .Mountain,
-                                    .Mountain, .Mountain,
-                                .Mountain, .NoHouse, .Mountain,
-                            .Forest, .NoHouse, .NoHouse, .Forest,
-                        .Forest, .NoHouse, .NoHouse, .NoHouse, .Forest,
-                    .Forest, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .Forest,
-                .Forest, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .Water,
-                    .NoHouse, .NoHouse, .NoHouse, .NoHouse, .NoHouse, .Water,
-                        .NoHouse, .NoHouse, .NoHouse, .NoHouse, .Water,
-                            .NoHouse, .NoHouse, .NoHouse, .Water,
-                                .NoHouse, .NoHouse, .Water,
-                                    .NoHouse, .Water,
-                                        .Water
+                    .NoHouse,
+                .NoHouse, .NoHouse,
+            .NoHouse, .NoHouse, .NoHouse,
+                    .NoHouse, .NoHouse,
+                        .NoHouse
+                        
             ]
             // for _ in 0...48 {
             //     grid.append(Building.terrainTypes.randomElement()!)
@@ -101,60 +88,12 @@ func routes(_ app: Application) throws {
         return try await req.view.render("logout")
     }
     
-    loginProtected.get("game") { req async throws -> View in
-        struct PopupResponse: Encodable {
-            let showPopup: Bool
-            let name: String
-            let title: String
-            let content: String
-        }
-        guard let config = decodeFile(req: req, "config", Config.self) else {
-            throw Abort(.internalServerError, reason: "Couldn't decode configuration file")
-        }
-        
-        return try await req.view.render("game", [
-            "popup" : PopupResponse(showPopup: config.showPopup, name: config.popup.name, title: config.popup.title, content: config.popup.content)
-        ])
-    }
-    
     loginProtected.get("score") { req async throws -> Int in
         try await req.auth.require(User.self).getScore(req)
     }
     
-    loginProtected.get("grid") { req async throws -> [BuildingResponse] in
-        guard
-            let layout = try await req.auth.require(User.self).$layout.get(on: req.db)?.layout,
-            let mapping = decodeFile(req: req, "buildingNames", [String : BuildingResponse].self)
-        else {
-            throw Abort(.internalServerError)
-        }
-        
-        let grid = layout.map { elem -> BuildingResponse in
-            mapping[elem.rawValue] ?? BuildingResponse(name: "", cost: [])
-        }
-        
-        return grid
-    }
-    
     loginProtected.get("view") { req async throws in
         try await req.view.render("view")
-    }
-    
-    loginProtected.get("grid", ":user") { req async throws -> [BuildingResponse] in
-        guard
-            let user = try await User.query(on: req.db).filter(\.$username == req.parameters.get("user") ?? "").first(),
-            let layout = try await user.$layout.get(on: req.db)?.layout,
-            let mapping = decodeFile(req: req, "buildingNames", [String : BuildingResponse].self)
-        else {
-            throw Abort(.internalServerError)
-        }
-        
-        let grid = layout.map { elem -> BuildingResponse in
-            mapping[elem.rawValue] ?? BuildingResponse(name: "", cost: [])
-        }
-        
-        return grid
-
     }
     
     loginProtected.get("resources") { req async throws -> [ResourceQty] in
@@ -181,6 +120,8 @@ func routes(_ app: Application) throws {
     loginProtected.group("leaderboard", configure: leaderboardController)
     loginProtected.group("feedback", configure: feedbackController)
     adminProtected.group("trophy", configure: trophyController)
+    loginProtected.group("game", configure: gameController)
+    loginProtected.group("grid", configure: gridController)
 }
 
 extension String {

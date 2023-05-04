@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta viewpoint name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#20222c">
   <title>Tradeworld: #import("title")</title>
   <link rel="stylesheet" type="text/css" href="/css/app.css">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
