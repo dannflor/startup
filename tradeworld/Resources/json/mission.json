@@ -4,5 +4,7 @@
     "requirements": [
         {"name": "Stone", "count": 1000000}
     ],
-    "img": "/img/monster/greg.png"
+    "ongoing": false,
+    "winningMessage": "**Greg** the weird dinosaur dragon monster thing has left unerasable scars on the beautiful townscapes of Tradeworld. The heroes who built the wall to keep him out will be remembered as long as Tradeworld continues to exist (and will be commemorated with special trophies!). But [JukeSocks](/view/?user=JukeSocks) has showed conspicuous bravery in the face of dangerous construction conditions and has proved himself worthy to be crowned Tradeworld's first king! Stay tuned for his coronation...",
+    "img": "/img/monster/gregn't.png"
 }

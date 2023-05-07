@@ -15,7 +15,7 @@ will earn a special prize.</p>
   <h1 class="text-3xl font-serif font-extrabold text-primary text-center mx-auto tooltip tooltip-bottom tooltip-primary" data-tip="#(mission.description)">#(mission.name)</h1>
   <div class="divider md:w-1/3 w-2/3 mx-auto"></div>
   <img src="#(mission.img)" class="mx-auto w-1/3 rounded-xl" alt="Monster" style="image-rendering: pixelated; image-rendering: crisp-edges;"/>
-
+  #if(mission.ongoing):
   #for(requirement in requirements):
     <div class="flex-row flex mx-auto border-2 border-primary md:w-1/4 w:3/4 hover:border-primary-focus my-4 rounded-xl p-3">
       <div class="w-10 md:mr-2">
@@ -51,7 +51,12 @@ will earn a special prize.</p>
       <span class="text-2xl font-bold text-info my-auto">#(resource.count) </span>
     #endfor
   </div>
-    
+  #else:
+  <div class="prose mx-auto">
+    <h1 class="text-3xl font-black text-success text-center mx-auto my-8">Congratulations!</h1>
+    #markdown(mission.winningMessage)
+  </div>
+  #endif
   
 </main>
 
