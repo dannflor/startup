@@ -29,6 +29,7 @@
               <li><a id="EventHeaderList" href="/mission">Event</a></li>
               <li><a id="NewsHeaderList" href="/news">News</a></li>
               <li><a id="LeaderboardHeaderList" href="/leaderboard">Leaderboard</a></li>
+			        <li><a id="FeedbackHeaderList" href="https://tradeworld.canny.io/" class="">Feedback</a></li>
             </ul>
           </li>
           <li><a id="TechHeaderList" href="/tech">Tech</a></li>
@@ -55,6 +56,7 @@
             <li><a id="EventHeader" href="/mission" class="">Event</a></li>
             <li><a id="NewsHeader" href="/news" class="">News</a></li>
             <li><a id="LeaderboardHeader" href="/leaderboard" class="">Leaderboard</a></li>
+            <li><a id="FeedbackHeader" href="https://tradeworld.canny.io/" class="">Feedback</a></li>
           </ul>
         </li>
       </ul>

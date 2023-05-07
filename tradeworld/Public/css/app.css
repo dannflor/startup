@@ -9,7 +9,7 @@
  *
  * @import "tailwindcss/preflight";
  */
-/*! tailwindcss v3.3.1 | MIT License | https://tailwindcss.com
+/*! tailwindcss v3.3.2 | MIT License | https://tailwindcss.com
  */
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -542,6 +542,9 @@ strong {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -588,6 +591,9 @@ strong {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -1379,10 +1385,7 @@ strong {
   pointer-events: none;
   visibility: hidden;
   position: fixed;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
+  inset: 0px;
   display: flex;
   justify-content: center;
   opacity: 0;
@@ -2140,6 +2143,18 @@ strong {
   border-bottom-right-radius: inherit;
   border-bottom-left-radius: inherit;
 }
+.menu > :where(li:first-child:last-child) {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.menu > :where(li:first-child:last-child) > :where(:not(ul)) {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
 .menu > :where(li) > :where(ul) :where(li) {
   width: 100%;
   white-space: nowrap;
@@ -2172,6 +2187,18 @@ strong {
 .menu > :where(li) > :where(ul) > :where(li:last-child) > :where(:not(ul)) {
   border-top-left-radius: unset;
   border-top-right-radius: unset;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.menu > :where(li) > :where(ul) > :where(li:first-child:last-child) {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.menu > :where(li) > :where(ul) > :where(li:first-child:last-child) > :where(:not(ul)) {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
   border-bottom-right-radius: inherit;
   border-bottom-left-radius: inherit;
 }
@@ -3573,6 +3600,9 @@ grid label:nth-child(n+49) {
   }
   .xl\:mt-56 {
     margin-top: 14rem;
+  }
+  .xl\:mt-64 {
+    margin-top: 16rem;
   }
   .xl\:\[scale\:3\] {
     scale: 3;

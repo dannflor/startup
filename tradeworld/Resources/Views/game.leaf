@@ -25,6 +25,7 @@ you'll only gain back half of the resources you spent on it.</p>
 <iframe id="gamegame" class="mx-auto flex-grow min-h-full w-full bg-base-300" src="/game/grid/tradeworld.html"></iframe>
 
 
+
 <!-- Modals -->
 <input type="checkbox" id="grid-cell-modal" class="modal-toggle"/>
 <label for="grid-cell-modal" class="modal cursor-pointer">
